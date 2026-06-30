@@ -201,10 +201,9 @@
     <span class="b">FinPro</span>
     <span class="s">Toca para ir al Inicio →</span>
   </button>
-  <div class="drawer-sec">Herramientas</div>
-  <button class="drawer-item" data-v="sim" onclick="go('sim')"><span class="di">🔮</span>Simulador</button>
-  <div class="drawer-sec">Administrar</div>
-  <button class="drawer-item" data-v="fijos" onclick="go('fijos')"><span class="di">🔁</span>Pagos recurrentes</button>
+  <div class="drawer-sec">Mi dinero</div>
+  <button class="drawer-item" data-v="ahorros" onclick="go('ahorros')"><span class="di">🏦</span>Ahorros</button>
+  <button class="drawer-item" data-v="fijos" onclick="go('fijos')"><span class="di">🔁</span>Recurrentes</button>
   <button class="drawer-item" data-v="tarjetas" onclick="go('tarjetas')"><span class="di">💳</span>Tarjetas</button>
   <div class="drawer-sec">Datos y app</div>
   <button class="drawer-item" data-v="categorias" onclick="go('categorias')"><span class="di">🏷️</span>Categorías</button>
@@ -229,6 +228,8 @@
       <div class="tile"><div class="ic">💸</div><div class="l">Gastos del mes</div><div class="v neg" id="homeGas">$0</div></div>
       <div class="tile"><div class="ic">🏦</div><div class="l">Ahorros</div><div class="v" id="homeSave" style="color:var(--accent2)">$0</div></div>
     </div>
+
+    <div class="card" id="realCard"></div>
 
     <div class="card">
       <h2>Balance del mes</h2>
@@ -345,10 +346,10 @@
   <!-- ============ PAGOS FIJOS ============ -->
   <div class="view" id="v-fijos">
     <div class="card">
-      <h2>Pagos fijos mensuales</h2>
-      <p class="hint">Se repiten solos cada mes (colegiatura, servicios, renta...). Te avisan y los marcas como pagados.</p>
+      <h2>Recurrentes mensuales</h2>
+      <p class="hint">Ingresos y gastos que se repiten cada mes (sueldo, colegiatura, renta...). Te avisan y los marcas como pagados/recibidos.</p>
       <div id="recList"></div>
-      <button class="btn btn-red" style="margin-top:12px;" onclick="openRec()">＋ Agregar pago fijo</button>
+      <button class="btn btn-accent" style="margin-top:12px;" onclick="openRec()">＋ Agregar recurrente</button>
     </div>
   </div>
 
@@ -431,7 +432,7 @@
   <button class="active" data-v="inicio" onclick="go('inicio')"><span class="ico">🏠</span>Inicio</button>
   <button data-v="cal" onclick="go('cal')"><span class="ico">📅</span>Calendario</button>
   <button data-v="stats" onclick="go('stats')"><span class="ico">📊</span>Estadísticas</button>
-  <button data-v="ahorros" onclick="go('ahorros')"><span class="ico">🏦</span>Ahorros</button>
+  <button data-v="sim" onclick="go('sim')"><span class="ico">🔮</span>Simulador</button>
 </nav>
 
 <!-- Botón flotante agregar -->
@@ -485,19 +486,23 @@
 <!-- ============ MODAL: Pago fijo ============ -->
 <div class="modal" id="modalRec">
   <div class="sheet">
-    <h3>Pago fijo mensual</h3>
+    <h3>Movimiento recurrente</h3>
     <div class="sub">Se repite automáticamente cada mes</div>
+    <div class="seg">
+      <button id="recSegIn" onclick="setRecType('in')">＋ Ingreso</button>
+      <button id="recSegOut" onclick="setRecType('out')">－ Gasto</button>
+    </div>
     <label>Concepto</label>
-    <input type="text" id="recName" placeholder="Ej. Colegiatura, Luz, Internet...">
+    <input type="text" id="recName" placeholder="Ej. Colegiatura, Sueldo, Renta...">
     <label>Monto</label>
     <input type="number" id="recAmount" inputmode="decimal" placeholder="0.00">
     <label>Categoría</label>
     <select id="recCat"></select>
-    <label>Día del mes en que se paga (1-31)</label>
+    <label>Día del mes (1-31)</label>
     <input type="number" id="recDay" min="1" max="31" placeholder="Ej. 10">
     <div class="row-btns" style="margin-top:18px;">
       <button class="btn btn-ghost" onclick="closeModal('modalRec')">Cancelar</button>
-      <button class="btn btn-red" onclick="saveRec()">Guardar</button>
+      <button class="btn" id="recSaveBtn" onclick="saveRec()">Guardar</button>
     </div>
   </div>
 </div>
@@ -685,14 +690,23 @@ function saveCard(){
 function delCard(id){ if(confirm('¿Eliminar esta tarjeta?')){ DB.cards=DB.cards.filter(c=>c.id!==id); save(); render(); } }
 
 /* ============ Pagos fijos (recurrentes) ============ */
-let editRec=null;
+let editRec=null, recType='out';
+function setRecType(t){
+  recType=t;
+  document.getElementById('recSegIn').className  = t==='in'?'on-in':'';
+  document.getElementById('recSegOut').className = t==='out'?'on-out':'';
+  document.getElementById('recSaveBtn').className = 'btn '+(t==='in'?'btn-green':'btn-red');
+  const sel=document.getElementById('recCat'); const cur=sel.value;
+  const list=(t==='in'?catsIn():catsOut());
+  sel.innerHTML=list.map(c=>`<option value="${c}">${iconFor(c)} ${c}</option>`).join('');
+  if(cur && list.includes(cur)) sel.value=cur;
+}
 function openRec(r){
   editRec=r||null;
-  const sel=document.getElementById('recCat');
-  sel.innerHTML=catsOut().map(c=>`<option value="${c}">${iconFor(c)} ${c}</option>`).join('');
+  setRecType(r?(r.type||'out'):'out');
   document.getElementById('recName').value=r?r.name:'';
   document.getElementById('recAmount').value=r?r.amount:'';
-  document.getElementById('recCat').value=r?r.cat:'Colegiatura';
+  if(r) document.getElementById('recCat').value=r.cat;
   document.getElementById('recDay').value=r?r.day:'';
   openModal('modalRec');
 }
@@ -703,16 +717,25 @@ function saveRec(){
   if(!name){ alert('Escribe un concepto'); return; }
   if(!day||day<1||day>31){ alert('Escribe un día válido (1-31)'); return; }
   const cat=document.getElementById('recCat').value;
-  const obj={name,amount,cat,day};
+  const obj={name,amount,cat,day,type:recType};
   if(editRec) Object.assign(editRec,obj);
   else DB.rec.push({id:uid(),...obj});
   save(); closeModal('modalRec'); render();
 }
-function delRec(id){ if(confirm('¿Eliminar este pago fijo?')){ DB.rec=DB.rec.filter(r=>r.id!==id); save(); render(); } }
+function delRec(id){ if(confirm('¿Eliminar este recurrente?')){ DB.rec=DB.rec.filter(r=>r.id!==id); save(); render(); } }
 function recPaid(rid,ym){ return DB.tx.some(t=>t.rid===rid && t.date.slice(0,7)===ym); }
 function payRec(rid,iso){
   const r=DB.rec.find(x=>x.id===rid); if(!r) return;
-  DB.tx.push({id:uid(),type:'out',amount:r.amount,cat:r.cat,label:r.name,date:iso,note:'Pago fijo',rid:rid});
+  const ty=r.type||'out';
+  DB.tx.push({id:uid(),type:ty,amount:r.amount,cat:r.cat,label:r.name,date:iso,note:ty==='in'?'Ingreso recurrente':'Pago recurrente',rid:rid});
+  save(); render();
+}
+function payCard(id){
+  const c=DB.cards.find(x=>x.id===id); if(!c) return;
+  if(!c.bal){ alert('Esta tarjeta no tiene saldo registrado.'); return; }
+  if(!confirm('¿Marcar como pagado '+fmt(c.bal)+' de '+c.name+'?\nSe registrará como gasto y el saldo quedará en $0.')) return;
+  DB.tx.push({id:uid(),type:'out',amount:c.bal,cat:'Tarjeta de crédito',label:'Pago '+c.name,date:todayISO(),note:'Pago de tarjeta'});
+  c.bal=0;
   save(); render();
 }
 function recNextDate(r){
@@ -784,12 +807,13 @@ function renderDay(){
   const dim=daysInMonth(parseInt(selectedDay.slice(0,4)),parseInt(selectedDay.slice(5,7))-1);
   const ym=selectedDay.slice(0,7);
   const recEvents=DB.rec.filter(r=>Math.min(r.day,dim)===d).map(r=>{
-    const paid=recPaid(r.id,ym);
+    const paid=recPaid(r.id,ym); const ty=r.type||'out';
+    const done = ty==='in'?'Recibido':'Pagado';
     return `<div class="item">
-      <div class="dot" style="background:rgba(167,139,250,.2)">🔁</div>
+      <div class="dot" style="background:rgba(167,139,250,.2)">${iconFor(r.cat)}</div>
       <div class="info"><div class="t">${esc(r.name)}</div>
-        <div class="s">Pago fijo · ${fmt(r.amount)} ${paid?'· <span class="pos">✓ Pagado</span>':''}</div></div>
-      ${paid?'':`<button class="btn-sm btn-green" onclick="payRec('${r.id}','${selectedDay}')">Pagar</button>`}
+        <div class="s">${ty==='in'?'Ingreso':'Gasto'} recurrente · <span class="${ty==='in'?'pos':'neg'}">${ty==='in'?'+':'-'}${fmt(r.amount)}</span> ${paid?'· <span class="pos">✓ '+done+'</span>':''}</div></div>
+      ${paid?'':`<button class="btn-sm btn-green" onclick="payRec('${r.id}','${selectedDay}')">${done}</button>`}
     </div>`;
   });
   let html=cardEvents.join('')+recEvents.join('');
@@ -894,34 +918,53 @@ function renderStats(){
   }).join('');
 }
 
-/* ============ Proyección / Simulador ============ */
-function recOccurrencesDue(r, fromIso, toIso){
-  let total=0;
-  let y=parseInt(fromIso.slice(0,4)), m=parseInt(fromIso.slice(5,7))-1;
-  for(let i=0;i<24;i++){
-    const dim=daysInMonth(y,m);
-    const day=Math.min(r.day,dim);
-    const iso=`${y}-${String(m+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
-    if(iso>toIso) break;
-    if(iso>=fromIso && !recPaid(r.id, iso.slice(0,7))) total+=r.amount;
-    m++; if(m>11){m=0;y++;}
-  }
-  return total;
-}
-function projectBalance(targetIso, extraAmount){
+/* ============ Simulador inteligente ============ */
+const addDaysIso = n => isoOfDate(new Date(Date.now()+n*86400000));
+// Eventos futuros (ingresos/gastos programados, pagos de tarjeta y recurrentes) hasta toIso
+function futureEvents(toIso){
   const t=todayISO();
-  const savings=DB.banks.reduce((s,b)=>s+(b.bal||0),0);
-  let pastNet=0, futureIn=0, futureOut=0;
-  DB.tx.forEach(x=>{
-    if(x.date<=t) pastNet += x.type==='in'?x.amount:-x.amount;
-    else if(x.date<=targetIso){ if(x.type==='in') futureIn+=x.amount; else futureOut+=x.amount; }
+  const ev=[];
+  DB.tx.forEach(x=>{ if(x.date>t && x.date<=toIso) ev.push({iso:x.date, delta:(x.type==='in'?x.amount:-x.amount), label:x.label, kind:x.type}); });
+  DB.cards.forEach(c=>{ if(c.pay && c.bal){ const di=isoOfDate(nextDateForDay(c.pay)); if(di>=t && di<=toIso) ev.push({iso:di, delta:-c.bal, label:'Pago '+c.name, kind:'card'}); } });
+  DB.rec.forEach(r=>{
+    const ty=r.type||'out';
+    let y=parseInt(t.slice(0,4)), m=parseInt(t.slice(5,7))-1;
+    for(let i=0;i<26;i++){
+      const dim=daysInMonth(y,m), day=Math.min(r.day,dim);
+      const iso=`${y}-${String(m+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+      if(iso>toIso) break;
+      if(iso>=t && !recPaid(r.id, iso.slice(0,7))) ev.push({iso, delta:(ty==='in'?r.amount:-r.amount), label:r.name, kind:ty==='in'?'recin':'recout'});
+      m++; if(m>11){m=0;y++;}
+    }
   });
-  let recDue=0; DB.rec.forEach(r=> recDue += recOccurrencesDue(r, t, targetIso));
-  let cardDue=0; DB.cards.forEach(c=>{ if(c.pay&&c.bal){ const di=isoOfDate(nextDateForDay(c.pay)); if(di>=t&&di<=targetIso) cardDue+=c.bal; } });
-  const availableNow=savings+pastNet;
-  const hypo=extraAmount||0;
-  const balance=availableNow+futureIn-futureOut-recDue-cardDue-hypo;
-  return {savings,pastNet,availableNow,futureIn,futureOut,recDue,cardDue,hypo,balance};
+  return ev;
+}
+// Simula el saldo día a día e identifica el punto más bajo y riesgos
+function simulateMin(amount, purchaseIso){
+  const t=todayISO();
+  let end=purchaseIso; const h=addDaysIso(90); if(h>end) end=h;
+  const ev=futureEvents(end);
+  if(amount>0) ev.push({iso:purchaseIso, delta:-amount, label:'Tu compra', kind:'buy'});
+  ev.sort((a,b)=> a.iso<b.iso?-1:(a.iso>b.iso?1:0));
+  let bal=available(), min=bal, minIso=t, atPurchase=bal;
+  let sumIn=0,sumRecIn=0,sumCard=0,sumRecOut=0,sumOut=0;
+  const risks=[];
+  ev.forEach(e=>{
+    bal+=e.delta;
+    if(e.kind==='in') sumIn+=e.delta;
+    else if(e.kind==='out') sumOut+=-e.delta;
+    else if(e.kind==='card') sumCard+=-e.delta;
+    else if(e.kind==='recout') sumRecOut+=-e.delta;
+    else if(e.kind==='recin') sumRecIn+=e.delta;
+    if(e.kind==='buy') atPurchase=bal;
+    if(bal<min){ min=bal; minIso=e.iso; }
+    if((e.kind==='card'||e.kind==='recout') && bal<0 && risks.indexOf(e.label)<0) risks.push(e.label);
+  });
+  return {min, minIso, atPurchase, endBal:bal, availableNow:available(), sumIn, sumRecIn, sumCard, sumRecOut, sumOut, risks};
+}
+function earliestSafe(amount){
+  for(let i=0;i<=550;i++){ const iso=addDaysIso(i); if(simulateMin(amount, iso).min>=0) return iso; }
+  return null;
 }
 function runSim(){
   const amt=parseFloat(document.getElementById('simAmount').value);
@@ -932,16 +975,17 @@ function runSim(){
   if(!date){ box.innerHTML='<div class="empty">Elige una fecha.</div>'; return; }
   if(date<todayISO()){ box.innerHTML='<div class="empty">Elige una fecha de hoy en adelante.</div>'; return; }
 
-  const p=projectBalance(date, amt);
-  const ok=p.balance>=0;
-  const fdate=new Date(date+'T00:00:00').toLocaleDateString('es-MX',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+  const s=simulateMin(amt, date);
+  const ok=s.min>=0;
+  const minNice=new Date(s.minIso+'T00:00:00').toLocaleDateString('es-MX',{day:'numeric',month:'long'});
 
   const rows=[];
-  rows.push(['Disponible hoy', p.availableNow, 'pos']);
-  if(p.futureIn>0)  rows.push(['+ Ingresos por venir', p.futureIn, 'pos']);
-  if(p.futureOut>0) rows.push(['− Gastos ya programados', -p.futureOut, 'neg']);
-  if(p.recDue>0)    rows.push(['− Pagos fijos pendientes', -p.recDue, 'neg']);
-  if(p.cardDue>0)   rows.push(['− Pagos de tarjeta', -p.cardDue, 'neg']);
+  rows.push(['Disponible hoy', s.availableNow, s.availableNow>=0?'pos':'neg']);
+  if(s.sumIn>0)     rows.push(['+ Ingresos programados', s.sumIn, 'pos']);
+  if(s.sumRecIn>0)  rows.push(['+ Ingresos recurrentes', s.sumRecIn, 'pos']);
+  if(s.sumCard>0)   rows.push(['− Pagos de tarjeta', -s.sumCard, 'neg']);
+  if(s.sumRecOut>0) rows.push(['− Pagos recurrentes', -s.sumRecOut, 'neg']);
+  if(s.sumOut>0)    rows.push(['− Gastos programados', -s.sumOut, 'neg']);
   rows.push(['− Esta compra'+(note?' ('+esc(note)+')':''), -amt, 'neg']);
   const rowsHtml=rows.map(r=>`<div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line2);font-size:14px;">
     <span style="color:var(--muted)">${r[0]}</span><span class="${r[2]}">${fmt(r[1])}</span></div>`).join('');
@@ -949,34 +993,28 @@ function runSim(){
   let verdict='';
   if(ok){
     verdict=`<div class="alert-banner" style="border-color:var(--green);background:rgba(52,211,153,.12)">
-      <div class="ttl" style="color:var(--green)">✅ Sí te alcanza</div>
-      Después de esta compra el ${fdate} te quedarían <b>${fmt(p.balance)}</b>.</div>`;
+      <div class="ttl" style="color:var(--green)">✅ Puedes hacerlo sin apuros</div>
+      Después de la compra tendrías <b>${fmt(s.atPurchase)}</b>. En los próximos 90 días tu punto más bajo sería <b>${fmt(s.min)}</b> (${minNice}), así que tus pagos de tarjeta y recurrentes quedan cubiertos.</div>`;
   } else {
-    const when=earliestAffordable(amt);
-    const whenTxt = when
-      ? `Podrías hacerla a partir del <b>${new Date(when+'T00:00:00').toLocaleDateString('es-MX',{weekday:'long',day:'numeric',month:'long',year:'numeric'})}</b> (en ${daysUntil(new Date(when+'T00:00:00'))} días).`
-      : `Con tus ingresos y pagos actuales no alcanzarías en los próximos 18 meses. Necesitas <b>${fmt(-p.balance)}</b> más.`;
+    const safe=earliestSafe(amt);
+    const riskTxt = s.risks.length? ' Pondría en riesgo: <b>'+s.risks.slice(0,3).map(esc).join(', ')+'</b>.' : '';
+    const safeTxt = safe
+      ? `Mejor hazla a partir del <b>${new Date(safe+'T00:00:00').toLocaleDateString('es-MX',{weekday:'long',day:'numeric',month:'long',year:'numeric'})}</b> (en ${daysUntil(new Date(safe+'T00:00:00'))} días); ahí queda todo cubierto.`
+      : `Con tus ingresos y compromisos actuales no quedaría cubierto en los próximos 18 meses.`;
     verdict=`<div class="alert-banner" style="border-color:var(--red);background:rgba(248,113,113,.12)">
-      <div class="ttl" style="color:var(--red)">⚠️ No te alcanza en esa fecha</div>
-      Quedarías en <b class="neg">${fmt(p.balance)}</b>.<br>${whenTxt}</div>`;
+      <div class="ttl" style="color:var(--red)">⚠️ Riesgoso para tus compromisos</div>
+      Esta compra haría que tu saldo baje a <b class="neg">${fmt(s.min)}</b> el ${minNice}.${riskTxt}<br>${safeTxt}</div>`;
   }
 
   box.innerHTML = verdict + `
     <div style="background:var(--card2);border:1px solid var(--line2);border-radius:13px;padding:14px;margin-top:4px;">
-      <div style="font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px;">Desglose al ${fdate}</div>
+      <div style="font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px;">Proyección a 90 días</div>
       ${rowsHtml}
-      <div style="display:flex;justify-content:space-between;padding-top:10px;font-size:17px;font-weight:800;">
-        <span>Te quedarían</span><span class="${ok?'pos':'neg'}">${fmt(p.balance)}</span></div>
+      <div style="display:flex;justify-content:space-between;padding-top:10px;font-size:15px;font-weight:700;">
+        <span>Saldo más bajo</span><span class="${ok?'pos':'neg'}">${fmt(s.min)} · ${minNice}</span></div>
+      <div style="display:flex;justify-content:space-between;padding-top:6px;font-size:16px;font-weight:800;">
+        <span>Al final (90 días)</span><span class="${s.endBal>=0?'pos':'neg'}">${fmt(s.endBal)}</span></div>
     </div>`;
-}
-function earliestAffordable(amt){
-  const start=new Date(); start.setHours(0,0,0,0);
-  for(let i=0;i<=550;i++){
-    const d=new Date(start); d.setDate(d.getDate()+i);
-    const iso=isoOfDate(d);
-    if(projectBalance(iso, amt).balance>=0) return iso;
-  }
-  return null;
 }
 
 /* ============ Sincronización con Google Sheets ============ */
@@ -1164,6 +1202,40 @@ function importData(ev){
   reader.readAsText(file);
 }
 
+/* ============ Balance real (compromisos) ============ */
+function cardCommitments(){ return DB.cards.reduce((s,c)=>s+(c.bal||0),0); }
+function recPendingThisMonth(){
+  const ym=todayISO().slice(0,7);
+  let out=0, inn=0;
+  DB.rec.forEach(r=>{ if(!recPaid(r.id,ym)){ if((r.type||'out')==='in') inn+=r.amount; else out+=r.amount; } });
+  return {out, inn};
+}
+function renderReal(){
+  const avail=available();
+  const cardC=cardCommitments();
+  const recP=recPendingThisMonth();
+  const real=avail - cardC - recP.out;
+  const monthlyRecOut=DB.rec.filter(r=>(r.type||'out')!=='in').reduce((s,r)=>s+r.amount,0);
+  let col,label,emoji;
+  if(real<0){ col='#f87171'; label='Vas apretado'; emoji='🔴'; }
+  else if(real < monthlyRecOut){ col='#fbbf24'; label='Vas justo'; emoji='🟡'; }
+  else { col='#34d399'; label='Vas balanceado'; emoji='🟢'; }
+  const rows=[];
+  rows.push(['Ahorros + saldo de hoy', avail]);
+  if(cardC>0)   rows.push(['− Pagos de tarjeta pendientes', -cardC]);
+  if(recP.out>0) rows.push(['− Recurrentes por pagar (mes)', -recP.out]);
+  const rowsHtml=rows.map(r=>`<div style="display:flex;justify-content:space-between;padding:6px 0;font-size:13px;">
+    <span style="color:var(--muted)">${r[0]}</span><span class="${r[1]>=0?'pos':'neg'}">${fmt(r[1])}</span></div>`).join('');
+  document.getElementById('realCard').innerHTML=`
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2px;">
+      <h2 style="margin:0;">Tu balance real hoy</h2>
+      <span class="pill" style="background:${col}22;color:${col}">${emoji} ${label}</span>
+    </div>
+    <div style="font-size:30px;font-weight:800;color:${col};margin:4px 0 2px;">${fmt(real)}</div>
+    <div style="font-size:12px;color:var(--muted);margin-bottom:10px;">Lo que te queda libre después de tus compromisos de tarjetas y recurrentes${recP.inn>0?` (sin contar ${fmt(recP.inn)} de ingresos recurrentes por venir)`:''}.</div>
+    ${rowsHtml}`;
+}
+
 /* ============ Gráfica de balance del mes ============ */
 function renderBalanceChart(){
   const now=new Date(); const y=now.getFullYear(), m=now.getMonth();
@@ -1216,10 +1288,9 @@ function render(){
   const tIso=todayISO();
   const ups=[];
   DB.cards.forEach(c=>{
-    if(c.pay){ const dd=nextDateForDay(c.pay); ups.push({name:'Pago '+c.name, date:dd, days:daysUntil(dd), bal:c.bal, kind:'pay'}); }
-    if(c.cut){ const dd=nextDateForDay(c.cut); ups.push({name:'Corte '+c.name, date:dd, days:daysUntil(dd), kind:'cut'}); }
+    if(c.pay && c.bal){ const dd=nextDateForDay(c.pay); ups.push({name:'Pago '+c.name, date:dd, days:daysUntil(dd), bal:c.bal, kind:'pay', id:c.id}); }
   });
-  DB.rec.forEach(r=>{ const dd=recNextDate(r); if(dd) ups.push({name:r.name, date:dd, days:daysUntil(dd), bal:r.amount, kind:'rec'}); });
+  DB.rec.forEach(r=>{ if((r.type||'out')!=='in'){ const dd=recNextDate(r); if(dd) ups.push({name:r.name, date:dd, days:daysUntil(dd), bal:r.amount, kind:'rec', id:r.id, iso:isoOfDate(dd)}); } });
   DB.tx.forEach(t=>{ if(t.type==='out' && t.date>tIso){ const dd=new Date(t.date+'T00:00:00'); ups.push({name:t.label, date:dd, days:daysUntil(dd), bal:t.amount, kind:'out'}); } });
   ups.sort((a,b)=>a.days-b.days);
   const inRange=ups.filter(u=>u.days<=homeRange);
@@ -1228,12 +1299,17 @@ function render(){
   else upBox.innerHTML=inRange.map(u=>{
     const pillCls = u.days<=3?'pill-red':(u.days<=7?'pill-amber':'pill-green');
     const txt = u.days===0?'¡Hoy!':(u.days===1?'Mañana':'En '+u.days+' días');
-    const ico = u.kind==='pay'?'💳':(u.kind==='rec'?'🔁':(u.kind==='out'?'🛍️':'✂️'));
+    const ico = u.kind==='pay'?'💳':(u.kind==='rec'?'🔁':'🛍️');
+    let btn='';
+    if(u.kind==='pay') btn=`<button class="btn-sm btn-green" onclick="payCard('${u.id}')">Pagado</button>`;
+    else if(u.kind==='rec') btn=`<button class="btn-sm btn-green" onclick="payRec('${u.id}','${u.iso}')">Pagado</button>`;
     return `<div class="item">
       <div class="dot" style="background:rgba(251,191,36,.2)">${ico}</div>
       <div class="info"><div class="t">${esc(u.name)}</div>
         <div class="s">${u.date.toLocaleDateString('es-MX',{weekday:'long',day:'numeric',month:'long'})}${u.bal?' · '+fmt(u.bal):''}</div></div>
-      <span class="pill ${pillCls}">${txt}</span>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;">
+        <span class="pill ${pillCls}">${txt}</span>${btn}
+      </div>
     </div>`;
   }).join('');
 
@@ -1266,6 +1342,7 @@ function render(){
       <div class="info"><div class="t">${esc(c.name)}</div>
         <div class="s">${c.cut?'Corte día '+c.cut:''}${c.cut&&c.pay?' · ':''}${c.pay?'Pago día '+c.pay:''}${payD?' (en '+daysUntil(payD)+'d)':''}</div></div>
       ${c.bal?`<div class="amt neg">${fmt(c.bal)}</div>`:''}
+      ${c.bal?`<button class="btn-sm btn-green" onclick="event.stopPropagation();payCard('${c.id}')">Pagado</button>`:''}
       <button class="del" onclick="event.stopPropagation();delCard('${c.id}')">🗑️</button>
     </div>`;
   }).join(''):'<div class="empty">Agrega tus tarjetas para recibir alertas de corte y pago.</div>';
@@ -1274,19 +1351,22 @@ function render(){
   const rl=document.getElementById('recList');
   const ymNow=todayISO().slice(0,7);
   rl.innerHTML = DB.rec.length?DB.rec.map(r=>{
+    const ty=r.type||'out';
     const dd=recNextDate(r);
     const paidNow=recPaid(r.id,ymNow);
     const dleft=dd?daysUntil(dd):null;
+    const done = ty==='in'?'✓ Recibido este mes':'✓ Pagado este mes';
     return `<div class="item">
       <div class="dot" style="background:rgba(167,139,250,.2)">${iconFor(r.cat)}</div>
       <div class="info"><div class="t">${esc(r.name)}</div>
-        <div class="s">Día ${r.day} de cada mes${paidNow?' · <span class="pos">✓ Pagado este mes</span>':(dd?' · próximo en '+dleft+'d':'')}</div></div>
-      <div class="amt neg">${fmt(r.amount)}</div>
+        <div class="s">Día ${r.day} · ${ty==='in'?'Ingreso':'Gasto'}${paidNow?' · <span class="pos">'+done+'</span>':(dd?' · en '+dleft+'d':'')}</div></div>
+      <div class="amt ${ty==='in'?'pos':'neg'}">${ty==='in'?'+':'-'}${fmt(r.amount)}</div>
       <button class="del" onclick="event.stopPropagation();delRec('${r.id}')">🗑️</button>
     </div>`;
-  }).join(''):'<div class="empty">Agrega tus pagos que se repiten cada mes (colegiatura, luz, internet...).</div>';
+  }).join(''):'<div class="empty">Agrega tus ingresos o gastos que se repiten cada mes (colegiatura, sueldo, renta...).</div>';
   [...rl.querySelectorAll('.item')].forEach((el,i)=> el.onclick=(e)=>{ if(e.target.classList.contains('del'))return; openRec(DB.rec[i]); });
 
+  renderReal();
   renderBalanceChart();
   renderCal();
   renderDay();
