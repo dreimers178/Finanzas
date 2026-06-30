@@ -199,7 +199,7 @@
 <aside class="drawer" id="drawer">
   <button class="drawer-head" onclick="go('inicio')" style="width:100%; text-align:left; background:none; cursor:pointer;">
     <span class="b">FinPro</span>
-    <span class="s">Toca para ir al Inicio →</span>
+    <span class="s">v10 · Toca para ir al Inicio →</span>
   </button>
   <div class="drawer-sec">Mi dinero</div>
   <button class="drawer-item" data-v="ahorros" onclick="go('ahorros')"><span class="di">🏦</span>Ahorros</button>
@@ -318,14 +318,22 @@
   <div class="view" id="v-sim">
     <div class="card">
       <h2>🔮 Simulador de gastos</h2>
-      <p class="hint">¿Qué pasa si hago este gasto? Te digo cuánto te quedaría considerando tus ahorros, ingresos y pagos. Si no alcanza, te digo desde cuándo sí.</p>
+      <p class="hint">Agrega uno o varios gastos en distintas fechas y te digo si es viable sin atorarte, considerando tus ahorros, ingresos, tarjetas y recurrentes.</p>
       <label>¿Cuánto vas a gastar?</label>
       <input type="number" id="simAmount" inputmode="decimal" placeholder="0.00">
       <label>¿En qué fecha?</label>
       <input type="date" id="simDate">
       <label>Concepto (opcional)</label>
       <input type="text" id="simNote" placeholder="Ej. Viaje, tenis, regalo...">
-      <button class="btn btn-accent" style="margin-top:18px;" onclick="runSim()">Calcular</button>
+      <button class="btn btn-ghost" style="margin-top:12px;" onclick="addSimItem()">＋ Agregar gasto a la lista</button>
+      <div id="simItems" style="margin-top:10px;"></div>
+      <label style="margin-top:14px;">Proyectar a futuro</label>
+      <div class="chips" id="simHorizonChips">
+        <button class="chip" onclick="setSimHorizon(7)" data-h="7">7 días</button>
+        <button class="chip" onclick="setSimHorizon(15)" data-h="15">15 días</button>
+        <button class="chip on" onclick="setSimHorizon(30)" data-h="30">30 días</button>
+      </div>
+      <button class="btn btn-accent" style="margin-top:6px;" onclick="runSim()">Calcular viabilidad</button>
       <div id="simResult" style="margin-top:18px;"></div>
     </div>
   </div>
@@ -734,8 +742,17 @@ function payCard(id){
   const c=DB.cards.find(x=>x.id===id); if(!c) return;
   if(!c.bal){ alert('Esta tarjeta no tiene saldo registrado.'); return; }
   if(!confirm('¿Marcar como pagado '+fmt(c.bal)+' de '+c.name+'?\nSe registrará como gasto y el saldo quedará en $0.')) return;
-  DB.tx.push({id:uid(),type:'out',amount:c.bal,cat:'Tarjeta de crédito',label:'Pago '+c.name,date:todayISO(),note:'Pago de tarjeta'});
+  DB.tx.push({id:uid(),type:'out',amount:c.bal,cat:'Tarjeta de crédito',label:'Pago '+c.name,date:todayISO(),note:'Pago de tarjeta',cardPay:id});
   c.bal=0;
+  save(); render();
+}
+function undoCardPay(id){
+  const c=DB.cards.find(x=>x.id===id); if(!c) return;
+  const tx=[...DB.tx].reverse().find(t=>t.cardPay===id);
+  if(!tx){ alert('No hay un pago reciente que deshacer.'); return; }
+  if(!confirm('¿Deshacer el pago de '+fmt(tx.amount)+' de '+c.name+'? El saldo volverá a aparecer.')) return;
+  c.bal=(c.bal||0)+tx.amount;
+  DB.tx=DB.tx.filter(t=>t.id!==tx.id);
   save(); render();
 }
 function recNextDate(r){
@@ -807,13 +824,12 @@ function renderDay(){
   const dim=daysInMonth(parseInt(selectedDay.slice(0,4)),parseInt(selectedDay.slice(5,7))-1);
   const ym=selectedDay.slice(0,7);
   const recEvents=DB.rec.filter(r=>Math.min(r.day,dim)===d).map(r=>{
-    const paid=recPaid(r.id,ym); const ty=r.type||'out';
-    const done = ty==='in'?'Recibido':'Pagado';
+    const ty=r.type||'out';
     return `<div class="item">
       <div class="dot" style="background:rgba(167,139,250,.2)">${iconFor(r.cat)}</div>
       <div class="info"><div class="t">${esc(r.name)}</div>
-        <div class="s">${ty==='in'?'Ingreso':'Gasto'} recurrente · <span class="${ty==='in'?'pos':'neg'}">${ty==='in'?'+':'-'}${fmt(r.amount)}</span> ${paid?'· <span class="pos">✓ '+done+'</span>':''}</div></div>
-      ${paid?'':`<button class="btn-sm btn-green" onclick="payRec('${r.id}','${selectedDay}')">${done}</button>`}
+        <div class="s">${ty==='in'?'Ingreso':'Gasto'} recurrente (automático)</div></div>
+      <div class="amt ${ty==='in'?'pos':'neg'}">${ty==='in'?'+':'-'}${fmt(r.amount)}</div>
     </div>`;
   });
   let html=cardEvents.join('')+recEvents.join('');
@@ -940,9 +956,15 @@ function futureEvents(toIso){
   return ev;
 }
 // Simula el saldo día a día e identifica el punto más bajo y riesgos
+let simHorizon=30;
+function setSimHorizon(n){
+  simHorizon=n;
+  document.querySelectorAll('#simHorizonChips .chip').forEach(b=>b.classList.toggle('on', +b.dataset.h===n));
+  if(document.getElementById('simAmount').value) runSim();
+}
 function simulateMin(amount, purchaseIso){
   const t=todayISO();
-  let end=purchaseIso; const h=addDaysIso(90); if(h>end) end=h;
+  let end=purchaseIso; const h=addDaysIso(simHorizon); if(h>end) end=h;
   const ev=futureEvents(end);
   if(amount>0) ev.push({iso:purchaseIso, delta:-amount, label:'Tu compra', kind:'buy'});
   ev.sort((a,b)=> a.iso<b.iso?-1:(a.iso>b.iso?1:0));
@@ -966,54 +988,110 @@ function earliestSafe(amount){
   for(let i=0;i<=550;i++){ const iso=addDaysIso(i); if(simulateMin(amount, iso).min>=0) return iso; }
   return null;
 }
+/* Lista de gastos a simular (varios, en distintas fechas) */
+let simList=[];
+function addSimItem(){
+  const a=parseFloat(document.getElementById('simAmount').value);
+  const d=document.getElementById('simDate').value;
+  const n=document.getElementById('simNote').value.trim();
+  if(!a||a<=0){ alert('Escribe un monto válido'); return; }
+  if(!d){ alert('Elige una fecha'); return; }
+  if(d<todayISO()){ alert('Elige una fecha de hoy en adelante'); return; }
+  simList.push({amount:a, date:d, note:n});
+  document.getElementById('simAmount').value='';
+  document.getElementById('simNote').value='';
+  renderSimList();
+  runSim();
+}
+function removeSimItem(i){ simList.splice(i,1); renderSimList(); if(simList.length) runSim(); else document.getElementById('simResult').innerHTML=''; }
+function renderSimList(){
+  const box=document.getElementById('simItems');
+  if(!simList.length){ box.innerHTML=''; return; }
+  const total=simList.reduce((s,x)=>s+x.amount,0);
+  box.innerHTML = simList.map((x,i)=>`<div class="item">
+    <div class="dot" style="background:rgba(248,113,113,.2)">🛍️</div>
+    <div class="info"><div class="t">${x.note?esc(x.note):'Gasto '+(i+1)}</div>
+      <div class="s">${new Date(x.date+'T00:00:00').toLocaleDateString('es-MX',{weekday:'short',day:'numeric',month:'long'})}</div></div>
+    <div class="amt neg">-${fmt(x.amount)}</div>
+    <button class="del" onclick="removeSimItem(${i})">✕</button>
+  </div>`).join('') + `<div style="text-align:right;font-weight:700;margin-top:8px;">Total a simular: <span class="neg">-${fmt(total)}</span></div>`;
+}
+// Simula el saldo día a día con varios gastos
+function simulateMulti(items){
+  const t=todayISO();
+  let end=addDaysIso(simHorizon);
+  items.forEach(it=>{ if(it.date>end) end=it.date; });
+  const ev=futureEvents(end);
+  items.forEach((it,idx)=> ev.push({iso:it.date, delta:-it.amount, label:it.note||('Gasto '+(idx+1)), kind:'buy'}));
+  ev.sort((a,b)=> a.iso<b.iso?-1:(a.iso>b.iso?1:0));
+  let bal=available(), min=bal, minIso=t;
+  let sumIn=0,sumRecIn=0,sumCard=0,sumRecOut=0,sumOut=0,sumBuy=0;
+  const risks=[]; let firstNeg=null;
+  ev.forEach(e=>{
+    bal+=e.delta;
+    if(e.kind==='in') sumIn+=e.delta;
+    else if(e.kind==='recin') sumRecIn+=e.delta;
+    else if(e.kind==='card') sumCard-=e.delta;
+    else if(e.kind==='recout') sumRecOut-=e.delta;
+    else if(e.kind==='out') sumOut-=e.delta;
+    else if(e.kind==='buy') sumBuy-=e.delta;
+    if(bal<min){ min=bal; minIso=e.iso; }
+    if(bal<0 && firstNeg===null) firstNeg={iso:e.iso,label:e.label,kind:e.kind};
+    if((e.kind==='card'||e.kind==='recout') && bal<0 && risks.indexOf(e.label)<0) risks.push(e.label);
+  });
+  return {min,minIso,endBal:bal,availableNow:available(),sumIn,sumRecIn,sumCard,sumRecOut,sumOut,sumBuy,risks,firstNeg};
+}
 function runSim(){
-  const amt=parseFloat(document.getElementById('simAmount').value);
-  const date=document.getElementById('simDate').value;
-  const note=document.getElementById('simNote').value.trim();
   const box=document.getElementById('simResult');
-  if(!amt||amt<=0){ box.innerHTML='<div class="empty">Escribe un monto válido.</div>'; return; }
-  if(!date){ box.innerHTML='<div class="empty">Elige una fecha.</div>'; return; }
-  if(date<todayISO()){ box.innerHTML='<div class="empty">Elige una fecha de hoy en adelante.</div>'; return; }
+  let items=simList.slice();
+  if(!items.length){
+    const a=parseFloat(document.getElementById('simAmount').value);
+    const d=document.getElementById('simDate').value;
+    const n=document.getElementById('simNote').value.trim();
+    if(a>0 && d && d>=todayISO()) items=[{amount:a,date:d,note:n}];
+  }
+  if(!items.length){ box.innerHTML='<div class="empty">Agrega al menos un gasto (monto y fecha) para simular.</div>'; return; }
 
-  const s=simulateMin(amt, date);
+  const s=simulateMulti(items);
   const ok=s.min>=0;
   const minNice=new Date(s.minIso+'T00:00:00').toLocaleDateString('es-MX',{day:'numeric',month:'long'});
+  const niceFull=iso=>new Date(iso+'T00:00:00').toLocaleDateString('es-MX',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
 
   const rows=[];
-  rows.push(['Disponible hoy', s.availableNow, s.availableNow>=0?'pos':'neg']);
-  if(s.sumIn>0)     rows.push(['+ Ingresos programados', s.sumIn, 'pos']);
-  if(s.sumRecIn>0)  rows.push(['+ Ingresos recurrentes', s.sumRecIn, 'pos']);
-  if(s.sumCard>0)   rows.push(['− Pagos de tarjeta', -s.sumCard, 'neg']);
-  if(s.sumRecOut>0) rows.push(['− Pagos recurrentes', -s.sumRecOut, 'neg']);
-  if(s.sumOut>0)    rows.push(['− Gastos programados', -s.sumOut, 'neg']);
-  rows.push(['− Esta compra'+(note?' ('+esc(note)+')':''), -amt, 'neg']);
+  rows.push(['Disponible hoy', s.availableNow]);
+  if(s.sumIn>0)     rows.push(['+ Ingresos programados', s.sumIn]);
+  if(s.sumRecIn>0)  rows.push(['+ Ingresos recurrentes', s.sumRecIn]);
+  if(s.sumCard>0)   rows.push(['− Pagos de tarjeta', -s.sumCard]);
+  if(s.sumRecOut>0) rows.push(['− Pagos recurrentes', -s.sumRecOut]);
+  if(s.sumOut>0)    rows.push(['− Gastos programados', -s.sumOut]);
+  rows.push([`− Tus gastos simulados (${items.length})`, -s.sumBuy]);
   const rowsHtml=rows.map(r=>`<div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line2);font-size:14px;">
-    <span style="color:var(--muted)">${r[0]}</span><span class="${r[2]}">${fmt(r[1])}</span></div>`).join('');
+    <span style="color:var(--muted)">${r[0]}</span><span class="${r[1]>=0?'pos':'neg'}">${fmt(r[1])}</span></div>`).join('');
 
   let verdict='';
   if(ok){
     verdict=`<div class="alert-banner" style="border-color:var(--green);background:rgba(52,211,153,.12)">
-      <div class="ttl" style="color:var(--green)">✅ Puedes hacerlo sin apuros</div>
-      Después de la compra tendrías <b>${fmt(s.atPurchase)}</b>. En los próximos 90 días tu punto más bajo sería <b>${fmt(s.min)}</b> (${minNice}), así que tus pagos de tarjeta y recurrentes quedan cubiertos.</div>`;
+      <div class="ttl" style="color:var(--green)">✅ Es viable</div>
+      Con ${items.length===1?'este gasto':'estos '+items.length+' gastos'}, tu punto más bajo en los próximos ${simHorizon} días sería <b>${fmt(s.min)}</b> (${minNice}) y nunca te atoras. Al final tendrías <b>${fmt(s.endBal)}</b>.</div>`;
   } else {
-    const safe=earliestSafe(amt);
-    const riskTxt = s.risks.length? ' Pondría en riesgo: <b>'+s.risks.slice(0,3).map(esc).join(', ')+'</b>.' : '';
-    const safeTxt = safe
-      ? `Mejor hazla a partir del <b>${new Date(safe+'T00:00:00').toLocaleDateString('es-MX',{weekday:'long',day:'numeric',month:'long',year:'numeric'})}</b> (en ${daysUntil(new Date(safe+'T00:00:00'))} días); ahí queda todo cubierto.`
-      : `Con tus ingresos y compromisos actuales no quedaría cubierto en los próximos 18 meses.`;
+    let extra='';
+    if(s.firstNeg && s.firstNeg.kind==='buy') extra=` El que te descuadra es <b>${esc(s.firstNeg.label)}</b>.`;
+    else if(s.risks.length) extra=` Pondría en riesgo: <b>${s.risks.slice(0,3).map(esc).join(', ')}</b>.`;
+    let safeTxt='<br>Prueba quitar o mover de fecha alguno de los gastos.';
+    if(items.length===1){ const safe=earliestSafe(items[0].amount); if(safe) safeTxt=`<br>Ese gasto solo sería seguro a partir del <b>${niceFull(safe)}</b>.`; }
     verdict=`<div class="alert-banner" style="border-color:var(--red);background:rgba(248,113,113,.12)">
-      <div class="ttl" style="color:var(--red)">⚠️ Riesgoso para tus compromisos</div>
-      Esta compra haría que tu saldo baje a <b class="neg">${fmt(s.min)}</b> el ${minNice}.${riskTxt}<br>${safeTxt}</div>`;
+      <div class="ttl" style="color:var(--red)">⚠️ No es viable</div>
+      Te atorarías el <b>${minNice}</b> (tu saldo caería a <b class="neg">${fmt(s.min)}</b>).${extra}${safeTxt}</div>`;
   }
 
   box.innerHTML = verdict + `
     <div style="background:var(--card2);border:1px solid var(--line2);border-radius:13px;padding:14px;margin-top:4px;">
-      <div style="font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px;">Proyección a 90 días</div>
+      <div style="font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px;">Proyección a ${simHorizon} días</div>
       ${rowsHtml}
       <div style="display:flex;justify-content:space-between;padding-top:10px;font-size:15px;font-weight:700;">
         <span>Saldo más bajo</span><span class="${ok?'pos':'neg'}">${fmt(s.min)} · ${minNice}</span></div>
       <div style="display:flex;justify-content:space-between;padding-top:6px;font-size:16px;font-weight:800;">
-        <span>Al final (90 días)</span><span class="${s.endBal>=0?'pos':'neg'}">${fmt(s.endBal)}</span></div>
+        <span>Al final (${simHorizon} días)</span><span class="${s.endBal>=0?'pos':'neg'}">${fmt(s.endBal)}</span></div>
     </div>`;
 }
 
@@ -1202,38 +1280,69 @@ function importData(ev){
   reader.readAsText(file);
 }
 
-/* ============ Balance real (compromisos) ============ */
-function cardCommitments(){ return DB.cards.reduce((s,c)=>s+(c.bal||0),0); }
-function recPendingThisMonth(){
-  const ym=todayISO().slice(0,7);
-  let out=0, inn=0;
-  DB.rec.forEach(r=>{ if(!recPaid(r.id,ym)){ if((r.type||'out')==='in') inn+=r.amount; else out+=r.amount; } });
-  return {out, inn};
+/* ============ Balance proyectado (elige el día) ============ */
+let realDate = todayISO();
+function setRealDate(v){ realDate = v || todayISO(); render(); }
+function endOfMonthIso(){ const n=new Date(); return isoOfDate(new Date(n.getFullYear(), n.getMonth()+1, 0)); }
+function nextQuincenaIso(){
+  const t=todayISO(), n=new Date(), y=n.getFullYear(), m=n.getMonth();
+  const cands=[ isoOfDate(new Date(y,m,15)), isoOfDate(new Date(y,m+1,0)) ];
+  for(const c of cands){ if(c>=t) return c; }
+  return isoOfDate(new Date(y,m+1,15));
+}
+// Proyecta el saldo desde hoy hasta una fecha, contando todo lo programado y recurrente
+function projectToDate(iso){
+  if(iso < todayISO()) iso = todayISO();
+  const ev = futureEvents(iso);
+  let bal=available(), inProg=0, inRec=0, outCard=0, outRec=0, outProg=0;
+  ev.forEach(e=>{
+    bal += e.delta;
+    if(e.kind==='in') inProg += e.delta;
+    else if(e.kind==='recin') inRec += e.delta;
+    else if(e.kind==='card') outCard -= e.delta;
+    else if(e.kind==='recout') outRec -= e.delta;
+    else if(e.kind==='out') outProg -= e.delta;
+  });
+  return {bal, inProg, inRec, outCard, outRec, outProg, availableNow:available()};
 }
 function renderReal(){
-  const avail=available();
-  const cardC=cardCommitments();
-  const recP=recPendingThisMonth();
-  const real=avail - cardC - recP.out;
-  const monthlyRecOut=DB.rec.filter(r=>(r.type||'out')!=='in').reduce((s,r)=>s+r.amount,0);
+  const iso = realDate < todayISO() ? todayISO() : realDate;
+  const p = projectToDate(iso);
+  const bal = p.bal;
+  const isToday = iso===todayISO();
+  const monthlyRecOut = DB.rec.filter(r=>(r.type||'out')!=='in').reduce((s,r)=>s+r.amount,0);
   let col,label,emoji;
-  if(real<0){ col='#f87171'; label='Vas apretado'; emoji='🔴'; }
-  else if(real < monthlyRecOut){ col='#fbbf24'; label='Vas justo'; emoji='🟡'; }
-  else { col='#34d399'; label='Vas balanceado'; emoji='🟢'; }
+  if(bal<0){ col='#f87171'; label='Apretado'; emoji='🔴'; }
+  else if(bal < monthlyRecOut){ col='#fbbf24'; label='Justo'; emoji='🟡'; }
+  else { col='#34d399'; label='Balanceado'; emoji='🟢'; }
+  const niceDate = new Date(iso+'T00:00:00').toLocaleDateString('es-MX',{weekday:'long',day:'numeric',month:'long'});
+  const todayI=todayISO(), quin=nextQuincenaIso(), eom=endOfMonthIso();
+  const quickChips=`<div class="chips" style="margin-bottom:10px;">
+    <button class="chip ${iso===todayI?'on':''}" onclick="setRealDate('${todayI}')">Hoy</button>
+    <button class="chip ${iso===quin?'on':''}" onclick="setRealDate('${quin}')">Próx. quincena</button>
+    <button class="chip ${iso===eom?'on':''}" onclick="setRealDate('${eom}')">Fin de mes</button>
+  </div>`;
   const rows=[];
-  rows.push(['Ahorros + saldo de hoy', avail]);
-  if(cardC>0)   rows.push(['− Pagos de tarjeta pendientes', -cardC]);
-  if(recP.out>0) rows.push(['− Recurrentes por pagar (mes)', -recP.out]);
+  rows.push(['Ahorros + saldo de hoy', p.availableNow]);
+  if(p.inProg>0)  rows.push(['+ Ingresos programados', p.inProg]);
+  if(p.inRec>0)   rows.push(['+ Ingresos recurrentes', p.inRec]);
+  if(p.outCard>0) rows.push(['− Pagos de tarjeta', -p.outCard]);
+  if(p.outRec>0)  rows.push(['− Gastos recurrentes', -p.outRec]);
+  if(p.outProg>0) rows.push(['− Gastos programados', -p.outProg]);
   const rowsHtml=rows.map(r=>`<div style="display:flex;justify-content:space-between;padding:6px 0;font-size:13px;">
     <span style="color:var(--muted)">${r[0]}</span><span class="${r[1]>=0?'pos':'neg'}">${fmt(r[1])}</span></div>`).join('');
   document.getElementById('realCard').innerHTML=`
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2px;">
-      <h2 style="margin:0;">Tu balance real hoy</h2>
+      <h2 style="margin:0;">${isToday?'Tu balance real hoy':'Tu balance proyectado'}</h2>
       <span class="pill" style="background:${col}22;color:${col}">${emoji} ${label}</span>
     </div>
-    <div style="font-size:30px;font-weight:800;color:${col};margin:4px 0 2px;">${fmt(real)}</div>
-    <div style="font-size:12px;color:var(--muted);margin-bottom:10px;">Lo que te queda libre después de tus compromisos de tarjetas y recurrentes${recP.inn>0?` (sin contar ${fmt(recP.inn)} de ingresos recurrentes por venir)`:''}.</div>
-    ${rowsHtml}`;
+    <div style="font-size:30px;font-weight:800;color:${col};margin:4px 0 2px;">${fmt(bal)}</div>
+    <div style="font-size:12px;color:var(--muted);margin-bottom:10px;">Saldo estimado para el <b style="color:var(--txt)">${niceDate}</b>, contando tus ahorros, ingresos y gastos (programados y recurrentes).</div>
+    ${quickChips}
+    <input type="date" id="realDateInput" value="${iso}" min="${todayISO()}" onchange="setRealDate(this.value)" style="margin-bottom:10px;">
+    ${rowsHtml}
+    <div style="display:flex;justify-content:space-between;padding-top:9px;margin-top:4px;border-top:1px solid var(--line2);font-weight:800;font-size:15px;">
+      <span>Saldo al ${isToday?'día de hoy':new Date(iso+'T00:00:00').toLocaleDateString('es-MX',{day:'numeric',month:'short'})}</span><span style="color:${col}">${fmt(bal)}</span></div>`;
 }
 
 /* ============ Gráfica de balance del mes ============ */
@@ -1300,13 +1409,12 @@ function render(){
     const pillCls = u.days<=3?'pill-red':(u.days<=7?'pill-amber':'pill-green');
     const txt = u.days===0?'¡Hoy!':(u.days===1?'Mañana':'En '+u.days+' días');
     const ico = u.kind==='pay'?'💳':(u.kind==='rec'?'🔁':'🛍️');
-    let btn='';
-    if(u.kind==='pay') btn=`<button class="btn-sm btn-green" onclick="payCard('${u.id}')">Pagado</button>`;
-    else if(u.kind==='rec') btn=`<button class="btn-sm btn-green" onclick="payRec('${u.id}','${u.iso}')">Pagado</button>`;
+    const btn = u.kind==='pay' ? `<button class="btn-sm btn-green" onclick="payCard('${u.id}')">Pagado</button>` : '';
+    const sub = u.kind==='rec' ? ' · automático' : '';
     return `<div class="item">
       <div class="dot" style="background:rgba(251,191,36,.2)">${ico}</div>
       <div class="info"><div class="t">${esc(u.name)}</div>
-        <div class="s">${u.date.toLocaleDateString('es-MX',{weekday:'long',day:'numeric',month:'long'})}${u.bal?' · '+fmt(u.bal):''}</div></div>
+        <div class="s">${u.date.toLocaleDateString('es-MX',{weekday:'long',day:'numeric',month:'long'})}${u.bal?' · '+fmt(u.bal):''}${sub}</div></div>
       <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;">
         <span class="pill ${pillCls}">${txt}</span>${btn}
       </div>
@@ -1337,12 +1445,16 @@ function render(){
   const cl=document.getElementById('cardsList');
   cl.innerHTML = DB.cards.length?DB.cards.map(c=>{
     const payD=c.pay?nextDateForDay(c.pay):null;
+    const hasPay=DB.tx.some(t=>t.cardPay===c.id);
+    const actionBtn = c.bal
+      ? `<button class="btn-sm btn-green" onclick="event.stopPropagation();payCard('${c.id}')">Pagado</button>`
+      : (hasPay ? `<button class="btn-sm btn-ghost" onclick="event.stopPropagation();undoCardPay('${c.id}')">↩︎ Deshacer</button>` : '');
     return `<div class="item">
       <div class="dot" style="background:rgba(99,102,241,.2)">💳</div>
       <div class="info"><div class="t">${esc(c.name)}</div>
-        <div class="s">${c.cut?'Corte día '+c.cut:''}${c.cut&&c.pay?' · ':''}${c.pay?'Pago día '+c.pay:''}${payD?' (en '+daysUntil(payD)+'d)':''}</div></div>
+        <div class="s">${c.cut?'Corte día '+c.cut:''}${c.cut&&c.pay?' · ':''}${c.pay?'Pago día '+c.pay:''}${payD?' (en '+daysUntil(payD)+'d)':''}${!c.bal&&hasPay?' · <span class="pos">✓ Pagado</span>':''}</div></div>
       ${c.bal?`<div class="amt neg">${fmt(c.bal)}</div>`:''}
-      ${c.bal?`<button class="btn-sm btn-green" onclick="event.stopPropagation();payCard('${c.id}')">Pagado</button>`:''}
+      ${actionBtn}
       <button class="del" onclick="event.stopPropagation();delCard('${c.id}')">🗑️</button>
     </div>`;
   }).join(''):'<div class="empty">Agrega tus tarjetas para recibir alertas de corte y pago.</div>';
@@ -1353,13 +1465,11 @@ function render(){
   rl.innerHTML = DB.rec.length?DB.rec.map(r=>{
     const ty=r.type||'out';
     const dd=recNextDate(r);
-    const paidNow=recPaid(r.id,ymNow);
     const dleft=dd?daysUntil(dd):null;
-    const done = ty==='in'?'✓ Recibido este mes':'✓ Pagado este mes';
     return `<div class="item">
       <div class="dot" style="background:rgba(167,139,250,.2)">${iconFor(r.cat)}</div>
       <div class="info"><div class="t">${esc(r.name)}</div>
-        <div class="s">Día ${r.day} · ${ty==='in'?'Ingreso':'Gasto'}${paidNow?' · <span class="pos">'+done+'</span>':(dd?' · en '+dleft+'d':'')}</div></div>
+        <div class="s">Día ${r.day} · ${ty==='in'?'Ingreso':'Gasto'} automático${dd?' · próximo en '+dleft+'d':''}</div></div>
       <div class="amt ${ty==='in'?'pos':'neg'}">${ty==='in'?'+':'-'}${fmt(r.amount)}</div>
       <button class="del" onclick="event.stopPropagation();delRec('${r.id}')">🗑️</button>
     </div>`;
