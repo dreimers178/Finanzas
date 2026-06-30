@@ -154,7 +154,11 @@
   /* Chart */
   .chart-now{font-size:13px; color:var(--muted); margin-bottom:8px;}
   .chart-now b{color:var(--txt); font-size:19px;}
+  .chart-wrap{position:relative;}
   .chart-wrap svg{display:block; width:100%; height:auto;}
+  .proj-tip{position:absolute; top:0; transform:translateX(-50%); background:var(--card2); border:1px solid var(--line2);
+    border-radius:10px; padding:7px 10px; font-size:12px; line-height:1.45; pointer-events:none; white-space:nowrap; z-index:5;
+    box-shadow:0 4px 12px rgba(0,0,0,.35); max-width:200px; overflow:hidden; text-overflow:ellipsis;}
 
   /* Compare rows */
   .cmp{display:flex; justify-content:space-between; align-items:center; padding:11px 0; border-bottom:1px solid var(--line2);}
@@ -199,9 +203,10 @@
 <aside class="drawer" id="drawer">
   <button class="drawer-head" onclick="go('inicio')" style="width:100%; text-align:left; background:none; cursor:pointer;">
     <span class="b">FinPro</span>
-    <span class="s">v10 · Toca para ir al Inicio →</span>
+    <span class="s">v11 · Toca para ir al Inicio →</span>
   </button>
   <div class="drawer-sec">Mi dinero</div>
+  <button class="drawer-item" data-v="movs" onclick="go('movs')"><span class="di">📒</span>Movimientos</button>
   <button class="drawer-item" data-v="ahorros" onclick="go('ahorros')"><span class="di">🏦</span>Ahorros</button>
   <button class="drawer-item" data-v="fijos" onclick="go('fijos')"><span class="di">🔁</span>Recurrentes</button>
   <button class="drawer-item" data-v="tarjetas" onclick="go('tarjetas')"><span class="di">💳</span>Tarjetas</button>
@@ -232,9 +237,9 @@
     <div class="card" id="realCard"></div>
 
     <div class="card">
-      <h2>Balance del mes</h2>
-      <div class="chart-now">Hoy tienes <b id="chartNow">$0</b></div>
-      <div class="chart-wrap" id="balanceChart"></div>
+      <h2>Proyección · próximos 30 días</h2>
+      <div class="chart-now">Desliza el dedo sobre la gráfica para ver tu saldo cada día.</div>
+      <div class="chart-wrap" id="projChart"></div>
     </div>
 
     <div class="card">
@@ -348,6 +353,36 @@
       <h2>Mis cuentas / bancos</h2>
       <div id="banksList"></div>
       <button class="btn btn-green" style="margin-top:12px;" onclick="openBank()">＋ Agregar cuenta</button>
+    </div>
+    <div class="card">
+      <h2>Colchón de seguridad</h2>
+      <p class="hint">El mínimo que quieres conservar siempre. El simulador y la gráfica te avisarán si bajas de aquí.</p>
+      <input type="number" id="cushionInput" inputmode="decimal" placeholder="0.00">
+      <button class="btn btn-ghost" style="margin-top:10px;" onclick="saveCushion()">Guardar colchón</button>
+    </div>
+  </div>
+
+  <!-- ============ MOVIMIENTOS ============ -->
+  <div class="view" id="v-movs">
+    <div class="card">
+      <h2>Movimientos</h2>
+      <div class="cal-head">
+        <button class="cal-nav" onclick="moveMovMonth(-1)">‹</button>
+        <h3 id="movMonth"></h3>
+        <button class="cal-nav" onclick="moveMovMonth(1)">›</button>
+      </div>
+      <div class="chips">
+        <button class="chip" id="movAllChip" onclick="toggleMovAll()">Todos los meses</button>
+      </div>
+      <div class="seg seg-mini">
+        <button id="movTypeAll" class="on" onclick="setMovType('all')">Todos</button>
+        <button id="movTypeIn" onclick="setMovType('in')">Ingresos</button>
+        <button id="movTypeOut" onclick="setMovType('out')">Gastos</button>
+      </div>
+      <label>Categoría</label>
+      <select id="movCat" onchange="setMovCat(this.value)"></select>
+      <div id="movTotals" style="margin:12px 0; font-size:13px; color:var(--muted);"></div>
+      <div id="movList"></div>
     </div>
   </div>
 
@@ -637,7 +672,10 @@ function onCatChange(){
   const v = document.getElementById('txCat').value;
   document.getElementById('txCustomWrap').classList.toggle('hidden', v!=='Otro');
 }
+let editTxId=null;
 function openAdd(date){
+  editTxId=null;
+  document.getElementById('txTitle').textContent='Nuevo movimiento';
   setTxType('out');
   document.getElementById('txAmount').value='';
   document.getElementById('txCustom').value='';
@@ -646,14 +684,35 @@ function openAdd(date){
   openModal('modalTx');
 }
 function openAddForDay(){ if(selectedDay) openAdd(selectedDay); }
+function openEditTx(id){
+  const t=DB.tx.find(x=>x.id===id); if(!t) return;
+  editTxId=id;
+  document.getElementById('txTitle').textContent='Editar movimiento';
+  setTxType(t.type);
+  const inList=(t.type==='in'?catsIn():catsOut()).includes(t.cat);
+  document.getElementById('txCat').value = inList? t.cat : 'Otro';
+  onCatChange();
+  document.getElementById('txCustom').value = (t.cat==='Otro')? t.label : '';
+  document.getElementById('txAmount').value=t.amount;
+  document.getElementById('txDate').value=t.date;
+  document.getElementById('txNote').value=t.note||'';
+  openModal('modalTx');
+}
 function saveTx(){
   const amt = parseFloat(document.getElementById('txAmount').value);
   if(!amt || amt<=0){ alert('Escribe un monto válido'); return; }
   let cat = document.getElementById('txCat').value;
   let custom = document.getElementById('txCustom').value.trim();
   const label = (cat==='Otro' && custom) ? custom : cat;
-  DB.tx.push({ id:uid(), type:txType, amount:amt, cat:cat, label:label,
-    date:document.getElementById('txDate').value || todayISO(), note:document.getElementById('txNote').value.trim() });
+  const date = document.getElementById('txDate').value || todayISO();
+  const note = document.getElementById('txNote').value.trim();
+  if(editTxId){
+    const t=DB.tx.find(x=>x.id===editTxId);
+    if(t){ t.type=txType; t.amount=amt; t.cat=cat; t.label=label; t.date=date; t.note=note; }
+    editTxId=null;
+  } else {
+    DB.tx.push({ id:uid(), type:txType, amount:amt, cat:cat, label:label, date:date, note:note });
+  }
   save(); closeModal('modalTx'); render();
 }
 function delTx(id){ if(confirm('¿Eliminar este movimiento?')){ DB.tx=DB.tx.filter(t=>t.id!==id); save(); render(); } }
@@ -843,12 +902,12 @@ function txRow(t){
   const sign=t.type==='in'?'+':'-';
   const cls=t.type==='in'?'pos':'neg';
   const bg=t.type==='in'?'rgba(52,211,153,.2)':'rgba(248,113,113,.2)';
-  return `<div class="item">
+  return `<div class="item" onclick="openEditTx('${t.id}')">
     <div class="dot" style="background:${bg}">${iconFor(t.cat)}</div>
     <div class="info"><div class="t">${esc(t.label)}</div>
       <div class="s">${isoToNice(t.date)}${t.note?' · '+esc(t.note):''}</div></div>
     <div class="amt ${cls}">${sign}${fmt(t.amount)}</div>
-    <button class="del" onclick="delTx('${t.id}')">🗑️</button>
+    <button class="del" onclick="event.stopPropagation();delTx('${t.id}')">🗑️</button>
   </div>`;
 }
 function esc(s){ return (s||'').replace(/[<>&]/g,c=>({'<':'&lt;','>':'&gt;','&':'&amp;'}[c])); }
@@ -985,7 +1044,7 @@ function simulateMin(amount, purchaseIso){
   return {min, minIso, atPurchase, endBal:bal, availableNow:available(), sumIn, sumRecIn, sumCard, sumRecOut, sumOut, risks};
 }
 function earliestSafe(amount){
-  for(let i=0;i<=550;i++){ const iso=addDaysIso(i); if(simulateMin(amount, iso).min>=0) return iso; }
+  for(let i=0;i<=550;i++){ const iso=addDaysIso(i); if(simulateMin(amount, iso).min>=cushion) return iso; }
   return null;
 }
 /* Lista de gastos a simular (varios, en distintas fechas) */
@@ -1053,7 +1112,8 @@ function runSim(){
   if(!items.length){ box.innerHTML='<div class="empty">Agrega al menos un gasto (monto y fecha) para simular.</div>'; return; }
 
   const s=simulateMulti(items);
-  const ok=s.min>=0;
+  const level = s.min>=cushion ? 'ok' : (s.min>=0 ? 'warn' : 'bad');
+  const ok = level==='ok';
   const minNice=new Date(s.minIso+'T00:00:00').toLocaleDateString('es-MX',{day:'numeric',month:'long'});
   const niceFull=iso=>new Date(iso+'T00:00:00').toLocaleDateString('es-MX',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
 
@@ -1068,11 +1128,18 @@ function runSim(){
   const rowsHtml=rows.map(r=>`<div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line2);font-size:14px;">
     <span style="color:var(--muted)">${r[0]}</span><span class="${r[1]>=0?'pos':'neg'}">${fmt(r[1])}</span></div>`).join('');
 
+  const cushTxt = cushion>0 ? ` sin bajar de tu colchón de ${fmt(cushion)}` : '';
   let verdict='';
-  if(ok){
+  if(level==='ok'){
     verdict=`<div class="alert-banner" style="border-color:var(--green);background:rgba(52,211,153,.12)">
       <div class="ttl" style="color:var(--green)">✅ Es viable</div>
-      Con ${items.length===1?'este gasto':'estos '+items.length+' gastos'}, tu punto más bajo en los próximos ${simHorizon} días sería <b>${fmt(s.min)}</b> (${minNice}) y nunca te atoras. Al final tendrías <b>${fmt(s.endBal)}</b>.</div>`;
+      Con ${items.length===1?'este gasto':'estos '+items.length+' gastos'}, tu punto más bajo en los próximos ${simHorizon} días sería <b>${fmt(s.min)}</b> (${minNice})${cushTxt}. Al final tendrías <b>${fmt(s.endBal)}</b>.</div>`;
+  } else if(level==='warn'){
+    let safeTxt='<br>Prueba quitar o mover de fecha alguno de los gastos.';
+    if(items.length===1){ const safe=earliestSafe(items[0].amount); if(safe) safeTxt=`<br>Para no bajar de tu colchón, mejor hazlo a partir del <b>${niceFull(safe)}</b>.`; }
+    verdict=`<div class="alert-banner" style="border-color:var(--amber);background:rgba(251,191,36,.12)">
+      <div class="ttl" style="color:var(--amber)">🟡 Cabe, pero quedas justo</div>
+      No te atoras, pero el <b>${minNice}</b> bajarías a <b>${fmt(s.min)}</b>, por debajo de tu colchón de ${fmt(cushion)}.${safeTxt}</div>`;
   } else {
     let extra='';
     if(s.firstNeg && s.firstNeg.kind==='buy') extra=` El que te descuadra es <b>${esc(s.firstNeg.label)}</b>.`;
@@ -1311,9 +1378,10 @@ function renderReal(){
   const bal = p.bal;
   const isToday = iso===todayISO();
   const monthlyRecOut = DB.rec.filter(r=>(r.type||'out')!=='in').reduce((s,r)=>s+r.amount,0);
+  const amberThreshold = cushion>0 ? cushion : monthlyRecOut;
   let col,label,emoji;
   if(bal<0){ col='#f87171'; label='Apretado'; emoji='🔴'; }
-  else if(bal < monthlyRecOut){ col='#fbbf24'; label='Justo'; emoji='🟡'; }
+  else if(bal < amberThreshold){ col='#fbbf24'; label='Justo'; emoji='🟡'; }
   else { col='#34d399'; label='Balanceado'; emoji='🟢'; }
   const niceDate = new Date(iso+'T00:00:00').toLocaleDateString('es-MX',{weekday:'long',day:'numeric',month:'long'});
   const todayI=todayISO(), quin=nextQuincenaIso(), eom=endOfMonthIso();
@@ -1346,39 +1414,128 @@ function renderReal(){
 }
 
 /* ============ Gráfica de balance del mes ============ */
-function renderBalanceChart(){
-  const now=new Date(); const y=now.getFullYear(), m=now.getMonth();
-  const dim=daysInMonth(y,m);
-  const savings=DB.banks.reduce((s,b)=>s+(b.bal||0),0);
-  const vals=[];
-  for(let d=1; d<=dim; d++){
-    const iso=`${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
-    let net=0; DB.tx.forEach(x=>{ if(x.date<=iso) net += x.type==='in'?x.amount:-x.amount; });
-    vals.push(savings+net);
+// Serie diaria del saldo proyectado para los próximos N días
+function balanceSeries(days){
+  const end=addDaysIso(days);
+  const ev=futureEvents(end);
+  const byIso={};
+  ev.forEach(e=>{ (byIso[e.iso]=byIso[e.iso]||[]).push(e); });
+  const isos=[], vals=[];
+  let run=available();
+  for(let i=0;i<=days;i++){
+    const iso=addDaysIso(i);
+    (byIso[iso]||[]).forEach(e=> run+=e.delta);
+    isos.push(iso); vals.push(run);
   }
-  const todayD=now.getDate();
-  document.getElementById('chartNow').textContent = fmt(vals[todayD-1]);
-  const W=320,H=120,pad=8;
-  let min=Math.min(...vals), max=Math.max(...vals);
+  return {isos, vals, byIso};
+}
+// Riesgo: primer día en rojo o por debajo del colchón en los próximos 60 días
+function projectionRisk(){
+  const {isos,vals}=balanceSeries(60);
+  let negIso=null, cushIso=null, minV=Infinity, minIso=isos[0];
+  for(let i=0;i<vals.length;i++){
+    if(vals[i]<minV){ minV=vals[i]; minIso=isos[i]; }
+    if(negIso===null && vals[i]<0) negIso=isos[i];
+    if(cushIso===null && cushion>0 && vals[i]<cushion) cushIso=isos[i];
+  }
+  return {negIso, cushIso, minV, minIso};
+}
+function renderProjectionChart(){
+  const days=30;
+  const {isos, vals, byIso}=balanceSeries(days);
+  const n=vals.length;
+  const W=320,H=150,pad=10;
+  let min=Math.min(...vals,0), max=Math.max(...vals,0);
   if(min===max){ min-=1; max+=1; }
   const range=max-min;
-  const X=i=> pad + i*(W-2*pad)/((dim-1)||1);
+  const X=i=> pad + i*(W-2*pad)/(n-1);
   const Y=v=> H-pad - (v-min)/range*(H-2*pad);
-  const line=vals.map((v,i)=>`${i===0?'M':'L'}${X(i).toFixed(1)},${Y(v).toFixed(1)}`).join(' ');
-  const area=line+` L${X(dim-1).toFixed(1)},${H-pad} L${X(0).toFixed(1)},${H-pad} Z`;
-  const tX=X(todayD-1), tY=Y(vals[todayD-1]);
-  document.getElementById('balanceChart').innerHTML=`
-    <svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">
-      <defs><linearGradient id="balGrad" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#6366f1" stop-opacity=".42"/>
-        <stop offset="100%" stop-color="#6366f1" stop-opacity="0"/></linearGradient></defs>
-      <path d="${area}" fill="url(#balGrad)"/>
+  const line=vals.map((v,i)=>`${i?'L':'M'}${X(i).toFixed(1)},${Y(v).toFixed(1)}`).join(' ');
+  const area=line+` L${X(n-1).toFixed(1)},${H-pad} L${X(0).toFixed(1)},${H-pad} Z`;
+  const zeroY=Y(0);
+  const danger = min<0 ? `<rect x="0" y="${zeroY.toFixed(1)}" width="${W}" height="${(H-pad-zeroY).toFixed(1)}" fill="rgba(248,113,113,.13)"/>` : '';
+  const zeroLine = (min<0&&max>0)?`<line x1="0" y1="${zeroY.toFixed(1)}" x2="${W}" y2="${zeroY.toFixed(1)}" stroke="#f87171" stroke-width="1" stroke-dasharray="4 3" opacity=".7"/>`:'';
+  let cushionLine='';
+  if(cushion>0 && cushion>=min && cushion<=max){ const cy=Y(cushion); cushionLine=`<line x1="0" y1="${cy.toFixed(1)}" x2="${W}" y2="${cy.toFixed(1)}" stroke="#fbbf24" stroke-width="1" stroke-dasharray="4 3" opacity=".7"/>`; }
+  let marks='';
+  isos.forEach((iso,i)=>{ if(byIso[iso]){ const net=byIso[iso].reduce((s,e)=>s+e.delta,0); const c=net>=0?'#34d399':'#f87171'; marks+=`<circle cx="${X(i).toFixed(1)}" cy="${Y(vals[i]).toFixed(1)}" r="3" fill="${c}"/>`; } });
+  document.getElementById('projChart').innerHTML=`
+    <div class="proj-tip" id="projTip"></div>
+    <svg id="projSvg" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" style="touch-action:none;">
+      <defs><linearGradient id="pGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#6366f1" stop-opacity=".42"/><stop offset="100%" stop-color="#6366f1" stop-opacity="0"/></linearGradient></defs>
+      ${danger}
+      <path d="${area}" fill="url(#pGrad)"/>
+      ${zeroLine}${cushionLine}
       <path d="${line}" fill="none" stroke="#818cf8" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
-      <line x1="${tX.toFixed(1)}" y1="${pad}" x2="${tX.toFixed(1)}" y2="${H-pad}" stroke="#818cf8" stroke-width="1" stroke-dasharray="3 3" opacity=".5"/>
-      <circle cx="${tX.toFixed(1)}" cy="${tY.toFixed(1)}" r="4.5" fill="#fff" stroke="#6366f1" stroke-width="2.5"/>
+      ${marks}
+      <line id="projVline" x1="${X(0)}" y1="${pad}" x2="${X(0)}" y2="${H-pad}" stroke="#fff" stroke-width="1" opacity=".4"/>
+      <circle id="projDot" cx="${X(0)}" cy="${Y(vals[0])}" r="5" fill="#fff" stroke="#6366f1" stroke-width="2.5"/>
     </svg>
     <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-top:4px;">
-      <span>1 ${MONTHS[m].slice(0,3)}</span><span>${dim} ${MONTHS[m].slice(0,3)}</span></div>`;
+      <span>Hoy</span><span>+${days} días</span></div>`;
+  const svg=document.getElementById('projSvg');
+  const tip=document.getElementById('projTip');
+  const vline=document.getElementById('projVline');
+  const dot=document.getElementById('projDot');
+  function show(i){
+    i=Math.max(0,Math.min(n-1,i));
+    const x=X(i), y=Y(vals[i]);
+    vline.setAttribute('x1',x); vline.setAttribute('x2',x);
+    dot.setAttribute('cx',x); dot.setAttribute('cy',y);
+    const iso=isos[i];
+    const dd=new Date(iso+'T00:00:00').toLocaleDateString('es-MX',{weekday:'short',day:'numeric',month:'short'});
+    const evs=(byIso[iso]||[]).map(e=>`${(e.kind==='in'||e.kind==='recin')?'➕':'➖'} ${esc(e.label)}`).join('<br>');
+    const col = vals[i]<0?'#f87171':((cushion>0&&vals[i]<cushion)?'#fbbf24':'#34d399');
+    tip.innerHTML=`<b>${dd}</b> · <span style="color:${col}">${fmt(vals[i])}</span>${evs?'<br>'+evs:''}`;
+    tip.style.left=Math.max(14,Math.min(86, x/W*100))+'%';
+    tip.style.display='block';
+  }
+  function fromEvent(clientX){
+    const r=svg.getBoundingClientRect();
+    const i=Math.round(((clientX-r.left)/r.width*W - pad)/((W-2*pad)/(n-1)));
+    show(i);
+  }
+  svg.onpointerdown=e=>{ fromEvent(e.clientX); };
+  svg.onpointermove=e=>{ fromEvent(e.clientX); };
+  show(0);
+}
+
+/* ============ Colchón de seguridad ============ */
+let cushion=parseFloat(localStorage.getItem('fin_cushion')||'0')||0;
+function saveCushion(){
+  const v=parseFloat(document.getElementById('cushionInput').value)||0;
+  cushion=v; localStorage.setItem('fin_cushion', String(v));
+  render(); alert('Colchón guardado: '+fmt(v));
+}
+
+/* ============ Movimientos (vista con filtros) ============ */
+let movYear, movMonth, movType='all', movCat='all', movAll=false;
+(function(){ const n=new Date(); movYear=n.getFullYear(); movMonth=n.getMonth(); })();
+function moveMovMonth(d){ movAll=false; movMonth+=d; if(movMonth<0){movMonth=11;movYear--;} if(movMonth>11){movMonth=0;movYear++;} renderMovs(); }
+function toggleMovAll(){ movAll=!movAll; renderMovs(); }
+function setMovType(t){ movType=t; renderMovs(); }
+function setMovCat(v){ movCat=v; renderMovs(); }
+function renderMovs(){
+  document.getElementById('movMonth').textContent = movAll?'Todos los meses':MONTHS[movMonth]+' '+movYear;
+  document.getElementById('movAllChip').classList.toggle('on', movAll);
+  document.getElementById('movTypeAll').className = movType==='all'?'on':'';
+  document.getElementById('movTypeIn').className  = movType==='in'?'on':'';
+  document.getElementById('movTypeOut').className = movType==='out'?'on':'';
+  const cats=Array.from(new Set(DB.tx.map(t=>t.cat))).sort();
+  const sel=document.getElementById('movCat'); const cur=movCat;
+  sel.innerHTML = `<option value="all">Todas las categorías</option>`+cats.map(c=>`<option value="${esc(c)}">${iconFor(c)} ${esc(c)}</option>`).join('');
+  sel.value = cats.includes(cur)||cur==='all' ? cur : 'all'; if(sel.value!==cur) movCat=sel.value;
+  const ym=`${movYear}-${String(movMonth+1).padStart(2,'0')}`;
+  const list=DB.tx.filter(t=>{
+    if(!movAll && t.date.slice(0,7)!==ym) return false;
+    if(movType!=='all' && t.type!==movType) return false;
+    if(movCat!=='all' && t.cat!==movCat) return false;
+    return true;
+  }).sort((a,b)=> b.date.localeCompare(a.date)||b.id.localeCompare(a.id));
+  let ing=0,gas=0; list.forEach(t=> t.type==='in'?ing+=t.amount:gas+=t.amount);
+  document.getElementById('movTotals').innerHTML = `${list.length} movimiento${list.length===1?'':'s'} · <span class="pos">+${fmt(ing)}</span> · <span class="neg">-${fmt(gas)}</span>`;
+  document.getElementById('movList').innerHTML = list.length?list.map(txRow).join(''):'<div class="empty">Sin movimientos con estos filtros.</div>';
 }
 
 /* ============ Selector de rango (próximos pagos) ============ */
@@ -1426,11 +1583,25 @@ function render(){
 
   const alerts=ups.filter(u=>u.days<=7);
   const ab=document.getElementById('alertsBox');
-  ab.innerHTML = alerts.length ? alerts.slice(0,3).map(a=>{
+  let alertHtml='';
+  // Aviso de números rojos / colchón
+  const risk=projectionRisk();
+  if(risk.negIso){
+    const dd=new Date(risk.negIso+'T00:00:00').toLocaleDateString('es-MX',{weekday:'long',day:'numeric',month:'long'});
+    alertHtml+=`<div class="alert-banner" style="border-color:var(--red);background:rgba(248,113,113,.14)">
+      <div class="ttl" style="color:var(--red)">🚨 Te quedarías en números rojos</div>
+      El <b>${dd}</b> tu saldo bajaría a <b class="neg">${fmt(risk.minV)}</b>. Revisa tus gastos o pagos de esos días.</div>`;
+  } else if(risk.cushIso && cushion>0){
+    const dd=new Date(risk.cushIso+'T00:00:00').toLocaleDateString('es-MX',{weekday:'long',day:'numeric',month:'long'});
+    alertHtml+=`<div class="alert-banner"><div class="ttl">⚠️ Bajarías de tu colchón</div>
+      El <b>${dd}</b> quedarías por debajo de tu colchón de ${fmt(cushion)} (mínimo ${fmt(risk.minV)}).</div>`;
+  }
+  alertHtml += alerts.slice(0,3).map(a=>{
     const txt = a.days===0?'es HOY':(a.days===1?'es mañana':'en '+a.days+' días');
     return `<div class="alert-banner"><div class="ttl">🔔 ${esc(a.name)} ${txt}</div>
       ${a.date.toLocaleDateString('es-MX',{weekday:'long',day:'numeric',month:'long'})}${a.bal?' · '+fmt(a.bal):''}</div>`;
-  }).join('') : '';
+  }).join('');
+  ab.innerHTML = alertHtml;
 
   document.getElementById('savingsTotal').textContent = fmt(DB.banks.reduce((s,b)=>s+(b.bal||0),0));
   const bl=document.getElementById('banksList');
@@ -1476,11 +1647,14 @@ function render(){
   }).join(''):'<div class="empty">Agrega tus ingresos o gastos que se repiten cada mes (colegiatura, sueldo, renta...).</div>';
   [...rl.querySelectorAll('.item')].forEach((el,i)=> el.onclick=(e)=>{ if(e.target.classList.contains('del'))return; openRec(DB.rec[i]); });
 
+  const ci=document.getElementById('cushionInput'); if(ci && document.activeElement!==ci) ci.value = cushion || '';
+
   renderReal();
-  renderBalanceChart();
+  renderProjectionChart();
   renderCal();
   renderDay();
   renderStats();
+  renderMovs();
   renderCatMg();
   backupInfo();
   renderSync();
