@@ -203,7 +203,7 @@
 <aside class="drawer" id="drawer">
   <button class="drawer-head" onclick="go('inicio')" style="width:100%; text-align:left; background:none; cursor:pointer;">
     <span class="b">FinPro</span>
-    <span class="s">v11 · Toca para ir al Inicio →</span>
+    <span class="s">v12 · Toca para ir al Inicio →</span>
   </button>
   <div class="drawer-sec">Mi dinero</div>
   <button class="drawer-item" data-v="movs" onclick="go('movs')"><span class="di">📒</span>Movimientos</button>
@@ -499,6 +499,8 @@
       <label>Concepto (escribe el tuyo)</label>
       <input type="text" id="txCustom" placeholder="Ej. Venta de bicicleta">
     </div>
+    <label id="txAccLabel">¿De dónde salió?</label>
+    <select id="txAcc"></select>
     <label>Fecha</label>
     <input type="date" id="txDate">
     <label>Nota (opcional)</label>
@@ -541,6 +543,8 @@
     <input type="number" id="recAmount" inputmode="decimal" placeholder="0.00">
     <label>Categoría</label>
     <select id="recCat"></select>
+    <label id="recAccLabel">¿De qué cuenta sale?</label>
+    <select id="recAcc"></select>
     <label>Día del mes (1-31)</label>
     <input type="number" id="recDay" min="1" max="31" placeholder="Ej. 10">
     <div class="row-btns" style="margin-top:18px;">
@@ -566,6 +570,22 @@
     <div class="row-btns" style="margin-top:18px;">
       <button class="btn btn-ghost" onclick="closeModal('modalCat')">Cancelar</button>
       <button class="btn" onclick="saveCat()">Guardar</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ MODAL: Pagar tarjeta ============ -->
+<div class="modal" id="modalPayCard">
+  <div class="sheet">
+    <h3>Pagar tarjeta</h3>
+    <div class="sub" id="payCardSub"></div>
+    <label>¿De qué cuenta pagas?</label>
+    <select id="payCardAcc"></select>
+    <label>Monto a pagar</label>
+    <input type="number" id="payCardAmount" inputmode="decimal" placeholder="0.00">
+    <div class="row-btns" style="margin-top:18px;">
+      <button class="btn btn-ghost" onclick="closeModal('modalPayCard')">Cancelar</button>
+      <button class="btn btn-green" onclick="confirmPayCard()">Pagar</button>
     </div>
   </div>
 </div>
@@ -635,6 +655,62 @@ function isoToNice(iso){ const d=new Date(iso+'T00:00:00'); return d.toLocaleDat
 const MONTHS=["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
 const DOW=["D","L","M","M","J","V","S"];
 
+/* ============ Cuentas (movimiento automático de saldos) ============ */
+// Migración "empezar en limpio": el balance/deuda actual queda como saldo inicial (open)
+DB.banks.forEach(b=>{ if(typeof b.open!=='number') b.open=b.bal||0; });
+DB.cards.forEach(c=>{ if(typeof c.open!=='number') c.open=c.bal||0; });
+DB.rec.forEach(r=>{ if(!r.since) r.since=todayISO(); });
+function acctOpen(a){ return typeof a.open==='number'? a.open : (a.bal||0); }
+function isCardAcct(id){ return DB.cards.some(c=>c.id===id); }
+function acctName(id){ const a=DB.banks.find(b=>b.id===id)||DB.cards.find(c=>c.id===id); return a?a.name:''; }
+// Saldo vivo de un banco = saldo inicial + movimientos ligados (hasta la fecha)
+function bankBalance(id, uptoIso){
+  const b=DB.banks.find(x=>x.id===id); if(!b) return 0;
+  const t=uptoIso||todayISO();
+  let bal=acctOpen(b);
+  DB.tx.forEach(x=>{ if(x.acc===id && x.date<=t) bal += (x.type==='in'? x.amount : -x.amount); });
+  return bal;
+}
+// Deuda viva de una tarjeta = deuda inicial + cargos − pagos
+function cardDebt(id, uptoIso){
+  const c=DB.cards.find(x=>x.id===id); if(!c) return 0;
+  const t=uptoIso||todayISO();
+  let debt=acctOpen(c);
+  DB.tx.forEach(x=>{ if(x.date<=t){
+    if(x.acc===id && x.type==='out') debt += x.amount;   // cargo a la tarjeta
+    if(x.card===id && x.type==='out') debt -= x.amount;  // pago a la tarjeta
+  }});
+  return debt;
+}
+function totalSavings(uptoIso){ return DB.banks.reduce((s,b)=>s+bankBalance(b.id,uptoIso),0); }
+// Opciones de cuenta para un <select>: ingresos → solo bancos; gastos → bancos + tarjetas
+function acctOptionsHtml(type, selected){
+  let html = DB.banks.map(b=>`<option value="${b.id}" ${b.id===selected?'selected':''}>🏦 ${esc(b.name)}</option>`).join('');
+  if(type==='out') html += DB.cards.map(c=>`<option value="${c.id}" ${c.id===selected?'selected':''}>💳 ${esc(c.name)} (crédito)</option>`).join('');
+  return html;
+}
+function hasAccounts(){ return DB.banks.length>0 || DB.cards.length>0; }
+// Materializa las ocurrencias de recurrentes que ya pasaron (dados por hecho → mueven saldos)
+function materializeRec(){
+  const t=todayISO(); let changed=false;
+  DB.rec.forEach(r=>{
+    const ty=r.type||'out'; const since=r.since||t;
+    let y=parseInt(since.slice(0,4)), m=parseInt(since.slice(5,7))-1;
+    for(let i=0;i<36;i++){
+      const dim=daysInMonth(y,m), day=Math.min(r.day,dim);
+      const iso=`${y}-${String(m+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+      if(iso>t) break;
+      if(iso>=since && !recPaid(r.id, iso.slice(0,7))){
+        DB.tx.push({id:uid(), type:ty, amount:r.amount, cat:r.cat, label:r.name, date:iso,
+          note:ty==='in'?'Ingreso recurrente':'Gasto recurrente', rid:r.id, acc:r.acc||null, card:null});
+        changed=true;
+      }
+      m++; if(m>11){m=0;y++;}
+    }
+  });
+  if(changed) save();
+}
+
 /* ============ Navegación + Drawer ============ */
 function go(v){
   document.querySelectorAll('.view').forEach(e=>e.classList.remove('active'));
@@ -658,7 +734,14 @@ function setTxType(t){
   document.getElementById('segIn').className = t==='in'?'on-in':'';
   document.getElementById('segOut').className = t==='out'?'on-out':'';
   document.getElementById('txSaveBtn').className = 'btn '+(t==='in'?'btn-green':'btn-red');
+  document.getElementById('txAccLabel').textContent = t==='in'?'¿A qué cuenta entró?':'¿De dónde salió?';
   fillCats();
+  fillAccts();
+}
+function fillAccts(){
+  const sel=document.getElementById('txAcc'); if(!sel) return;
+  const cur=sel.value;
+  sel.innerHTML = acctOptionsHtml(txType, cur);
 }
 function fillCats(){
   const sel = document.getElementById('txCat');
@@ -674,6 +757,7 @@ function onCatChange(){
 }
 let editTxId=null;
 function openAdd(date){
+  if(!hasAccounts()){ alert('Primero agrega al menos una cuenta de ahorro (Menú → Ahorros) para registrar de dónde sale o entra el dinero.'); go('ahorros'); return; }
   editTxId=null;
   document.getElementById('txTitle').textContent='Nuevo movimiento';
   setTxType('out');
@@ -696,11 +780,14 @@ function openEditTx(id){
   document.getElementById('txAmount').value=t.amount;
   document.getElementById('txDate').value=t.date;
   document.getElementById('txNote').value=t.note||'';
+  if(t.acc) document.getElementById('txAcc').value=t.acc;
   openModal('modalTx');
 }
 function saveTx(){
   const amt = parseFloat(document.getElementById('txAmount').value);
   if(!amt || amt<=0){ alert('Escribe un monto válido'); return; }
+  const acc = document.getElementById('txAcc').value;
+  if(!acc){ alert('Elige la cuenta de origen/destino'); return; }
   let cat = document.getElementById('txCat').value;
   let custom = document.getElementById('txCustom').value.trim();
   const label = (cat==='Otro' && custom) ? custom : cat;
@@ -708,10 +795,10 @@ function saveTx(){
   const note = document.getElementById('txNote').value.trim();
   if(editTxId){
     const t=DB.tx.find(x=>x.id===editTxId);
-    if(t){ t.type=txType; t.amount=amt; t.cat=cat; t.label=label; t.date=date; t.note=note; }
+    if(t){ t.type=txType; t.amount=amt; t.cat=cat; t.label=label; t.date=date; t.note=note; t.acc=acc; }
     editTxId=null;
   } else {
-    DB.tx.push({ id:uid(), type:txType, amount:amt, cat:cat, label:label, date:date, note:note });
+    DB.tx.push({ id:uid(), type:txType, amount:amt, cat:cat, label:label, date:date, note:note, acc:acc });
   }
   save(); closeModal('modalTx'); render();
 }
@@ -722,15 +809,17 @@ let editBank=null;
 function openBank(b){
   editBank = b||null;
   document.getElementById('bankName').value = b?b.name:'';
-  document.getElementById('bankBal').value = b?b.bal:'';
+  document.getElementById('bankBal').value = b?bankBalance(b.id):'';
   openModal('modalBank');
 }
 function saveBank(){
   const name=document.getElementById('bankName').value.trim();
   const bal=parseFloat(document.getElementById('bankBal').value)||0;
   if(!name){ alert('Escribe un nombre'); return; }
-  if(editBank){ editBank.name=name; editBank.bal=bal; }
-  else DB.banks.push({id:uid(), name, bal});
+  if(editBank){
+    const effect = bankBalance(editBank.id) - acctOpen(editBank);
+    editBank.name=name; editBank.open = bal - effect; editBank.bal=bal;
+  } else DB.banks.push({id:uid(), name, open:bal, bal});
   save(); closeModal('modalBank'); render();
 }
 function delBank(id){ if(confirm('¿Eliminar esta cuenta?')){ DB.banks=DB.banks.filter(b=>b.id!==id); save(); render(); } }
@@ -740,7 +829,7 @@ let editCard=null;
 function openCard(c){
   editCard=c||null;
   document.getElementById('cardName').value=c?c.name:'';
-  document.getElementById('cardBal').value=c?c.bal:'';
+  document.getElementById('cardBal').value=c?cardDebt(c.id):'';
   document.getElementById('cardCut').value=c?c.cut:'';
   document.getElementById('cardPay').value=c?c.pay:'';
   openModal('modalCard');
@@ -748,10 +837,13 @@ function openCard(c){
 function saveCard(){
   const name=document.getElementById('cardName').value.trim();
   if(!name){ alert('Escribe un nombre'); return; }
-  const obj={ name, bal:parseFloat(document.getElementById('cardBal').value)||0,
-    cut:parseInt(document.getElementById('cardCut').value)||null, pay:parseInt(document.getElementById('cardPay').value)||null };
-  if(editCard){ Object.assign(editCard,obj); }
-  else DB.cards.push({id:uid(),...obj});
+  const bal=parseFloat(document.getElementById('cardBal').value)||0;
+  const cut=parseInt(document.getElementById('cardCut').value)||null;
+  const pay=parseInt(document.getElementById('cardPay').value)||null;
+  if(editCard){
+    const effect = cardDebt(editCard.id) - acctOpen(editCard);
+    Object.assign(editCard,{name,cut,pay}); editCard.open = bal - effect; editCard.bal=bal;
+  } else DB.cards.push({id:uid(), name, open:bal, bal, cut, pay});
   save(); closeModal('modalCard'); render();
 }
 function delCard(id){ if(confirm('¿Eliminar esta tarjeta?')){ DB.cards=DB.cards.filter(c=>c.id!==id); save(); render(); } }
@@ -767,13 +859,18 @@ function setRecType(t){
   const list=(t==='in'?catsIn():catsOut());
   sel.innerHTML=list.map(c=>`<option value="${c}">${iconFor(c)} ${c}</option>`).join('');
   if(cur && list.includes(cur)) sel.value=cur;
+  document.getElementById('recAccLabel').textContent = t==='in'?'¿A qué cuenta entra?':'¿De qué cuenta sale?';
+  const asel=document.getElementById('recAcc'); const acur=asel.value;
+  asel.innerHTML=acctOptionsHtml(t, acur);
 }
 function openRec(r){
+  if(!hasAccounts()){ alert('Primero agrega al menos una cuenta de ahorro (Menú → Ahorros).'); go('ahorros'); return; }
   editRec=r||null;
   setRecType(r?(r.type||'out'):'out');
   document.getElementById('recName').value=r?r.name:'';
   document.getElementById('recAmount').value=r?r.amount:'';
   if(r) document.getElementById('recCat').value=r.cat;
+  if(r && r.acc) document.getElementById('recAcc').value=r.acc;
   document.getElementById('recDay').value=r?r.day:'';
   openModal('modalRec');
 }
@@ -783,11 +880,13 @@ function saveRec(){
   const day=parseInt(document.getElementById('recDay').value);
   if(!name){ alert('Escribe un concepto'); return; }
   if(!day||day<1||day>31){ alert('Escribe un día válido (1-31)'); return; }
+  const acc=document.getElementById('recAcc').value;
+  if(!acc){ alert('Elige la cuenta de origen/destino'); return; }
   const cat=document.getElementById('recCat').value;
-  const obj={name,amount,cat,day,type:recType};
+  const obj={name,amount,cat,day,type:recType,acc};
   if(editRec) Object.assign(editRec,obj);
-  else DB.rec.push({id:uid(),...obj});
-  save(); closeModal('modalRec'); render();
+  else DB.rec.push({id:uid(), since:todayISO(), ...obj});
+  save(); closeModal('modalRec'); materializeRec(); render();
 }
 function delRec(id){ if(confirm('¿Eliminar este recurrente?')){ DB.rec=DB.rec.filter(r=>r.id!==id); save(); render(); } }
 function recPaid(rid,ym){ return DB.tx.some(t=>t.rid===rid && t.date.slice(0,7)===ym); }
@@ -797,20 +896,32 @@ function payRec(rid,iso){
   DB.tx.push({id:uid(),type:ty,amount:r.amount,cat:r.cat,label:r.name,date:iso,note:ty==='in'?'Ingreso recurrente':'Pago recurrente',rid:rid});
   save(); render();
 }
+let payCardId=null;
 function payCard(id){
   const c=DB.cards.find(x=>x.id===id); if(!c) return;
-  if(!c.bal){ alert('Esta tarjeta no tiene saldo registrado.'); return; }
-  if(!confirm('¿Marcar como pagado '+fmt(c.bal)+' de '+c.name+'?\nSe registrará como gasto y el saldo quedará en $0.')) return;
-  DB.tx.push({id:uid(),type:'out',amount:c.bal,cat:'Tarjeta de crédito',label:'Pago '+c.name,date:todayISO(),note:'Pago de tarjeta',cardPay:id});
-  c.bal=0;
-  save(); render();
+  const debt=cardDebt(id);
+  if(debt<=0){ alert('Esta tarjeta no tiene saldo por pagar.'); return; }
+  if(!DB.banks.length){ alert('Primero agrega una cuenta de ahorro (Menú → Ahorros) para pagar desde ahí.'); go('ahorros'); return; }
+  payCardId=id;
+  document.getElementById('payCardSub').textContent = c.name+' · debes '+fmt(debt);
+  document.getElementById('payCardAcc').innerHTML = DB.banks.map(b=>`<option value="${b.id}">🏦 ${esc(b.name)} (${fmt(bankBalance(b.id))})</option>`).join('');
+  document.getElementById('payCardAmount').value = debt.toFixed(2);
+  openModal('modalPayCard');
+}
+function confirmPayCard(){
+  const c=DB.cards.find(x=>x.id===payCardId); if(!c) return;
+  const acc=document.getElementById('payCardAcc').value;
+  const amt=parseFloat(document.getElementById('payCardAmount').value);
+  if(!acc){ alert('Elige de qué cuenta pagas'); return; }
+  if(!amt||amt<=0){ alert('Escribe un monto válido'); return; }
+  DB.tx.push({id:uid(),type:'out',amount:amt,cat:'Tarjeta de crédito',label:'Pago '+c.name,date:todayISO(),note:'Pago de tarjeta',acc:acc,card:c.id,cardPay:c.id});
+  save(); closeModal('modalPayCard'); render();
 }
 function undoCardPay(id){
   const c=DB.cards.find(x=>x.id===id); if(!c) return;
   const tx=[...DB.tx].reverse().find(t=>t.cardPay===id);
   if(!tx){ alert('No hay un pago reciente que deshacer.'); return; }
-  if(!confirm('¿Deshacer el pago de '+fmt(tx.amount)+' de '+c.name+'? El saldo volverá a aparecer.')) return;
-  c.bal=(c.bal||0)+tx.amount;
+  if(!confirm('¿Deshacer el pago de '+fmt(tx.amount)+' de '+c.name+'? La deuda volverá a aparecer.')) return;
   DB.tx=DB.tx.filter(t=>t.id!==tx.id);
   save(); render();
 }
@@ -878,7 +989,7 @@ function renderDay(){
   const d=parseInt(selectedDay.slice(8,10));
   DB.cards.forEach(c=>{
     if(c.cut===d) cardEvents.push(`<div class="item"><div class="dot" style="background:rgba(251,191,36,.2)">✂️</div><div class="info"><div class="t">Corte: ${esc(c.name)}</div><div class="s">Fecha de corte de tu tarjeta</div></div></div>`);
-    if(c.pay===d) cardEvents.push(`<div class="item"><div class="dot" style="background:rgba(251,191,36,.2)">💳</div><div class="info"><div class="t">Pago: ${esc(c.name)}</div><div class="s">Límite de pago${c.bal?' · '+fmt(c.bal):''}</div></div></div>`);
+    if(c.pay===d){ const debt=cardDebt(c.id); cardEvents.push(`<div class="item"><div class="dot" style="background:rgba(251,191,36,.2)">💳</div><div class="info"><div class="t">Pago: ${esc(c.name)}</div><div class="s">Límite de pago${debt>0?' · '+fmt(debt):''}</div></div></div>`); }
   });
   const dim=daysInMonth(parseInt(selectedDay.slice(0,4)),parseInt(selectedDay.slice(5,7))-1);
   const ym=selectedDay.slice(0,7);
@@ -902,10 +1013,11 @@ function txRow(t){
   const sign=t.type==='in'?'+':'-';
   const cls=t.type==='in'?'pos':'neg';
   const bg=t.type==='in'?'rgba(52,211,153,.2)':'rgba(248,113,113,.2)';
+  const accTxt = t.acc? ' · '+esc(acctName(t.acc)) : '';
   return `<div class="item" onclick="openEditTx('${t.id}')">
     <div class="dot" style="background:${bg}">${iconFor(t.cat)}</div>
     <div class="info"><div class="t">${esc(t.label)}</div>
-      <div class="s">${isoToNice(t.date)}${t.note?' · '+esc(t.note):''}</div></div>
+      <div class="s">${isoToNice(t.date)}${accTxt}${t.note?' · '+esc(t.note):''}</div></div>
     <div class="amt ${cls}">${sign}${fmt(t.amount)}</div>
     <button class="del" onclick="event.stopPropagation();delTx('${t.id}')">🗑️</button>
   </div>`;
@@ -919,12 +1031,7 @@ function monthTotals(){
   DB.tx.forEach(t=>{ if(t.date.slice(0,7)===ym){ if(t.type==='in') ingresos+=t.amount; else gastos+=t.amount; } });
   return {ingresos,gastos};
 }
-function available(){
-  const savings=DB.banks.reduce((s,b)=>s+(b.bal||0),0);
-  const t=todayISO();
-  let net=0; DB.tx.forEach(x=>{ if(x.date<=t) net += x.type==='in'?x.amount:-x.amount; });
-  return savings + net;
-}
+function available(){ return totalSavings(); }
 
 /* ============ Estadísticas ============ */
 let statsYear, statsMonth, statsType='out';
@@ -999,8 +1106,11 @@ const addDaysIso = n => isoOfDate(new Date(Date.now()+n*86400000));
 function futureEvents(toIso){
   const t=todayISO();
   const ev=[];
-  DB.tx.forEach(x=>{ if(x.date>t && x.date<=toIso) ev.push({iso:x.date, delta:(x.type==='in'?x.amount:-x.amount), label:x.label, kind:x.type}); });
-  DB.cards.forEach(c=>{ if(c.pay && c.bal){ const di=isoOfDate(nextDateForDay(c.pay)); if(di>=t && di<=toIso) ev.push({iso:di, delta:-c.bal, label:'Pago '+c.name, kind:'card'}); } });
+  DB.tx.forEach(x=>{ if(x.date>t && x.date<=toIso){
+    if(x.acc && isCardAcct(x.acc) && x.type==='out') return; // gasto con tarjeta no mueve efectivo
+    ev.push({iso:x.date, delta:(x.type==='in'?x.amount:-x.amount), label:x.label, kind:x.type});
+  }});
+  DB.cards.forEach(c=>{ const debt=cardDebt(c.id); if(c.pay && debt>0){ const di=isoOfDate(nextDateForDay(c.pay)); if(di>=t && di<=toIso) ev.push({iso:di, delta:-debt, label:'Pago '+c.name, kind:'card'}); } });
   DB.rec.forEach(r=>{
     const ty=r.type||'out';
     let y=parseInt(t.slice(0,4)), m=parseInt(t.slice(5,7))-1;
@@ -1548,13 +1658,13 @@ function render(){
   const mt=monthTotals();
   document.getElementById('homeIng').textContent='+'+fmt(mt.ingresos);
   document.getElementById('homeGas').textContent='-'+fmt(mt.gastos);
-  document.getElementById('homeSave').textContent=fmt(DB.banks.reduce((s,b)=>s+(b.bal||0),0));
+  document.getElementById('homeSave').textContent=fmt(totalSavings());
   document.querySelectorAll('#rangeChips .chip').forEach(b=>b.classList.toggle('on', +b.dataset.r===homeRange));
 
   const tIso=todayISO();
   const ups=[];
   DB.cards.forEach(c=>{
-    if(c.pay && c.bal){ const dd=nextDateForDay(c.pay); ups.push({name:'Pago '+c.name, date:dd, days:daysUntil(dd), bal:c.bal, kind:'pay', id:c.id}); }
+    { const debt=cardDebt(c.id); if(c.pay && debt>0){ const dd=nextDateForDay(c.pay); ups.push({name:'Pago '+c.name, date:dd, days:daysUntil(dd), bal:debt, kind:'pay', id:c.id}); } }
   });
   DB.rec.forEach(r=>{ if((r.type||'out')!=='in'){ const dd=recNextDate(r); if(dd) ups.push({name:r.name, date:dd, days:daysUntil(dd), bal:r.amount, kind:'rec', id:r.id, iso:isoOfDate(dd)}); } });
   DB.tx.forEach(t=>{ if(t.type==='out' && t.date>tIso){ const dd=new Date(t.date+'T00:00:00'); ups.push({name:t.label, date:dd, days:daysUntil(dd), bal:t.amount, kind:'out'}); } });
@@ -1603,12 +1713,12 @@ function render(){
   }).join('');
   ab.innerHTML = alertHtml;
 
-  document.getElementById('savingsTotal').textContent = fmt(DB.banks.reduce((s,b)=>s+(b.bal||0),0));
+  document.getElementById('savingsTotal').textContent = fmt(totalSavings());
   const bl=document.getElementById('banksList');
   bl.innerHTML = DB.banks.length?DB.banks.map(b=>`<div class="item">
     <div class="dot" style="background:rgba(52,211,153,.2)">🏦</div>
     <div class="info"><div class="t">${esc(b.name)}</div><div class="s">Toca para editar</div></div>
-    <div class="amt pos">${fmt(b.bal)}</div>
+    <div class="amt pos">${fmt(bankBalance(b.id))}</div>
     <button class="del" onclick="event.stopPropagation();delBank('${b.id}')">🗑️</button>
   </div>`).join(''):'<div class="empty">Agrega tus cuentas para ver tu ahorro total.</div>';
   [...bl.querySelectorAll('.item')].forEach((el,i)=> el.onclick=(e)=>{ if(e.target.classList.contains('del'))return; openBank(DB.banks[i]); });
@@ -1616,15 +1726,16 @@ function render(){
   const cl=document.getElementById('cardsList');
   cl.innerHTML = DB.cards.length?DB.cards.map(c=>{
     const payD=c.pay?nextDateForDay(c.pay):null;
+    const debt=cardDebt(c.id);
     const hasPay=DB.tx.some(t=>t.cardPay===c.id);
-    const actionBtn = c.bal
-      ? `<button class="btn-sm btn-green" onclick="event.stopPropagation();payCard('${c.id}')">Pagado</button>`
+    const actionBtn = debt>0
+      ? `<button class="btn-sm btn-green" onclick="event.stopPropagation();payCard('${c.id}')">Pagar</button>`
       : (hasPay ? `<button class="btn-sm btn-ghost" onclick="event.stopPropagation();undoCardPay('${c.id}')">↩︎ Deshacer</button>` : '');
     return `<div class="item">
       <div class="dot" style="background:rgba(99,102,241,.2)">💳</div>
       <div class="info"><div class="t">${esc(c.name)}</div>
-        <div class="s">${c.cut?'Corte día '+c.cut:''}${c.cut&&c.pay?' · ':''}${c.pay?'Pago día '+c.pay:''}${payD?' (en '+daysUntil(payD)+'d)':''}${!c.bal&&hasPay?' · <span class="pos">✓ Pagado</span>':''}</div></div>
-      ${c.bal?`<div class="amt neg">${fmt(c.bal)}</div>`:''}
+        <div class="s">${c.cut?'Corte día '+c.cut:''}${c.cut&&c.pay?' · ':''}${c.pay?'Pago día '+c.pay:''}${payD?' (en '+daysUntil(payD)+'d)':''}${debt<=0&&hasPay?' · <span class="pos">✓ Pagado</span>':''}</div></div>
+      ${debt>0?`<div class="amt neg">${fmt(debt)}</div>`:''}
       ${actionBtn}
       <button class="del" onclick="event.stopPropagation();delCard('${c.id}')">🗑️</button>
     </div>`;
@@ -1665,6 +1776,7 @@ document.getElementById('todayStr').textContent = new Date().toLocaleDateString(
 document.getElementById('simDate').value = todayISO();
 document.getElementById('gsCode').value = GS_CODE;
 fillCats();
+materializeRec();
 render();
 if(syncUrl && autoSync) pullSync(true);
 </script>
