@@ -64,7 +64,7 @@ python3 reportes/generar_tesorio_tasks.py <export.csv> [salida.xlsx] [hoy=AAAA-M
 - **Distribución por tiempo de resolución** (completadas).
 - **Resolution Time por Prioridad** (URGENT / HIGH_PRIORITY / NORMAL).
 - **Pendientes y En Proceso** en hoja aparte, con días abiertos (semáforo).
-- **Tasks lentas >7 días** en hoja aparte.
+- **Tasks lentas >2 días** en hoja aparte.
 - Hoja de respaldo: `Datos (calculo)`.
 
 ---

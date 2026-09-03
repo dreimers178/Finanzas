@@ -186,10 +186,10 @@ for i,w in enumerate([16,12,15,16,18,14],1): pz.column_dimensions[get_column_let
 pz.freeze_panes="A5"
 
 # ===== Tasks lentas (>7 dias) =====
-slow=done[done['dias']>=7].sort_values('dias',ascending=False)
-sz=wb.create_sheet("Tasks lentas (>7 dias)"); sz.sheet_view.showGridLines=False
-sz['A1']="TASKS COMPLETADAS QUE TARDARON MÁS DE 7 DÍAS"; sz['A1'].font=Font(name="Arial",bold=True,size=14,color=NAVY)
-sz['A2']=f"{len(slow)} de {len(done)} tasks completadas ({round(100*len(slow)/len(done))}%) superaron los 7 días — sobre todo backlog histórico (dic-ene)."
+slow=done[done['dias']>=2].sort_values('dias',ascending=False)
+sz=wb.create_sheet("Tasks lentas (>2 dias)"); sz.sheet_view.showGridLines=False
+sz['A1']="TASKS COMPLETADAS QUE TARDARON MÁS DE 2 DÍAS"; sz['A1'].font=Font(name="Arial",bold=True,size=14,color=NAVY)
+sz['A2']=f"{len(slow)} de {len(done)} tasks completadas ({round(100*len(slow)/len(done))}%) superaron los 2 días — sobre todo backlog histórico (dic-ene)."
 sz['A2'].font=Font(name="Arial",italic=True,size=9,color="808080")
 cols=["Invoice Number","Priority","Assigned by","Created At","Completed At","Días de resolución"]
 for c,h in enumerate(cols,1):

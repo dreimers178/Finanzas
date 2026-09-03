@@ -181,9 +181,9 @@ for i,w in enumerate([16,12,15,16,14,12],1): pz.column_dimensions[get_column_let
 pz.freeze_panes="A4"
 
 # Slow tasks (month)
-slow=tgt[tgt['dias']>=7].sort_values('dias',ascending=False)
-sz=wb.create_sheet(f"Slow Tasks {TL} (>7d)"); sz.sheet_view.showGridLines=False
-sz['A1']=f"{TL} TASKS RESOLVED IN MORE THAN 7 DAYS"; sz['A1'].font=Font(name="Arial",bold=True,size=14,color=NAVY)
+slow=tgt[tgt['dias']>=2].sort_values('dias',ascending=False)
+sz=wb.create_sheet(f"Slow Tasks {TL} (>2d)"); sz.sheet_view.showGridLines=False
+sz['A1']=f"{TL} TASKS RESOLVED IN MORE THAN 2 DAYS"; sz['A1'].font=Font(name="Arial",bold=True,size=14,color=NAVY)
 cols=["Invoice Number","Priority","Assigned by","Created At","Completed At","Resolution days"]
 for c,h in enumerate(cols,1):
     cell=sz.cell(3,c,h); cell.fill=hfill; cell.font=hfont; cell.alignment=center; cell.border=border
