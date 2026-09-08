@@ -26,7 +26,7 @@
 
 > "I want to be clear on **why these numbers matter**, because it's not really about the numbers.
 
-> Every one of these uploads is an invoice a client is waiting to get paid on. When we go from three days to under a day, that's our clients getting paid **faster**, fewer chases and escalations, and less friction on their side. Speed here is us **protecting the client's cash flow and their experience** — it's the most visible way Collections shows up for them.
+> Every one of these uploads is an invoice we need the client to pay. When we go from three days to under a day, we're getting our invoices in front of them **sooner and correct the first time** — so we **get paid faster**, with fewer chases and escalations. Speed and accuracy here are how we **protect our own cash flow and bring down DSO**, while making it easier for the client to process and pay on their side.
 
 > So this is a direct reflection of **how well we work with our clients through their portals** — and this month the team did that really well."
 
