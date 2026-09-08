@@ -1,48 +1,38 @@
 # Portal Metrics — Monthly Meeting (Aug - 26)
-### Speaking script (English)
+### Speaking script — Collections team (~2 min)
 
 ---
 
 ## Opening — the team's work
 
-"Thanks everyone for joining. What you're about to see is the work of the **whole team** this month.
+> "Thanks everyone. Quick two minutes on our portal numbers for August — and this is really a snapshot of the **whole Collections team's** work this month.
 
-At the core, our job is simple to say and hard to do well: we take our clients' invoices and we get them into each customer's portal — every buyer has their own platform, their own rules, their own login. We're the ones who make sure those invoices actually land where they need to, on time.
-
-These two slides are just a scorecard for that effort. Everything here is cut off at **August 31**, so it's a clean picture of the month."
-
----
+> At the core, what we do is simple to say and hard to do well: we take our clients' invoices and get them into each customer's portal — every buyer has their own platform, their own rules, their own login — and we make sure those invoices land where they need to, on time. Everything here is cut off at **August 31**, so it's a clean read of the month."
 
 ## Slide 1 — Portal Uploads
 
-"This first slide is **Portal Uploads** — the upload requests we handled in August.
-
-- We took in **46 upload requests** and resolved **41** of them.
-- Our average resolution time was **under one day — 0.9 days** — and **85% were resolved the same day**.
-- And if you look at the trend, this isn't a one-off: we went from about **2.8 days in June**, to 2.9 in July, to **under a day in August**. The team keeps getting faster.
-
-The donut on the right is the same story in one picture — the large majority are closed same-day, with only a small tail that takes longer."
-
----
+> "First slide, **Portal Uploads** — the requests we handled in August.
+> - **46** upload requests, **41 resolved**.
+> - Average resolution **under a day — 0.9 days** — and **85% resolved same-day**.
+> - And it's a trend, not a one-off: **2.8 days in June → 2.9 in July → under a day in August**. We keep getting faster."
 
 ## Slide 2 — Tesorio Tasks & platform usage
 
-"This second slide is **Tesorio Tasks** — that's how we track the same portal work from start to finish.
+> "Second slide, **Tesorio Tasks** — how we track that same work end to end. In August we **completed 50 tasks** at **1.1 days**, **74% same-day**, with only **4 open** at month-end.
+> - The bar chart shows **which platforms we use most** — **Coupa and Ariba** carry most of the volume, then Taulia and Oracle.
+> - And the one area of opportunity: the slowest cases aren't the portals we know — they're the ones that come in as a **plain URL**, with no access set up. Those took about **8 days** versus under a day for Coupa or Ariba. So if there's one place to get help, it's **access** — credentials or portal access up front for those URL cases."
 
-- In August we **completed 50 tasks** at **1.1 days** on average, **74% same-day**, and only **4 were still open** at the end of the month.
-- The bar chart shows **which platforms we use the most**: **Coupa and Ariba** carry the bulk of our volume, then Taulia and Oracle.
+## What this means for us
 
-Here's the one thing I want to leave you with — our **area of opportunity**.
+> "I want to be clear on **why these numbers matter**, because it's not really about the numbers.
 
-The tasks that take us the **longest are not** the portals we already know and use. They're the ones that come in as a **plain URL** — a link, with no standing access set up. Those averaged around **8 days**, versus **under a day** for Coupa or Ariba.
+> Every one of these uploads is an invoice a client is waiting to get paid on. When we go from three days to under a day, that's our clients getting paid **faster**, fewer chases and escalations, and less friction on their side. Speed here is us **protecting the client's cash flow and their experience** — it's the most visible way Collections shows up for them.
 
-So if there's one place we can improve, it's **access**: getting proper portal access or credentials in place up front for those URL cases. That's where I'd ask for help — anything we can do on the access side would let us close that gap and keep the whole month looking like the rest of it."
-
----
+> So this is a direct reflection of **how well we work with our clients through their portals** — and this month the team did that really well."
 
 ## Closing
 
-"So, to sum up: faster every month, the vast majority resolved same-day, and a clear, specific place to get even better. Thank you to the team — this is your work. Happy to take any questions."
+> "To sum up: faster every month, most resolved same-day, and one clear place to get even better. Thank you all — this is your work. Questions?"
 
 ---
 

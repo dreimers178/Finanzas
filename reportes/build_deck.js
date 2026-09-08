@@ -81,8 +81,8 @@ s.addChart(p.ChartType.bar,[{name:"Invoices",labels:["Coupa","Ariba","Other","Ta
 s.addNotes(
 "Tesorio Tasks is how we track that same portal work end to end. In August we completed 50 tasks at 1.1 days on average, 74% same-day, and only 4 were still open at month-end.\n"+
 "The bar chart shows which platforms we use most: Coupa and Ariba carry the bulk of our volume, followed by Taulia and Oracle.\n"+
-"Key insight and opportunity: the tasks that take the longest are the ones that come in as a raw URL, not through the portals we already use — those averaged about 8 days versus under 1 day for Coupa or Ariba.\n"+
-"So our area of opportunity is access setup for those URL cases — if we can get proper portal access or credentials up front, we can close that gap.\n"+
+"Area of opportunity: the slowest cases are the ones that come in as a raw URL, not the portals we already use — about 8 days versus under 1 day for Coupa or Ariba. If we can get proper access or credentials up front for those, we close the gap.\n"+
+"What this means for us: every upload is an invoice a client is waiting to get paid on. Going from three days to under a day means clients get paid faster, fewer escalations, less friction. Speed here protects the client's cash flow and experience — it's how Collections shows up for them, and this month the team did it really well.\n"+
 "Cut off at August 31 — September excluded.");
 
 p.writeFile({fileName:"/home/user/Finanzas/Portal_Metrics_Monthly_Aug-26.pptx"}).then(f=>console.log("OK ->",f));
