@@ -1,7 +1,7 @@
 const pptxgen = require("pptxgenjs");
 const fs = require("fs");
 const p = new pptxgen();
-p.layout = "LAYOUT_16x9"; // 10 x 5.625
+p.layout = "LAYOUT_16x9";
 
 const GREEN="158158", DARK="1F2A44", MUTED="6B7B84", LIGHT="F3F5F7", WHITE="FFFFFF";
 const BLUE="4292E1", TEAL="53B5E0", MINT="34B78F", PURPLE="4A2ADB", ORANGE="ED8B1B", GREENA="50B432";
@@ -38,40 +38,51 @@ function monthTable(s,rows,x,y,w,colW){
 let s=p.addSlide(); s.background={color:WHITE}; header(s);
 slideTitle(s,"Portal Uploads  ·  Aug - 26");
 kpiCard(s,0.5,1.45,2.15,"46","Uploads",BLUE);
-kpiCard(s,2.78,1.45,2.15,"42","Resolved",MINT);
-kpiCard(s,5.06,1.45,2.15,"1.3 d","Avg. resolution",ORANGE);
-kpiCard(s,7.34,1.45,2.15,"83%","Same-day",GREENA);
+kpiCard(s,2.78,1.45,2.15,"41","Resolved",MINT);
+kpiCard(s,5.06,1.45,2.15,"0.9 d","Avg. resolution",ORANGE);
+kpiCard(s,7.34,1.45,2.15,"85%","Same-day",GREENA);
 s.addText("Resolution time by month",{x:0.5,y:2.75,w:5,h:0.32,fontFace:FH,fontSize:13,bold:true,color:GREEN,isTextBox:true,margin:0});
 monthTable(s,[
  ["Month","Uploads","Resolved","Avg. days","% same day"],
  ["Jun - 26","58","58","2.8","69%"],
  ["Jul - 26","62","61","2.9","77%"],
- ["Aug - 26","46","42","1.3","83%"]],0.5,3.12,5.0,[1.15,1.0,1.0,0.9,0.95]);
-s.addChart(p.ChartType.doughnut,[{name:"Distribution",labels:["Same day","1-2 d","2-4 d","4-7 d",">7 d"],values:[35,2,1,1,3]}],
+ ["Aug - 26","46","41","0.9","85%"]],0.5,3.12,5.0,[1.15,1.0,1.0,0.9,0.95]);
+s.addChart(p.ChartType.doughnut,[{name:"Distribution",labels:["Same day","1-2 d","2-4 d","4-7 d",">7 d"],values:[35,2,1,1,2]}],
  {x:5.9,y:2.7,w:3.8,h:2.55,chartColors:[GREENA,TEAL,BLUE,ORANGE,PURPLE],
   showLegend:true,legendPos:"r",legendColor:DARK,legendFontFace:FB,legendFontSize:10,
-  showTitle:true,title:"Resolution distribution",titleColor:GREEN,titleFontFace:FH,titleFontSize:13,
-  showValue:true,dataLabelColor:WHITE,dataLabelFontFace:FB,dataLabelFontSize:9,holeSize:58});
+  showTitle:true,title:"Resolution distribution (%)",titleColor:GREEN,titleFontFace:FH,titleFontSize:13,
+  showPercent:true,showValue:false,dataLabelColor:WHITE,dataLabelFontFace:FB,dataLabelFontSize:9,holeSize:58});
+s.addNotes(
+"Portal Uploads — this is the whole team's work: submitting our clients' invoices across every customer portal.\n"+
+"In August we handled 46 upload requests and resolved 41 of them, at an average of under one day (0.9) and 85% resolved the same day.\n"+
+"The month-by-month table shows the trend: we went from ~2.8 days in June to under a day in August — a clear, steady improvement.\n"+
+"The donut shows how fast we close them: about 85% are done same-day, and only a small tail takes longer.\n"+
+"Numbers are cut off at August 31 — September is not included.");
 
 // ================= SLIDE 2: Tesorio Tasks =================
 s=p.addSlide(); s.background={color:WHITE}; header(s);
 slideTitle(s,"Tesorio Tasks  ·  Aug - 26");
-kpiCard(s,0.5,1.45,2.15,"51","Completed",BLUE);
+kpiCard(s,0.5,1.45,2.15,"50","Completed",BLUE);
 kpiCard(s,2.78,1.45,2.15,"1.1 d","Avg. resolution",ORANGE);
-kpiCard(s,5.06,1.45,2.15,"75%","Same-day",GREENA);
-kpiCard(s,7.34,1.45,2.15,"9","Open today",MINT);
+kpiCard(s,5.06,1.45,2.15,"74%","Same-day",GREENA);
+kpiCard(s,7.34,1.45,2.15,"4","Open (Aug 31)",MINT);
 s.addText("Resolution time by month",{x:0.5,y:2.75,w:5,h:0.32,fontFace:FH,fontSize:13,bold:true,color:GREEN,isTextBox:true,margin:0});
 monthTable(s,[
  ["Month","Created","Completed","Avg. days","% same day"],
  ["Jun - 26","30","30","5.2","37%"],
- ["Jul - 26","78","78","2.0","76%"],
- ["Aug - 26","53","51","1.1","75%"]],0.5,3.12,5.0,[1.15,1.0,1.05,0.9,0.9]);
-s.addChart(p.ChartType.bar,[{name:"Avg. days",labels:["Urgent","High","Normal"],values:[0.9,5.9,0.8]}],
- {x:5.9,y:2.7,w:3.8,h:2.55,barDir:"col",chartColors:[ORANGE],
-  showLegend:false,showTitle:true,title:"Avg. days by priority",titleColor:GREEN,titleFontFace:FH,titleFontSize:13,
+ ["Jul - 26","80","78","2.0","76%"],
+ ["Aug - 26","53","50","1.1","74%"]],0.5,3.12,5.0,[1.15,1.0,1.05,0.9,0.9]);
+s.addChart(p.ChartType.bar,[{name:"Invoices",labels:["Coupa","Ariba","Other","Taulia","Oracle","URL"],values:[20,12,5,4,3,2]}],
+ {x:5.9,y:2.7,w:3.8,h:2.55,barDir:"bar",chartColors:[GREEN],
+  showLegend:false,showTitle:true,title:"Invoices by portal (platforms we use most)",titleColor:GREEN,titleFontFace:FH,titleFontSize:12,
   catAxisLabelColor:MUTED,catAxisLabelFontFace:FB,catAxisLabelFontSize:10,
-  valAxisLabelColor:MUTED,valAxisLabelFontFace:FB,valAxisLabelFontSize:9,
-  valGridLine:{color:"E5E5E5",size:1},catGridLine:{style:"none"},
+  valAxisHidden:true,valGridLine:{style:"none"},catGridLine:{style:"none"},
   showValue:true,dataLabelColor:DARK,dataLabelFontFace:FB,dataLabelFontSize:10,dataLabelPosition:"outEnd"});
+s.addNotes(
+"Tesorio Tasks is how we track that same portal work end to end. In August we completed 50 tasks at 1.1 days on average, 74% same-day, and only 4 were still open at month-end.\n"+
+"The bar chart shows which platforms we use most: Coupa and Ariba carry the bulk of our volume, followed by Taulia and Oracle.\n"+
+"Key insight and opportunity: the tasks that take the longest are the ones that come in as a raw URL, not through the portals we already use — those averaged about 8 days versus under 1 day for Coupa or Ariba.\n"+
+"So our area of opportunity is access setup for those URL cases — if we can get proper portal access or credentials up front, we can close that gap.\n"+
+"Cut off at August 31 — September excluded.");
 
 p.writeFile({fileName:"/home/user/Finanzas/Portal_Metrics_Monthly_Aug-26.pptx"}).then(f=>console.log("OK ->",f));
