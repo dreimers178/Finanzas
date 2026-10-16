@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b1b2b">
+<title>Zulú · Relojes</title>
+<meta name="description" content="Relojes seleccionados desde la aviación. Catálogo Zulú.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+  :root{
+    /* Zulú — dark-first (panel de instrumentos) */
+    --ground:#0b1b2b;
+    --panel:#0f2235;
+    --panel-2:#12293f;
+    --ink:#ede6d6;
+    --ink-soft:#a9b6c4;
+    --ink-faint:#6f8498;
+    --line:#1c3348;
+    --line-strong:#27435c;
+    --amber:#e8a13a;
+    --amber-soft:#f2b756;
+    --radar:#3fa675;
+    --warn:#d98a3a;
+    --sold:#8795a3;
+    --shadow:0 22px 50px -30px rgba(0,0,0,.8);
+  }
+  /* Light variant for viewers who force light; Zulú stays an instrument, just on paper */
+  :root[data-theme="light"]{
+    --ground:#efe9dc;
+    --panel:#ffffff;
+    --panel-2:#f6f1e6;
+    --ink:#132131;
+    --ink-soft:#4c5b6b;
+    --ink-faint:#7d8b99;
+    --line:#ded6c4;
+    --line-strong:#cabfa7;
+    --amber:#b9781f;
+    --amber-soft:#a56a16;
+    --radar:#2f7d55;
+    --sold:#9aa3ac;
+    --shadow:0 20px 44px -30px rgba(20,25,35,.4);
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Hanken Grotesk",system-ui,-apple-system,sans-serif;
+    line-height:1.55;-webkit-font-smoothing:antialiased;
+    background-image:
+      radial-gradient(900px 480px at 100% -8%, rgba(232,161,58,.07), transparent 60%),
+      radial-gradient(700px 420px at -10% 0%, rgba(63,166,117,.05), transparent 55%);
+  }
+  .mono{font-family:"IBM Plex Mono",ui-monospace,monospace}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 clamp(16px,4vw,32px)}
+
+  /* ---------- Topbar ---------- */
+  .topbar{
+    position:sticky;top:0;z-index:40;
+    background:color-mix(in srgb, var(--ground) 86%, transparent);
+    backdrop-filter:saturate(150%) blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:14px;padding-bottom:14px}
+  .brand{display:flex;align-items:baseline;gap:10px}
+  .brand .mark{font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:22px;letter-spacing:.16em;color:var(--ink)}
+  .brand .sub{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--amber)}
+  .clock{
+    font-family:"IBM Plex Mono",monospace;font-size:12.5px;letter-spacing:.1em;
+    color:var(--ink-soft);display:flex;align-items:center;gap:8px;
+  }
+  .clock .dot{width:7px;height:7px;border-radius:50%;background:var(--radar);box-shadow:0 0 0 3px color-mix(in srgb,var(--radar) 22%,transparent)}
+  .clock b{color:var(--ink);font-weight:600}
+
+  /* ---------- Hero ---------- */
+  .hero{padding:clamp(40px,8vw,84px) 0 clamp(26px,5vw,44px)}
+  .hero .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:18px}
+  .hero h1{
+    font-family:"Cormorant Garamond",Georgia,serif;font-weight:600;
+    font-size:clamp(40px,8vw,76px);line-height:1.02;letter-spacing:-.01em;
+    text-wrap:balance;margin:0 0 20px;
+  }
+  .hero h1 em{font-style:italic;color:var(--amber)}
+  .hero p{font-size:clamp(15px,2.2vw,18px);color:var(--ink-soft);max-width:60ch;margin:0}
+
+  /* ---------- Filters ---------- */
+  .controls{
+    display:flex;flex-wrap:wrap;align-items:center;gap:10px;
+    padding:20px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    position:sticky;top:57px;z-index:30;background:var(--ground);
+  }
+  .chip{
+    font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.06em;
+    padding:8px 14px;border-radius:999px;border:1px solid var(--line-strong);
+    background:transparent;color:var(--ink-soft);cursor:pointer;transition:.18s;
+    display:inline-flex;align-items:center;gap:7px;
+  }
+  .chip:hover{border-color:var(--amber);color:var(--ink)}
+  .chip[aria-pressed="true"]{background:var(--amber);border-color:var(--amber);color:#14110a;font-weight:600}
+  .chip .n{opacity:.7;font-size:11px}
+  .count{margin-left:auto;font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-faint);letter-spacing:.05em}
+
+  /* ---------- Grid ---------- */
+  .grid{
+    display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));
+    gap:clamp(14px,2vw,22px);padding:30px 0 10px;
+  }
+  .card{
+    background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;
+    display:flex;flex-direction:column;cursor:pointer;transition:transform .16s,border-color .16s,box-shadow .16s;
+    text-align:left;padding:0;color:inherit;font:inherit;
+  }
+  .card:hover{transform:translateY(-3px);border-color:var(--line-strong);box-shadow:var(--shadow)}
+  .card:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+  .card.is-sold{opacity:.72}
+
+  .thumb{position:relative;aspect-ratio:4/3;background:var(--panel-2);display:flex;align-items:center;justify-content:center;overflow:hidden;border-bottom:1px solid var(--line)}
+  .thumb img{width:100%;height:100%;object-fit:cover}
+  .thumb .ph{width:52%;max-width:150px;color:var(--line-strong);opacity:.9}
+  .thumb .ph .pm{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;text-anchor:middle}
+  .badge{
+    position:absolute;top:12px;left:12px;font-family:"IBM Plex Mono",monospace;
+    font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;
+    padding:5px 9px;border-radius:999px;backdrop-filter:blur(4px);
+  }
+  .badge.disponible{background:color-mix(in srgb,var(--radar) 90%,#000);color:#eafff5}
+  .badge.apartado{background:color-mix(in srgb,var(--warn) 92%,#000);color:#fff}
+  .badge.vendido{background:color-mix(in srgb,var(--sold) 80%,#000);color:#fff}
+
+  .cbody{padding:16px 16px 18px;display:flex;flex-direction:column;gap:9px;flex:1}
+  .cbrand{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--amber)}
+  .cmodel{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:23px;line-height:1.1;letter-spacing:.01em}
+  .cspecs{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink-faint);letter-spacing:.02em}
+  .crow{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-top:auto;padding-top:8px}
+  .cprice{font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:16px;color:var(--ink);font-variant-numeric:tabular-nums}
+  .ccond{font-size:12px;color:var(--ink-soft)}
+
+  /* ---------- Modal ---------- */
+  .modal-ov{position:fixed;inset:0;background:rgba(4,10,18,.72);backdrop-filter:blur(3px);z-index:80;
+    display:none;align-items:flex-start;justify-content:center;padding:clamp(12px,4vw,48px);overflow-y:auto}
+  .modal-ov.open{display:flex}
+  .modal{
+    background:var(--panel);border:1px solid var(--line-strong);border-radius:18px;
+    max-width:720px;width:100%;box-shadow:var(--shadow);overflow:hidden;
+  }
+  .m-hero{aspect-ratio:16/10;background:var(--panel-2);display:flex;align-items:center;justify-content:center;position:relative;border-bottom:1px solid var(--line)}
+  .m-hero img{width:100%;height:100%;object-fit:cover}
+  .m-hero .ph{width:34%;max-width:170px;color:var(--line-strong)}
+  .m-close{position:absolute;top:12px;right:12px;width:38px;height:38px;border-radius:10px;border:1px solid var(--line-strong);
+    background:color-mix(in srgb,var(--ground) 70%,transparent);color:var(--ink);font-size:18px;cursor:pointer;line-height:1}
+  .m-body{padding:clamp(20px,3vw,30px)}
+  .m-brand{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:6px}
+  .m-model{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:clamp(28px,5vw,38px);line-height:1.05;margin:0 0 4px}
+  .m-aviation{display:flex;gap:10px;align-items:flex-start;background:var(--panel-2);border:1px solid var(--line);
+    border-radius:12px;padding:13px 15px;margin:18px 0;font-size:14px;color:var(--ink-soft)}
+  .m-aviation .ic{color:var(--amber);flex:none;margin-top:2px}
+  .m-desc{font-size:15px;color:var(--ink-soft);margin:0 0 20px}
+  .specs{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:1px;background:var(--line);
+    border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:22px}
+  .specs > div{background:var(--panel);padding:12px 14px}
+  .specs .k{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:4px}
+  .specs .v{font-size:14px;color:var(--ink)}
+  .m-foot{display:flex;flex-wrap:wrap;align-items:center;gap:14px;justify-content:space-between}
+  .m-price{font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:22px;color:var(--ink);font-variant-numeric:tabular-nums}
+  .m-price small{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);font-weight:400}
+
+  /* ---------- Buttons ---------- */
+  .wa{
+    display:inline-flex;align-items:center;gap:9px;font-family:"Hanken Grotesk",sans-serif;font-weight:600;font-size:15px;
+    background:var(--radar);color:#042016;border:none;border-radius:11px;padding:12px 20px;cursor:pointer;text-decoration:none;transition:.16s;
+  }
+  .wa:hover{filter:brightness(1.07)}
+  .wa.sold{background:var(--panel-2);color:var(--ink-soft);border:1px solid var(--line-strong)}
+  .wa svg{width:18px;height:18px}
+
+  /* ---------- Contact / footer ---------- */
+  .contact{margin-top:40px;border-top:1px solid var(--line);padding:clamp(34px,6vw,60px) 0}
+  .contact .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:14px}
+  .contact h2{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:clamp(28px,5vw,42px);margin:0 0 14px;line-height:1.05}
+  .contact p{color:var(--ink-soft);max-width:56ch;margin:0 0 22px}
+  .clinks{display:flex;flex-wrap:wrap;gap:12px}
+  .clink{display:inline-flex;align-items:center;gap:9px;padding:11px 18px;border-radius:11px;border:1px solid var(--line-strong);
+    color:var(--ink);text-decoration:none;font-weight:600;font-size:15px;transition:.16s}
+  .clink:hover{border-color:var(--amber);background:var(--panel)}
+  .clink svg{width:18px;height:18px;color:var(--amber)}
+
+  footer.foot{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--ink-faint);font-size:13px;
+    display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between}
+  footer.foot .mono{letter-spacing:.08em}
+
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="brand">
+      <span class="mark" id="brandMark">ZULÚ</span>
+      <span class="sub" id="brandSub">Watch Co.</span>
+    </div>
+    <div class="clock" title="Hora Zulú (UTC) — la referencia de la aviación">
+      <span class="dot"></span>
+      <span>ZULU <b id="zuluClock">--:--:--</b>Z</span>
+    </div>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow" id="tagline">La hora de todos los pilotos</div>
+    <h1>Relojes seleccionados<br><em>desde la cabina.</em></h1>
+    <p id="intro"></p>
+  </div>
+</header>
+
+<div class="controls-wrap"><div class="wrap">
+  <div class="controls" id="controls" role="group" aria-label="Filtros">
+    <button class="chip" data-filter="todos" aria-pressed="true">Todos <span class="n" data-count="todos"></span></button>
+    <button class="chip" data-filter="disponible" aria-pressed="false">Disponibles <span class="n" data-count="disponible"></span></button>
+    <button class="chip" data-filter="apartado" aria-pressed="false">Apartados <span class="n" data-count="apartado"></span></button>
+    <button class="chip" data-filter="vendido" aria-pressed="false">Vendidos <span class="n" data-count="vendido"></span></button>
+    <span class="count" id="count"></span>
+  </div>
+</div></div>
+
+<main class="wrap">
+  <div class="grid" id="grid"></div>
+</main>
+
+<section class="contact" id="contacto">
+  <div class="wrap">
+    <div class="eyebrow">Contacto directo</div>
+    <h2>Trato de persona a persona.</h2>
+    <p id="contactIntro"></p>
+    <div class="clinks" id="clinks"></div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap" style="display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;width:100%;padding:0 clamp(16px,4vw,32px)">
+    <span class="mono">ZULÚ · WATCH CO.</span>
+    <span class="mono" id="footYear"></span>
+  </div>
+</footer>
+
+<!-- Modal detalle -->
+<div class="modal-ov" id="modal" role="dialog" aria-modal="true" aria-label="Detalle del reloj">
+  <div class="modal" id="modalInner"></div>
+</div>
+
+<script src="data.js"></script>
+<script>
+(function(){
+  var C = window.ZULU.CONFIG, R = window.ZULU.RELOJES;
+
+  // ---- Config en la página ----
+  document.getElementById('brandMark').textContent = C.marca.toUpperCase();
+  document.getElementById('brandSub').textContent = C.submarca || '';
+  document.getElementById('tagline').textContent = C.tagline;
+  document.getElementById('intro').textContent = C.intro;
+  document.getElementById('footYear').textContent = new Date().getFullYear();
+  document.title = C.marca + ' · Relojes';
+
+  // ---- Reloj Zulú (UTC) en vivo ----
+  function pad(n){return String(n).padStart(2,'0')}
+  function tick(){
+    var d = new Date();
+    document.getElementById('zuluClock').textContent =
+      pad(d.getUTCHours())+':'+pad(d.getUTCMinutes())+':'+pad(d.getUTCSeconds());
+  }
+  tick(); setInterval(tick, 1000);
+
+  // ---- Helpers ----
+  function money(n){ return C.simbolo + n.toLocaleString('es-MX') + ' ' + C.moneda; }
+  var ESTADO_LABEL = {disponible:'Disponible', apartado:'Apartado', vendido:'Vendido'};
+
+  function waLink(reloj){
+    var txt;
+    if(reloj){
+      txt = 'Hola, me interesa el ' + reloj.marca + ' ' + reloj.modelo +
+            ' (ref. ' + reloj.referencia + '). ¿Sigue disponible?';
+    } else {
+      txt = 'Hola, vi tu catálogo de relojes y me gustaría más información.';
+    }
+    return 'https://wa.me/' + C.whatsapp + '?text=' + encodeURIComponent(txt);
+  }
+
+  // SVG marcador (cuando no hay foto)
+  function placeholder(size){
+    return '<svg class="ph" viewBox="0 0 120 120" fill="none" aria-hidden="true">' +
+      '<circle cx="60" cy="62" r="34" stroke="currentColor" stroke-width="2"/>' +
+      '<circle cx="60" cy="62" r="26" stroke="currentColor" stroke-width="1" opacity=".5"/>' +
+      '<rect x="52" y="20" width="16" height="10" rx="2" stroke="currentColor" stroke-width="2"/>' +
+      '<rect x="52" y="94" width="16" height="10" rx="2" stroke="currentColor" stroke-width="2"/>' +
+      '<rect x="91" y="57" width="9" height="10" rx="2" stroke="currentColor" stroke-width="2"/>' +
+      '<line x1="60" y1="62" x2="60" y2="44" stroke="currentColor" stroke-width="2"/>' +
+      '<line x1="60" y1="62" x2="74" y2="62" stroke="currentColor" stroke-width="2"/>' +
+      '<text x="60" y="118" class="pm" fill="currentColor">foto pendiente</text>' +
+      '</svg>';
+  }
+  function media(reloj, phClass){
+    if(reloj.fotos && reloj.fotos.length){
+      return '<img src="'+reloj.fotos[0]+'" alt="'+reloj.marca+' '+reloj.modelo+'">';
+    }
+    return placeholder();
+  }
+
+  // ---- Render de tarjetas ----
+  var grid = document.getElementById('grid');
+  var currentFilter = 'todos';
+
+  function render(){
+    var list = R.filter(function(r){ return currentFilter==='todos' || r.disponibilidad===currentFilter; });
+    // orden: disponibles primero, luego apartados, luego vendidos
+    var ord = {disponible:0, apartado:1, vendido:2};
+    list.sort(function(a,b){ return ord[a.disponibilidad]-ord[b.disponibilidad]; });
+
+    grid.innerHTML = list.map(function(r){
+      return '<button class="card'+(r.disponibilidad==='vendido'?' is-sold':'')+'" data-id="'+r.id+'">' +
+        '<div class="thumb">' +
+          '<span class="badge '+r.disponibilidad+'">'+ESTADO_LABEL[r.disponibilidad]+'</span>' +
+          media(r) +
+        '</div>' +
+        '<div class="cbody">' +
+          '<div class="cbrand">'+r.marca+'</div>' +
+          '<div class="cmodel">'+r.modelo+'</div>' +
+          '<div class="cspecs">ref. '+r.referencia+' · '+r.anio+' · '+r.caja_mm+' mm</div>' +
+          '<div class="crow"><span class="cprice">'+money(r.precio)+'</span>' +
+          '<span class="ccond">'+r.estado+'</span></div>' +
+        '</div>' +
+      '</button>';
+    }).join('');
+
+    document.getElementById('count').textContent = list.length + ' ' + (list.length===1?'pieza':'piezas');
+  }
+
+  // conteos por estado
+  ['todos','disponible','apartado','vendido'].forEach(function(f){
+    var el = document.querySelector('[data-count="'+f+'"]');
+    if(el) el.textContent = f==='todos' ? R.length : R.filter(function(r){return r.disponibilidad===f}).length;
+  });
+
+  // ---- Filtros ----
+  document.getElementById('controls').addEventListener('click', function(e){
+    var btn = e.target.closest('.chip'); if(!btn) return;
+    currentFilter = btn.dataset.filter;
+    document.querySelectorAll('.chip').forEach(function(c){ c.setAttribute('aria-pressed', c===btn); });
+    render();
+  });
+
+  // ---- Modal ----
+  var modal = document.getElementById('modal'), inner = document.getElementById('modalInner'), lastFocus=null;
+
+  function openModal(id){
+    var r = R.find(function(x){return x.id===id}); if(!r) return;
+    lastFocus = document.activeElement;
+    var sold = r.disponibilidad==='vendido';
+    inner.innerHTML =
+      '<div class="m-hero">'+
+        '<button class="m-close" aria-label="Cerrar">✕</button>'+
+        '<span class="badge '+r.disponibilidad+'" style="top:12px;left:12px">'+ESTADO_LABEL[r.disponibilidad]+'</span>'+
+        media(r)+
+      '</div>'+
+      '<div class="m-body">'+
+        '<div class="m-brand">'+r.marca+'</div>'+
+        '<h3 class="m-model">'+r.modelo+'</h3>'+
+        (r.nota_aviacion ? '<div class="m-aviation"><span class="ic">✈</span><span>'+r.nota_aviacion+'</span></div>' : '')+
+        '<p class="m-desc">'+r.descripcion+'</p>'+
+        '<div class="specs">'+
+          '<div><div class="k">Referencia</div><div class="v">'+r.referencia+'</div></div>'+
+          '<div><div class="k">Año</div><div class="v">'+r.anio+'</div></div>'+
+          '<div><div class="k">Caja</div><div class="v">'+r.caja_mm+' mm</div></div>'+
+          '<div><div class="k">Material</div><div class="v">'+r.material+'</div></div>'+
+          '<div><div class="k">Condición</div><div class="v">'+r.estado+'</div></div>'+
+          '<div><div class="k">Incluye</div><div class="v">'+r.incluye+'</div></div>'+
+        '</div>'+
+        '<div class="m-foot">'+
+          '<div class="m-price"><small>Precio</small>'+money(r.precio)+'</div>'+
+          (sold
+            ? '<a class="wa sold" href="'+waLink(r)+'" target="_blank" rel="noopener">Preguntar por similares</a>'
+            : '<a class="wa" href="'+waLink(r)+'" target="_blank" rel="noopener">'+waIcon()+' Preguntar por WhatsApp</a>')+
+        '</div>'+
+      '</div>';
+    modal.classList.add('open');
+    document.body.style.overflow='hidden';
+    inner.querySelector('.m-close').focus();
+  }
+  function closeModal(){
+    modal.classList.remove('open'); document.body.style.overflow='';
+    if(lastFocus) lastFocus.focus();
+  }
+  function waIcon(){
+    return '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.82 9.82 0 001.519 5.261l-.999 3.648 3.969-1.013zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.521-.074-.149-.669-1.611-.916-2.206-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>';
+  }
+
+  grid.addEventListener('click', function(e){
+    var card = e.target.closest('.card'); if(card) openModal(card.dataset.id);
+  });
+  modal.addEventListener('click', function(e){
+    if(e.target===modal || e.target.closest('.m-close')) closeModal();
+  });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape' && modal.classList.contains('open')) closeModal(); });
+
+  // ---- Contacto ----
+  document.getElementById('contactIntro').textContent =
+    'El agente soy yo. Escríbeme directo por WhatsApp para precio, fotos adicionales, ' +
+    'videos o para apartar una pieza. También compro y recibo relojes a consignación.';
+  document.getElementById('clinks').innerHTML =
+    '<a class="clink" href="'+waLink(null)+'" target="_blank" rel="noopener">'+waIcon()+' WhatsApp</a>' +
+    (C.instagram ? '<a class="clink" href="https://instagram.com/'+C.instagram+'" target="_blank" rel="noopener">'+
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>@'+C.instagram+'</a>' : '');
+
+  render();
+})();
+</script>
+</body>
+</html>
