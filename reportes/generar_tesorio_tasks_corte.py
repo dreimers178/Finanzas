@@ -13,6 +13,7 @@ SRC=sys.argv[1]; TARGET=sys.argv[2]
 OUT=sys.argv[3] if len(sys.argv)>3 else "/home/user/Finanzas/Tesorio_Tasks_Report_Sep_2026.xlsx"
 y,m=map(int,TARGET.split('-'))
 CUT=(pd.Timestamp(year=y,month=m,day=1,tz='UTC')+pd.offsets.MonthEnd(1)).normalize()+pd.Timedelta(hours=23,minutes=59,seconds=59)
+DCUT=CUT+pd.Timedelta(days=2)  # ventana SLA 2 dias para completar
 def mlabel(s): return datetime.strptime(s,'%Y-%m').strftime('%b - %y')
 last3=[(pd.Timestamp(year=y,month=m,day=1)-pd.offsets.MonthBegin(k)).strftime('%Y-%m') for k in (2,1,0)]
 
@@ -21,8 +22,8 @@ df['c']=pd.to_datetime(df['Created At'],utc=True,errors='coerce')
 df['d']=pd.to_datetime(df['Completed At'],utc=True,errors='coerce')
 df=df[df['c'].notna() & (df['c']<=CUT)].copy()
 df['Priority']=df['Priority'].fillna('').astype(str).str.replace('_',' ',regex=False)
-df['hasres']=(df['Status']=='DONE') & df['d'].notna() & (df['d']<=CUT)
-df['st']=((df['Status']=='DONE') & (df['d'].isna() | (df['d']<=CUT))).map({True:'DONE',False:'TO DO'})
+df['hasres']=(df['Status']=='DONE') & df['d'].notna() & (df['d']<=DCUT)
+df['st']=((df['Status']=='DONE') & (df['d'].isna() | (df['d']<=DCUT))).map({True:'DONE',False:'TO DO'})
 
 hfill=PatternFill("solid",fgColor="1F3864"); sfill=PatternFill("solid",fgColor="2E5496")
 hfont=Font(name="Arial",bold=True,color="FFFFFF",size=11); sfont=hfont
@@ -49,7 +50,7 @@ for _,row in df.iterrows():
     dz.cell(r,7).number_format='0.0'; dz.cell(r,8).number_format='0.0'
     dz.cell(r,9,row['c'].strftime('%Y-%m'))
     if row['st'] in ('TO DO','WORKING'):
-        dz.cell(r,10, max((CUT.date()-row['c'].date()).days,0)); dz.cell(r,10).number_format='0'
+        dz.cell(r,10, max((DCUT.date()-row['c'].date()).days,0)); dz.cell(r,10).number_format='0'
     for c in range(1,11):
         cc=dz.cell(r,c); cc.font=cfont; cc.border=border; cc.alignment=left if c in (1,2,3,4) else center
     r+=1
@@ -119,7 +120,7 @@ chart=BarChart(); chart.type="col"; chart.title="Avg. resolution days by month";
 chart.add_data(Reference(ws,min_col=8,min_row=5,max_row=totrow-1),titles_from_data=True)
 chart.set_categories(Reference(ws,min_col=4,min_row=6,max_row=totrow-1)); ws.add_chart(chart,"A24")
 ws.freeze_panes="A3"
-op=df[df['st']=='TO DO'].copy(); op['ab']=op['c'].apply(lambda x:max((CUT.date()-x.date()).days,0)); op=op.sort_values('ab',ascending=False)
+op=df[df['st']=='TO DO'].copy(); op['ab']=op['c'].apply(lambda x:max((DCUT.date()-x.date()).days,0)); op=op.sort_values('ab',ascending=False)
 pz=wb.create_sheet("Open & In Progress"); pz.sheet_view.showGridLines=False
 pz['A1']=f"OPEN AT {TL} MONTH-END — not completed by month-end"; pz['A1'].font=Font(name="Arial",bold=True,size=14,color="1F3864")
 cols=["Invoice Number","Status","Priority","Assigned by","Created At","Days open"]
@@ -141,7 +142,7 @@ for _,row in op.iterrows():
 for i,w in enumerate([16,12,15,16,14,12],1): pz.column_dimensions[get_column_letter(i)].width=w
 pz.freeze_panes="A4"
 comp=df[df['st']=='DONE'].copy(); comp['dias']=(comp['d']-comp['c']).dt.total_seconds()/86400; comp['mes']=comp['c'].dt.strftime('%Y-%m')
-slow=comp[(comp['mes']==TARGET)&(comp['dias']>=2)].sort_values('dias',ascending=False)
+slow=comp[(comp['mes']==TARGET)&(comp['dias']>2)].sort_values('dias',ascending=False)
 sz=wb.create_sheet(f"Slow Tasks {TL} (>2d)"); sz.sheet_view.showGridLines=False
 sz['A1']=f"{TL} TASKS RESOLVED IN MORE THAN 2 DAYS"; sz['A1'].font=Font(name="Arial",bold=True,size=14,color="1F3864")
 cols=["Invoice Number","Priority","Assigned by","Created At","Completed At","Resolution days"]

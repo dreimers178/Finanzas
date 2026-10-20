@@ -16,6 +16,7 @@ SRC=sys.argv[1]; TARGET=sys.argv[2]
 OUT=sys.argv[3] if len(sys.argv)>3 else "/home/user/Finanzas/Portal_Uploads_Report_Sep_2026.xlsx"
 y,m=map(int,TARGET.split('-'))
 CUT=(pd.Timestamp(year=y,month=m,day=1)+pd.offsets.MonthEnd(1)).normalize()+pd.Timedelta(hours=23,minutes=59,seconds=59)
+DCUT=CUT+pd.Timedelta(days=2)  # ventana SLA 2 dias para resolver
 def mlabel(s): return datetime.strptime(s,'%Y-%m').strftime('%b - %y')
 last3=[(pd.Timestamp(year=y,month=m,day=1)-pd.offsets.MonthBegin(k)).strftime('%Y-%m') for k in (2,1,0)]
 
@@ -34,7 +35,7 @@ df['Timestamp']=pd.to_datetime(df['Timestamp'],errors='coerce')
 df['Message Timestamp']=pd.to_datetime(df['Message Timestamp'],errors='coerce')
 df=df[df['Timestamp'].notna() & (df['Timestamp']<=CUT)].copy()
 df['portal']=df['Portal Name or Link'].apply(norm)
-df['hasres']=df['Message Timestamp'].notna() & (df['Message Timestamp']<=CUT)
+df['hasres']=df['Message Timestamp'].notna() & (df['Message Timestamp']<=DCUT)
 df['st']=df['hasres'].map({True:'RESOLVED',False:'OPEN'})
 df['mes']=df['Timestamp'].dt.strftime('%Y-%m')
 # portales a nombrar en la tabla (>=2 en el mes objetivo)
@@ -70,7 +71,7 @@ for _,row in df.iterrows():
     dz.cell(r,8).number_format='0.0'; dz.cell(r,9).number_format='0.0'
     dz.cell(r,10,row['mes'])
     if not row['hasres']:
-        dz.cell(r,11, max((CUT.date()-row['Timestamp'].date()).days,0)); dz.cell(r,11).number_format='0'
+        dz.cell(r,11, max((DCUT.date()-row['Timestamp'].date()).days,0)); dz.cell(r,11).number_format='0'
     for c in range(1,12):
         cc=dz.cell(r,c); cc.font=cfont; cc.border=border; cc.alignment=left if c in (1,2,3,4,5) else center
     r+=1
@@ -145,7 +146,7 @@ chart.set_categories(Reference(ws,min_col=4,min_row=6,max_row=totrow-1)); ws.add
 ws.freeze_panes="A3"
 
 op=df[(df['st']=='OPEN') & (df['mes']==TARGET)].copy()
-op['ab']=op['Timestamp'].apply(lambda x:max((CUT.date()-x.date()).days,0)); op=op.sort_values('ab',ascending=False)
+op['ab']=op['Timestamp'].apply(lambda x:max((DCUT.date()-x.date()).days,0)); op=op.sort_values('ab',ascending=False)
 pz=wb.create_sheet("Open & In Progress"); pz.sheet_view.showGridLines=False
 pz['A1']=f"OPEN AT {TL} MONTH-END — not resolved by month-end"; pz['A1'].font=Font(name="Arial",bold=True,size=14,color="1F3864")
 cols=["Invoice Number","Portal","Submitted By","Collector assigned","Submit Timestamp","Days open"]
@@ -169,7 +170,7 @@ for i,w in enumerate([20,16,18,16,16,10],1): pz.column_dimensions[get_column_let
 pz.freeze_panes="A4"
 
 rr=df[df['hasres']].copy(); rr['dias']=(rr['Message Timestamp']-rr['Timestamp']).dt.total_seconds()/86400
-slow=rr[(rr['mes']==TARGET)&(rr['dias']>=2)].sort_values('dias',ascending=False)
+slow=rr[(rr['mes']==TARGET)&(rr['dias']>2)].sort_values('dias',ascending=False)
 sz=wb.create_sheet(f"Slow Uploads {TL} (>2d)"); sz.sheet_view.showGridLines=False
 sz['A1']=f"{TL} UPLOADS RESOLVED IN MORE THAN 2 DAYS"; sz['A1'].font=Font(name="Arial",bold=True,size=14,color="1F3864")
 cols=["Invoice Number","Portal","Submitted By","Collector assigned","Submit Timestamp","Resolved Timestamp","Resolution days"]

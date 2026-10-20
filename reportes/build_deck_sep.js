@@ -52,50 +52,39 @@ monthTable(s,[
  ["Jul - 26","62","61","2.9","77%"],
  ["Aug - 26","46","43","1.7","81%"],
  ["Sep - 26","85","73","0.7","85%"]],0.5,3.12,5.0,[1.15,1.0,1.0,0.9,0.95]);
-tblTitle(s,"Resolution distribution",5.9,2.78,3.8);
-dataTable(s,[
- ["Range","# Uploads","% of total"],
- ["Same day (< 24 h)","62","84.9%"],
- ["1 – 2 days","10","13.7%"],
- ["2 – 4 days","0","0.0%"],
- ["4 – 7 days","0","0.0%"],
- ["More than 7 days","1","1.4%"],
- ["TOTAL","73","100%"]],5.9,3.15,3.8,[1.9,1.0,0.9],0.3,11);
+s.addChart(p.ChartType.doughnut,[{name:"Distribution",labels:["Same day","1-2 d","2-4 d","4-7 d",">7 d"],values:[62,10,0,0,1]}],
+ {x:5.9,y:2.7,w:3.8,h:2.55,chartColors:[GREENA,TEAL,BLUE,ORANGE,PURPLE],
+  showLegend:true,legendPos:"r",legendColor:DARK,legendFontFace:FB,legendFontSize:10,
+  showTitle:true,title:"Resolution distribution (%)",titleColor:GREEN,titleFontFace:FH,titleFontSize:13,
+  showPercent:true,showValue:false,dataLabelColor:WHITE,dataLabelFontFace:FB,dataLabelFontSize:9,holeSize:58});
 s.addNotes(
-"Portal Uploads — the whole team's work: submitting our clients' invoices across every customer portal. Numbers are cut off at September 30 (October excluded).\n"+
-"In September we handled 85 upload requests and resolved 73 within the month, at 0.7 days on average and 85% resolved same-day.\n"+
+"Portal Uploads — the whole team's work: submitting our clients' invoices across every customer portal. Scope: tasks created through September 30, with a 2-day SLA window to resolve (completed through October 2).\n"+
+"In September we handled 85 upload requests and resolved 73, at 0.7 days on average and 85% resolved same-day.\n"+
 "The trend keeps improving: 2.9 days in July, 1.7 in August, 0.7 in September.\n"+
 "The donut shows how fast we close them — the large majority are same-day.");
 
 // ===== SLIDE 2: Tesorio Tasks · Sep - 26 =====
 s=p.addSlide(); s.background={color:WHITE}; header(s);
 slideTitle(s,"Tesorio Tasks  ·  Sep - 26");
-kpiCard(s,0.5,1.45,2.15,"170","Completed",BLUE);
-kpiCard(s,2.78,1.45,2.15,"0.8 d","Avg. resolution",ORANGE);
-kpiCard(s,5.06,1.45,2.15,"80%","Same-day",GREENA);
-kpiCard(s,7.34,1.45,2.15,"72","Open (Sep 30)",MINT);
+kpiCard(s,0.5,1.45,2.15,"204","Completed",BLUE);
+kpiCard(s,2.78,1.45,2.15,"1.1 d","Avg. resolution",ORANGE);
+kpiCard(s,5.06,1.45,2.15,"67%","Same-day",GREENA);
+kpiCard(s,7.34,1.45,2.15,"38","Open (Oct 2)",MINT);
 s.addText("Resolution time by month",{x:0.5,y:2.75,w:5,h:0.32,fontFace:FH,fontSize:13,bold:true,color:GREEN,isTextBox:true,margin:0});
 monthTable(s,[
  ["Month","Created","Completed","Avg. days","% same day"],
  ["Jul - 26","80","80","3.9","72%"],
  ["Aug - 26","53","53","4.1","68%"],
- ["Sep - 26","240","170","0.8","80%"]],0.5,3.12,5.0,[1.15,1.0,1.05,0.9,0.9]);
-tblTitle(s,"Invoices by portal (platforms we use most)",5.9,2.6,3.8);
-dataTable(s,[
- ["Portal","# Upl.","%","Avg d","% SD"],
- ["Coupa","28","32.9%","0.3","92%"],
- ["Ariba","18","21.2%","0.5","86%"],
- ["Taulia","9","10.6%","0.4","78%"],
- ["URL","6","7.1%","0.7","60%"],
- ["Chorus Pro","5","5.9%","5.2","40%"],
- ["Oracle","3","3.5%","0.6","100%"],
- ["Ivalua","3","3.5%","0.6","100%"],
- ["Vendors@Gov","2","2.4%","0.6","100%"],
- ["Other","11","12.9%","0.2","100%"],
- ["TOTAL","85","100%","0.7","85%"]],5.9,2.92,3.8,[1.25,0.6,0.7,0.6,0.65],0.235,9);
+ ["Sep - 26","240","204","1.1","67%"]],0.5,3.12,5.0,[1.15,1.0,1.05,0.9,0.9]);
+s.addChart(p.ChartType.bar,[{name:"Invoices",labels:["Coupa","Ariba","Taulia","URL","Chorus Pro","Oracle"],values:[28,18,9,6,5,3]}],
+ {x:5.9,y:2.7,w:3.8,h:2.55,barDir:"bar",chartColors:[GREEN],
+  showLegend:false,showTitle:true,title:"Invoices by portal (platforms we use most)",titleColor:GREEN,titleFontFace:FH,titleFontSize:12,
+  catAxisLabelColor:MUTED,catAxisLabelFontFace:FB,catAxisLabelFontSize:10,
+  valAxisHidden:true,valGridLine:{style:"none"},catGridLine:{style:"none"},
+  showValue:true,dataLabelColor:DARK,dataLabelFontFace:FB,dataLabelFontSize:10,dataLabelPosition:"outEnd"});
 s.addNotes(
-"Tesorio Tasks — how we track that same portal work end to end. Cut off at September 30.\n"+
-"In September we completed 170 tasks within the month at 0.8 days on average, 80% same-day, with 72 still open at month-end (most resolved in early October).\n"+
+"Tesorio Tasks — how we track that same portal work end to end. Scope: created through September 30, with a 2-day SLA window to resolve (completed through October 2).\n"+
+"In September we completed 204 tasks at 1.1 days on average, 67% same-day, with 38 still open past the SLA window. The 2-day window captures the many tasks created on Sep 30 that closed on Oct 1-2.\n"+
 "The bar chart shows which platforms we use most: Coupa and Ariba carry the bulk of our volume, then Taulia.\n"+
 "Opportunity: the slowest cases are URL-based ones with no standing access — getting access set up up front closes that gap. Speed and accuracy here get us paid faster and bring down DSO, while making it easier for the client to process and pay.");
 
