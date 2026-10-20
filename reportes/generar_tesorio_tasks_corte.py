@@ -1,0 +1,166 @@
+#!/usr/bin/env python3
+"""Tesorio Tasks Report de un mes con CORTE a fin de mes (English)."""
+import sys
+from datetime import datetime
+import pandas as pd
+from openpyxl import Workbook
+from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
+from openpyxl.utils import get_column_letter
+from openpyxl.chart import BarChart, Reference
+from openpyxl.workbook.properties import CalcProperties
+
+SRC=sys.argv[1]; TARGET=sys.argv[2]
+OUT=sys.argv[3] if len(sys.argv)>3 else "/home/user/Finanzas/Tesorio_Tasks_Report_Sep_2026.xlsx"
+y,m=map(int,TARGET.split('-'))
+CUT=(pd.Timestamp(year=y,month=m,day=1,tz='UTC')+pd.offsets.MonthEnd(1)).normalize()+pd.Timedelta(hours=23,minutes=59,seconds=59)
+def mlabel(s): return datetime.strptime(s,'%Y-%m').strftime('%b - %y')
+last3=[(pd.Timestamp(year=y,month=m,day=1)-pd.offsets.MonthBegin(k)).strftime('%Y-%m') for k in (2,1,0)]
+
+df=pd.read_csv(SRC, dtype=str)
+df['c']=pd.to_datetime(df['Created At'],utc=True,errors='coerce')
+df['d']=pd.to_datetime(df['Completed At'],utc=True,errors='coerce')
+df=df[df['c'].notna() & (df['c']<=CUT)].copy()
+df['Priority']=df['Priority'].fillna('').astype(str).str.replace('_',' ',regex=False)
+df['hasres']=(df['Status']=='DONE') & df['d'].notna() & (df['d']<=CUT)
+df['st']=((df['Status']=='DONE') & (df['d'].isna() | (df['d']<=CUT))).map({True:'DONE',False:'TO DO'})
+
+hfill=PatternFill("solid",fgColor="1F3864"); sfill=PatternFill("solid",fgColor="2E5496")
+hfont=Font(name="Arial",bold=True,color="FFFFFF",size=11); sfont=hfont
+cfont=Font(name="Arial",size=10); bfont=Font(name="Arial",bold=True,size=10)
+kfont=Font(name="Arial",bold=True,size=14,color="1F3864")
+center=Alignment(horizontal="center",vertical="center"); left=Alignment(horizontal="left",vertical="center")
+thin=Side(style="thin",color="D9D9D9"); border=Border(left=thin,right=thin,top=thin,bottom=thin)
+red=PatternFill("solid",fgColor="F4CCCC"); yel=PatternFill("solid",fgColor="FFF2CC")
+DFMT='dd-mmm-yy'
+wb=Workbook()
+dz=wb.active; dz.title="Data (calc)"
+dcols=["Invoice Number","Status","Priority","Assigned by","Created At","Completed At","Resolution (hrs)","Resolution (days)","Month (created)","Days open"]
+for c,h in enumerate(dcols,1):
+    cell=dz.cell(1,c,h); cell.fill=hfill; cell.font=hfont; cell.alignment=center; cell.border=border
+r=2
+for _,row in df.iterrows():
+    dz.cell(r,1,row.get('Invoice Number') if pd.notna(row.get('Invoice Number')) else "")
+    dz.cell(r,2,row['st']); dz.cell(r,3,row['Priority'])
+    dz.cell(r,4,row['Assigned by'] if pd.notna(row['Assigned by']) else "")
+    ts=dz.cell(r,5,row['c'].tz_localize(None).to_pydatetime()); ts.number_format=DFMT
+    if row['hasres']:
+        me=dz.cell(r,6,row['d'].tz_localize(None).to_pydatetime()); me.number_format=DFMT
+        h=(row['d']-row['c']).total_seconds()/3600; dz.cell(r,7,round(h,1)); dz.cell(r,8,round(h/24,1))
+    dz.cell(r,7).number_format='0.0'; dz.cell(r,8).number_format='0.0'
+    dz.cell(r,9,row['c'].strftime('%Y-%m'))
+    if row['st'] in ('TO DO','WORKING'):
+        dz.cell(r,10, max((CUT.date()-row['c'].date()).days,0)); dz.cell(r,10).number_format='0'
+    for c in range(1,11):
+        cc=dz.cell(r,c); cc.font=cfont; cc.border=border; cc.alignment=left if c in (1,2,3,4) else center
+    r+=1
+LAST=r-1
+for i,w in enumerate([16,10,15,16,14,14,15,15,13,12],1): dz.column_dimensions[get_column_letter(i)].width=w
+dz.freeze_panes="A2"
+D="'Data (calc)'"; ST=f"{D}!$B$2:$B${LAST}"; PRI=f"{D}!$C$2:$C${LAST}"
+HRS=f"{D}!$G$2:$G${LAST}"; DAYS=f"{D}!$H$2:$H${LAST}"; MES=f"{D}!$I$2:$I${LAST}"
+ws=wb.create_sheet("Tesorio Tasks Report", 0); ws.sheet_view.showGridLines=False
+TL=mlabel(TARGET)
+def title(cell,txt): ws[cell]=txt; ws[cell].font=sfont; ws[cell].fill=sfill; ws[cell].alignment=left
+def hdr(row,cols,sc=1):
+    for i,h in enumerate(cols):
+        cell=ws.cell(row,sc+i,h); cell.fill=hfill; cell.font=hfont; cell.alignment=center; cell.border=border
+def box(row,col,val,fmt='General',font=cfont,al=center):
+    cell=ws.cell(row,col,val); cell.font=font; cell.alignment=al; cell.number_format=fmt; cell.border=border; return cell
+ws['A1']=f"TESORIO TASKS REPORT — {TL}"; ws['A1'].font=Font(name="Arial",bold=True,size=16,color="1F3864")
+title('A4',f"  {TL} SUMMARY")
+kpis=[("Created in month",f'=COUNTIF({MES},"{TARGET}")','0'),
+ ("Completed (DONE)",f'=COUNTIFS({MES},"{TARGET}",{HRS},">=0")','0'),
+ ("Avg. resolution (days)",f'=IFERROR(ROUND(AVERAGEIF({MES},"{TARGET}",{DAYS}),1),0)','0.0'),
+ ("% same day",f'=IFERROR(COUNTIFS({MES},"{TARGET}",{HRS},"<24")/COUNTIFS({MES},"{TARGET}",{HRS},">=0"),0)','0.0%'),
+ ("Pending (TO DO) at month-end",f'=COUNTIF({ST},"TO DO")','0'),
+ ("In progress (WORKING)",f'=COUNTIF({ST},"WORKING")','0')]
+r=5
+for lbl,frm,fmt in kpis:
+    ws.cell(r,1,lbl).font=cfont; ws.cell(r,1).alignment=left; ws.cell(r,1).border=border
+    box(r,2,frm,fmt,kfont); r+=1
+ws.column_dimensions['A'].width=30; ws.column_dimensions['B'].width=14
+title('D4',"  RESOLUTION TIME BY MONTH (last 3 months)")
+hdr(5,["Month","# Created","Completed","Avg. hours","Avg. days","% same day"],4)
+r=6
+for mm in last3:
+    box(r,4,mlabel(mm),'General',bfont,left)
+    box(r,5,f'=COUNTIF({MES},"{mm}")','0'); box(r,6,f'=COUNTIFS({MES},"{mm}",{HRS},">=0")','0')
+    box(r,7,f'=IFERROR(ROUND(AVERAGEIF({MES},"{mm}",{HRS}),1),0)','0.0')
+    box(r,8,f'=IFERROR(ROUND(AVERAGEIF({MES},"{mm}",{DAYS}),1),0)','0.0')
+    box(r,9,f'=IFERROR(COUNTIFS({MES},"{mm}",{HRS},"<24")/COUNTIFS({MES},"{mm}",{HRS},">=0"),0)','0.0%'); r+=1
+box(r,4,"TOTAL",'General',bfont,left); box(r,5,f'=SUM(E6:E{r-1})','0',bfont); box(r,6,f'=SUM(F6:F{r-1})','0',bfont)
+box(r,7,f'=IFERROR(ROUND(AVERAGEIFS({HRS},{MES},">={last3[0]}"),1),0)','0.0',bfont)
+box(r,8,f'=IFERROR(ROUND(AVERAGEIFS({DAYS},{MES},">={last3[0]}"),1),0)','0.0',bfont)
+box(r,9,f'=IFERROR(COUNTIFS({MES},">={last3[0]}",{HRS},"<24")/COUNTIFS({MES},">={last3[0]}",{HRS},">=0"),0)','0.0%',bfont)
+totrow=r
+for col,w in zip(['D','E','F','G','H','I'],[11,11,12,12,11,12]): ws.column_dimensions[col].width=w
+title('A15',f"  RESOLUTION TIME DISTRIBUTION — {TL}")
+hdr(16,["Range","# Tasks","% of total"])
+buckets=[("Same day (< 24 h)",'"<24"'),("1 – 2 days",f'">=24",{HRS},"<48"'),("2 – 4 days",f'">=48",{HRS},"<96"'),("4 – 7 days",f'">=96",{HRS},"<168"'),("More than 7 days",'">=168"')]
+r=17; first=r
+for lbl,cond in buckets:
+    box(r,1,lbl,'General',cfont,left); box(r,2,f'=COUNTIFS({MES},"{TARGET}",{HRS},{cond})','0')
+    box(r,3,f'=IFERROR(B{r}/COUNTIFS({MES},"{TARGET}",{HRS},">=0"),0)','0.0%'); r+=1
+box(r,1,"TOTAL",'General',bfont,left); box(r,2,f'=SUM(B{first}:B{r-1})','0',bfont)
+box(r,3,f'=IFERROR(B{r}/COUNTIFS({MES},"{TARGET}",{HRS},">=0"),0)','0.0%',bfont)
+title('D15',f"  RESOLUTION TIME BY PRIORITY — {TL}")
+hdr(16,["Priority","# Tasks","% of total","Avg. days","% same day"],4)
+prios=["URGENT","HIGH PRIORITY","NORMAL"]; TOT=f'COUNTIFS({MES},"{TARGET}",{HRS},">=0")'; r=17
+for pp in prios:
+    box(r,4,pp,'General',cfont,left)
+    box(r,5,f'=COUNTIFS({PRI},"{pp}",{MES},"{TARGET}",{HRS},">=0")','0')
+    box(r,6,f'=IFERROR(COUNTIFS({PRI},"{pp}",{MES},"{TARGET}",{HRS},">=0")/{TOT},0)','0.0%')
+    box(r,7,f'=IFERROR(ROUND(AVERAGEIFS({DAYS},{PRI},"{pp}",{MES},"{TARGET}"),1),0)','0.0')
+    box(r,8,f'=IFERROR(COUNTIFS({PRI},"{pp}",{MES},"{TARGET}",{HRS},"<24")/COUNTIFS({PRI},"{pp}",{MES},"{TARGET}",{HRS},">=0"),0)','0.0%'); r+=1
+box(r,4,"TOTAL",'General',bfont,left); box(r,5,f'={TOT}','0',bfont); box(r,6,'100%','0%',bfont)
+box(r,7,f'=IFERROR(ROUND(AVERAGEIF({MES},"{TARGET}",{DAYS}),1),0)','0.0',bfont)
+box(r,8,f'=IFERROR(COUNTIFS({MES},"{TARGET}",{HRS},"<24")/{TOT},0)','0.0%',bfont)
+chart=BarChart(); chart.type="col"; chart.title="Avg. resolution days by month"; chart.height=7; chart.width=13; chart.legend=None
+chart.add_data(Reference(ws,min_col=8,min_row=5,max_row=totrow-1),titles_from_data=True)
+chart.set_categories(Reference(ws,min_col=4,min_row=6,max_row=totrow-1)); ws.add_chart(chart,"A24")
+ws.freeze_panes="A3"
+op=df[df['st']=='TO DO'].copy(); op['ab']=op['c'].apply(lambda x:max((CUT.date()-x.date()).days,0)); op=op.sort_values('ab',ascending=False)
+pz=wb.create_sheet("Open & In Progress"); pz.sheet_view.showGridLines=False
+pz['A1']=f"OPEN AT {TL} MONTH-END — not completed by month-end"; pz['A1'].font=Font(name="Arial",bold=True,size=14,color="1F3864")
+cols=["Invoice Number","Status","Priority","Assigned by","Created At","Days open"]
+for c,h in enumerate(cols,1):
+    cell=pz.cell(3,c,h); cell.fill=hfill; cell.font=hfont; cell.alignment=center; cell.border=border
+r=4
+for _,row in op.iterrows():
+    pz.cell(r,1,row.get('Invoice Number') if pd.notna(row.get('Invoice Number')) else "")
+    pz.cell(r,2,"TO DO"); pz.cell(r,3,row['Priority']); pz.cell(r,4,row['Assigned by'] if pd.notna(row['Assigned by']) else "")
+    t=pz.cell(r,5,row['c'].tz_localize(None).to_pydatetime()); t.number_format=DFMT
+    dd=pz.cell(r,6,int(row['ab'])); dd.font=bfont
+    if row['ab']>=7: dd.fill=red
+    elif row['ab']>=2: dd.fill=yel
+    for c in range(1,7):
+        cc=pz.cell(r,c); cc.border=border
+        if c!=6: cc.font=cfont
+        cc.alignment=left if c in (1,3,4) else center
+    r+=1
+for i,w in enumerate([16,12,15,16,14,12],1): pz.column_dimensions[get_column_letter(i)].width=w
+pz.freeze_panes="A4"
+comp=df[df['st']=='DONE'].copy(); comp['dias']=(comp['d']-comp['c']).dt.total_seconds()/86400; comp['mes']=comp['c'].dt.strftime('%Y-%m')
+slow=comp[(comp['mes']==TARGET)&(comp['dias']>=2)].sort_values('dias',ascending=False)
+sz=wb.create_sheet(f"Slow Tasks {TL} (>2d)"); sz.sheet_view.showGridLines=False
+sz['A1']=f"{TL} TASKS RESOLVED IN MORE THAN 2 DAYS"; sz['A1'].font=Font(name="Arial",bold=True,size=14,color="1F3864")
+cols=["Invoice Number","Priority","Assigned by","Created At","Completed At","Resolution days"]
+for c,h in enumerate(cols,1):
+    cell=sz.cell(3,c,h); cell.fill=hfill; cell.font=hfont; cell.alignment=center; cell.border=border
+r=4
+for _,row in slow.iterrows():
+    sz.cell(r,1,row.get('Invoice Number') if pd.notna(row.get('Invoice Number')) else "")
+    sz.cell(r,2,row['Priority']); sz.cell(r,3,row['Assigned by'] if pd.notna(row['Assigned by']) else "")
+    t=sz.cell(r,4,row['c'].tz_localize(None).to_pydatetime()); t.number_format=DFMT
+    me=sz.cell(r,5,row['d'].tz_localize(None).to_pydatetime()); me.number_format=DFMT
+    d=sz.cell(r,6); d.value=f'=(E{r}-D{r})'; d.number_format='0.0'; d.fill=red; d.font=bfont
+    for c in range(1,7):
+        cc=sz.cell(r,c); cc.border=border
+        if c!=6: cc.font=cfont
+        cc.alignment=left if c in (1,3) else center
+    r+=1
+for i,w in enumerate([16,15,16,14,14,15],1): sz.column_dimensions[get_column_letter(i)].width=w
+sz.freeze_panes="A4"
+wb.calculation=CalcProperties(calcId=124519, fullCalcOnLoad=True)
+wb.save(OUT)
+print("OK ->",OUT,"| month:",TL,"| last3:",[mlabel(x) for x in last3],"| open:",len(op),"| slow:",len(slow),"| rows:",LAST-1)
