@@ -27,6 +27,10 @@
 >
 > So the ask for the team: let's **stay on top of raising those requests as the invoices become ready**, instead of letting them pile up. If we keep the flow **steady month to month** rather than in bursts, we can submit invoices on time and **avoid overloading the portals team** in certain months."
 
+## Quick reminder — reassigned tasks
+
+> "One quick reminder: some Tesorio tasks I send back and reassign to the collector because something's off with the invoice — missing data, missing info, or no purchase order. Please keep an eye on those and clear them up promptly, so the SLA doesn't keep stretching. Just something to stay on top of and check regularly."
+
 ## Closing
 
 > "To sum up: faster every month, most resolved same-day, and one clear habit to fix — raise the requests steadily so we don't create these peaks. Thank you all — great month. Questions?"
