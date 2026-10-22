@@ -21,7 +21,7 @@
 
 > "Two quick reminders:
 > - I really want to put a spotlight on **Monto's PO report**, shared in our team Slack channel. This is a great tool, and it goes straight at **one of the biggest pain points we've had — getting the POs**. It pulls the POs right from the portals we use, so **if a client hasn't sent you the PO, you can find it there first** instead of chasing it. Please lean on it — it saves real time and keeps invoices moving.
-> - And when an invoice is missing something — a PO or a data point — let's **clear it up quickly** so nothing stalls and the SLA stays tight."
+> - And since September brought such a big volume, it's also a good moment to **review the tasks the portals team had to reassign** because something was missing — a PO or some information. Keeping an eye on those and clearing them up makes the whole process **smoother** and keeps the SLA tight."
 
 ## Closing
 
