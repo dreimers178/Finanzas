@@ -76,12 +76,11 @@ monthTable(s,[
  ["Jul - 26","80","80","3.9","72%"],
  ["Aug - 26","53","53","4.1","68%"],
  ["Sep - 26","240","204","1.1","67%"]],0.5,3.12,5.0,[1.15,1.0,1.05,0.9,0.9]);
-s.addChart(p.ChartType.bar,[{name:"Invoices",labels:["Coupa","Ariba","Taulia","URL","Chorus Pro","Oracle"],values:[28,18,9,6,5,3]}],
- {x:5.9,y:2.7,w:3.8,h:2.55,barDir:"bar",chartColors:[GREEN],
-  showLegend:false,showTitle:true,title:"Invoices by portal (platforms we use most)",titleColor:GREEN,titleFontFace:FH,titleFontSize:12,
-  catAxisLabelColor:MUTED,catAxisLabelFontFace:FB,catAxisLabelFontSize:10,
-  valAxisHidden:true,valGridLine:{style:"none"},catGridLine:{style:"none"},
-  showValue:true,dataLabelColor:DARK,dataLabelFontFace:FB,dataLabelFontSize:10,dataLabelPosition:"outEnd"});
+s.addChart(p.ChartType.doughnut,[{name:"Distribution",labels:["Same day","1-2 d","2-4 d","4-7 d",">7 d"],values:[136,26,37,2,3]}],
+ {x:5.9,y:2.7,w:3.8,h:2.55,chartColors:[GREENA,TEAL,BLUE,ORANGE,PURPLE],
+  showLegend:true,legendPos:"r",legendColor:DARK,legendFontFace:FB,legendFontSize:10,
+  showTitle:true,title:"Resolution distribution (%)",titleColor:GREEN,titleFontFace:FH,titleFontSize:13,
+  showPercent:true,showValue:false,dataLabelColor:WHITE,dataLabelFontFace:FB,dataLabelFontSize:9,holeSize:58});
 s.addNotes(
 "Tesorio Tasks — how we track that same portal work end to end. Scope: created through September 30, with a 2-day SLA window to resolve (completed through October 2).\n"+
 "In September we completed 204 tasks at 1.1 days on average, 67% same-day, with 38 still open past the SLA window. The 2-day window captures the many tasks created on Sep 30 that closed on Oct 1-2.\n"+
