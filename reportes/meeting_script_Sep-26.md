@@ -20,7 +20,7 @@
 ## Friendly reminders
 
 > "Two quick reminders:
-> - We have **Monto's PO report** shared in our team Slack channel — a really useful tool that pulls the POs straight from the portals we use. **If a client hasn't sent you the PO, check there first.** Friendly reminder to lean on it.
+> - I really want to put a spotlight on **Monto's PO report**, shared in our team Slack channel. This is a great tool, and it goes straight at **one of the biggest pain points we've had — getting the POs**. It pulls the POs right from the portals we use, so **if a client hasn't sent you the PO, you can find it there first** instead of chasing it. Please lean on it — it saves real time and keeps invoices moving.
 > - And when an invoice is missing something — a PO or a data point — let's **clear it up quickly** so nothing stalls and the SLA stays tight."
 
 ## Closing
