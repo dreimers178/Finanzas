@@ -69,9 +69,11 @@ page_break(doc)
 heading(doc, "Capítulo 1. Introducción", 1,
         c="Se uniformó la numeración de capítulos con números arábigos (el original mezclaba «Capítulo I» y «Capítulo 2»).")
 heading(doc, "1.1 Antecedentes", 2,
-        c="CAMBIO IMPORTANTE. Seis antecedentes del original no pudieron localizarse en ninguna base de datos ni repositorio "
-          "(García et al., 2019; Gómez, 2008; Morales y Salazar, 2013; Díaz y Ramírez, 2020; Hernández y Gómez, 2018; Mendoza y "
-          "Ruiz, 2021). Algunos tienen datos de revistas que no se encontraron indexadas. Citar trabajos inexistentes o mal "
+        c="CAMBIO IMPORTANTE. Cinco antecedentes del original no pudieron localizarse con los datos citados en ninguna base de datos "
+          "ni repositorio (García et al., 2019; Morales y Salazar, 2013; Díaz y Ramírez, 2020; Hernández y Gómez, 2018; Mendoza y "
+          "Ruiz, 2021). Un sexto, «Gómez (2008)», es en realidad de Olivares y Snel (1998), según tu Zotero, y se restauró con su "
+          "autoría correcta. Varios de los estudios de tu Zotero (p. ej., Vargas; Cutberto Hernández Ramírez) podrían ser las "
+          "fuentes reales de esos antecedentes: si es así, cítalos con sus datos verdaderos. Citar trabajos inexistentes o mal "
           "atribuidos es una falta grave de integridad académica, por lo que se sustituyeron por estudios verificados con DOI o URL "
           "institucional. Se organizan de lo internacional a lo nacional y a lo local. Detalle en el informe de verificación de "
           "referencias. Antes de entregar, LEE cada fuente nueva y confirma que la paráfrasis es fiel.")
@@ -94,8 +96,17 @@ para(doc, "Bermudez y Tucker (2003), en «Trends in dietary patterns of Latin Am
           "esta transición alimentaria presiona a sistemas de salud que aún enfrentan desnutrición y enfermedades infecciosas, y "
           "propusieron la educación de la población sobre alimentación saludable como una de las respuestas prioritarias.",
      c="La referencia original atribuía este artículo a la FAO con una URL (fao.org/4/X0051T) que en realidad corresponde a un "
-       "documento de la FAO de 1998 sobre educación nutricional en primarias. Se corrigió la fuente: Cadernos de Saúde Pública, "
+       "documento de la FAO de 1998 sobre educación nutricional en primarias (Olivares y Snel, 1998, que se agrega como antecedente aparte). Se corrigió la fuente: Cadernos de Saúde Pública, "
        "19(Supl. 1), S87–S99.")
+para(doc, "Olivares y Snel (1998), en la serie *Alimentación, Nutrición y Agricultura* de la FAO, presentaron los resultados de "
+          "una encuesta elaborada por la FAO y el Centro de Nutrición de los Países Bajos sobre la situación de la educación en "
+          "nutrición en escuelas primarias de países en desarrollo. Documentaron las políticas oficiales de los ministerios, el "
+          "tiempo dedicado al tema, que entre los países que respondieron iba de 3 a 32 horas al año, el papel de los docentes como "
+          "principales responsables de impartirlo y los principales obstáculos para su aplicación. Este trabajo evidencia que la "
+          "presencia de contenidos nutricionales en el currículo no garantiza su enseñanza sistemática.",
+     c="RESTAURADO a partir de tu biblioteca de Zotero. El protocolo original lo citaba como «Gómez (2008)», pero el documento "
+       "es de Olivares y Snel (1998), FAO, Alimentación, Nutrición y Agricultura n.º 22. Se ajustó la descripción a lo que el "
+       "documento reporta (encuesta FAO y Centro de Nutrición de los Países Bajos). Verifica las cifras en el PDF.")
 para(doc, "En el ámbito del microaprendizaje, Betancur-Chicué y García-Valcárcel Muñoz-Repiso (2023) realizaron una revisión "
           "sistemática de la literatura publicada entre 2018 y 2021 en Scopus y Web of Science. Señalaron como ventajas del "
           "microaprendizaje que ofrece una vía ágil de formación y que puede reducir la carga cognitiva, y como principal desventaja "
@@ -119,7 +130,7 @@ para(doc, "Shamah-Levy et al. (2017) evaluaron el efecto del programa SaludArte 
           "nutricional de estudiantes de primaria, que es la variable dependiente de la presente investigación.",
      c="Este estudio sustituye a «Díaz y Ramírez (2020)» y a «Morales y Salazar (2013)», que no pudieron verificarse. "
        "DOI 10.21149/8116.")
-para(doc, "Cruz Lara (2022) implementó una intervención de educación nutricional en línea con 30 estudiantes de una primaria "
+para(doc, "Cruz Lara et al. (2022) implementó una intervención de educación nutricional en línea con 30 estudiantes de una primaria "
           "pública del municipio de Veracruz, con un diseño cuasiexperimental de grupo control y grupo de intervención y mediciones "
           "antes y después. El grupo de intervención mejoró significativamente sus conocimientos sobre alimentación y nutrición "
           "(*p* = .04) y mostró cambios en el consumo de agua, leguminosas y lácteos, mientras que el grupo control no presentó "
@@ -273,7 +284,7 @@ para(doc, "La educación alimentaria y nutricional es un componente fundamental 
           "infancia (Food and Agriculture Organization of the United Nations [FAO], 2020; Pérez-Rodrigo y Aranceta, 2003). La "
           "literatura señala que las intervenciones escolares más exitosas están integradas a la vida escolar y se acompañan de "
           "evaluación sistemática (Pérez-Rodrigo y Aranceta, 2001), y estudios mexicanos han documentado incrementos en el "
-          "conocimiento nutricional de escolares tras intervenciones estructuradas (Cruz Lara, 2022; Shamah-Levy et al., 2017). Por "
+          "conocimiento nutricional de escolares tras intervenciones estructuradas (Cruz Lara et al., 2022; Shamah-Levy et al., 2017). Por "
           "otra parte, el microaprendizaje, fundamentado en la teoría de la carga cognitiva y en la teoría del aprendizaje multimedia, "
           "ha mostrado potencial para favorecer la atención y la retención (Betancur-Chicué y García-Valcárcel Muñoz-Repiso, 2023; "
           "Silva et al., 2025). El estudio aporta evidencia sobre la articulación de ambos campos en educación primaria.",
@@ -520,7 +531,7 @@ para(doc, "Los programas escolares de educación nutricional pueden mejorar el c
           "manera sistemática a las actividades educativas (Pérez-Rodrigo y Aranceta, 2001; Shamah-Levy et al., 2017). En México, "
           "estas estrategias pueden apoyarse en la NOM-043-SSA2-2012 y en las Guías Alimentarias Saludables y Sostenibles para la "
           "Población Mexicana (Secretaría de Salud, 2013; SSA et al., 2025). Experiencias recientes muestran, además, la viabilidad de "
-          "la modalidad en línea con escolares de primaria (Cruz Lara, 2022).")
+          "la modalidad en línea con escolares de primaria (Cruz Lara et al., 2022).")
 heading(doc, "2.3 Relación entre el microaprendizaje y el conocimiento nutricional", 2)
 para(doc, "La relación entre ambas variables se fundamenta en que la organización del contenido en unidades breves y estructuradas "
           "reduce la carga cognitiva extrínseca y focaliza la atención en un objetivo por vez (Sweller et al., 2019), lo que favorece "
@@ -751,7 +762,7 @@ para(doc, "Este capítulo se desarrollará una vez concluida la intervención. L
           "objetivos específicos: (a) nivel inicial de conocimiento nutricional (estadística descriptiva de la preprueba); (b) "
           "descripción del taller desarrollado y de su fidelidad de implementación, y (c) comparación entre preprueba y posprueba, "
           "total y por dimensión, con el contraste de hipótesis y el tamaño del efecto. Posteriormente, en la discusión, los "
-          "resultados se compararán con los antecedentes (Cruz Lara, 2022; Shamah-Levy et al., 2017).",
+          "resultados se compararán con los antecedentes (Cruz Lara et al., 2022; Shamah-Levy et al., 2017).",
      c="Se sustituyeron las instrucciones de la plantilla (incluida la indicación de «agregar la prueba de Chi cuadrado», que no "
        "aplica a este diseño) por el plan de presentación de resultados de este estudio.")
 heading(doc, "Capítulo 5. Conclusiones", 1)
@@ -775,8 +786,10 @@ REFS = [
     ("Branch, R. M. (2009). *Instructional design: The ADDIE approach*. Springer. https://doi.org/10.1007/978-0-387-09506-6", "Agregada: se citaba en el texto pero no estaba en la lista."),
     ("Campbell, D. T., y Stanley, J. C. (1966). *Experimental and quasi-experimental designs for research*. Rand McNally.", "Nueva: sustenta la clasificación del diseño."),
     ("Cohen, J. (1988). *Statistical power analysis for the behavioral sciences* (2.ª ed.). Lawrence Erlbaum Associates.", "Nueva: tamaño del efecto y potencia."),
-    ("Cruz Lara, N. M. (2022). ==Intervención educativa nutricional en línea en escolares de primaria del estado de Veracruz==. *Horizonte Sanitario, 21*(3), 403–409. https://doi.org/10.19136/hs.a21n3.4893",
-     "Nueva (sustituye a Mendoza y Ruiz, 2021). Solo se pudo verificar el título en inglés («Online nutritional education intervention in elementary school students in the state of Veracruz»). Copia el título exacto en español desde el artículo."),
+    ("Cruz Lara, N. M., ==[demás autores]== (2022). Intervención de educación nutricional en línea a población infantil en el estado de Veracruz. *Horizonte Sanitario, 21*(3), 403–409. https://doi.org/10.19136/hs.a21n3.4893",
+     "Título en español confirmado con tu Zotero. Zotero lo registra como «Cruz Lara et al.», es decir, con tres o más autores: completa la lista de autores con Zotero."),
+    ("Olivares, ==S.==, y Snel, ==J.== (1998). Educación en nutrición en las escuelas primarias. *Alimentación, Nutrición y Agricultura*, (22), ==[páginas]==. Organización de las Naciones Unidas para la Alimentación y la Agricultura. https://www.fao.org/4/X0051T/X0051t08.htm",
+     "Restaurada desde tu Zotero (antes citada por error como «Gómez, 2008»). Verifica las iniciales y las páginas."),
     ("Escobar-Pérez, J., y Cuervo-Martínez, Á. (2008). Validez de contenido y juicio de expertos: Una aproximación a su utilización. *Avances en Medición, 6*, 27–36.", "Nueva: fundamenta el juicio de expertos."),
     ("Food and Agriculture Organization of the United Nations. (2020). *School-based food and nutrition education: A white paper on the current state, principles, challenges and recommendations for low- and middle-income countries*. https://www.fao.org/platforms/school-food/technical-resources/publications/school-based-food-and-nutrition-education/en",
      "Sustituye a «FAO (2013). Guía de educación alimentaria y nutricional para escuelas», cuyo título no pudo verificarse. Si cuentas con la guía de 2013, verifica sus datos y restáurala."),

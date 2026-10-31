@@ -113,11 +113,11 @@ table(doc, 4, "Estado de las referencias del protocolo original", ["Referencia o
     ["SEP (2021), La Nueva Escuela Mexicana", "Insuficiente", "Remite a un portal general; no sustenta la afirmación", "Eliminada"],
     ["FAO (2013), Guía de EAN para escuelas", "No localizada", "La URL es una página web general, no la guía citada", "Sustituida por FAO (2020)"],
     ["García et al. (2019), Jóvenes en la Ciencia", "No localizada", "No se encontró el artículo, los autores ni la muestra (León, 30 alumnos)", "Eliminada"],
-    ["Gómez (2008), ResearchGate", "No localizada", "El contenido descrito coincide con un documento de la FAO de 1998, no con «Gómez (2008)»", "Eliminada"],
+    ["Gómez (2008), ResearchGate", "Autoría errónea", "Según tu Zotero, la obra es de Olivares y Snel (1998), FAO, Alimentación, Nutrición y Agricultura n.º 22", "Restaurada como Olivares y Snel (1998)"],
     ["Morales y Salazar (2013), CORE", "No localizada", "Título, autores y «15 estudios de caso» no encontrados", "Sustituida por Shamah-Levy et al. (2017)"],
     ["Díaz y Ramírez (2020), Rev. Mex. de Educación y Salud", "No localizada", "No se encontraron ni el artículo ni la revista", "Sustituida por Shamah-Levy et al. (2017)"],
     ["Hernández y Gómez (2018), Rev. Latinoam. de Salud Comunitaria", "No localizada", "No se encontraron ni el artículo ni la revista", "Sustituida por Martínez Villagrana (2023)"],
-    ["Mendoza y Ruiz (2021), Educación y Desarrollo", "No localizada", "No se encontró el artículo", "Sustituida por Cruz Lara (2022)"],
+    ["Mendoza y Ruiz (2021), Educación y Desarrollo", "No localizada", "No se encontró el artículo", "Sustituida por Cruz Lara et al. (2022)"],
     ["Surbakti et al. (2024)", "No verificada", "Revista y DOI sin registro; autores duplicados en la referencia", "Sustituida por Sweller et al. (2019)"],
     ["Mirzaei (2020)", "No localizada", "Citada en el texto, ausente de la lista", "Sustituida por Leong et al. (2021)"],
     ["Vaca-Escobar (2024)", "No localizada", "Citada en el texto, ausente de la lista", "Sustituida por Mayer (2009)"],
@@ -128,7 +128,7 @@ table(doc, 4, "Estado de las referencias del protocolo original", ["Referencia o
     ["UNESCO (2023)", "Verificada (Informe GEM 2023)", "Citada en el texto, ausente de la lista", "Agregada; ==URL=="],
     ["Sweller (1988); Mayer (2009); Siemens (2005); Branch (2009)", "Verificadas", "Citadas en el texto, ausentes de la lista", "Agregadas"],
 ], widths=[6.5, 3.8, 7.7, 5], size=9)
-para(doc, "**Referencias nuevas** (todas verificadas): Aiken (1985); Campbell y Stanley (1966); Cohen (1988); Cruz Lara (2022); "
+para(doc, "**Referencias nuevas** (todas verificadas): Aiken (1985); Campbell y Stanley (1966); Cohen (1988); Cruz Lara et al. (2022); "
           "Escobar-Pérez y Cuervo-Martínez (2008); FAO (2020); González Ruiz et al. (2024, opcional); Hernández-Sampieri y Mendoza "
           "Torres (2018); Kelley y Whatson (2013); Kuder y Richardson (1937); Martínez Villagrana (2023); Penfield y Giacobbi (2004); "
           "Pérez-Rodrigo y Aranceta (2003); Reglamento de la LGS en Materia de Investigación (1987); Shamah-Levy et al. (2017, "
@@ -152,7 +152,7 @@ table(doc, 5, "Observaciones a reactivos específicos", ["Reactivo", "Observaci�
 heading(doc, "7. Pendientes para la autora", 2)
 bullets(doc, [
     "Leer cada fuente nueva y confirmar que la paráfrasis es fiel. Esto es obligatorio antes de entregar.",
-    "Completar los datos resaltados: página final de López Hernández et al.; autores de Shamah-Levy et al. (2023) y de Ubillus-Sambachi et al. (2025); revista de Martínez Villagrana (2023); URL de las Guías 2025 y de UNESCO (2023); título en español de Cruz Lara (2022).",
+    "Completar los datos resaltados: página final de López Hernández et al.; autores de Shamah-Levy et al. (2023) y de Ubillus-Sambachi et al. (2025); revista de Martínez Villagrana (2023); URL de las Guías 2025 y de UNESCO (2023); autores de Cruz Lara et al. (2022); iniciales y páginas de Olivares y Snel (1998).",
     "Decidir con el asesor la denominación del diseño (preexperimental o cuasiexperimental con grupo de comparación).",
     "Definir la modalidad (plataforma en línea con acceso en el aula), las herramientas digitales, y confirmar con la escuela las fechas tentativas (inicio del taller el 25 de enero de 2027).",
     "Registrar a los jueces expertos (incluida la Dra. Verónica Torres, si acepta) y calcular la V de Aiken.",
