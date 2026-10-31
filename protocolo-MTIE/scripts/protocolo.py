@@ -334,14 +334,18 @@ para(doc, "La intervención y la recolección de datos se realizarán en el Inst
        "acompañamiento docente y registro de cápsulas completadas.")
 heading(doc, "Alcance temporal", 3)
 para(doc, "La intervención durará cuatro semanas. Se realizarán dos mediciones: una preprueba antes del taller y una posprueba "
-          "inmediatamente después. La implementación se llevará a cabo ==en el periodo indicado en el cronograma (Tabla 5)==. El "
-          "estudio no contempla una medición de seguimiento.",
-     c="El original indicaba «durante el mes de octubre». A la fecha de esta revisión (31 de octubre de 2026) ese periodo ya "
-       "pasó y el resumen del congreso indica que el instrumento sigue en validación. Ajusta las fechas reales en el cronograma.")
+          "inmediatamente después. La preprueba se aplicará al regreso del periodo vacacional (4 y 5 de "
+          "enero de 2027); el taller se implementará del 6 al 29 de enero de 2027, con su cápsula de cierre el 27 de enero, en el "
+          "marco de la conmemoración del Día del Nutriólogo en México, y la posprueba se aplicará del 1 al 5 de febrero de 2027 "
+          "(fechas tentativas; Tabla 5). El estudio no "
+          "contempla una medición de seguimiento.",
+     c="Fecha actualizada por decisión de la autora: aplicación en enero de 2027, alineada con el Día del Nutriólogo (27 de "
+       "enero). Confirma la fecha de regreso a clases tras las vacaciones de invierno: si es posterior al 4 de enero, la "
+       "preprueba se recorre y el taller se compacta (dos cápsulas por semana) para cerrar el 27 de enero.")
 heading(doc, "Limitaciones", 3)
 para(doc, "El estudio presenta limitaciones que deberán considerarse al interpretar los resultados. En primer lugar, al no contar "
           "con un grupo control, los cambios observados no podrán atribuirse exclusivamente al taller, pues podrían influir factores "
-          "como la historia (p. ej., actividades escolares por el Día Mundial de la Alimentación), la maduración, el efecto de "
+          "como la historia (p. ej., actividades escolares o mediáticas por el Día del Nutriólogo), la maduración, el efecto de "
           "aplicar dos veces el mismo instrumento (efecto de prueba) y la regresión a la media.",
      c="Se nombran las amenazas a la validez interna propias del diseño de un solo grupo (Campbell y Stanley, 1966). Es justo lo "
        "que un comité espera ver cuando no hay grupo control.")
@@ -729,16 +733,17 @@ para(doc, "La evaluación se realizará en tres niveles: (a) **diagnóstica**, c
 heading(doc, "3.9 Cronograma", 2)
 table(doc, 5, "Cronograma de actividades",
       ["Actividad", "Periodo"],
-      [["Juicio de expertos y ajuste del instrumento", "==Noviembre de 2026=="],
+      [["Juicio de expertos y ajuste del instrumento", "Noviembre de 2026"],
        ["Presentación del cartel en el I CITEEA (UAZ)", "19 y 20 de noviembre de 2026"],
-       ["Prueba piloto y análisis de confiabilidad", "==Diciembre de 2026=="],
-       ["Desarrollo de las cápsulas (fase de desarrollo)", "==Diciembre de 2026 – enero de 2027=="],
-       ["Consentimientos, asentimientos y preprueba", "==Enero de 2027=="],
-       ["Implementación del taller (4 semanas)", "==Enero – febrero de 2027=="],
-       ["Posprueba", "==Febrero de 2027=="],
-       ["Análisis de datos y redacción de resultados", "==Marzo – abril de 2027=="]],
+       ["Prueba piloto y análisis de confiabilidad", "1 al 11 de diciembre de 2026"],
+       ["Desarrollo de las cápsulas (fase de desarrollo)", "Noviembre – diciembre de 2026"],
+       ["Entrega y recepción de consentimientos y asentimientos", "30 de noviembre al 11 de diciembre de 2026"],
+       ["Preprueba", "4 y 5 de enero de 2027"],
+       ["Implementación del taller (8 cápsulas; cierre el 27 de enero, Día del Nutriólogo)", "6 al 29 de enero de 2027"],
+       ["Posprueba", "1 al 5 de febrero de 2027"],
+       ["Análisis de datos y redacción de resultados", "Febrero – marzo de 2027"]],
       widths=[10, 6],
-      note="==Las fechas son una propuesta y deben ajustarse al calendario del programa y de la escuela.==",
+      note="Fechas tentativas. ==Confirmar con el calendario escolar del Instituto Educativo Ammadeus (vacaciones, suspensiones y evaluaciones).==",
       c="Faltaba un cronograma, que es un componente estándar de todo protocolo.")
 page_break(doc)
 
