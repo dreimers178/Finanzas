@@ -151,7 +151,7 @@ table(doc, 5, "Observaciones a reactivos específicos", ["Reactivo", "Observaci�
 heading(doc, "7. Pendientes para la autora", 2)
 bullets(doc, [
     "Leer cada fuente nueva y confirmar que la paráfrasis es fiel. Esto es obligatorio antes de entregar.",
-    "Completar los datos resaltados: página final de López Hernández et al.; autores de Shamah-Levy et al. (2023) y de Ubillus-Sambachi et al. (2025); revista de Martínez Villagrana (2023); URL de las Guías 2025 y de UNESCO (2023); páginas de Olivares y Snel (1998); apellidos de Aguirre Vargas (2019); tipo de tesis de Reséndiz Martínez (2023); objetivo, método y resultados de Ríos-Castillo et al. (2024), Termes Escalé et al. (2020) y Aguirre Vargas (2019).",
+    "Completar los datos resaltados: página final de López Hernández et al.; autores de Ubillus-Sambachi et al. (2025); revista de Martínez Villagrana (2023); URL de las Guías 2025 y de UNESCO (2023); páginas de Olivares y Snel (1998); apellidos de Aguirre Vargas (2019); tipo de tesis de Reséndiz Martínez (2023); objetivo, método y resultados de Ríos-Castillo et al. (2024), Termes Escalé et al. (2020) y Aguirre Vargas (2019).",
     "Valorar con el asesor si se agrega un grupo de comparación, lo que fortalecería la denominación de cuasiexperimental.",
     "Definir la modalidad (plataforma en línea con acceso en el aula), las herramientas digitales, y confirmar con la escuela las fechas tentativas (inicio del taller el 25 de enero de 2027).",
     "Registrar a los jueces expertos (incluida la Dra. Verónica Torres, si acepta) y calcular la V de Aiken.",

@@ -166,8 +166,9 @@ para(doc, "En la línea de los recursos digitales, Reséndiz Martínez (2023) ex
      c="NUEVO, desde tu Zotero (tesis del repositorio de la UAQ). Zotero registró la autora como «Martínez, Laura Reséndiz»; lo "
        "correcto en APA es Reséndiz Martínez, L. Confirma el grado de la tesis (maestría o licenciatura) para la referencia.")
 para(doc, "En cuanto a la magnitud del problema, los resultados de la Encuesta Nacional de Salud y Nutrición Continua 2020-2022 "
-          "muestran que el 37.3 % de la población escolar mexicana presenta sobrepeso (19.2 %) u obesidad (18.1 %), y que la "
-          "prevalencia de obesidad aumentó poco más de cinco puntos porcentuales entre 2006 y 2020-2022 (Shamah-Levy et al., 2023).",
+          "muestran que el 19.2 % de la población escolar mexicana presenta sobrepeso y el 18.1 % obesidad (37.3 % en conjunto), y que, "
+          "en los escolares varones, la prevalencia de obesidad aumentó 5.8 puntos porcentuales entre 2006 y 2020-2022 "
+          "(Shamah-Levy et al., 2023).",
      c="El original citaba «ENSANUT (2020): aproximadamente 37 %». No fue posible verificar esa cifra en la ENSANUT 2020 sobre "
        "COVID-19. El dato verificado (37.3 %) proviene de la Ensanut Continua 2020-2022, publicada en Salud Pública de México "
        "(DOI 10.21149/14762). En APA 7 la encuesta se cita por sus autores, no por la sigla «ENSANUT».")
@@ -863,8 +864,8 @@ REFS = [
      "Agregada: se citaba cuatro veces, pero no estaba en la lista. La 2.ª edición (2025) está confirmada. Agrega la URL de la que obtuviste el documento."),
     ("Shamah-Levy, T., Cuevas-Nasu, L., Gómez-Acosta, L. M., Morales-Ruan, M. C., Méndez Gómez-Humarán, I., Robles-Villaseñor, M. N., y Hernández-Ávila, M. (2017). Efecto del programa de servicios SaludArte en los componentes de alimentación y nutrición en escolares de la Ciudad de México. *Salud Pública de México, 59*(6), 621–629. https://doi.org/10.21149/8116",
      "Nueva (sustituye a Díaz y Ramírez, 2020, y a Morales y Salazar, 2013)."),
-    ("Shamah-Levy, T., Gaona-Pineda, E. B., Cuevas-Nasu, L., ==[demás autores]==. (2023). Prevalencias de sobrepeso y obesidad en población escolar y adolescente de México. Ensanut Continua 2020-2022. *Salud Pública de México, 65*(Supl. 1), S218–S224. https://doi.org/10.21149/14762",
-     "Sustituye a «INSP (2020). ENSANUT 2020». APA 7 exige listar hasta 20 autores: copia la lista completa desde el artículo."),
+    ("Shamah-Levy, T., Gaona-Pineda, E. B., Cuevas-Nasu, L., Morales-Ruan, C., Valenzuela-Bravo, D. G., Méndez-Gómez Humarán, I., y Ávila-Arcos, M. A. (2023). Prevalencias de sobrepeso y obesidad en población escolar y adolescente de México. Ensanut Continua 2020-2022. *Salud Pública de México, 65*(Supl. 1), S218–S224. https://doi.org/10.21149/14762",
+     "Sustituye a «INSP (2020). ENSANUT 2020». Lista de autores completada con el PDF del artículo. El 37.3 % es la suma de sobrepeso (19.2 %) y obesidad (18.1 %) reportados en él."),
     ("Siemens, G. (2005). Connectivism: A learning theory for the digital age. *International Journal of Instructional Technology and Distance Learning, 2*(1), 3–10.", "Agregada: se citaba en el texto pero no estaba en la lista."),
     ("Silva, E. S., Pires da Costa, W., de Lima, J. C., y Ferreira, J. C. (2025). Contribution of microlearning in basic education: A systematic review. *Education Sciences, 15*(3), Artículo 302. https://doi.org/10.3390/educsci15030302",
      "Se confirmaron título, revista, volumen y DOI. Verifica las iniciales de los autores en la página del artículo (MDPI); en una cita secundaria aparecen como «Silva, Costa, Lima y Ferreira»."),
