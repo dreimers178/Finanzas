@@ -160,6 +160,18 @@ bullets(doc, [
     "Pasar el resumen de 150 palabras a la plantilla oficial del CITEEA.",
 ])
 
+heading(doc, "8. Fuentes reservadas para la discusión de resultados", 2)
+para(doc, "Estudios internacionales sobre intervenciones escolares breves, lúdicas o digitales que mejoraron el conocimiento "
+          "nutricional de escolares de primaria. No se incorporaron al protocolo; quedan pendientes para el capítulo de discusión, "
+          "o para ampliar los antecedentes si el asesor o los sinodales lo solicitan. ==Antes de citarlos, deben leerse y "
+          "verificarse sus datos completos.==", indent=False)
+bullets(doc, [
+    "**Ghana (2024):** intervención escolar de educación alimentaria y nutricional con escolares de 4.º y 5.º grado, con grupos de intervención y de comparación no aleatorizados. Es la más parecida al presente estudio. https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11218303/",
+    "**Reino Unido (2010):** ensayo aleatorizado por conglomerados con un juego de cartas en escuelas primarias; ganancia de conocimiento pequeña pero significativa. https://publications.mrc-epid.cam.ac.uk/publication/31",
+    "**India (2025):** ensayo aleatorizado por conglomerados con una plataforma digital de educación nutricional en cinco escuelas privadas (596 escolares); mejora sostenida del conocimiento (*BMJ Open*). https://doaj.org/article/3e59e9fd391b40cc9b09417ee96a02c2",
+    "**Uso previsto:** comparar el tamaño del cambio pretest-postest del taller con estas intervenciones y sostener que ninguna se planteó como microaprendizaje.",
+])
+
 heading(doc, "Referencias de este informe", 2)
 for r in [
     "Campbell, D. T., y Stanley, J. C. (1966). *Experimental and quasi-experimental designs for research*. Rand McNally.",
