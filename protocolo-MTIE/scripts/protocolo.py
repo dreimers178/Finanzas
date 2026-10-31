@@ -45,7 +45,7 @@ para(doc, "La educación nutricional durante la infancia es una herramienta para
           "El taller se sustenta en los principios del microaprendizaje, la teoría de la carga cognitiva y la teoría del "
           "aprendizaje multimedia; sus contenidos se estructuran con base en el Plato del Bien Comer Saludable y Sostenible y en las "
           "Guías Alimentarias Saludables y Sostenibles para la Población Mexicana. El diseño instruccional sigue el modelo ADDIE. "
-          "Se desarrolla una investigación aplicada, con enfoque cuantitativo y diseño preexperimental de preprueba y posprueba con "
+          "Se desarrolla una investigación aplicada, con enfoque cuantitativo y diseño cuasiexperimental de preprueba y posprueba con "
           "un solo grupo. La muestra estará integrada por 25 estudiantes de quinto grado del Instituto Educativo Ammadeus "
           "(Guadalupe, Zacatecas), seleccionados mediante muestreo no probabilístico por conveniencia. Se aplicará un cuestionario de "
           "24 reactivos de opción múltiple, validado mediante juicio de expertos (V de Aiken) y prueba piloto (KR-20), antes y después "
@@ -342,7 +342,7 @@ para(doc, "El sobrepeso y la obesidad afectan al 37.3 % de la población escolar
      c="El original citaba «López-Hernández et al.» con guion. El apellido compuesto se escribe sin guion (López Hernández), igual "
        "que en la lista de referencias.")
 heading(doc, "Justificación metodológica", 3)
-para(doc, "El estudio emplea un enfoque cuantitativo con un diseño preexperimental de preprueba y posprueba con un solo grupo, "
+para(doc, "El estudio emplea un enfoque cuantitativo con un diseño cuasiexperimental de preprueba y posprueba con un solo grupo, "
           "que permite comparar el nivel de conocimiento nutricional antes y después del taller. Aporta además un cuestionario de 24 "
           "reactivos alineado con las Guías Alimentarias Saludables y Sostenibles para la Población Mexicana (Secretaría de Salud "
           "[SSA] et al., 2025), con evidencias de validez de contenido (V de Aiken) y de confiabilidad (KR-20), que podrá servir de "
@@ -383,7 +383,7 @@ heading(doc, "Limitaciones", 3)
 para(doc, "El estudio presenta limitaciones que deberán considerarse al interpretar los resultados. En primer lugar, al no contar "
           "con un grupo control, los cambios observados no podrán atribuirse exclusivamente al taller, pues podrían influir factores "
           "como la historia (p. ej., actividades escolares o mediáticas por el Día del Nutriólogo), la maduración, el efecto de "
-          "aplicar dos veces el mismo instrumento (efecto de prueba) y la regresión a la media.",
+          "aplicar dos veces el mismo instrumento (efecto de prueba) y la regresión a la media (Campbell y Stanley, 1966).",
      c="Se nombran las amenazas a la validez interna propias del diseño de un solo grupo (Campbell y Stanley, 1966). Es justo lo "
        "que un comité espera ver cuando no hay grupo control.")
 para(doc, "En segundo lugar, la muestra se integra por estudiantes de un solo grupo y de una institución privada, seleccionados "
@@ -593,15 +593,15 @@ para(doc, "**Enfoque.** Cuantitativo, porque mide la variable dependiente median
        "mexicanos. Si tu programa usa otro manual, sustitúyelo.")
 para(doc, "**Alcance.** Descriptivo y explicativo: describe el nivel de conocimiento nutricional antes y después de la intervención "
           "y analiza si la diferencia se asocia con la implementación del taller.")
-para(doc, "**Diseño.** Preexperimental de preprueba y posprueba con un solo grupo (O₁ X O₂), en el que se realiza una medición "
-          "inicial (O₁), se implementa el taller (X) y se aplica una medición final (O₂) con el mismo instrumento (Campbell y "
-          "Stanley, 1966; Hernández-Sampieri y Mendoza Torres, 2018).",
-     c="CORRECCIÓN METODOLÓGICA IMPORTANTE (consúltala con tu asesor). Un diseño de un solo grupo con preprueba y posprueba y SIN "
-       "grupo control se clasifica como PREEXPERIMENTAL (Campbell y Stanley, 1966; Hernández-Sampieri y Mendoza Torres, 2018), no "
-       "como cuasiexperimental. El cuasiexperimento requiere al menos un grupo de comparación no aleatorizado. Opciones: (a) "
-       "renombrarlo «preexperimental» (recomendado; ya se ajustó en todo el documento) o (b) conservar «cuasiexperimental» "
-       "agregando como grupo de comparación otro grupo de 5.º que no reciba el taller (el instituto tiene tres). La opción (b) "
-       "fortalece mucho la validez interna. Ojo: el resumen aceptado en el CITEEA dice «cuasiexperimental».")
+para(doc, "**Diseño.** Cuasiexperimental de preprueba y posprueba con un solo grupo intacto (O₁ X O₂), en el que se realiza una "
+          "medición inicial (O₁), se implementa el taller (X) y se aplica una medición final (O₂) con el mismo instrumento. El grupo "
+          "no se conforma por asignación aleatoria, sino que corresponde a un grupo escolar ya constituido.",
+     c="Se conserva «cuasiexperimental» por decisión de la autora, en coherencia con el resumen aceptado en el CITEEA. Ten "
+       "presente que algunos manuales (Campbell y Stanley, 1966; Hernández-Sampieri y Mendoza Torres, 2018) clasifican el diseño "
+       "de un solo grupo sin grupo de comparación como preexperimental, y un sinodal podría señalarlo. Para blindar la "
+       "denominación hay dos opciones: (a) agregar como grupo de comparación otro grupo de 5.º que no reciba el taller hasta "
+       "después de la posprueba (el instituto tiene tres), lo que la hace indiscutible y fortalece la validez interna, o (b) "
+       "conservar el diseño actual, con las amenazas a la validez interna explícitas en las limitaciones, como ya está redactado.")
 heading(doc, "3.2 Población y muestra", 2)
 para(doc, "**Población.** Estudiantes de 5.º grado de primaria del Instituto Educativo Ammadeus, distribuidos en tres grupos "
           "(==N = número total de estudiantes de 5.º==).",

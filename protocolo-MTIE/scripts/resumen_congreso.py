@@ -21,7 +21,7 @@ RESUMEN = (
     "de esta investigación es incrementar el conocimiento nutricional de estudiantes de quinto grado de primaria mediante un "
     "taller educativo en línea basado en microaprendizaje. El taller se diseñó con el modelo ADDIE y organiza ocho cápsulas "
     "digitales breves con base en el Plato del Bien Comer y las Guías Alimentarias Saludables y Sostenibles para la Población "
-    "Mexicana. Se trata de una investigación aplicada, con enfoque cuantitativo y diseño preexperimental de preprueba y "
+    "Mexicana. Se trata de una investigación aplicada, con enfoque cuantitativo y diseño cuasiexperimental de preprueba y "
     "posprueba con un solo grupo. La muestra se integra por 25 estudiantes del Instituto Educativo Ammadeus, en Guadalupe, "
     "Zacatecas. Se aplicará un cuestionario de 24 reactivos antes y después del taller. Como avance, el instrumento se "
     "encuentra en validación de contenido mediante juicio de expertos. Posteriormente se implementará el taller y se "

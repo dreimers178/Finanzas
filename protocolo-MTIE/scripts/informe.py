@@ -25,7 +25,7 @@ para(doc, "Este informe acompaña al archivo *Protocolo_Reimers_corregido_APA7.d
 heading(doc, "1. Resumen de hallazgos", 2)
 bullets(doc, [
     "**Integridad de las referencias (prioridad crítica).** El protocolo cita 35 obras distintas, pero solo 21 estaban en la lista de referencias (14 se citaban sin referencia). Quince obras no pudieron localizarse con los datos indicados y otras cuatro tenían datos erróneos o insuficientes. Seis de las no localizadas eran antecedentes con datos de estudio detallados (muestras, métodos, resultados) que no se encontraron en ninguna base. Todas se sustituyeron por fuentes verificadas.",
-    "**Clasificación del diseño (prioridad alta).** Un grupo único con preprueba y posprueba, sin grupo control, es un diseño *preexperimental*, no cuasiexperimental (Campbell y Stanley, 1966; Hernández-Sampieri y Mendoza Torres, 2018).",
+    "**Clasificación del diseño (decisión de la autora).** Se conserva «cuasiexperimental» con un solo grupo. Algunos manuales clasifican este diseño como *preexperimental* (Campbell y Stanley, 1966; Hernández-Sampieri y Mendoza Torres, 2018), por lo que en el protocolo se explicitan las amenazas a la validez interna y se sugiere, como mejora opcional, agregar un grupo de comparación.",
     "**Análisis de datos (prioridad alta).** El protocolo solo proponía estadística descriptiva, lo que no permite contrastar la hipótesis. Se agregó la prueba *t* pareada o Wilcoxon con tamaño del efecto.",
     "**Congruencia del instrumento (prioridad alta).** Las dimensiones de la operacionalización no coincidían con las del instrumento enviado a jueces. Faltaba la confiabilidad (KR-20) y la prueba piloto.",
     "**Observaciones del asesor.** Se atendieron las seis: objetivo general, pregunta 2, término único, instrumento en anexos, desarrollo de ADDIE y cambio de juez.",
@@ -57,19 +57,18 @@ para(doc, "La educación nutricional en la infancia favorece la adquisición de 
           "de esta investigación es incrementar el conocimiento nutricional de estudiantes de quinto grado de primaria mediante un "
           "taller educativo en línea basado en microaprendizaje. El taller se diseñó con el modelo ADDIE y organiza ocho cápsulas "
           "digitales breves con base en el Plato del Bien Comer y las Guías Alimentarias Saludables y Sostenibles para la Población "
-          "Mexicana. Se trata de una investigación aplicada, con enfoque cuantitativo y diseño preexperimental de preprueba y "
+          "Mexicana. Se trata de una investigación aplicada, con enfoque cuantitativo y diseño cuasiexperimental de preprueba y "
           "posprueba con un solo grupo. La muestra se integra por 25 estudiantes del Instituto Educativo Ammadeus, en Guadalupe, "
           "Zacatecas. Se aplicará un cuestionario de 24 reactivos antes y después del taller. Como avance, el instrumento se "
           "encuentra en validación de contenido mediante juicio de expertos. Posteriormente se implementará el taller y se "
           "determinará si hubo un cambio significativo en el conocimiento nutricional.", indent=False)
 para(doc, "*Palabras clave:* microaprendizaje, educación nutricional, educación primaria", indent=False)
-para(doc, "*Nota.* Si el asesor decide conservar «cuasiexperimental» (por ejemplo, agregando un grupo de comparación), sustituye "
-          "«preexperimental de preprueba y posprueba con un solo grupo» por «cuasiexperimental con grupo de comparación».",
+para(doc, "*Nota.* Si se agrega un grupo de comparación, sustituye «con un solo grupo» por «con grupo de comparación».",
      indent=False, size=10)
 
 heading(doc, "4. Observaciones metodológicas", 2)
 table(doc, 3, "Observaciones metodológicas y correcciones", ["#", "Apartado", "Problema detectado", "Corrección aplicada", "Prioridad"], [
-    ["1", "3.1 Diseño", "Se denomina «cuasiexperimental» a un diseño de un solo grupo sin control.", "Se reclasificó como preexperimental (O₁ X O₂), con justificación y amenazas a la validez interna. Alternativa: agregar otro grupo de 5.º como comparación.", "Alta"],
+    ["1", "3.1 Diseño", "Se denomina «cuasiexperimental» a un diseño de un solo grupo sin control.", "Se conserva «cuasiexperimental» por decisión de la autora; se precisa que es un solo grupo intacto, se explicitan las amenazas a la validez interna y se sugiere, de forma opcional, agregar otro grupo de 5.º como comparación.", "Alta"],
     ["2", "3.3 / 3.6 Análisis", "Solo estadística descriptiva; no permite aceptar o rechazar H0. La plantilla sugería Chi cuadrado (no aplica).", "Shapiro-Wilk → t pareada unilateral o Wilcoxon; α = .05; tamaño del efecto; Bonferroni por dimensión.", "Alta"],
     ["3", "Operacionalización", "Las dimensiones de la tabla no coinciden con las del instrumento real.", "Tabla 3 alineada con D1–D4 del instrumento, reactivos por dimensión, escala dicotómica y puntaje 0–24.", "Alta"],
     ["4", "Instrumento", "No se mencionaba la confiabilidad ni la prueba piloto. La técnica se llamaba «encuesta».", "Prueba piloto con un grupo no participante, KR-20 ≥ .70, índices de dificultad y discriminación. Técnica: prueba de conocimientos.", "Alta"],
@@ -153,7 +152,7 @@ heading(doc, "7. Pendientes para la autora", 2)
 bullets(doc, [
     "Leer cada fuente nueva y confirmar que la paráfrasis es fiel. Esto es obligatorio antes de entregar.",
     "Completar los datos resaltados: página final de López Hernández et al.; autores de Shamah-Levy et al. (2023) y de Ubillus-Sambachi et al. (2025); revista de Martínez Villagrana (2023); URL de las Guías 2025 y de UNESCO (2023); páginas de Olivares y Snel (1998); apellidos de Aguirre Vargas (2019); tipo de tesis de Reséndiz Martínez (2023); objetivo, método y resultados de Ríos-Castillo et al. (2024), Termes Escalé et al. (2020) y Aguirre Vargas (2019).",
-    "Decidir con el asesor la denominación del diseño (preexperimental o cuasiexperimental con grupo de comparación).",
+    "Valorar con el asesor si se agrega un grupo de comparación, lo que fortalecería la denominación de cuasiexperimental.",
     "Definir la modalidad (plataforma en línea con acceso en el aula), las herramientas digitales, y confirmar con la escuela las fechas tentativas (inicio del taller el 25 de enero de 2027).",
     "Registrar a los jueces expertos (incluida la Dra. Verónica Torres, si acepta) y calcular la V de Aiken.",
     "Elaborar los formatos de consentimiento y asentimiento (Anexo B) y verificar si se requiere dictamen de un comité de ética.",
