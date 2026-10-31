@@ -14,7 +14,8 @@ AUTORES = [
     ("Anakaren Ernestina Reimers Reyes", "Universidad Autónoma de Zacatecas", "México", "ana.reimers@gmail.com"),
     ("Eduardo Rivera Arteaga", "Universidad Autónoma de Zacatecas", "México", "edrivera@uaz.edu.mx"),
 ]
-PATROCINIO = "Proyecto de investigación sin patrocinio institucional externo."
+PATROCINIO = ("Proyecto desarrollado con el apoyo de una beca de posgrado otorgada a la primera autora por la Secretaría de "
+              "Ciencia, Humanidades, Tecnología e Innovación (SECIHTI), México.")
 RESUMEN = (
     "La educación nutricional en la infancia favorece la adquisición de conocimientos sobre alimentación saludable. El objetivo "
     "de esta investigación es incrementar el conocimiento nutricional de estudiantes de quinto grado de primaria mediante un "
