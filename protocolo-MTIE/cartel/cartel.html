@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Cartel CITEEA 2026</title>
+<style>
+  @page { size: 90cm 120cm; margin: 0; }
+  :root{
+    --ink:#14232b; --muted:#4b5d66; --green:#1f6b4f; --green2:#2f8f6a; --leaf:#e7f3ec;
+    --orange:#e07a2e; --cream:#fbf8f2; --line:#d5e2da; --navy:#123047;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{width:90cm;height:120cm;background:var(--cream);color:var(--ink);
+    font-family:"Inter","DejaVu Sans",sans-serif;font-size:27pt;line-height:1.4}
+  .poster{width:90cm;height:120cm;display:flex;flex-direction:column}
+  header{background:var(--navy);color:#fff;padding:2.2cm 3cm 1.9cm;position:relative}
+  header .top{display:flex;justify-content:space-between;align-items:center;font-size:21pt;letter-spacing:.06em;
+    text-transform:uppercase;color:#bcd3df;margin-bottom:1.2cm}
+  .logo{width:6.5cm;height:3.2cm;border:3px dashed #5f7f92;border-radius:.4cm;display:flex;align-items:center;
+    justify-content:center;font-size:17pt;color:#8fb0c2;text-align:center;line-height:1.2}
+  h1{font-size:80pt;line-height:1.08;font-weight:800;letter-spacing:-.01em;max-width:80cm}
+  h1 span{color:#9fe0bd}
+  .authors{margin-top:1.1cm;font-size:28pt;color:#e6eef3}
+  .authors b{color:#fff}
+  .meta{margin-top:.5cm;font-size:22pt;color:#bcd3df}
+  .eje{position:absolute;right:3cm;bottom:-1.1cm;background:var(--orange);color:#fff;font-weight:700;
+    font-size:23pt;padding:.55cm 1.1cm;border-radius:1cm;box-shadow:0 .2cm .5cm rgba(0,0,0,.15)}
+  main{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:1.4cm;padding:2.3cm 2.4cm 1.2cm}
+  .col{display:flex;flex-direction:column;gap:1.3cm}
+  .col section:last-child{flex:1}
+  section{background:#fff;border:2px solid var(--line);border-radius:.7cm;padding:1.1cm 1.3cm 1.2cm}
+  h2{font-size:38pt;color:var(--green);font-weight:800;margin-bottom:.55cm;display:flex;align-items:center;gap:.5cm}
+  h2 .n{background:var(--green);color:#fff;width:1.5cm;height:1.5cm;border-radius:50%;display:inline-flex;
+    align-items:center;justify-content:center;font-size:27pt;flex:none}
+  p+p{margin-top:.35cm}
+  ul{margin:.3cm 0 0 1cm} li{margin:.18cm 0}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:.6cm;margin:.6cm 0 .4cm}
+  .stat{background:var(--leaf);border-radius:.5cm;padding:.6cm .5cm;text-align:center}
+  .stat b{display:block;font-size:62pt;line-height:1;color:var(--green);font-weight:800}
+  .stat span{display:block;font-size:18.5pt;line-height:1.25;margin-top:.3cm;color:var(--muted)}
+  .stat i{display:block;font-style:normal;font-size:15pt;color:#7a8b93;margin-top:.15cm}
+  .obj{background:var(--leaf);border-left:.35cm solid var(--green2);padding:.6cm .8cm;border-radius:.3cm;font-weight:600}
+  ol{margin:.5cm 0 0 1.1cm} ol li{margin:.2cm 0}
+  .design{display:flex;align-items:center;justify-content:center;gap:.7cm;margin:.6cm 0 .5cm}
+  .box{border-radius:.45cm;padding:.45cm .8cm;text-align:center;font-weight:700;font-size:24pt;line-height:1.2}
+  .box small{display:block;font-weight:400;font-size:17pt}
+  .o{background:var(--navy);color:#fff} .x{background:var(--orange);color:#fff}
+  .arrow{font-size:40pt;color:var(--muted)}
+  table{width:100%;border-collapse:collapse;font-size:20.5pt;line-height:1.3}
+  th{text-align:left;background:var(--green);color:#fff;padding:.25cm .35cm;font-weight:700}
+  td{padding:.22cm .35cm;border-bottom:1.5px solid var(--line);vertical-align:top}
+  .kv{display:grid;grid-template-columns:7.3cm 1fr;gap:.25cm .6cm;font-size:23pt}
+  .kv dt{font-weight:700;color:var(--green)}
+  .addie{display:grid;grid-template-columns:repeat(5,1fr);gap:.35cm;margin:.4cm 0 .6cm}
+  .ph{background:var(--navy);color:#fff;border-radius:.4cm;padding:.45cm .35cm;text-align:center;font-size:19pt;line-height:1.25}
+  .ph b{display:block;font-size:46pt;line-height:1;color:#9fe0bd}
+  .weeks{display:grid;grid-template-columns:repeat(4,1fr);gap:.4cm}
+  .wk{border:2px solid var(--line);border-radius:.4cm;overflow:hidden;font-size:21pt;line-height:1.25}
+  .wk h4{background:var(--green2);color:#fff;padding:.25cm .4cm;font-size:19pt}
+  .wk div{padding:.3cm .4cm;border-top:1.5px solid var(--line)}
+  .wk div:first-of-type{border-top:0}
+  .wk em{font-style:normal;color:var(--orange);font-weight:700}
+  .seq{margin-top:.55cm;font-size:22pt;color:var(--muted)}
+  .progress{display:flex;flex-direction:column;gap:.3cm;margin-top:.3cm}
+  .step{display:flex;gap:.5cm;align-items:flex-start}
+  .dot{flex:none;width:.9cm;height:.9cm;border-radius:50%;margin-top:.15cm;border:4px solid var(--green2)}
+  .dot.done{background:var(--green2)} .dot.now{background:linear-gradient(90deg,var(--green2) 50%,#fff 50%)}
+  .refs{font-size:19pt;line-height:1.3;color:var(--muted)}
+  .refs p{padding-left:1cm;text-indent:-1cm;margin-top:.18cm}
+  footer{background:var(--green);color:#fff;padding:1cm 3cm;display:flex;justify-content:space-between;align-items:center;font-size:22pt}
+  .qr{width:4cm;height:4cm;background:#fff;border-radius:.3cm;color:var(--muted);display:flex;align-items:center;
+    justify-content:center;text-align:center;font-size:15pt;line-height:1.2}
+</style>
+</head>
+<body>
+<div class="poster">
+<header>
+  <div class="top">
+    <div class="logo">Logo UAZ</div>
+    <div>I Congreso Internacional de Tecnología Educativa y Ambientes de Aprendizaje · CITEEA 2026 · Zacatecas, 19 y 20 de noviembre</div>
+    <div class="logo">Logo MTIE</div>
+  </div>
+  <h1>Nutrición en el aula: <span>taller educativo basado en microaprendizaje en línea</span> para niños de 5.º de primaria</h1>
+  <div class="authors"><b>Anakaren Ernestina Reimers Reyes</b> · Eduardo Rivera Arteaga</div>
+  <div class="meta">Maestría en Tecnología Informática Educativa · Unidad Académica de Docencia Superior · Universidad Autónoma de Zacatecas, México</div>
+  <div class="eje">Eje: Metodologías activas y pedagogías emergentes</div>
+</header>
+
+<main>
+<div class="col">
+  <section>
+    <h2><span class="n">1</span>Problema</h2>
+    <p>El sobrepeso y la obesidad infantil son un reto de salud pública en México. La escuela es un entorno clave para construir conocimientos sobre alimentación saludable, pero faltan propuestas sistemáticas, atractivas y apoyadas en recursos digitales.</p>
+    <div class="stats">
+      <div class="stat"><b>37.3%</b><span>de escolares en México con sobrepeso u obesidad</span><i>Shamah-Levy et al., 2023</i></div>
+      <div class="stat"><b>45.9%</b><span>de escolares de una primaria de Zacatecas con sobrepeso u obesidad</span><i>López Hernández et al., 2024</i></div>
+      <div class="stat"><b>66.4%</b><span>con conocimientos insuficientes en nutrición</span><i>López Hernández et al., 2024</i></div>
+    </div>
+    <p>El microaprendizaje ha mostrado potencial para la atención y la retención, pero su efecto sobre el conocimiento nutricional en primarias zacatecanas no ha sido evaluado.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>Objetivos</h2>
+    <div class="obj">Incrementar el conocimiento nutricional de estudiantes de 5.º grado de primaria del Instituto Educativo Ammadeus mediante la implementación de un taller educativo en línea basado en microaprendizaje.</div>
+    <ol>
+      <li>Identificar el nivel inicial de conocimiento nutricional (preprueba).</li>
+      <li>Diseñar y desarrollar el taller con el modelo ADDIE, alineado con las Guías Alimentarias.</li>
+      <li>Comparar el conocimiento nutricional, total y por dimensión, antes y después del taller.</li>
+    </ol>
+    <p style="margin-top:.45cm"><b>H1:</b> el puntaje de conocimiento nutricional será significativamente mayor en la posprueba que en la preprueba.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Fundamento teórico</h2>
+    <ul>
+      <li><b>Microaprendizaje:</b> contenidos en unidades breves, con un objetivo cada una (Betancur-Chicué y García-Valcárcel Muñoz-Repiso, 2023).</li>
+      <li><b>Teoría de la carga cognitiva:</b> segmentar el contenido reduce la carga extrínseca de la memoria de trabajo (Sweller et al., 2019).</li>
+      <li><b>Aprendizaje multimedia:</b> principios de coherencia, señalización y segmentación (Mayer, 2009).</li>
+      <li><b>Aprendizaje espaciado:</b> cápsulas distribuidas con recuperación activa (Kelley y Whatson, 2013).</li>
+      <li><b>Contenidos:</b> Plato del Bien Comer Saludable y Sostenible; <i>Guías Alimentarias Saludables y Sostenibles para la Población Mexicana</i> (SSA et al., 2025).</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>Método</h2>
+    <dl class="kv">
+      <dt>Tipo y enfoque</dt><dd>Investigación aplicada, cuantitativa</dd>
+      <dt>Diseño</dt><dd>Preexperimental de preprueba y posprueba con un solo grupo</dd>
+    </dl>
+    <div class="design">
+      <div class="box o">O₁<small>Preprueba</small></div><div class="arrow">→</div>
+      <div class="box x">X<small>Taller · 4 semanas</small></div><div class="arrow">→</div>
+      <div class="box o">O₂<small>Posprueba</small></div>
+    </div>
+    <dl class="kv">
+      <dt>Muestra</dt><dd>25 estudiantes de 5.º (10 y 11 años), Instituto Educativo Ammadeus, Guadalupe, Zac.; no probabilística por conveniencia</dd>
+      <dt>Instrumento</dt><dd>Cuestionario de 24 reactivos de opción múltiple (puntaje 0–24)</dd>
+      <dt>Validez</dt><dd>Juicio de expertos; V de Aiken con IC 95 %</dd>
+      <dt>Confiabilidad</dt><dd>Prueba piloto; KR-20 ≥ .70</dd>
+      <dt>Análisis</dt><dd><i>t</i> pareada o Wilcoxon (α = .05) y tamaño del efecto</dd>
+    </dl>
+    <table style="margin-top:.6cm">
+      <tr><th>Dimensión del conocimiento</th><th style="width:4cm">Reactivos</th></tr>
+      <tr><td>D1. Principios de alimentación saludable</td><td>1–6</td></tr>
+      <tr><td>D2. Grupos de alimentos y clasificación</td><td>7–12</td></tr>
+      <tr><td>D3. Aportes y función nutricional</td><td>13–18</td></tr>
+      <tr><td>D4. Aplicación en situaciones cotidianas</td><td>19–24</td></tr>
+    </table>
+  </section>
+</div>
+
+<div class="col">
+  <section>
+    <h2><span class="n">5</span>El taller: diseño instruccional ADDIE</h2>
+    <div class="addie">
+      <div class="ph"><b>A</b>Análisis<br>necesidades, perfil y recursos</div>
+      <div class="ph"><b>D</b>Diseño<br>objetivos y carta descriptiva</div>
+      <div class="ph"><b>D</b>Desarrollo<br>videos, infografías y juegos</div>
+      <div class="ph"><b>I</b>Implementación<br>2 cápsulas por semana</div>
+      <div class="ph"><b>E</b>Evaluación<br>diagnóstica, formativa y sumativa</div>
+    </div>
+    <div class="weeks">
+      <div class="wk"><h4>Semana 1 · D1</h4><div><em>C1</em> ¿Qué es comer saludable?</div><div><em>C2</em> Agua simple y sellos de advertencia</div></div>
+      <div class="wk"><h4>Semana 2 · D2</h4><div><em>C3</em> Mi Plato del Bien Comer</div><div><em>C4</em> ¿A qué grupo pertenece?</div></div>
+      <div class="wk"><h4>Semana 3 · D3</h4><div><em>C5</em> Vitaminas, minerales y fibra</div><div><em>C6</em> Proteína vegetal y grasas saludables</div></div>
+      <div class="wk"><h4>Semana 4 · D4</h4><div><em>C7</em> Armo mi refrigerio escolar</div><div><em>C8</em> Reto final: mi comida del día</div></div>
+    </div>
+    <p class="seq"><b>Cada cápsula (15 a 20 min):</b> recuperación de la cápsula anterior → microcontenido de 3 a 5 min (video o infografía) → actividad interactiva con retroalimentación → reto de cierre.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>Avances</h2>
+    <div class="progress">
+      <div class="step"><div class="dot done"></div><div><b>Planteamiento y fundamento teórico</b>: concluidos.</div></div>
+      <div class="step"><div class="dot done"></div><div><b>Instrumento diseñado</b>: 24 reactivos en 4 dimensiones, alineados con las Guías Alimentarias 2025.</div></div>
+      <div class="step"><div class="dot now"></div><div><b>Validación de contenido</b> por juicio de expertos: en proceso.</div></div>
+      <div class="step"><div class="dot"></div><div>Prueba piloto, desarrollo de las cápsulas e implementación del taller.</div></div>
+      <div class="step"><div class="dot"></div><div>Preprueba y posprueba, y análisis para determinar si hubo un cambio significativo en el conocimiento nutricional.</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>Resultados esperados y aportes</h2>
+    <ul>
+      <li>Un incremento estadísticamente significativo del puntaje de conocimiento nutricional, con un tamaño del efecto al menos mediano.</li>
+      <li>Un taller de ocho cápsulas, replicable y de bajo costo, para educación primaria.</li>
+      <li>Un instrumento con evidencias de validez y confiabilidad para estudiantes de 5.º grado.</li>
+      <li>Evidencia sobre el microaprendizaje aplicado a la educación nutricional en el contexto zacatecano.</li>
+    </ul>
+    <p style="margin-top:.4cm;font-size:20pt;color:var(--muted)"><b>Limitaciones:</b> diseño sin grupo control, muestra por conveniencia y medición del conocimiento, no de las conductas alimentarias.</p>
+  </section>
+
+  <section class="refs">
+    <h2 style="font-size:30pt"><span class="n" style="width:1.2cm;height:1.2cm;font-size:22pt">8</span>Referencias</h2>
+    <p>Betancur-Chicué, V., y García-Valcárcel Muñoz-Repiso, A. (2023). Características del diseño de estrategias de microaprendizaje en escenarios educativos: Revisión sistemática. <i>RIED, 26</i>(1), 201–222. https://doi.org/10.5944/ried.26.1.34056</p>
+    <p>Kelley, P., y Whatson, T. (2013). Making long-term memories in minutes. <i>Frontiers in Human Neuroscience, 7</i>, Artículo 589. https://doi.org/10.3389/fnhum.2013.00589</p>
+    <p>López Hernández, P. Y., Franco Trejo, C. S., Galicia Rodríguez, A. G., Argüelles Estrada, B. C., y Ornelas Pargas, A. C. (2024). Sobrepeso, obesidad y educación nutricional en una escuela primaria de Zacatecas. <i>Revista Iberoamericana de Ciencias, 11</i>(1).</p>
+    <p>Mayer, R. E. (2009). <i>Multimedia learning</i> (2.ª ed.). Cambridge University Press.</p>
+    <p>Secretaría de Salud, INSP y UNICEF. (2025). <i>Guías alimentarias saludables y sostenibles para la población mexicana</i> (2.ª ed.).</p>
+    <p>Shamah-Levy, T., Gaona-Pineda, E. B., Cuevas-Nasu, L., et al. (2023). Prevalencias de sobrepeso y obesidad en población escolar y adolescente de México. Ensanut Continua 2020-2022. <i>Salud Pública de México, 65</i>(Supl. 1), S218–S224. https://doi.org/10.21149/14762</p>
+    <p>Sweller, J., van Merriënboer, J. J. G., y Paas, F. (2019). Cognitive architecture and instructional design: 20 years later. <i>Educational Psychology Review, 31</i>(2), 261–292. https://doi.org/10.1007/s10648-019-09465-5</p>
+  </section>
+</div>
+</main>
+
+<footer>
+  <div><b>Contacto:</b> ana.reimers@gmail.com · edrivera@uaz.edu.mx</div>
+  <div class="qr">Código QR<br>(protocolo o<br>muestra del taller)</div>
+</footer>
+</div>
+</body>
+</html>

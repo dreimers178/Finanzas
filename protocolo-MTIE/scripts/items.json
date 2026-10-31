@@ -1,0 +1,297 @@
+[
+ {
+  "dim": "Dimensión 1. Principios de alimentación saludable y selección de alimentos",
+  "items": [
+   {
+    "n": 1,
+    "q": "¿Cuál opción describe mejor una alimentación saludable?",
+    "opts": [
+     "Comer principalmente alimentos de un solo grupo.",
+     "Comer alimentos variados de diferentes grupos.",
+     "Elegir siempre los mismos alimentos durante la semana.",
+     "Eliminar por completo alguno de los grupos de alimentos."
+    ],
+    "key": "B",
+    "obs": "Observación al reactivo: Mide lo mismo que el reactivo 6 (variedad). Considera diferenciar: uno sobre el concepto y otro sobre la razón."
+   },
+   {
+    "n": 2,
+    "q": "Si tienes estas opciones para elegir un alimento, ¿cuál se acerca más a las recomendaciones de una alimentación saludable?",
+    "opts": [
+     "Jugo de fruta envasado.",
+     "Barra de cereal azucarada.",
+     "Fruta fresca.",
+     "Galletas integrales con azúcar añadida."
+    ],
+    "key": "C"
+   },
+   {
+    "n": 3,
+    "q": "¿Cuál bebida se recomienda consumir con mayor frecuencia durante el día?",
+    "opts": [
+     "Jugo de fruta.",
+     "Leche.",
+     "Agua de fruta con azúcar.",
+     "Agua natural."
+    ],
+    "key": "D",
+    "obs": "Observación al reactivo: Las Guías usan el término «agua simple». Unifica «agua natural» / «agua simple» en todo el instrumento y en las cápsulas."
+   },
+   {
+    "n": 4,
+    "q": "¿Cuál de estos productos se recomienda consumir con menor frecuencia?",
+    "opts": [
+     "Botana empaquetada con sellos de advertencia.",
+     "Cereal integral sin azúcar añadida.",
+     "Yogurt natural sin azúcar añadida.",
+     "Fruta fresca."
+    ],
+    "key": "A"
+   },
+   {
+    "n": 5,
+    "q": "¿Cuál opción sería más adecuada como colación/snack escolar?",
+    "opts": [
+     "Yogurt natural con galletas rellenas.",
+     "Manzana con cacahuates naturales.",
+     "Sándwich de queso y un jugo de cajita.",
+     "Cereal con azúcar con leche."
+    ],
+    "key": "B",
+    "obs": "Observación al reactivo: Evita la barra y el anglicismo «colación/snack»: usa un solo término (p. ej., «refrigerio escolar»)."
+   },
+   {
+    "n": 6,
+    "q": "¿Por qué es importante incluir diferentes tipos de alimentos en nuestra alimentación?",
+    "opts": [
+     "Porque todos los alimentos aportan los mismos nutrientes.",
+     "Porque al variar los alimentos ya no es necesario tomar agua.",
+     "Porque un solo grupo proporciona todo lo que el cuerpo necesita.",
+     "Porque diferentes alimentos aportan distintos nutrientes."
+    ],
+    "key": "D",
+    "obs": "Observación al reactivo: La opción B es poco plausible (distractor débil); el análisis de reactivos del piloto lo confirmará."
+   }
+  ]
+ },
+ {
+  "dim": "Dimensión 2. Grupos de alimentos y clasificación",
+  "items": [
+   {
+    "n": 7,
+    "q": "¿Cuál opción presenta correctamente los cinco grupos de alimentos estudiados?",
+    "opts": [
+     "Verduras y frutas; cereales; dulces; alimentos de origen animal; bebidas.",
+     "Verduras; frutas; cereales; alimentos procesados; bebidas.",
+     "Verduras y frutas; cereales integrales o de granos enteros y tubérculos; leguminosas; alimentos de origen animal; aceites y grasas saludables.",
+     "Cereales; leguminosas; postres; bebidas; alimentos de origen animal."
+    ],
+    "key": "C"
+   },
+   {
+    "n": 8,
+    "q": "¿Cuál conjunto contiene solamente alimentos del grupo de verduras y frutas?",
+    "opts": [
+     "Manzana, zanahoria y jitomate.",
+     "Manzana, jitomate y frijol.",
+     "Manzana, jitomate y tortilla.",
+     "Zanahoria, jitomate y lenteja."
+    ],
+    "key": "A"
+   },
+   {
+    "n": 9,
+    "q": "¿Cuál alimento pertenece al grupo de cereales integrales o de granos enteros y tubérculos?",
+    "opts": [
+     "Frijol.",
+     "Aguacate.",
+     "Huevo.",
+     "Tortilla de maíz."
+    ],
+    "key": "D"
+   },
+   {
+    "n": 10,
+    "q": "¿Cuál conjunto contiene solamente leguminosas?",
+    "opts": [
+     "Frijoles, lentejas y papa.",
+     "Frijoles, lentejas y garbanzos.",
+     "Frijoles, garbanzos y arroz.",
+     "Lentejas, garbanzos y huevo."
+    ],
+    "key": "B"
+   },
+   {
+    "n": 11,
+    "q": "¿Cuál opción clasifica correctamente ambos alimentos?",
+    "opts": [
+     "Pescado→ Alimentos de origen animal / Aguacate→ Verduras y frutas.",
+     "Pescado→ Leguminosas / Aguacate→ Aceites y grasas saludables.",
+     "Pescado→ Alimentos de origen animal / Aguacate→ Aceites y grasas saludables.",
+     "Pescado→ Cereales y tubérculos. / Aguacate→ Verduras y frutas."
+    ],
+    "key": "C",
+    "obs": "Observación al reactivo: Que el juez nutriólogo confirme la clasificación del aguacate en «aceites y grasas saludables» según las Guías 2025."
+   },
+   {
+    "n": 12,
+    "q": "Frijoles, tortilla de maíz, huevo y manzana pertenecen, respectivamente a:",
+    "opts": [
+     "Leguminosas/ cereales y tubérculos/ alimentos de origen animal/ verduras y frutas.",
+     "Leguminosas/ verduras y frutas/ alimentos de origen animal/ cereales y tubérculos.",
+     "Cereales y tubérculos/ leguminosas/ alimentos de origen animal/ verduras y frutas.",
+     "Leguminosas/ cereales y tubérculos/ verduras y frutas/ alimentos de origen animal."
+    ],
+    "key": "A",
+    "obs": "Observación al reactivo: El término «respectivamente» puede ser difícil para estudiantes de 10 y 11 años. Alternativa: «¿A qué grupo pertenece cada alimento, en el mismo orden?»."
+   }
+  ]
+ },
+ {
+  "dim": "Dimensión 3. Aportes y función nutricional básica de los alimentos",
+  "items": [
+   {
+    "n": 13,
+    "q": "¿Cuál opción describe mejor algunos de los nutrientes que aportan las verduras y frutas?",
+    "opts": [
+     "Principalmente proteínas y grasas.",
+     "Principalmente grasas y sodio.",
+     "Vitaminas, minerales y fibra.",
+     "Proteínas, grasas y sodio."
+    ],
+    "key": "C"
+   },
+   {
+    "n": 14,
+    "q": "Marca una opción que represente una diferencia entre un cereal integral y uno refinado",
+    "opts": [
+     "El cereal refinado conserva más partes del grano y aporta más fibra.",
+     "El cereal integral conserva partes del grano y aporta más fibra.",
+     "El cereal integral pierde las partes del grano y aporta más fibra.",
+     "El cereal integral y el refinado conservan siempre la misma cantidad de fibra."
+    ],
+    "key": "B",
+    "obs": "Observación al reactivo: El enunciado no es pregunta («Marca una opción que represente…»). Sugerencia: «¿Cuál opción describe una diferencia entre un cereal integral y uno refinado?». La opción C es internamente contradictoria (distractor débil)."
+   },
+   {
+    "n": 15,
+    "q": "¿Qué alimento es una fuente de proteína de origen vegetal?",
+    "opts": [
+     "Arroz integral.",
+     "Aguacate.",
+     "Manzana.",
+     "Frijoles."
+    ],
+    "key": "D"
+   },
+   {
+    "n": 16,
+    "q": "¿Cuál combinación junta una leguminosa con un cereal, como recomiendan las Guías Alimentarias?",
+    "opts": [
+     "Frijoles con tortilla de maíz.",
+     "Lentejas con aguacate.",
+     "Garbanzos con jitomate.",
+     "Frijoles con huevo."
+    ],
+    "key": "A"
+   },
+   {
+    "n": 17,
+    "q": "¿Qué característica tienen alimentos como el aguacate, las semillas y algunos aceites vegetales?",
+    "opts": [
+     "Son fuentes principales de proteína animal.",
+     "Pertenecen al grupo de las leguminosas.",
+     "Pueden aportar grasas saludables.",
+     "Aportan únicamente azúcares."
+    ],
+    "key": "C"
+   },
+   {
+    "n": 18,
+    "q": "¿Cuál relación entre alimento y aporte nutricional es correcta?",
+    "opts": [
+     "Aguacate→ Proteína de origen animal.",
+     "Frijoles→ Proteína de origen vegetal.",
+     "Manzana→ grasa saludable como aporte principal.",
+     "Huevo→ fibra como aporte principal."
+    ],
+    "key": "B",
+    "obs": "Observación al reactivo: Repite el contenido del reactivo 15 (frijoles = proteína de origen vegetal). Considera sustituirlo por otro aporte (p. ej., calcio en lácteos o vitamina C en frutas)."
+   }
+  ]
+ },
+ {
+  "dim": "Dimensión 4. Aplicación de las recomendaciones alimentarias mexicanas en situaciones cotidianas",
+  "items": [
+   {
+    "n": 19,
+    "q": "Julia tiene estas opciones para su comida. ¿Cuál representa mejor una alimentación variada y equilibrada?",
+    "opts": [
+     "Tortilla de maíz, arroz, papa, plátano y agua natural.",
+     "Pollo, huevo, queso, leche y agua natural.",
+     "Manzana, naranja, papaya, zanahoria y agua natural.",
+     "Tortilla de maíz, frijoles, calabacitas, jitomate, aguacate y agua natural"
+    ],
+    "key": "D"
+   },
+   {
+    "n": 20,
+    "q": "Diego va a comer frijoles con tortilla de maíz y agua natural. ¿Cuál alimento sería una buena opción para agregar y hacer su comida más variada?",
+    "opts": [
+     "Otra porción de tortilla de maíz.",
+     "Ensalada de lechuga, jitomate y zanahoria.",
+     "Otra porción de frijoles.",
+     "Arroz integral."
+    ],
+    "key": "B",
+    "obs": "Observación al reactivo: Los reactivos 20 y 22 tienen la misma lógica y la misma respuesta (agregar ensalada de verduras). Sustituye uno para no medir dos veces lo mismo."
+   },
+   {
+    "n": 21,
+    "q": "Antes de ir a la escuela, Juan, Sebastián, María y Luisa eligen diferentes desayunos. ¿Cuál opción presenta mayor variedad de grupos de alimentos?",
+    "opts": [
+     "Pan integral, avena y tortilla de maíz.",
+     "Yogurt natural, leche y queso.",
+     "Avena, plátano, leche y nueces.",
+     "Manzana, papaya, naranja y fresas."
+    ],
+    "key": "C",
+    "obs": "Observación al reactivo: El enunciado nombra a Juan, Sebastián, María y Luisa, pero las opciones no se asignan a ningún nombre. Asigna un nombre a cada opción o elimina los nombres."
+   },
+   {
+    "n": 22,
+    "q": "La mamá de Sofía preparó una comida que incluía arroz integral, frijoles, aguacate y agua natural. ¿Qué podría agregarse para aumentar la variedad de grupos de alimentos?",
+    "opts": [
+     "Ensalada de lechuga, jitomate y zanahoria.",
+     "Otra porción de arroz integral.",
+     "Otra porción de frijoles.",
+     "Otra porción de aguacate."
+    ],
+    "key": "A",
+    "obs": "Observación al reactivo: Ver observación al reactivo 20."
+   },
+   {
+    "n": 23,
+    "q": "Ana lleva a la escuela un sándwich preparado con pan integral, queso y jitomate, acompañado de un jugo de cajita. ¿Qué cambio acercaría más a su comida a las recomendaciones estudiadas?",
+    "opts": [
+     "Quitar el jitomate y agregar más queso.",
+     "Cambiar el pan integral por pan blanco y mantener la bebida.",
+     "Quitar el jitomate y agregar otra porción de pan.",
+     "Cambiar el jugo de cajita por agua natural y agregar una fruta."
+    ],
+    "key": "D"
+   },
+   {
+    "n": 24,
+    "q": "Luis quiere preparar una comida utilizando lo que aprendió sobre alimentación saludable. ¿Cuál opción aplica mejor diferentes recomendaciones al mismo tiempo?",
+    "opts": [
+     "Pollo con huevo, queso, yogurt natural, leche y agua natural.",
+     "Frijoles con tortilla de maíz, verduras, aguacate, una fruta y agua natural.",
+     "Arroz integral con tortilla de maíz, papa, avena, elote y agua natural.",
+     "Ensalada de frutas con manzana, naranja, papaya, plátano y agua natural."
+    ],
+    "key": "B"
+   }
+  ]
+ }
+]
