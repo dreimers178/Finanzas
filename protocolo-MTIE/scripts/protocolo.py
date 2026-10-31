@@ -72,8 +72,8 @@ heading(doc, "1.1 Antecedentes", 2,
         c="CAMBIO IMPORTANTE. Cinco antecedentes del original no pudieron localizarse con los datos citados en ninguna base de datos "
           "ni repositorio (García et al., 2019; Morales y Salazar, 2013; Díaz y Ramírez, 2020; Hernández y Gómez, 2018; Mendoza y "
           "Ruiz, 2021). Un sexto, «Gómez (2008)», es en realidad de Olivares y Snel (1998), según tu Zotero, y se restauró con su "
-          "autoría correcta. Varios de los estudios de tu Zotero (p. ej., Vargas; Cutberto Hernández Ramírez) podrían ser las "
-          "fuentes reales de esos antecedentes: si es así, cítalos con sus datos verdaderos. Citar trabajos inexistentes o mal "
+          "autoría correcta. Con tu exportación de Zotero se identificó además que «García et al. (2019)» es en realidad "
+          "Aguirre Vargas (2019), que también se restauró. Los demás se sustituyeron por estudios verificados. Citar trabajos inexistentes o mal "
           "atribuidos es una falta grave de integridad académica, por lo que se sustituyeron por estudios verificados con DOI o URL "
           "institucional. Se organizan de lo internacional a lo nacional y a lo local. Detalle en el informe de verificación de "
           "referencias. Antes de entregar, LEE cada fuente nueva y confirma que la paráfrasis es fiel.")
@@ -122,6 +122,13 @@ para(doc, "Luo y Li (2025) evaluaron el efecto de intervenciones de microaprendi
           "del grupo destinatario.",
      c="Antes se citaba como «Luo, H., et al.» con un título incompleto. El artículo tiene dos autores (Luo y Li), por lo que en el "
        "texto debe citarse «Luo y Li (2025)», no «Luo et al.».")
+para(doc, "En el ámbito iberoamericano, Ríos-Castillo et al. (2024) realizaron una revisión narrativa de las estrategias "
+          "innovadoras de educación alimentaria y nutricional empleadas en países hispanos para combatir el exceso de peso y la "
+          "obesidad en niños en edad escolar, y Termes Escalé et al. (2020) documentaron la educación nutricional de escolares "
+          "mediante el programa Nutriplato. ==[Completa con el objetivo, el método y los hallazgos principales de cada estudio.]==",
+     c="NUEVO, desde tu Zotero. Ambas referencias se verificaron (DOI 10.4067/s0717-75182024000400333 y 10.20960/nh.03357), "
+       "pero tu exportación RIS no incluye sus resúmenes. Completa el texto resaltado a partir de los PDF y no agregues datos que "
+       "no estén en ellos.")
 heading(doc, "Antecedentes nacionales", 3)
 para(doc, "Shamah-Levy et al. (2017) evaluaron el efecto del programa SaludArte en los componentes de alimentación y nutrición de "
           "escolares de la Ciudad de México. Mediante un estudio comparativo de tres cohortes (2013-2015), con 1,620 escolares de 144 "
@@ -130,7 +137,7 @@ para(doc, "Shamah-Levy et al. (2017) evaluaron el efecto del programa SaludArte 
           "nutricional de estudiantes de primaria, que es la variable dependiente de la presente investigación.",
      c="Este estudio sustituye a «Díaz y Ramírez (2020)» y a «Morales y Salazar (2013)», que no pudieron verificarse. "
        "DOI 10.21149/8116.")
-para(doc, "Cruz Lara et al. (2022) implementó una intervención de educación nutricional en línea con 30 estudiantes de una primaria "
+para(doc, "Cruz Lara y Macossay Moreno (2022) implementaron una intervención de educación nutricional en línea con 30 estudiantes de una primaria "
           "pública del municipio de Veracruz, con un diseño cuasiexperimental de grupo control y grupo de intervención y mediciones "
           "antes y después. El grupo de intervención mejoró significativamente sus conocimientos sobre alimentación y nutrición "
           "(*p* = .04) y mostró cambios en el consumo de agua, leguminosas y lácteos, mientras que el grupo control no presentó "
@@ -138,6 +145,26 @@ para(doc, "Cruz Lara et al. (2022) implementó una intervención de educación n
           "particularmente pertinente porque combina educación nutricional, modalidad en línea y población de educación primaria.",
      c="Sustituye a «Mendoza y Ruiz (2021)», que no pudo verificarse. Es el antecedente más cercano a tu estudio (en línea + "
        "primaria + conocimiento). Revisa el texto completo para precisar los grados escolares y el número de sesiones.")
+para(doc, "Aguirre Vargas (2019) evaluó el conocimiento sobre el Plato del Bien Comer de escolares de tercero y cuarto grado de "
+          "la Escuela Primaria Ignacio Zaragoza antes y después de una intervención educativa en nutrición. De los 33 escolares que "
+          "aceptaron participar, con consentimiento de sus padres y asentimiento propio, 24 concluyeron el estudio. Las sesiones "
+          "abordaron la alimentación en la etapa escolar con el Plato del Bien Comer como herramienta gráfica, y la evaluación tuvo "
+          "una parte teórica y una práctica. ==[Completa con los resultados reportados en el artículo.]== Este antecedente comparte "
+          "con el presente estudio el diseño de preprueba y posprueba, la población de primaria y el contenido del Plato del Bien "
+          "Comer.",
+     c="RESTAURADO desde tu Zotero. Es el artículo de Jóvenes en la Ciencia que el protocolo original citaba como «García et al. "
+       "(2019)», con URL .../article/view/313 (truncada; la correcta termina en 3137) y con datos que no corresponden (adolescentes "
+       "de secundaria en León, 30 alumnos). Es probable que también sea la fuente real de «Díaz y Ramírez (2020)», que hablaba de "
+       "3.º y 4.º grado. VERIFICA EL NOMBRE: Zotero lo registró como «Vargas, Miriam Carolina Aguirre», pero lo más probable es "
+       "que los apellidos sean Aguirre Vargas. Confírmalo en el PDF.")
+para(doc, "En la línea de los recursos digitales, Reséndiz Martínez (2023) exploró, mediante un estudio cualitativo con grupos "
+          "focales, los desafíos y alcances del material digital para la educación alimentaria de escolares de 9 a 11 años y sus "
+          "familias. Mostró videos animados, infografías animadas y un videojuego a tres grupos de 12 escolares. Los niños mostraron "
+          "agrado por el material y motivación para hacer cambios, pero la principal barrera fue la resistencia de los miembros de su "
+          "familia; los padres señalaron barreras económicas y falta de tiempo. Estos hallazgos respaldan el uso de recursos "
+          "digitales breves y visuales con escolares, y advierten sobre la influencia del entorno familiar.",
+     c="NUEVO, desde tu Zotero (tesis del repositorio de la UAQ). Zotero registró la autora como «Martínez, Laura Reséndiz»; lo "
+       "correcto en APA es Reséndiz Martínez, L. Confirma el grado de la tesis (maestría o licenciatura) para la referencia.")
 para(doc, "En cuanto a la magnitud del problema, los resultados de la Encuesta Nacional de Salud y Nutrición Continua 2020-2022 "
           "muestran que el 37.3 % de la población escolar mexicana presenta sobrepeso (19.2 %) u obesidad (18.1 %), y que la "
           "prevalencia de obesidad aumentó poco más de cinco puntos porcentuales entre 2006 y 2020-2022 (Shamah-Levy et al., 2023).",
@@ -284,7 +311,7 @@ para(doc, "La educación alimentaria y nutricional es un componente fundamental 
           "infancia (Food and Agriculture Organization of the United Nations [FAO], 2020; Pérez-Rodrigo y Aranceta, 2003). La "
           "literatura señala que las intervenciones escolares más exitosas están integradas a la vida escolar y se acompañan de "
           "evaluación sistemática (Pérez-Rodrigo y Aranceta, 2001), y estudios mexicanos han documentado incrementos en el "
-          "conocimiento nutricional de escolares tras intervenciones estructuradas (Cruz Lara et al., 2022; Shamah-Levy et al., 2017). Por "
+          "conocimiento nutricional de escolares tras intervenciones estructuradas (Cruz Lara y Macossay Moreno, 2022; Shamah-Levy et al., 2017). Por "
           "otra parte, el microaprendizaje, fundamentado en la teoría de la carga cognitiva y en la teoría del aprendizaje multimedia, "
           "ha mostrado potencial para favorecer la atención y la retención (Betancur-Chicué y García-Valcárcel Muñoz-Repiso, 2023; "
           "Silva et al., 2025). El estudio aporta evidencia sobre la articulación de ambos campos en educación primaria.",
@@ -500,7 +527,9 @@ para(doc, "Si bien el conocimiento nutricional se relaciona con la adopción de 
 heading(doc, "2.2.2 Importancia del conocimiento nutricional en la infancia", 3)
 para(doc, "La infancia es una etapa relevante para la construcción de conocimientos sobre alimentación y salud. La educación "
           "nutricional escolar puede ayudar a que los estudiantes comprendan principios básicos de la alimentación saludable y "
-          "desarrollen herramientas para tomar decisiones informadas (FAO, 2020; Pérez-Rodrigo y Aranceta, 2003). Su relevancia "
+          "desarrollen herramientas para tomar decisiones informadas (FAO, 2020; Pérez-Rodrigo y Aranceta, 2003). La escuela ofrece, "
+          "además, múltiples oportunidades para la prevención de la obesidad, tanto por la oferta de alimentos como por la educación "
+          "y los servicios de salud que puede proporcionar (Story et al., 2006). Su relevancia "
           "aumenta ante la magnitud del sobrepeso y la obesidad en la población escolar mexicana (Shamah-Levy et al., 2023).",
      c="Se sustituyeron «Aranceta (2012)» y «Pérez-Rodrigo y Aranceta (2011)», que no pudieron verificarse.")
 heading(doc, "2.2.3 El Plato del Bien Comer y las guías alimentarias mexicanas", 3)
@@ -531,7 +560,17 @@ para(doc, "Los programas escolares de educación nutricional pueden mejorar el c
           "manera sistemática a las actividades educativas (Pérez-Rodrigo y Aranceta, 2001; Shamah-Levy et al., 2017). En México, "
           "estas estrategias pueden apoyarse en la NOM-043-SSA2-2012 y en las Guías Alimentarias Saludables y Sostenibles para la "
           "Población Mexicana (Secretaría de Salud, 2013; SSA et al., 2025). Experiencias recientes muestran, además, la viabilidad de "
-          "la modalidad en línea con escolares de primaria (Cruz Lara et al., 2022).")
+          "la modalidad en línea con escolares de primaria (Cruz Lara y Macossay Moreno, 2022).")
+para(doc, "Lytle y Achterberg (1995) identificaron seis elementos de los programas exitosos de educación nutricional infantil: "
+          "estar basados en la conducta y fundamentados en teoría, involucrar a la familia en el nivel primaria, incluir la "
+          "autoevaluación de los patrones de alimentación en secundaria y bachillerato, intervenir en el entorno escolar y en la "
+          "comunidad, y dedicar un tiempo de instrucción intensivo. Señalaron, además, que las lecciones solo expositivas son "
+          "insuficientes; que el aprendizaje experiencial, la resolución de problemas y las oportunidades interactivas con computadora "
+          "son más eficaces, y que la tecnología interactiva permite a los niños avanzar a su propio ritmo. También destacaron la "
+          "necesidad de una evaluación rigurosa de resultados. Estos principios sustentan el diseño del taller: fundamentación "
+          "teórica, actividades interactivas y evaluación preprueba-posprueba.",
+     c="NUEVO, desde tu Zotero, con base en el resumen ejecutivo del artículo. Es un referente clásico que vincula la educación "
+       "nutricional con la tecnología interactiva.")
 heading(doc, "2.3 Relación entre el microaprendizaje y el conocimiento nutricional", 2)
 para(doc, "La relación entre ambas variables se fundamenta en que la organización del contenido en unidades breves y estructuradas "
           "reduce la carga cognitiva extrínseca y focaliza la atención en un objetivo por vez (Sweller et al., 2019), lo que favorece "
@@ -762,7 +801,7 @@ para(doc, "Este capítulo se desarrollará una vez concluida la intervención. L
           "objetivos específicos: (a) nivel inicial de conocimiento nutricional (estadística descriptiva de la preprueba); (b) "
           "descripción del taller desarrollado y de su fidelidad de implementación, y (c) comparación entre preprueba y posprueba, "
           "total y por dimensión, con el contraste de hipótesis y el tamaño del efecto. Posteriormente, en la discusión, los "
-          "resultados se compararán con los antecedentes (Cruz Lara et al., 2022; Shamah-Levy et al., 2017).",
+          "resultados se compararán con los antecedentes (Cruz Lara y Macossay Moreno, 2022; Shamah-Levy et al., 2017).",
      c="Se sustituyeron las instrucciones de la plantilla (incluida la indicación de «agregar la prueba de Chi cuadrado», que no "
        "aplica a este diseño) por el plan de presentación de resultados de este estudio.")
 heading(doc, "Capítulo 5. Conclusiones", 1)
@@ -777,6 +816,8 @@ heading(doc, "Referencias", 1,
           "DOI en formato https://doi.org/ y sin «doi:» ni «Recuperado de». Lo resaltado en amarillo requiere un dato que no pudo "
           "confirmarse en línea.")
 REFS = [
+    ("==Aguirre Vargas, M. C.== (2019). Evaluación de la mejora del conocimiento de los escolares que cursan tercer y cuarto grado de primaria sobre «El Plato del Bien Comer» después de la intervención educativa en nutrición. *Jóvenes en la Ciencia, 6*. https://www.jovenesenlaciencia.ugto.mx/index.php/jovenesenlaciencia/article/view/3137",
+     "Desde tu Zotero. Corresponde a la cita errónea «García et al. (2019)». Confirma el orden de los apellidos de la autora."),
     ("Aiken, L. R. (1985). Three coefficients for analyzing the reliability and validity of ratings. *Educational and Psychological Measurement, 45*(1), 131–142. https://doi.org/10.1177/0013164485451012", None),
     ("Banco Interamericano de Desarrollo. (s. f.). *Educación*. https://www.iadb.org/es/quienes-somos/tematicas/educacion", None),
     ("Bermudez, O. I., y Tucker, K. L. (2003). Trends in dietary patterns of Latin American populations. *Cadernos de Saúde Pública, 19*(Supl. 1), S87–S99. https://doi.org/10.1590/S0102-311X2003000700010",
@@ -786,10 +827,10 @@ REFS = [
     ("Branch, R. M. (2009). *Instructional design: The ADDIE approach*. Springer. https://doi.org/10.1007/978-0-387-09506-6", "Agregada: se citaba en el texto pero no estaba en la lista."),
     ("Campbell, D. T., y Stanley, J. C. (1966). *Experimental and quasi-experimental designs for research*. Rand McNally.", "Nueva: sustenta la clasificación del diseño."),
     ("Cohen, J. (1988). *Statistical power analysis for the behavioral sciences* (2.ª ed.). Lawrence Erlbaum Associates.", "Nueva: tamaño del efecto y potencia."),
-    ("Cruz Lara, N. M., ==[demás autores]== (2022). Intervención de educación nutricional en línea a población infantil en el estado de Veracruz. *Horizonte Sanitario, 21*(3), 403–409. https://doi.org/10.19136/hs.a21n3.4893",
-     "Título en español confirmado con tu Zotero. Zotero lo registra como «Cruz Lara et al.», es decir, con tres o más autores: completa la lista de autores con Zotero."),
-    ("Olivares, ==S.==, y Snel, ==J.== (1998). Educación en nutrición en las escuelas primarias. *Alimentación, Nutrición y Agricultura*, (22), ==[páginas]==. Organización de las Naciones Unidas para la Alimentación y la Agricultura. https://www.fao.org/4/X0051T/X0051t08.htm",
-     "Restaurada desde tu Zotero (antes citada por error como «Gómez, 2008»). Verifica las iniciales y las páginas."),
+    ("Cruz Lara, N. M., y Macossay Moreno, C. (2022). Intervención de educación nutricional en línea a población infantil en el estado de Veracruz. *Horizonte Sanitario, 21*(3), 403–409. https://doi.org/10.19136/hs.a21n3.4893",
+     "Nueva (sustituye a Mendoza y Ruiz, 2021). Datos completados con tu Zotero: dos autoras, por lo que en el texto se cita «Cruz Lara y Macossay Moreno (2022)», no «et al.». En tu Zotero el registro tiene las autoras duplicadas; conviene limpiarlo."),
+    ("Olivares, S., y Snel, J. (1998). Educación en nutrición en las escuelas primarias. *Alimentación, Nutrición y Agricultura*, (22), ==[páginas]==. Organización de las Naciones Unidas para la Alimentación y la Agricultura. https://www.fao.org/4/X0051T/X0051t08.htm",
+     "Restaurada desde tu Zotero (antes citada por error como «Gómez, 2008»). Iniciales confirmadas; completa las páginas."),
     ("Escobar-Pérez, J., y Cuervo-Martínez, Á. (2008). Validez de contenido y juicio de expertos: Una aproximación a su utilización. *Avances en Medición, 6*, 27–36.", "Nueva: fundamenta el juicio de expertos."),
     ("Food and Agriculture Organization of the United Nations. (2020). *School-based food and nutrition education: A white paper on the current state, principles, challenges and recommendations for low- and middle-income countries*. https://www.fao.org/platforms/school-food/technical-resources/publications/school-based-food-and-nutrition-education/en",
      "Sustituye a «FAO (2013). Guía de educación alimentaria y nutricional para escuelas», cuyo título no pudo verificarse. Si cuentas con la guía de 2013, verifica sus datos y restáurala."),
@@ -805,6 +846,7 @@ REFS = [
      "Corregida: eran dos autores, no «Luo, H., et al.» (APA 7 no admite «et al.» en la lista de referencias). El título estaba incompleto, faltaba el volumen y había un carácter oculto al final del DOI."),
     ("Martínez Villagrana, M. (2023). Educación nutricional en la escuela: Pedagogía para la vida saludable. Caso: primaria rural en municipio zacatecano. ==*[Nombre completo de la revista RIEIPD]*==, *1*(1). https://doi.org/10.71770/rieipd.v1i1.1793",
      "Nueva (contexto local; revista de la UAZ). Completa el nombre de la revista y las páginas."),
+    ("Lytle, L., y Achterberg, C. (1995). Changing the diet of America's children: What works and why? *Journal of Nutrition Education, 27*(5), 250–260. https://doi.org/10.1016/S0022-3182(12)80793-X", "Nueva, desde tu Zotero."),
     ("Mayer, R. E. (2009). *Multimedia learning* (2.ª ed.). Cambridge University Press. https://doi.org/10.1017/CBO9780511811678", "Agregada: se citaba en el texto pero no estaba en la lista."),
     ("Organización de las Naciones Unidas. (2015). *Transformar nuestro mundo: La Agenda 2030 para el Desarrollo Sostenible* (A/RES/70/1). https://sdgs.un.org/2030agenda", "Corregida: no se repite la sigla en la referencia; se agregó la signatura del documento."),
     ("Penfield, R. D., y Giacobbi, P. R., Jr. (2004). Applying a score confidence interval to Aiken's item content-relevance index. *Measurement in Physical Education and Exercise Science, 8*(4), 213–225. https://doi.org/10.1207/s15327841mpee0804_3", "Nueva: intervalo de confianza de la V de Aiken."),
@@ -812,7 +854,9 @@ REFS = [
      "Corregida: el DOI decía «doi: https://doi.org.10.1079…», un enlace roto (punto en lugar de barra)."),
     ("Pérez-Rodrigo, C., y Aranceta, J. (2003). Nutrition education in schools: Experiences and challenges. *European Journal of Clinical Nutrition, 57*(Supl. 1), S82–S85. https://doi.org/10.1038/sj.ejcn.1601824",
      "Sustituye las citas «Pérez-Rodrigo y Aranceta (2011)» y «(2013)», que no pudieron localizarse."),
+    ("Reséndiz Martínez, L. (2023). *Desafíos y alcances de la educación alimentaria a partir del uso de material digital en niños de edad escolar y sus familias* ==[Tesis de maestría]==, Universidad Autónoma de Querétaro. Repositorio Institucional UAQ. https://ri-ng.uaq.mx/handle/123456789/8429", "Nueva, desde tu Zotero. Confirma el tipo de tesis."),
     ("Reglamento de la Ley General de Salud en Materia de Investigación para la Salud. (1987, 6 de enero). Diario Oficial de la Federación. ==Última reforma publicada [fecha]. [URL de la Cámara de Diputados o del DOF]==", "Nueva: consideraciones éticas. Completa la última reforma y la URL."),
+    ("Ríos-Castillo, I., Lizárraga-Quintero, A., Ortega, L., Fontes, F., y Valdés, V. (2024). Estrategias innovadoras de educación alimentaria y nutricional para combatir el exceso de peso y la obesidad en niños de edad escolar empleadas en países hispanos: Una revisión narrativa. *Revista Chilena de Nutrición, 51*(4), 333–339. https://doi.org/10.4067/s0717-75182024000400333", "Nueva, desde tu Zotero."),
     ("Secretaría de Salud. (2013, 22 de enero). Norma Oficial Mexicana NOM-043-SSA2-2012, Servicios básicos de salud. Promoción y educación para la salud en materia alimentaria. Criterios para brindar orientación. *Diario Oficial de la Federación*. https://www.gob.mx/cms/uploads/attachment/file/138258/NOM-043-servicios-basicos-salud-educacion-alimentaria.pdf",
      "Corregida: el año de publicación en el DOF es 2013; el título oficial de la norma estaba incompleto."),
     ("Secretaría de Salud, Instituto Nacional de Salud Pública y Fondo de las Naciones Unidas para la Infancia. (2025). *Guías alimentarias saludables y sostenibles para la población mexicana* (2.ª ed.). ==[URL oficial; p. ej., la publicación en el DOF]==",
@@ -824,14 +868,20 @@ REFS = [
     ("Siemens, G. (2005). Connectivism: A learning theory for the digital age. *International Journal of Instructional Technology and Distance Learning, 2*(1), 3–10.", "Agregada: se citaba en el texto pero no estaba en la lista."),
     ("Silva, E. S., Pires da Costa, W., de Lima, J. C., y Ferreira, J. C. (2025). Contribution of microlearning in basic education: A systematic review. *Education Sciences, 15*(3), Artículo 302. https://doi.org/10.3390/educsci15030302",
      "Se confirmaron título, revista, volumen y DOI. Verifica las iniciales de los autores en la página del artículo (MDPI); en una cita secundaria aparecen como «Silva, Costa, Lima y Ferreira»."),
+    ("Story, M., Kaphingst, K. M., y French, S. (2006). The role of schools in obesity prevention. *The Future of Children, 16*(1), 109–142. https://muse.jhu.edu/pub/11/article/194627", "Nueva, desde tu Zotero. Se omite «Ph. D», que Zotero agregó al nombre de la autora: APA no incluye grados académicos."),
     ("Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. *Cognitive Science, 12*(2), 257–285. https://doi.org/10.1207/s15516709cog1202_4", "Agregada: se citaba en el texto pero no estaba en la lista."),
     ("Sweller, J., van Merriënboer, J. J. G., y Paas, F. (2019). Cognitive architecture and instructional design: 20 years later. *Educational Psychology Review, 31*(2), 261–292. https://doi.org/10.1007/s10648-019-09465-5", "Sustituye a Surbakti et al. (2024), que no pudo verificarse."),
+    ("Termes Escalé, M., Martínez Chicano, D., Egea Castillo, N., Gutiérrez Sánchez, A., García Arenas, D., Llata Vidal, N., y Martín de Carpi, J. (2020). Educación nutricional en niños en edad escolar a través del Programa Nutriplato®. *Nutrición Hospitalaria, 37*(Spe. 2), 47–51. https://doi.org/10.20960/nh.03357", "Nueva, desde tu Zotero."),
     ("Ubillus-Sambachi, ==[iniciales y demás autores]== (2025). Capacitación docente en TICS para el fomento de la metodología de micro aprendizaje. *593 Digital Publisher CEIT, 10*(3), 219–230. https://doi.org/10.33386/593dp.2025.3.3128",
      "Agregada: se citaba en el texto pero no estaba en la lista. Completa los nombres de los autores."),
     ("UNESCO. (2017). *Educación para los Objetivos de Desarrollo Sostenible: Objetivos de aprendizaje*. https://unesdoc.unesco.org/ark:/48223/pf0000252423", "Verificada. Se eliminó «UNESCO Publishing», que es el mismo autor."),
     ("UNESCO. (2023). *Informe de seguimiento de la educación en el mundo 2023: Tecnología en la educación: ¿Una herramienta en los términos de quién?* ==[URL o DOI de UNESDOC]==", "Agregada: se citaba en el texto pero no estaba en la lista. Confirma el título en español y agrega el enlace."),
 ]
-for text, c in REFS:
+import unicodedata
+def _key(t):
+    t = t[0].replace("==", "").replace("*", "")
+    return unicodedata.normalize("NFKD", t).encode("ascii", "ignore").decode().lower().replace(",", "~")
+for text, c in sorted(REFS, key=_key):
     ref(doc, text, c)
 page_break(doc)
 
