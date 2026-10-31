@@ -334,14 +334,13 @@ para(doc, "La intervención y la recolección de datos se realizarán en el Inst
        "acompañamiento docente y registro de cápsulas completadas.")
 heading(doc, "Alcance temporal", 3)
 para(doc, "La intervención durará cuatro semanas. Se realizarán dos mediciones: una preprueba antes del taller y una posprueba "
-          "inmediatamente después. La preprueba se aplicará al regreso del periodo vacacional (4 y 5 de "
-          "enero de 2027); el taller se implementará del 6 al 29 de enero de 2027, con su cápsula de cierre el 27 de enero, en el "
-          "marco de la conmemoración del Día del Nutriólogo en México, y la posprueba se aplicará del 1 al 5 de febrero de 2027 "
-          "(fechas tentativas; Tabla 5). El estudio no "
+          "inmediatamente después. La preprueba se aplicará del 18 al 22 de enero de 2027; el taller iniciará el "
+          "lunes 25 de enero de 2027, en la semana de la conmemoración del Día del Nutriólogo en México (27 de enero), y concluirá el "
+          "19 de febrero de 2027; la posprueba se aplicará del 22 al 26 de febrero de 2027 (fechas tentativas; Tabla 5). El estudio no "
           "contempla una medición de seguimiento.",
-     c="Fecha actualizada por decisión de la autora: aplicación en enero de 2027, alineada con el Día del Nutriólogo (27 de "
-       "enero). Confirma la fecha de regreso a clases tras las vacaciones de invierno: si es posterior al 4 de enero, la "
-       "preprueba se recorre y el taller se compacta (dos cápsulas por semana) para cerrar el 27 de enero.")
+     c="Fecha actualizada por decisión de la autora: el taller inicia el 25 de enero de 2027, en la semana del Día del "
+       "Nutriólogo (miércoles 27 de enero). Con dos cápsulas por semana, la C2 coincide con el 27 de enero y puede usarse como "
+       "actividad de lanzamiento. Confirma las fechas con el calendario escolar.")
 heading(doc, "Limitaciones", 3)
 para(doc, "El estudio presenta limitaciones que deberán considerarse al interpretar los resultados. En primer lugar, al no contar "
           "con un grupo control, los cambios observados no podrán atribuirse exclusivamente al taller, pues podrían influir factores "
@@ -736,12 +735,12 @@ table(doc, 5, "Cronograma de actividades",
       [["Juicio de expertos y ajuste del instrumento", "Noviembre de 2026"],
        ["Presentación del cartel en el I CITEEA (UAZ)", "19 y 20 de noviembre de 2026"],
        ["Prueba piloto y análisis de confiabilidad", "1 al 11 de diciembre de 2026"],
-       ["Desarrollo de las cápsulas (fase de desarrollo)", "Noviembre – diciembre de 2026"],
-       ["Entrega y recepción de consentimientos y asentimientos", "30 de noviembre al 11 de diciembre de 2026"],
-       ["Preprueba", "4 y 5 de enero de 2027"],
-       ["Implementación del taller (8 cápsulas; cierre el 27 de enero, Día del Nutriólogo)", "6 al 29 de enero de 2027"],
-       ["Posprueba", "1 al 5 de febrero de 2027"],
-       ["Análisis de datos y redacción de resultados", "Febrero – marzo de 2027"]],
+       ["Desarrollo de las cápsulas (fase de desarrollo)", "Noviembre de 2026 – enero de 2027"],
+       ["Entrega y recepción de consentimientos y asentimientos", "7 al 15 de enero de 2027"],
+       ["Preprueba", "18 al 22 de enero de 2027"],
+       ["Implementación del taller (8 cápsulas; inicio en la semana del Día del Nutriólogo, 27 de enero)", "25 de enero al 19 de febrero de 2027"],
+       ["Posprueba", "22 al 26 de febrero de 2027"],
+       ["Análisis de datos y redacción de resultados", "Marzo – abril de 2027"]],
       widths=[10, 6],
       note="Fechas tentativas. ==Confirmar con el calendario escolar del Instituto Educativo Ammadeus (vacaciones, suspensiones y evaluaciones).==",
       c="Faltaba un cronograma, que es un componente estándar de todo protocolo.")
