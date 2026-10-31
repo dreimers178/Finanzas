@@ -210,13 +210,16 @@ para(doc, "Actualmente el instituto cuenta con 652 alumnos inscritos. El nivel p
        "En APA 7 las comunicaciones personales se citan en el texto, pero no van en la lista de referencias.")
 heading(doc, "1.2.2 Grupo participante", 3)
 para(doc, "El estudio se realizará con el grupo 5.º «B» de primaria, integrado por 25 estudiantes (niñas y niños) de entre 10 y 11 "
-          "años que cursan contenidos de salud y nutrición dentro del campo formativo correspondiente. El grupo se eligió por la "
+          "años. En la Fase 5 del plan de estudios vigente (5.º y 6.º grado), el campo formativo «Saberes y pensamiento científico» "
+          "incluye contenidos sobre las características de una dieta correcta y los riesgos del consumo de alimentos "
+          "ultraprocesados (Secretaría de Educación Pública [SEP], 2024), con los que se articula el taller. El grupo se eligió por la "
           "disposición institucional para colaborar y por la accesibilidad para implementar la intervención. El grupo cuenta con "
           "acceso al aula digital, conectividad y acompañamiento docente, condiciones necesarias para un " + TALLER + ".",
      c="CORRECCIÓN METODOLÓGICA. El original afirmaba que el grupo se eligió «por su representatividad dentro del nivel educativo». "
        "Una muestra no probabilística por conveniencia NO es representativa, y afirmarlo contradice el apartado de muestreo. "
-       "Además, en la NEM la asignatura «Ciencias Naturales» se integra en el campo formativo «Saberes y pensamiento científico». "
-       "Verifica cómo la nombra la escuela.")
+       "Se agregó la vinculación con el programa sintético de la Fase 5 de la SEP. VERIFICA en el PDF oficial la redacción "
+       "exacta del contenido y de los procesos de desarrollo de aprendizaje (PDA) de 5.º grado sobre alimentación, y cítalos "
+       "textualmente si los usas.")
 para(doc, "El taller se impartirá en español, tendrá una duración de cuatro semanas y se desarrollará con cápsulas digitales "
           "breves, dinámicas y accesibles. La elección del formato digital responde a su posibilidad de escalamiento y de adaptación "
           "a entornos híbridos o virtuales, en coherencia con los Objetivos de Desarrollo Sostenible 3 (salud y bienestar) y 4 "
@@ -237,13 +240,14 @@ para(doc, "El sobrepeso y la obesidad infantil son uno de los principales retos 
      c="El original afirmaba que la ONU «advierte que la adopción de hábitos saludables desde la infancia es clave…». La Agenda "
        "2030 no contiene esa frase. Se reformuló con lo que el documento sí establece (ODS 3). Verifica la paráfrasis de UNESCO "
        "(2017) en el documento original.")
-para(doc, "En el contexto nacional, el 37.3 % de la población escolar presenta sobrepeso u obesidad (Shamah-Levy et al., 2023). "
+para(doc, "En el contexto nacional, el 37.3 % de la población escolar presenta sobrepeso u obesidad (Shamah-Levy et al., 2023), a "
+          "pesar de la larga trayectoria de políticas y programas de alimentación y nutrición en el país (Barquera et al., 2001). "
           "En Zacatecas, López Hernández et al. (2024) reportaron en una primaria de Guadalupe que el 45.9 % de los escolares "
           "presentaba sobrepeso u obesidad y que el 66.4 % tenía conocimientos insuficientes en nutrición. Estos datos evidencian la "
           "pertinencia de fortalecer, desde la escuela, el conocimiento sobre alimentación saludable.",
-     c="Se eliminó la cita «SEP (2021)», que remitía a la página general de educación básica y no sustenta la afirmación de que "
-       "«las prácticas de educación nutricional son limitadas y poco sistemáticas». Si quieres conservar esa idea, cita el "
-       "documento específico (programa sintético de la fase 5 de la NEM o un estudio que lo documente).")
+     c="Se eliminó la cita «SEP (2021)», que remitía a la página general de educación básica y no sustentaba la afirmación. En "
+       "su lugar se agregó Barquera et al. (2001), de tu Zotero, que revisa las políticas y programas de alimentación y nutrición "
+       "en México. Verifica la paráfrasis en el artículo.")
 para(doc, "El problema que aborda esta investigación es el insuficiente conocimiento nutricional de estudiantes de educación "
           "primaria y la falta de propuestas educativas sistemáticas, atractivas y apoyadas en recursos digitales que faciliten la "
           "comprensión de contenidos nutricionales acordes con las recomendaciones alimentarias mexicanas vigentes. El "
@@ -489,7 +493,12 @@ para(doc, "El diseño de cápsulas digitales requiere una planificación pedagó
           "estructurarlo para que cada cápsula cumpla un objetivo específico. Desde la teoría de la carga cognitiva, las cápsulas "
           "deben eliminar elementos irrelevantes, presentar un solo concepto central, cuidar la claridad visual y evitar la "
           "saturación de texto (Mayer, 2009; Sweller et al., 2019). En este proyecto, cada cápsula integra un video breve, un recurso "
-          "visual y una actividad interactiva alineados con una dimensión del conocimiento nutricional (ver Tabla 4).")
+          "visual y una actividad interactiva alineados con una dimensión del conocimiento nutricional (ver Tabla 4). El uso del video "
+          "breve con estructura narrativa se apoya, además, en la experiencia de la narrativa digital en la educación para la salud: "
+          "una revisión de 35 estudios mostró que las historias digitales se han empleado en la promoción de la salud y en la "
+          "educación de pacientes y comunidades, con fines como el cambio de actitudes y conductas (Mojtahedzadeh et al., 2021).",
+     c="NUEVO, desde tu Zotero. En tu registro de Zotero el tercer autor aparece como «Hossein Emami, Amir»; lo correcto es "
+       "Emami, A. H. (nombre de pila Amir Hossein). Conviene corregirlo también en Zotero.")
 heading(doc, "2.1.5 Ventajas del microaprendizaje para el aprendizaje activo", 3,
         c="Se eliminó el doble punto final del encabezado original («activo..»).")
 para(doc, "El microaprendizaje puede favorecer la participación activa al presentar objetivos concretos y alcanzables en cada "
@@ -656,7 +665,11 @@ para(doc, "Se empleará la técnica de prueba de conocimientos, mediante el *Cue
           "de quinto grado de primaria* (Anexo A), elaborado ex profeso. Está integrado por 24 reactivos de opción múltiple con cuatro "
           "opciones y una sola respuesta correcta, distribuidos en cuatro dimensiones de seis reactivos cada una (Tabla 3). Los "
           "reactivos se redactaron con lenguaje adecuado para niñas y niños de 10 y 11 años y con base en el Plato del Bien Comer "
-          "Saludable y Sostenible (SSA et al., 2025). Cada respuesta correcta vale un punto, por lo que el puntaje total va de 0 a 24.",
+          "Saludable y Sostenible (SSA et al., 2025). La redacción y revisión de los reactivos sigue las pautas para reactivos de "
+          "opción múltiple de Haladyna et al. (2002): un enunciado claro que plantee una sola pregunta, opciones homogéneas en "
+          "contenido y extensión, distractores plausibles, evitar enunciados negativos y evitar opciones como «todas las "
+          "anteriores» o «ninguna de las anteriores». Cada respuesta correcta vale un punto, por lo que el puntaje total va de 0 a "
+          "24.",
      c="El texto original describía un instrumento «de opción múltiple y/o respuesta cerrada» con dimensiones distintas. Se "
        "actualizó con las características reales del instrumento (24 reactivos, 4 dimensiones). Se corrigió «ractios» por "
        "«reactivos». Atiende la observación del asesor: el cuestionario completo va en el Anexo A.")
@@ -820,6 +833,7 @@ REFS = [
     ("==Aguirre Vargas, M. C.== (2019). Evaluación de la mejora del conocimiento de los escolares que cursan tercer y cuarto grado de primaria sobre «El Plato del Bien Comer» después de la intervención educativa en nutrición. *Jóvenes en la Ciencia, 6*. https://www.jovenesenlaciencia.ugto.mx/index.php/jovenesenlaciencia/article/view/3137",
      "Desde tu Zotero. Corresponde a la cita errónea «García et al. (2019)». Confirma el orden de los apellidos de la autora."),
     ("Aiken, L. R. (1985). Three coefficients for analyzing the reliability and validity of ratings. *Educational and Psychological Measurement, 45*(1), 131–142. https://doi.org/10.1177/0013164485451012", None),
+    ("Barquera, S., Rivera-Dommarco, J., y Gasca-García, A. (2001). Políticas y programas de alimentación y nutrición en México. *Salud Pública de México, 43*(5), 464–477. https://doi.org/10.1590/S0036-36342001000500011", "Nueva, desde tu Zotero."),
     ("Banco Interamericano de Desarrollo. (s. f.). *Educación*. https://www.iadb.org/es/quienes-somos/tematicas/educacion", None),
     ("Bermudez, O. I., y Tucker, K. L. (2003). Trends in dietary patterns of Latin American populations. *Cadernos de Saúde Pública, 19*(Supl. 1), S87–S99. https://doi.org/10.1590/S0102-311X2003000700010",
      "Corregida: no es una publicación de la FAO, sino de Cadernos de Saúde Pública. El apellido se escribe Bermudez, sin tilde, como en la fuente."),
@@ -837,6 +851,7 @@ REFS = [
      "Sustituye a «FAO (2013). Guía de educación alimentaria y nutricional para escuelas», cuyo título no pudo verificarse. Si cuentas con la guía de 2013, verifica sus datos y restáurala."),
     ("González Ruiz, C. J., Martín Gómez, S., y Cabrera Hernández, D. J. (2024). Microlearning en la formación de docentes y familias de Educación Infantil: Una propuesta de aprendizaje híbrido. *Edutec. Revista Electrónica de Tecnología Educativa*, (88). https://doi.org/10.21556/edutec.2024.88.3127",
      "Opcional: no se cita en el texto. Es un ejemplo verificado de microaprendizaje en educación básica (Educación Infantil) que puedes incorporar en el apartado 2.1.3. Si no lo usas, elimínalo de la lista."),
+    ("Haladyna, T. M., Downing, S. M., y Rodriguez, M. C. (2002). A review of multiple-choice item-writing guidelines for classroom assessment. *Applied Measurement in Education, 15*(3), 309–333. https://doi.org/10.1207/S15324818AME1503_5", "Nueva: pautas de redacción de reactivos de opción múltiple."),
     ("Hernández-Sampieri, R., y Mendoza Torres, C. P. (2018). *Metodología de la investigación: Las rutas cuantitativa, cualitativa y mixta*. McGraw-Hill Interamericana.", "Nueva: referente metodológico."),
     ("Kelley, P., y Whatson, T. (2013). Making long-term memories in minutes: A spaced learning pattern from memory research in education. *Frontiers in Human Neuroscience, 7*, Artículo 589. https://doi.org/10.3389/fnhum.2013.00589", "Sustituye a Jasinski (2022), que no pudo localizarse."),
     ("Kuder, G. F., y Richardson, M. W. (1937). The theory of the estimation of test reliability. *Psychometrika, 2*(3), 151–160. https://doi.org/10.1007/BF02288391", "Nueva: confiabilidad KR-20."),
@@ -848,6 +863,7 @@ REFS = [
     ("Martínez Villagrana, M. (2023). Educación nutricional en la escuela: Pedagogía para la vida saludable. Caso: primaria rural en municipio zacatecano. ==*[Nombre completo de la revista RIEIPD]*==, *1*(1). https://doi.org/10.71770/rieipd.v1i1.1793",
      "Nueva (contexto local; revista de la UAZ). Completa el nombre de la revista y las páginas."),
     ("Lytle, L., y Achterberg, C. (1995). Changing the diet of America's children: What works and why? *Journal of Nutrition Education, 27*(5), 250–260. https://doi.org/10.1016/S0022-3182(12)80793-X", "Nueva, desde tu Zotero."),
+    ("Mojtahedzadeh, R., Mohammadi, A., Emami, A. H., y Zarei, A. (2021). How digital storytelling applied in health profession education: A systematized review. *Journal of Advances in Medical Education & Professionalism, 9*(2), 63–78. https://doi.org/10.30476/jamp.2021.87856.1326", "Nueva, desde tu Zotero (autor corregido: Emami, A. H.)."),
     ("Mayer, R. E. (2009). *Multimedia learning* (2.ª ed.). Cambridge University Press. https://doi.org/10.1017/CBO9780511811678", "Agregada: se citaba en el texto pero no estaba en la lista."),
     ("Organización de las Naciones Unidas. (2015). *Transformar nuestro mundo: La Agenda 2030 para el Desarrollo Sostenible* (A/RES/70/1). https://sdgs.un.org/2030agenda", "Corregida: no se repite la sigla en la referencia; se agregó la signatura del documento."),
     ("Penfield, R. D., y Giacobbi, P. R., Jr. (2004). Applying a score confidence interval to Aiken's item content-relevance index. *Measurement in Physical Education and Exercise Science, 8*(4), 213–225. https://doi.org/10.1207/s15327841mpee0804_3", "Nueva: intervalo de confianza de la V de Aiken."),
@@ -858,6 +874,7 @@ REFS = [
     ("Reséndiz Martínez, L. (2023). *Desafíos y alcances de la educación alimentaria a partir del uso de material digital en niños de edad escolar y sus familias* ==[Tesis de maestría]==, Universidad Autónoma de Querétaro. Repositorio Institucional UAQ. https://ri-ng.uaq.mx/handle/123456789/8429", "Nueva, desde tu Zotero. Confirma el tipo de tesis."),
     ("Reglamento de la Ley General de Salud en Materia de Investigación para la Salud. (1987, 6 de enero). Diario Oficial de la Federación. ==Última reforma publicada [fecha]. [URL de la Cámara de Diputados o del DOF]==", "Nueva: consideraciones éticas. Completa la última reforma y la URL."),
     ("Ríos-Castillo, I., Lizárraga-Quintero, A., Ortega, L., Fontes, F., y Valdés, V. (2024). Estrategias innovadoras de educación alimentaria y nutricional para combatir el exceso de peso y la obesidad en niños de edad escolar empleadas en países hispanos: Una revisión narrativa. *Revista Chilena de Nutrición, 51*(4), 333–339. https://doi.org/10.4067/s0717-75182024000400333", "Nueva, desde tu Zotero."),
+    ("Secretaría de Educación Pública. (==2024==). *Programa de estudio para la educación primaria: Programa sintético de la Fase 5*. https://educacionbasica.sep.gob.mx/wp-content/uploads/2024/06/Programa_Sintetico_Fase_5.pdf", "Nueva. Se cita la versión oficial, no el «Avance» preliminar de diciembre de 2022. Confirma el año en la portada o en los créditos del PDF."),
     ("Secretaría de Salud. (2013, 22 de enero). Norma Oficial Mexicana NOM-043-SSA2-2012, Servicios básicos de salud. Promoción y educación para la salud en materia alimentaria. Criterios para brindar orientación. *Diario Oficial de la Federación*. https://www.gob.mx/cms/uploads/attachment/file/138258/NOM-043-servicios-basicos-salud-educacion-alimentaria.pdf",
      "Corregida: el año de publicación en el DOF es 2013; el título oficial de la norma estaba incompleto."),
     ("Secretaría de Salud, Instituto Nacional de Salud Pública y Fondo de las Naciones Unidas para la Infancia. (2025). *Guías alimentarias saludables y sostenibles para la población mexicana* (2.ª ed.). ==[URL oficial; p. ej., la publicación en el DOF]==",

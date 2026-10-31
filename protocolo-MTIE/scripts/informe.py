@@ -130,7 +130,7 @@ table(doc, 4, "Estado de las referencias del protocolo original", ["Referencia o
 para(doc, "**Referencias nuevas** (todas verificadas): Aiken (1985); Campbell y Stanley (1966); Cohen (1988); Cruz Lara y Macossay Moreno (2022); "
           "Escobar-Pérez y Cuervo-Martínez (2008); FAO (2020); González Ruiz et al. (2024, opcional); Hernández-Sampieri y Mendoza "
           "Torres (2018); Kelley y Whatson (2013); Kuder y Richardson (1937); Martínez Villagrana (2023); Penfield y Giacobbi (2004); "
-          "Pérez-Rodrigo y Aranceta (2003); y, desde el Zotero de la autora, Aguirre Vargas (2019), Lytle y Achterberg (1995), Olivares y Snel (1998), Reséndiz Martínez (2023), Ríos-Castillo et al. (2024), Story et al. (2006) y Termes Escalé et al. (2020); Reglamento de la LGS en Materia de Investigación (1987); Shamah-Levy et al. (2017, "
+          "Pérez-Rodrigo y Aranceta (2003); y, desde el Zotero de la autora, Aguirre Vargas (2019), Lytle y Achterberg (1995), Olivares y Snel (1998), Reséndiz Martínez (2023), Ríos-Castillo et al. (2024), Story et al. (2006), Termes Escalé et al. (2020), Barquera et al. (2001) y Mojtahedzadeh et al. (2021); Haladyna et al. (2002); SEP (2024), programa sintético de la Fase 5; Reglamento de la LGS en Materia de Investigación (1987); Shamah-Levy et al. (2017, "
           "2023); Sweller et al. (2019).", indent=False)
 
 heading(doc, "6. Observaciones al instrumento (para considerar junto con el juicio de expertos)", 2)
