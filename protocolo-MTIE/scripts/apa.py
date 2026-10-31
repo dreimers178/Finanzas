@@ -144,10 +144,15 @@ def heading5(doc, text, c=None):
 
 
 def bullets(doc, items, c=None, numbered=False):
-    style = "List Number" if numbered else "List Bullet"
     first = None
     for i, it in enumerate(items):
-        p = doc.add_paragraph(style=style)
+        if numbered:  # numeración manual: cada lista reinicia en 1
+            p = doc.add_paragraph()
+            p.paragraph_format.left_indent = Cm(1.27)
+            p.paragraph_format.first_line_indent = Cm(-0.63)
+            it = f"{i + 1}. {it}"
+        else:
+            p = doc.add_paragraph(style="List Bullet")
         p.paragraph_format.line_spacing_rule = WD_LINE_SPACING.DOUBLE
         rs = runs(p, it)
         if i == 0:
