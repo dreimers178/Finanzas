@@ -8,7 +8,7 @@
   @font-face{font-family:"Kaushan";src:url(fonts/KaushanScript.woff2) format("woff2")}
   @font-face{font-family:"Nunito";src:url(fonts/Nunito.woff2) format("woff2");font-weight:200 1000}
   @page{size:27.94cm 21.59cm;margin:0}
-  :root{--red:#d1262b;--teal:#13879c;--teal2:#e3f3f6;--ink:#1d1d1f;--muted:#4a5a60;--cream:#fffdf8;--gold:#f2b705}
+  :root{--red:#cf4a39;--teal:#13879c;--teal2:#e3f3f6;--ink:#1d1d1f;--muted:#4a5a60;--cream:#fffdf8;--gold:#f2b705}
   *{box-sizing:border-box;margin:0;padding:0}
   html,body{width:27.94cm;height:21.59cm;background:var(--cream);color:var(--ink);font-family:"Nunito","DejaVu Sans",sans-serif}
   .page{width:27.94cm;height:21.59cm;padding:.55cm;display:flex}
@@ -16,7 +16,7 @@
     outline:.04cm solid var(--teal);outline-offset:-.3cm}
   /* Encabezado */
   header{min-width:0;display:flex;align-items:center;justify-content:space-between;gap:.6cm;padding:0 .2cm .25cm;border-bottom:.06cm dashed var(--teal)}
-  .brand{display:flex;align-items:flex-end;gap:.5cm;min-width:0}
+  .brand{display:flex;align-items:center;gap:.55cm;min-width:0}
   .logo{font-family:"Alfa";color:var(--red);line-height:.9;text-transform:uppercase;flex:none}
   .logo small{display:block;font-size:17pt;letter-spacing:.06em}
   .logo b{display:block;font-size:42pt;font-weight:400;letter-spacing:.01em}
@@ -59,13 +59,16 @@
   .col:nth-child(2) .name{font-size:15.3pt}
   .row{min-width:0}
   .col:nth-child(3) .name{font-size:15.6pt}
+  .logoimg{height:3.15cm;width:auto;display:block}
+  .contodo{display:flex;align-items:center;gap:.4cm}
+  .contodo img{height:1.9cm;width:auto;flex:none;padding-right:.35cm;border-right:.05cm solid rgba(255,255,255,.7)}
 </style>
 </head>
 <body>
 <div class="page"><div class="frame">
 <header>
   <div class="brand">
-    <div class="logo"><small>La</small><b>Tortería</b></div>
+    <img class="logoimg" src="logo_original.png" alt="La Tortería">
     <div class="tag">Tortas<br>Quesadillas<br>Desayunos</div>
   </div>
   <div class="wa">
@@ -89,7 +92,7 @@
       <li><div class="row"><span class="name">El Lonche</span><span class="inl">jamón con queso</span><span class="dots"></span><span class="price">$55</span></div></li>
       <li><div class="row"><span class="name">De Huevo</span><span class="dots"></span><span class="price">$55</span></div></li>
     </ul>
-    <div class="box"><h3>Todas van con todo</h3><p>Lechuga, jitomate, chile, cebolla asada, aguacate, mayonesa y mostaza.</p></div>
+    <div class="box contodo"><img src="icono_con_todo.png" alt=""><div><h3>Con todo:</h3><p>Lechuga, jitomate, chile, cebolla asada, aguacate, mayonesa y mostaza.</p></div></div>
   </section>
 
   <section class="col">
