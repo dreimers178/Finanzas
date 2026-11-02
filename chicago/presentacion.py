@@ -139,8 +139,8 @@ table(sl, Cm(1.4), Cm(3.4), Cm(17.5), [["Platillo", "Precio"],
       ["Chicago American Breakfast", "$169"], ["Chicago Skillet", "$169"], ["Chilaquiles con arrachera o pollo", "$179"],
       ["Huevos con machaca", "$159"], ["Omelette Denver", "$149"], ["Chilaquiles con 2 huevos", "$139"],
       ["Burrito de desayuno Chicago", "$129"], ["Hotcakes Chicago", "$119"]], [Cm(13.5), Cm(4.0)], size=15, rowh=Cm(1.15))
-table(sl, Cm(20.2), Cm(3.4), Cm(12.3), [["Bebida", "Sugerido"], ["Café americano", "$35"], ["Jugo de naranja natural", "$45"],
-      ["Chocolate caliente", "$45"], ["Limonada o naranjada", "$40"], ["Refrescos", "$35"]],
+table(sl, Cm(20.2), Cm(3.4), Cm(12.3), [["Bebida", "Sugerido"], ["Café de cafetera", "$35"], ["Jugo de naranja natural", "$45"],
+      ["Chocolate caliente", "$45"], ["Limonada o naranjada", "$40"], ["Refrescos", "$40"]],
       [Cm(8.8), Cm(3.5)], size=15, rowh=Cm(1.15))
 rect(sl, Cm(20.2), Cm(11.0), Cm(12.3), Cm(3.8), GREEN)
 text(sl, Cm(20.7), Cm(11.25), Cm(11.4), Cm(3.4), [
