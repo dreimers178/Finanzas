@@ -13,3 +13,14 @@
 Logo: `logo_original.png`, extraído sin modificaciones del PDF original de Canva. Ícono de «Con todo»: `icono_con_todo.png`, tomado del menú anterior.
 
 Tipografías: Alfa Slab One, Nunito y Kaushan Script (Google Fonts, licencia SIL Open Font License).
+
+## Menú La Tortería 2
+
+Misma versión tamaño carta, con el número de pedidos **492 365 1005**.
+
+| Archivo | Uso |
+|---|---|
+| `Menu_La_Torteria_2_carta.pdf` | Impresión tamaño carta horizontal |
+| `Menu_La_Torteria_2.png` | Alta resolución (300 dpi) |
+| `Menu_La_Torteria_2_WhatsApp.jpg` | WhatsApp e Instagram |
+| `menu_la_torteria_2.html` | Archivo fuente |
