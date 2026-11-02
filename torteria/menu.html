@@ -66,6 +66,11 @@
   .contodo{display:flex;align-items:center;gap:.4cm}
   .contodo img{height:1.9cm;width:auto;flex:none;padding-right:.35cm;border-right:.05cm solid rgba(255,255,255,.7)}
   .col:nth-child(1) .inl,.col:nth-child(1) .desc{font-size:14.5pt;line-height:1.15}
+  .desa .name{font-size:17pt !important;white-space:normal}
+  .desa .row{align-items:flex-end}
+  .desa .price{font-size:20pt}
+  .desa .desc.dark{font-size:15pt !important;line-height:1.15;color:#33444a}
+  .desa{padding:.04cm 0}
 </style>
 </head>
 <body>
@@ -101,10 +106,10 @@
   <section class="col">
     <h2>Desayunos</h2>
     <ul>
-      <li><div class="row"><span class="name">Desayuno Anahí</span><span class="dots"></span><span class="price">$85</span></div>
+      <li class="desa"><div class="row"><span class="name">Desayuno Anahí</span><span class="dots"></span><span class="price">$85</span></div>
         <div class="desc dark">Huevo revuelto con chorizo o jamón, 3 quesadillas y ensalada de jitomate y aguacate</div></li>
       <li class="sep"></li>
-      <li><div class="row"><span class="name">Desayuno La Tortería</span><span class="dots"></span><span class="price">$90</span></div>
+      <li class="desa"><div class="row"><span class="name">Desayuno La Tortería</span><span class="dots"></span><span class="price">$90</span></div>
         <div class="desc dark">Omelette de jamón con queso, 2 quesadillas y ensalada de jitomate y aguacate</div></li>
     </ul>
     <div class="spacer"></div>
