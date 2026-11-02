@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Menú de desayunos Chicago</title>
+<style>
+  @font-face{font-family:"Oswald";src:url(fonts/Oswald.woff2) format("woff2");font-weight:200 700}
+  @font-face{font-family:"Source Sans 3";src:url(fonts/SourceSans3.woff2) format("woff2");font-weight:200 900}
+  @page{size:21.59cm 27.94cm;margin:0}
+  :root{--red:#8a1c16;--red2:#a8261d;--green:#0f3a2e;--green2:#1d5a47;--cream:#f7f1e6;--paper:#fffaf1;--ink:#1e1e1e;--muted:#5b5b5b;--gold:#e8b04a}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{width:21.59cm;height:27.94cm;background:var(--paper);color:var(--ink);font-family:"Source Sans 3","DejaVu Sans",sans-serif}
+  .page{width:21.59cm;height:27.94cm;padding:.6cm;display:flex}
+  .frame{flex:1;border:.12cm solid var(--green);border-radius:.3cm;outline:.04cm solid var(--red);outline-offset:-.28cm;
+    padding:.55cm .7cm .45cm;display:flex;flex-direction:column}
+  header{text-align:center}
+  header img{height:2.5cm;display:block;margin:0 auto}
+  .title{font-family:"Oswald";font-weight:700;font-size:34pt;letter-spacing:.12em;color:var(--red);line-height:1;margin-top:.1cm;
+    display:flex;align-items:center;justify-content:center;gap:.4cm}
+  .title::before,.title::after{content:"";width:2.4cm;height:.08cm;background:var(--green);border-radius:.1cm}
+  .tagline{font-family:"Oswald";font-weight:500;font-size:13pt;color:var(--green);letter-spacing:.08em;margin-top:.08cm;text-transform:uppercase}
+  .hours{display:inline-block;margin-top:.15cm;background:var(--green);color:#fff;font-family:"Oswald";font-weight:500;font-size:13pt;
+    letter-spacing:.06em;padding:.12cm .5cm;border-radius:.3cm}
+  h2{font-family:"Oswald";font-weight:700;font-size:21pt;letter-spacing:.06em;color:var(--red);text-transform:uppercase;
+    display:flex;align-items:center;gap:.3cm;margin:.3cm 0 .16cm}
+  h2::after{content:"";flex:1;height:.07cm;background:var(--green);border-radius:.1cm}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:.22cm .45cm}
+  .dish{background:var(--cream);border-left:.18cm solid var(--red);border-radius:.15cm;padding:.15cm .28cm .17cm}
+  .dish .row{display:flex;align-items:baseline;gap:.2cm}
+  .dish .name{font-family:"Oswald";font-weight:600;font-size:15pt;color:var(--green);line-height:1.1;text-transform:uppercase;letter-spacing:.02em}
+  .dish .dots{flex:1;border-bottom:.05cm dotted #b9a98f;transform:translateY(-.12cm);min-width:.3cm}
+  .dish .price{font-family:"Oswald";font-weight:700;font-size:18pt;color:var(--red);line-height:1}
+  .dish p{font-size:11.5pt;line-height:1.2;color:#3b3b3b;margin-top:.08cm}
+  .dish.star{border-left-color:var(--gold);background:#fbecd2}
+  .badge{display:inline-block;font-family:"Oswald";font-size:9pt;font-weight:500;letter-spacing:.06em;background:var(--red);color:#fff;
+    padding:.02cm .18cm;border-radius:.15cm;vertical-align:middle;margin-left:.1cm;text-transform:uppercase}
+  .drinks{display:grid;grid-template-columns:1.45fr 1fr;gap:.45cm}
+  .cols2{display:grid;grid-template-columns:1fr 1fr;column-gap:.5cm}
+  .box{background:var(--green);color:#fff;border-radius:.25cm;padding:.22cm .4cm .25cm}
+  .box h3{font-family:"Oswald";font-weight:700;font-size:16pt;letter-spacing:.06em;color:var(--gold);margin-bottom:.06cm;text-transform:uppercase}
+  .box .row{display:flex;align-items:baseline;gap:.18cm;font-size:12.5pt;font-weight:600;line-height:1.38}
+  .box .dots{flex:1;border-bottom:.05cm dotted rgba(255,255,255,.45);transform:translateY(-.12cm);min-width:.3cm}
+  .box .p{font-family:"Oswald";font-weight:600;font-size:14pt;color:#fff}
+  .box .sub{padding-left:.35cm;font-weight:500;color:#d8e6e0}
+  .box.red{background:var(--red)}
+  .spacer{flex:1}
+  footer{display:flex;justify-content:space-between;align-items:center;border-top:.06cm dashed var(--green);padding-top:.2cm;margin-top:.3cm;
+    font-size:11pt;color:var(--muted)}
+  footer b{font-family:"Oswald";font-weight:600;color:var(--green);font-size:13pt;letter-spacing:.05em;text-transform:uppercase}
+  footer .slogan{font-family:"Oswald";color:var(--red);font-size:13pt;letter-spacing:.04em}
+</style>
+</head>
+<body>
+<div class="page"><div class="frame">
+<header>
+  <img src="logos/logo_chicago_color.png" alt="Chicago Deep Dish Pizza">
+  <div class="title">DESAYUNOS</div>
+  <div class="tagline">American Breakfast · Mexican Flavor</div>
+  <div class="hours">Jueves a domingo · 8:00 a 12:00 h</div>
+</header>
+
+<div style="height:.35cm"></div>
+<div class="grid">
+  <div class="dish star"><div class="row"><span class="name">Chicago American Breakfast</span><span class="dots"></span><span class="price">$169</span></div>
+    <p>Dos huevos al gusto, tocino, salchicha, hotcakes y papas hash brown.</p></div>
+  <div class="dish star"><div class="row"><span class="name">Chicago Skillet</span><span class="dots"></span><span class="price">$169</span></div>
+    <p>Sartén al horno con papas, huevo, tocino, salchicha, pimiento, cebolla y queso gratinado.</p></div>
+  <div class="dish"><div class="row"><span class="name">Chilaquiles con arrachera o pollo</span><span class="dots"></span><span class="price">$179</span></div>
+    <p>Totopos en salsa roja o verde con crema, queso, cebolla y frijoles.</p></div>
+  <div class="dish"><div class="row"><span class="name">Chilaquiles con 2 huevos</span><span class="dots"></span><span class="price">$139</span></div>
+    <p>Totopos en salsa roja o verde, dos huevos estrellados, crema, queso y frijoles.</p></div>
+  <div class="dish"><div class="row"><span class="name">Huevos con machaca</span><span class="dots"></span><span class="price">$159</span></div>
+    <p>Huevo revuelto con machaca, frijoles y tortillas de harina.</p></div>
+  <div class="dish"><div class="row"><span class="name">Omelette Denver</span><span class="dots"></span><span class="price">$149</span></div>
+    <p>Jamón, pimiento, cebolla y queso; con papas y pan tostado.</p></div>
+  <div class="dish"><div class="row"><span class="name">Burrito de desayuno Chicago</span><span class="dots"></span><span class="price">$129</span></div>
+    <p>Tortilla de harina con huevo, tocino, papas, queso y salsa.</p></div>
+  <div class="dish"><div class="row"><span class="name">Hotcakes Chicago</span><span class="dots"></span><span class="price">$119</span></div>
+    <p>Tres hotcakes con mantequilla y miel de maple.</p></div>
+</div>
+
+<h2>Bebidas y café</h2>
+<div class="drinks">
+  <div class="box">
+    <h3>Bebidas</h3>
+    <div class="cols2">
+      <div class="row"><span>Refresco</span><span class="dots"></span><span class="p">$40</span></div>
+      <div class="row"><span>Agua quina</span><span class="dots"></span><span class="p">$40</span></div>
+      <div class="row"><span>Dr. Pepper</span><span class="dots"></span><span class="p">$40</span></div>
+      <div class="row"><span>Ginger Ale</span><span class="dots"></span><span class="p">$40</span></div>
+      <div class="row"><span>Root Beer</span><span class="dots"></span><span class="p">$40</span></div>
+      <div class="row"><span>Agua natural</span><span class="dots"></span><span class="p">$30</span></div>
+    </div>
+    <div class="row"><span>Limonada, naranjada o mangonada</span><span class="dots"></span><span class="p">$40</span></div>
+    <div class="row sub"><span>Jarra</span><span class="dots"></span><span class="p">$140</span></div>
+  </div>
+  <div class="box red">
+    <h3>Café</h3>
+    <div class="row"><span>Americano</span><span class="dots"></span><span class="p">$59</span></div>
+    <div class="row"><span>Espresso</span><span class="dots"></span><span class="p">$59</span></div>
+    <div class="row"><span>Capuccino</span><span class="dots"></span><span class="p">$79</span></div>
+    <div class="row"><span>Capuccino con Baileys</span><span class="dots"></span><span class="p">$120</span></div>
+    <div class="row"><span>Carajillo</span><span class="dots"></span><span class="p">$120</span></div>
+  </div>
+</div>
+
+<div class="spacer"></div>
+<footer>
+  <b>Chicago · Plaza Auskara</b>
+  <span class="slogan">¡Buenos días, estilo Chicago!</span>
+</footer>
+</div></div>
+</body>
+</html>
