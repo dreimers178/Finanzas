@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Plan de negocios · Desayunos Chicago Plaza Auskara</title>
+<style>
+  @font-face{font-family:"Oswald";src:url(fonts/Oswald.woff2) format("woff2");font-weight:200 700}
+  @font-face{font-family:"Source Sans 3";src:url(fonts/SourceSans3.woff2) format("woff2");font-weight:200 900}
+  @font-face{font-family:"Source Sans 3";src:url(fonts/SourceSans3-Italic.woff2) format("woff2");font-style:italic;font-weight:200 900}
+  @page{size:letter;margin:1.6cm 1.8cm 1.7cm}
+  @page:first{margin:0}
+  :root{--red:#8a1c16;--green:#0f3a2e;--green2:#1d5a47;--cream:#f7f1e6;--ink:#1e1e1e;--muted:#5b5b5b;--line:#d9cfbf}
+  *{box-sizing:border-box}
+  html{font-family:"Source Sans 3","DejaVu Sans",sans-serif;font-size:10.5pt;color:var(--ink);line-height:1.42}
+  body{margin:0}
+  h1,h2,h3{font-family:"Oswald",sans-serif;font-weight:600;letter-spacing:.01em;margin:0}
+  h2{font-size:15pt;color:var(--green);border-bottom:2px solid var(--red);padding-bottom:.08cm;margin:.55cm 0 .25cm;break-after:avoid;text-transform:uppercase}
+  h2 .n{color:var(--red);margin-right:.18cm}
+  h3{font-size:11.5pt;color:var(--red);margin:.3cm 0 .12cm;break-after:avoid}
+  p{margin:.12cm 0}
+  .note{font-size:9pt;color:var(--muted);font-style:italic}
+  .new{background:#fff3c4;border-radius:.08cm;padding:0 .08cm}
+  table{width:100%;border-collapse:collapse;margin:.18cm 0 .25cm;break-inside:avoid;font-size:10pt}
+  th{background:var(--green);color:#fff;font-family:"Oswald";font-weight:500;text-align:left;padding:.12cm .2cm;letter-spacing:.02em}
+  td{padding:.1cm .2cm;border-bottom:1px solid var(--line)}
+  tr:nth-child(even) td{background:#faf7f1}
+  td.r,th.r{text-align:right;font-variant-numeric:tabular-nums}
+  tr.total td{font-weight:700;background:var(--cream);border-top:2px solid var(--green)}
+  .neg{color:var(--red)}
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:.25cm;margin:.3cm 0;break-inside:avoid}
+  .kpi{background:var(--cream);border-left:.12cm solid var(--red);padding:.2cm .25cm;border-radius:.1cm}
+  .kpi b{display:block;font-family:"Oswald";font-size:17pt;color:var(--green);line-height:1.1}
+  .kpi span{font-size:8.8pt;color:var(--muted);line-height:1.2;display:block}
+  .callout{background:var(--green);color:#fff;border-radius:.15cm;padding:.25cm .35cm;margin:.25cm 0;break-inside:avoid}
+  .callout b{color:#ffd9a8}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:.45cm;break-inside:avoid}
+  ul{margin:.1cm 0 .15cm;padding-left:.5cm} li{margin:.04cm 0}
+  .chart{break-inside:avoid;margin:.2cm 0}
+  /* Portada */
+  .cover{height:27.94cm;width:21.59cm;display:flex;flex-direction:column;justify-content:space-between;background:var(--cream);
+    padding:2.2cm 2cm 1.6cm;break-after:page;position:relative;overflow:hidden}
+  .cover:before{content:"";position:absolute;left:0;right:0;bottom:0;height:7.5cm;background:var(--green)}
+  .cover .top{position:relative}
+  .cover img{width:12.5cm;display:block;margin:1.2cm auto .8cm}
+  .cover h1{font-size:30pt;color:var(--green);text-align:center;line-height:1.1;text-transform:uppercase}
+  .cover .sub{font-family:"Oswald";font-size:16pt;color:var(--red);text-align:center;margin-top:.25cm;letter-spacing:.04em}
+  .cover .bottom{position:relative;color:#fff;font-size:11.5pt;line-height:1.55}
+  .cover .bottom b{font-family:"Oswald";font-size:14pt;font-weight:500;display:block;color:#ffd9a8;margin-bottom:.15cm;letter-spacing:.03em}
+  .sig td{height:1.05cm;vertical-align:bottom}
+  .avoid{break-inside:avoid}
+  .blank{height:1px;break-after:page}
+  body.final .blank{display:none}
+</style>
+</head>
+<body>
+
+<section class="cover">
+  <div class="top">
+    <img src="logos/logo_chicago_color.png" alt="Chicago Deep Dish Pizza">
+    <h1>Plan de negocios<br>Proyecto de desayunos</h1>
+    <div class="sub">American Breakfast, Mexican Flavor</div>
+  </div>
+  <div class="bottom">
+    <b>Sucursal Plaza Auskara · Zacatecas</b>
+    Propuesta para revisión y aprobación de socios<br>
+    Noviembre de 2026<br>
+    <span style="opacity:.8;font-size:10pt">Documento de trabajo · Cifras estimadas en pesos mexicanos (MXN)</span>
+  </div>
+</section>
+
+<div class="blank"></div>
+<div class="sec avoid"><h2><span class="n">1</span>Resumen ejecutivo</h2>
+<p>Se propone un <b>piloto de desayunos de 30 días</b> en la sucursal Plaza Auskara de Chicago, con desayunos americanos adaptados al gusto mexicano. El objetivo es aprovechar la infraestructura existente, generar ventas en un horario hoy sin uso y validar la demanda antes de ampliar el modelo.</p>
+<div class="kpis">
+  <div class="kpi"><b>$19,000</b><span>Inversión inicial objetivo</span></div>
+  <div class="kpi"><b>11 / día</b><span>Clientes para cubrir costos (equilibrio: 10.05)</span></div>
+  <div class="kpi"><b>$9,480</b><span>Utilidad mensual estimada con 15 clientes/día</span></div>
+  <div class="kpi"><b>2 meses</b><span>Recuperación de la inversión con 15 clientes/día</span></div>
+</div>
+<table>
+  <tr><th>Decisión propuesta</th><th>Parámetro</th></tr>
+  <tr><td>Días de operación</td><td>Jueves a domingo (4 días por semana)</td></tr>
+  <tr><td>Horario</td><td>8:00 a. m. a 12:00 p. m.</td></tr>
+  <tr><td>Personal adicional</td><td>3 trabajadores</td></tr>
+  <tr><td>Ticket promedio</td><td>$170 por cliente</td></tr>
+  <tr><td>Inversión inicial objetivo</td><td>$19,000</td></tr>
+  <tr><td>Duración del piloto</td><td>30 días, con evaluación semanal</td></tr>
+</table>
+
+</div>
+<div class="sec avoid"><h2><span class="n">2</span>Concepto y propuesta de valor</h2>
+<p><b>Chicago · American Breakfast, Mexican Flavor.</b> Combina los clásicos del desayuno estadounidense (huevos, tocino, salchicha, hotcakes y papas) con favoritos mexicanos (chilaquiles, machaca, frijoles, tortillas y salsas). Se conserva la identidad de Chicago, y la pizza <i>deep dish</i> sigue siendo el producto insignia del restaurante.</p>
+<ul>
+  <li><b>Diferenciador:</b> un desayuno «estilo Chicago» que no se encuentra en las fondas y cafeterías de la zona.</li>
+  <li><b>Público:</b> visitantes y trabajadores de la plaza, familias de fin de semana y clientes actuales de la pizzería.</li>
+  <li><b>Ventaja:</b> se usan el local, la marca y la cocina existentes; solo se agregan personal y equipo menor.</li>
+</ul>
+
+</div>
+<div class="sec"><h2><span class="n">3</span>Menú inicial y precios sugeridos</h2>
+<div class="two">
+<table>
+  <tr><th>Platillo</th><th class="r">Precio</th></tr>
+  <tr><td>Chicago American Breakfast</td><td class="r">$169</td></tr>
+  <tr><td>Chicago Skillet</td><td class="r">$169</td></tr>
+  <tr><td>Chilaquiles con arrachera o pollo</td><td class="r">$179</td></tr>
+  <tr><td>Huevos con machaca</td><td class="r">$159</td></tr>
+  <tr><td>Omelette Denver</td><td class="r">$149</td></tr>
+  <tr><td>Chilaquiles con 2 huevos</td><td class="r">$139</td></tr>
+  <tr><td>Burrito de desayuno Chicago</td><td class="r">$129</td></tr>
+  <tr><td>Hotcakes Chicago</td><td class="r">$119</td></tr>
+</table>
+<div>
+<table>
+  <tr><th>Bebida</th><th class="r">Precio sugerido</th></tr>
+  <tr><td>Café americano</td><td class="r"><span class="new">$35</span></td></tr>
+  <tr><td>Jugo de naranja natural</td><td class="r"><span class="new">$45</span></td></tr>
+  <tr><td>Chocolate caliente</td><td class="r"><span class="new">$45</span></td></tr>
+  <tr><td>Limonada o naranjada</td><td class="r"><span class="new">$40</span></td></tr>
+  <tr><td>Refrescos</td><td class="r"><span class="new">$35</span></td></tr>
+</table>
+<p class="note">Los precios de bebidas son una propuesta nueva (resaltados). El precio promedio de los platillos es de $152; con bebida, el consumo típico supera $180, por lo que el ticket de $170 usado en las proyecciones es conservador. Todos los precios deben validarse con el costeo por receta para mantener el costo de alimentos en 35 % o menos.</p>
+</div>
+</div>
+
+
+</div>
+<div class="sec avoid"><h2><span class="n">4</span>Operación y personal</h2>
+<table>
+  <tr><th style="width:28%">Puesto</th><th>Responsabilidad</th></tr>
+  <tr><td>Cocinero</td><td>Huevos, omelettes, chilaquiles y platillos de plancha.</td></tr>
+  <tr><td>Auxiliar de cocina</td><td>Preparaciones, hotcakes, papas en freidora, guarniciones y limpieza.</td></tr>
+  <tr><td>Servicio / caja</td><td>Recepción, pedidos, cobro, café, jugos y entrega.</td></tr>
+</table>
+<p>Tres trabajadores en turnos de 4 horas, 4 días por semana, con pago de $250 por turno. Ese pago es superior al proporcional del salario mínimo general 2026 ($315.04 por jornada de 8 horas, equivalente a $157.52 por 4 horas). <span class="new">Antes de contratar se debe validar con un especialista la modalidad de contratación, las prestaciones, el alta en el IMSS y demás obligaciones laborales.</span></p>
+
+</div>
+<div class="sec"><h2><span class="n">5</span>Equipo e inversión</h2>
+<h3>Equipo con el que ya cuenta la sucursal</h3>
+<table>
+  <tr><th style="width:28%">Equipo</th><th>Uso en el desayuno</th></tr>
+  <tr><td><b>Freidora industrial</b></td><td>Papas hash brown y a la francesa, totopos para chilaquiles, tortillas doradas.</td></tr>
+  <tr><td><b>Licuadora industrial</b></td><td>Salsas para chilaquiles (roja y verde), chocolate caliente, limonada y naranjada.</td></tr>
+  <tr><td><b>Microondas</b></td><td>Recalentado rápido de frijoles, salsas y guarniciones ya preparadas (no se recomienda para huevos).</td></tr>
+  <tr><td>Horno de pizza, plancha, estufa y refrigeración</td><td>Skillet, huevos, tocino, salchicha, hotcakes y conservación de insumos. <i>Confirmar capacidad y disponibilidad en el horario de desayuno.</i></td></tr>
+</table>
+<p class="note">Al contar ya con freidora, licuadora y microondas, no se requiere invertir en esos equipos; el presupuesto se concentra en equipo menor.</p>
+<div class="two">
+<table>
+  <tr><th>Equipo y utensilios a comprar</th><th class="r">Presupuesto</th></tr>
+  <tr><td>Cafetera comercial de goteo</td><td class="r">$6,000</td></tr>
+  <tr><td>Sartenes antiadherentes</td><td class="r">$1,500</td></tr>
+  <tr><td>Bowls, recipientes y charolas</td><td class="r">$1,000</td></tr>
+  <tr><td>Platos o cazuelas</td><td class="r">$1,000</td></tr>
+  <tr><td><span class="new">Exprimidor de cítricos</span></td><td class="r"><span class="new">$800</span></td></tr>
+  <tr><td>Tostador de pan</td><td class="r">$800</td></tr>
+  <tr><td>Espátulas, pinzas y cucharones</td><td class="r">$700</td></tr>
+  <tr><td>Jarras y utensilios de servicio</td><td class="r">$700</td></tr>
+  <tr><td>Báscula y termómetro</td><td class="r">$500</td></tr>
+  <tr><td>Recipientes para hotcakes</td><td class="r">$400</td></tr>
+  <tr><td>Reserva equipo / imprevistos</td><td class="r"><span class="new">$600</span></td></tr>
+  <tr class="total"><td>Total equipo</td><td class="r">$14,000</td></tr>
+</table>
+<div>
+<table>
+  <tr><th>Uso de fondos</th><th class="r">Presupuesto</th></tr>
+  <tr><td>Equipo y utensilios</td><td class="r">$14,000</td></tr>
+  <tr><td>Inventario inicial</td><td class="r">$2,500</td></tr>
+  <tr><td>Publicidad de lanzamiento</td><td class="r">$1,000</td></tr>
+  <tr><td>Reserva operativa</td><td class="r">$1,500</td></tr>
+  <tr class="total"><td>Inversión total</td><td class="r">$19,000</td></tr>
+</table>
+<p class="note"><span class="new">Se agregó un exprimidor de cítricos</span> para el jugo de naranja natural, la limonada y la naranjada; se cubre con la reserva de imprevistos, por lo que el total no cambia. No se contempla comprar máquina de espresso ni wafflera.</p>
+</div>
+</div>
+
+</div>
+<div class="sec avoid"><h2><span class="n">6</span>Supuestos financieros</h2>
+<div class="two">
+<table>
+  <tr><th>Variable</th><th>Supuesto</th></tr>
+  <tr><td>Días promedio al mes</td><td>17.33 (4 días × 52 semanas ÷ 12)</td></tr>
+  <tr><td>Ticket promedio</td><td>$170</td></tr>
+  <tr><td>Costo de alimentos y bebidas</td><td>35 % de las ventas</td></tr>
+  <tr><td>Pago por trabajador y turno</td><td>$250 (turno de 4 horas)</td></tr>
+  <tr><td>Otros gastos incrementales</td><td>$3,000 al mes</td></tr>
+  <tr><td>Reserva laboral de planeación</td><td>25 % de la nómina base</td></tr>
+</table>
+<table>
+  <tr><th>Gasto fijo mensual</th><th class="r">Monto</th></tr>
+  <tr><td>Nómina base (3 × $250 × 17.33)</td><td class="r">$13,000</td></tr>
+  <tr><td>Reserva laboral (25 %)</td><td class="r">$3,250</td></tr>
+  <tr><td>Otros gastos (gas, luz, desechables, limpieza)</td><td class="r">$3,000</td></tr>
+  <tr class="total"><td>Gastos fijos incrementales</td><td class="r">$19,250</td></tr>
+</table>
+</div>
+<p class="note">La reserva del 25 % es un supuesto de planeación, no un cálculo definitivo de cuotas patronales, prestaciones o impuestos.</p>
+
+</div>
+<div class="sec avoid"><h2><span class="n">7</span>Punto de equilibrio</h2>
+<p>Cada cliente deja $170 de venta. Después del costo de alimentos (35 %, $59.50) quedan <b>$110.50</b> para cubrir los gastos fijos de $19,250 al mes.</p>
+<div class="kpis">
+  <div class="kpi"><b>$29,615</b><span>Ventas mensuales de equilibrio</span></div>
+  <div class="kpi"><b>174.2</b><span>Clientes al mes</span></div>
+  <div class="kpi"><b>10.05</b><span>Clientes por día de apertura</span></div>
+  <div class="kpi"><b>11</b><span>Meta mínima práctica por día</span></div>
+</div>
+
+</div>
+<div class="sec avoid"><h2><span class="n">8</span>Escenarios de ventas y utilidad</h2>
+<table>
+  <tr><th>Clientes / día</th><th class="r">Ventas / mes</th><th class="r">Costo de alimentos</th><th class="r">Gastos fijos</th><th class="r">Utilidad estimada</th></tr>
+  <tr><td>8</td><td class="r">$23,573</td><td class="r">$8,251</td><td class="r">$19,250</td><td class="r neg">−$3,927</td></tr>
+  <tr><td>10</td><td class="r">$29,467</td><td class="r">$10,313</td><td class="r">$19,250</td><td class="r neg">−$97</td></tr>
+  <tr><td>12</td><td class="r">$35,360</td><td class="r">$12,376</td><td class="r">$19,250</td><td class="r">$3,734</td></tr>
+  <tr><td><b>15</b></td><td class="r"><b>$44,200</b></td><td class="r">$15,470</td><td class="r">$19,250</td><td class="r"><b>$9,480</b></td></tr>
+  <tr><td>18</td><td class="r">$53,040</td><td class="r">$18,564</td><td class="r">$19,250</td><td class="r">$15,226</td></tr>
+  <tr><td>20</td><td class="r">$58,933</td><td class="r">$20,627</td><td class="r">$19,250</td><td class="r">$19,057</td></tr>
+  <tr><td>25</td><td class="r">$73,667</td><td class="r">$25,783</td><td class="r">$19,250</td><td class="r">$28,633</td></tr>
+</table>
+<div class="chart">
+<svg viewBox="0 0 700 192" width="100%" role="img" aria-label="Utilidad mensual estimada según clientes por día">
+<line x1="40" y1="118" x2="690" y2="118" stroke="#888" stroke-width="1"/>
+<g font-family="Source Sans 3" font-size="12.5" text-anchor="middle">
+<rect x="60" y="118.0" width="58" height="13.7" fill="#8a1c16" rx="2"/>
+<text x="89.0" y="145.7" font-weight="700" fill="#8a1c16">−$3.9k</text>
+<text x="89.0" y="161.71494429504418" fill="#333">8 clientes</text>
+<rect x="150" y="118.0" width="58" height="1.5" fill="#8a1c16" rx="2"/>
+<text x="179.0" y="133.5" font-weight="700" fill="#8a1c16">−$0.1k</text>
+<text x="179.0" y="149.5" fill="#333">10 clientes</text>
+<rect x="240" y="105.0" width="58" height="13.0" fill="#1d5a47" rx="2"/>
+<text x="269.0" y="100.0" font-weight="700" fill="#1d5a47">$3.7k</text>
+<text x="269.0" y="134" fill="#333">12 clientes</text>
+<rect x="330" y="84.9" width="58" height="33.1" fill="#0f3a2e" rx="2"/>
+<text x="359.0" y="79.9" font-weight="700" fill="#0f3a2e">$9.5k</text>
+<text x="359.0" y="134" fill="#333">15 clientes</text>
+<rect x="420" y="64.8" width="58" height="53.2" fill="#1d5a47" rx="2"/>
+<text x="449.0" y="59.8" font-weight="700" fill="#1d5a47">$15.2k</text>
+<text x="449.0" y="134" fill="#333">18 clientes</text>
+<rect x="510" y="51.4" width="58" height="66.6" fill="#1d5a47" rx="2"/>
+<text x="539.0" y="46.4" font-weight="700" fill="#1d5a47">$19.1k</text>
+<text x="539.0" y="134" fill="#333">20 clientes</text>
+<rect x="600" y="18.0" width="58" height="100.0" fill="#1d5a47" rx="2"/>
+<text x="629.0" y="13.0" font-weight="700" fill="#1d5a47">$28.6k</text>
+<text x="629.0" y="134" fill="#333">25 clientes</text>
+</g><text x="40" y="188" font-family="Source Sans 3" font-size="11" fill="#5b5b5b">Utilidad mensual estimada según clientes por día de apertura (miles de pesos).</text></svg>
+</div>
+<p class="note">Utilidad incremental antes de impuestos, depreciación, sueldo del propietario y gastos generales ya existentes.</p>
+
+</div>
+<div class="sec avoid"><h2><span class="n">9</span>Recuperación de la inversión</h2>
+<table>
+  <tr><th>Clientes / día</th><th class="r">Utilidad mensual</th><th class="r">Recuperación de $19,000</th></tr>
+  <tr><td>12</td><td class="r">$3,734</td><td class="r">5.1 meses</td></tr>
+  <tr><td><b>15</b></td><td class="r"><b>$9,480</b></td><td class="r"><b>2.0 meses</b></td></tr>
+  <tr><td>18</td><td class="r">$15,226</td><td class="r">1.2 meses</td></tr>
+  <tr><td>20</td><td class="r">$19,057</td><td class="r">1.0 mes</td></tr>
+  <tr><td>25</td><td class="r">$28,633</td><td class="r">0.7 meses</td></tr>
+</table>
+<p class="note">Estimación simple, suponiendo ventas estables y que toda la utilidad se destina a recuperar la inversión.</p>
+
+</div>
+<div class="sec avoid"><h2><span class="n">10</span>Implementación en 30 días</h2>
+<table>
+  <tr><th style="width:17%">Periodo</th><th>Acción</th><th style="width:30%">Resultado</th></tr>
+  <tr><td>Días 1–3</td><td>Costear recetas, fijar gramajes y confirmar el horario de la plaza.</td><td>Fichas técnicas y precios finales.</td></tr>
+  <tr><td>Días 4–7</td><td>Comprar equipo menor y organizar la estación de desayunos.</td><td>Estación lista.</td></tr>
+  <tr><td>Días 8–10</td><td>Capacitar al personal y hacer pruebas de servicio.</td><td>Servicio estandarizado.</td></tr>
+  <tr><td>Días 11–15</td><td>Lanzamiento y promoción.</td><td>Primeros datos de venta.</td></tr>
+  <tr><td>Días 16–30</td><td>Medir semanalmente y ajustar menú, precios y personal.</td><td>Decisión de continuidad.</td></tr>
+</table>
+
+</div>
+<div class="sec avoid"><h2><span class="n">11</span>Promoción de lanzamiento <span class="new" style="font-size:10pt;font-family:'Source Sans 3';text-transform:none">nuevo</span></h2>
+<p>Propuesta de uso de los $1,000 de publicidad:</p>
+<ul>
+  <li><b>Redes sociales ($500):</b> anuncios segmentados en Facebook e Instagram para la zona de la plaza durante las dos primeras semanas.</li>
+  <li><b>Material en sucursal ($300):</b> lona o póster «Ahora también desayunos» y menú de desayunos impreso.</li>
+  <li><b>Promoción de apertura ($200):</b> por ejemplo, café americano de cortesía con cualquier desayuno los primeros fines de semana.</li>
+  <li><b>Sin costo:</b> aviso a clientes actuales por WhatsApp y en las cajas de pizza, y reseñas de los primeros clientes.</li>
+</ul>
+
+</div>
+<div class="sec avoid"><h2><span class="n">12</span>Indicadores de control</h2>
+<p>Registrar diariamente: clientes, ventas, ticket promedio, costo real de ingredientes, margen por platillo, tiempos de preparación, desperdicio, devoluciones y comentarios de clientes.</p>
+
+</div>
+<div class="sec avoid"><h2><span class="n">13</span>Criterios de decisión</h2>
+<table>
+  <tr><th style="width:28%">Promedio diario de clientes</th><th>Decisión</th></tr>
+  <tr><td>Menos de 10</td><td>Revisar oferta, promoción, horario y personal.</td></tr>
+  <tr><td>10 a 14</td><td>Cubre costos aproximadamente; mejorar margen y volumen.</td></tr>
+  <tr><td>15 a 17</td><td>Continuar y optimizar.</td></tr>
+  <tr><td>18 o más</td><td>Evaluar ampliar horario o días y replicar en otras sucursales.</td></tr>
+</table>
+
+</div>
+<div class="sec avoid"><h2><span class="n">14</span>Riesgos y condiciones</h2>
+<ul>
+  <li>Validar legalmente salario, jornada y contratación; la reserva del 25 % no sustituye la asesoría laboral.</li>
+  <li>Controlar el costo real de alimentos para no exceder el 35 %.</li>
+  <li>Confirmar que la cocina soporte los desayunos sin afectar la operación habitual de pizza.</li>
+  <li><span class="new">Confirmar con la administración de Plaza Auskara que el local puede abrir a las 8:00 a. m. y que habrá acceso para clientes y personal en ese horario.</span></li>
+  <li><span class="new">Verificar que la licencia de funcionamiento cubra el nuevo horario y cumplir las prácticas de higiene de la NOM-251-SSA1-2009.</span></li>
+  <li>Obtener cotizaciones reales y verificar el equipo antes de autorizar compras.</li>
+  <li>Validar precios mediante fichas técnicas y pruebas de mercado.</li>
+</ul>
+
+</div>
+<div class="sec avoid"><h2><span class="n">15</span>Acuerdo solicitado a los socios</h2>
+<div class="callout">Se solicita autorizar un <b>piloto de 30 días</b> en Plaza Auskara, con una <b>inversión máxima de $19,000</b>, apertura de <b>jueves a domingo de 8:00 a. m. a 12:00 p. m.</b> y evaluación semanal de ventas, costos y satisfacción. La continuidad y la expansión dependerán de los resultados y de la validación laboral y operativa.</div>
+<table class="sig">
+  <tr><th style="width:30%">Aprobación</th><th>Nombre y firma</th><th style="width:22%">Fecha</th></tr>
+  <tr><td>Socio 1</td><td></td><td></td></tr>
+  <tr><td>Socio 2</td><td></td><td></td></tr>
+  <tr><td>Socio 3</td><td></td><td></td></tr>
+</table>
+</div>
+</body>
+</html>
