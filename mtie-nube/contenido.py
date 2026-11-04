@@ -53,10 +53,11 @@ APARTADOS = [
  ]),
  ("Material complementario.", "Material", [
   "Material de repaso: «" + CONCURSO_TITULO + "», concurso de preguntas hecho en " + CONCURSO_HERRAMIENTA + ".",
-  "En este concurso responderás preguntas sobre los hábitos de una alimentación saludable: qué alimentos y bebidas "
-  "conviene elegir más seguido, cuáles es mejor comer de vez en cuando y cómo combinar los grupos del Plato del "
-  "Bien Comer. Cada respuesta correcta te da puntos. Su propósito es que repases lo que aprendiste en el material "
-  "didáctico antes de hacer tu tarea.",
+  "En este concurso responderás preguntas sobre hábitos saludables organizadas en cinco categorías: Agua simple, "
+  "Desayuno y horarios, ¡A movernos!, Higiene y descanso, y Sellos y etiquetas. Cada pregunta vale de 100 a 500 "
+  "puntos según su dificultad y puedes jugar solo o en equipos. Su propósito es que repases lo que aprendiste en el "
+  "material didáctico y descubras que una vida saludable incluye comer bien, tomar agua, moverte, descansar y "
+  "aprender a leer las etiquetas de los alimentos, antes de hacer tu tarea.",
   "Para jugar: da clic en el enlace y se abrirá el tablero en tu navegador. Elige una categoría y un valor de "
   "puntos, lee la pregunta, piensa tu respuesta y da clic para ver si acertaste. Puedes jugarlo cuantas veces quieras.",
   ("Enlace", CONCURSO_ENLACE),
