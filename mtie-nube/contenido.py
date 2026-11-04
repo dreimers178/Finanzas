@@ -5,8 +5,8 @@ TEMA = "Unidad 3: Construyo hábitos saludables."
 
 # Datos del concurso de preguntas (completar)
 CONCURSO_TITULO = "[Título de tu concurso de preguntas]"
-CONCURSO_HERRAMIENTA = "[Herramienta: Flippity, Kahoot…]"
-CONCURSO_ENLACE = "[Enlace del concurso]"
+CONCURSO_HERRAMIENTA = "Flippity (Quiz Show)"
+CONCURSO_ENLACE = "https://www.flippity.net/v2/qs.php?k=e/2PACX-1vTBuwPtngrRnDa0kS9P9fdCPWWqHTuq6jNZluSlAFLy65-lQk0d5S-9y6GwXS3JLuzbRKWuOh99B47z"
 
 MATERIAL_TITULO = "Guías Alimentarias Saludables y Sostenibles para la Población Mexicana (infografía oficial)"
 MATERIAL_ENLACE = "https://www.gob.mx/cms/uploads/attachment/file/863929/Infografi_a_Gui_as_Alimentarias_Poblacio_n_16Oct23.pdf"
@@ -57,8 +57,8 @@ APARTADOS = [
   "conviene elegir más seguido, cuáles es mejor comer de vez en cuando y cómo combinar los grupos del Plato del "
   "Bien Comer. Cada respuesta correcta te da puntos. Su propósito es que repases lo que aprendiste en el material "
   "didáctico antes de hacer tu tarea.",
-  "Para jugar: da clic en el enlace, se abrirá en tu navegador. Elige una pregunta, piensa tu respuesta y "
-  "revisa si acertaste. Puedes jugarlo cuantas veces quieras.",
+  "Para jugar: da clic en el enlace y se abrirá el tablero en tu navegador. Elige una categoría y un valor de "
+  "puntos, lee la pregunta, piensa tu respuesta y da clic para ver si acertaste. Puedes jugarlo cuantas veces quieras.",
   ("Enlace", CONCURSO_ENLACE),
  ]),
  ("Tarea: Mi reto de hábitos saludables.", "Tarea · 100 puntos", [
