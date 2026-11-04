@@ -1,23 +1,23 @@
 @font-face{font-family:"Oswald";src:url(fonts/Oswald.woff2) format("woff2");font-weight:200 700}
 @font-face{font-family:"Source Sans 3";src:url(fonts/SourceSans3.woff2) format("woff2");font-weight:200 900}
 @font-face{font-family:"Source Sans 3";src:url(fonts/SourceSans3-Italic.woff2) format("woff2");font-style:italic;font-weight:200 900}
-@page{size:27.94cm 21.59cm;margin:1.5cm 1.6cm 1.5cm}
+@page{size:27.94cm 21.59cm;margin:1.4cm 1.4cm 1.4cm}
 @page:first{margin:0}
-:root{--g:#8b1538;--g2:#a8264a;--n:#14213d;--teal:#13879c;--soft:#f6f1f3;--line:#ddd3d7;--ink:#1d1d1f;--muted:#5d5d63}
+:root{--g:#8b1538;--g2:#a8264a;--n:#14213d;--teal:#13879c;--soft:#f6f1f3;--line:#ddd3d7;--ink:#111114;--muted:#5d5d63}
 *{box-sizing:border-box}
-html{font-family:"Source Sans 3","DejaVu Sans",sans-serif;font-size:10.5pt;color:var(--ink);line-height:1.38}
+html{font-family:"Source Sans 3","DejaVu Sans",sans-serif;font-size:12pt;color:var(--ink);line-height:1.45}
 body{margin:0}
 h1,h2,h3{font-family:"Oswald",sans-serif;font-weight:600;margin:0;letter-spacing:.01em}
-h2{font-size:15pt;color:var(--g);border-bottom:2px solid var(--n);padding-bottom:.08cm;margin:.1cm 0 .3cm;text-transform:uppercase;break-after:avoid}
-h3{font-size:12pt;color:var(--n);margin:.25cm 0 .12cm;break-after:avoid}
+h2{font-size:17pt;color:var(--g);border-bottom:2px solid var(--n);padding-bottom:.08cm;margin:.1cm 0 .3cm;text-transform:uppercase;break-after:avoid}
+h3{font-size:14pt;color:var(--n);margin:.25cm 0 .12cm;break-after:avoid}
 p{margin:.12cm 0;text-align:justify}
-.note{font-size:9pt;color:var(--muted);font-style:italic}
-table{width:100%;border-collapse:collapse;font-size:9.6pt;margin:.15cm 0 .25cm;table-layout:fixed}
-th{background:var(--n);color:#fff;font-family:"Oswald";font-weight:500;text-align:left;padding:.12cm .16cm;letter-spacing:.02em;vertical-align:top}
-td{padding:.1cm .14cm;overflow-wrap:break-word;border:1px solid var(--line);vertical-align:top}
+.note{font-size:10.5pt;color:var(--muted);font-style:italic}
+table{width:100%;border-collapse:collapse;font-size:11pt;line-height:1.38;margin:.15cm 0 .25cm;table-layout:fixed}
+th{background:var(--n);color:#fff;font-family:"Oswald";font-weight:500;font-size:11.5pt;text-align:left;padding:.12cm .16cm;letter-spacing:.02em;vertical-align:top}
+td{padding:.14cm .18cm;overflow-wrap:break-word;border:1px solid #cfc4c9;color:#111114;vertical-align:top}
 tbody tr:nth-child(even) td{background:#fbf8f9}
 td.k{font-weight:700;color:var(--g);background:var(--soft)!important;width:24%}
-td.m{font-family:"Oswald";font-weight:600;color:#fff;background:var(--g)!important;text-align:center;vertical-align:middle;font-size:11pt}
+td.m{font-family:"Oswald";font-weight:600;color:#fff;background:var(--g)!important;text-align:center;vertical-align:middle;font-size:12.5pt}
 td ul{margin:0;padding-left:.38cm} td li{margin:.02cm 0}
 tr{break-inside:avoid}
 .page-break{break-before:page}
@@ -34,13 +34,14 @@ tr{break-inside:avoid}
 .cover .data{display:grid;grid-template-columns:auto 1fr;gap:.08cm .5cm;font-size:12pt;margin:0 auto;border-top:3px solid var(--g);padding-top:.35cm;min-width:15cm}
 .cover .data b{color:var(--n)}
 .band{position:absolute;left:0;right:0;bottom:0;height:.45cm;background:linear-gradient(90deg,var(--g) 0 70%,var(--n) 70% 100%)}
-.ref p{padding-left:1.27cm;text-indent:-1.27cm;text-align:left;margin:.05cm 0;font-size:9.5pt}
+.ref p{padding-left:1.27cm;text-indent:-1.27cm;text-align:left;margin:.08cm 0;font-size:11.5pt}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:.6cm}
 .chip{display:inline-block;background:var(--soft);color:var(--g);border-radius:.2cm;padding:0 .15cm;font-weight:700}
 
-.seq td{font-size:8.8pt;line-height:1.22;padding:.08cm .12cm}
+.seq td{font-size:10.5pt;line-height:1.35;padding:.12cm .15cm}
 .seq tr{break-inside:auto}
 .keep{break-inside:avoid}
 .cover .unit{font-family:"Oswald";font-size:12pt;color:var(--n);letter-spacing:.04em;margin-top:.1cm}
 
-.inst-tight td{padding:.06cm .12cm;font-size:9pt}
+.inst-tight td{padding:.12cm .16cm;font-size:11pt}
+.dg td{padding:.09cm .18cm;line-height:1.3}
