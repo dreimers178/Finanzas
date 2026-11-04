@@ -41,3 +41,4 @@ tr{break-inside:avoid}
 .seq td{font-size:8.8pt;line-height:1.22;padding:.08cm .12cm}
 .seq tr{break-inside:auto}
 .keep{break-inside:avoid}
+.cover .unit{font-family:"Oswald";font-size:12pt;color:var(--n);letter-spacing:.04em;margin-top:.1cm}
