@@ -15,7 +15,7 @@ Quesadillas,Orden de quesadillas,3 quesadillas de un solo sabor: eliges 1 o 2 in
 Quesadillas,Quesadilla doble,Quesadilla de 2 tortillas.,60,"Elige 1 o 2 ingredientes (obligatorio): Carne asada, Adobada, Carnitas, Chorizo, Jamón con queso, Huevo"
 Quesadillas,Quesadilla sencilla,Quesadilla de queso y verduras.,35,—
 Bebidas,Malteada,"Malteada cremosa de fresa, vainilla o chocolate.",45,"Elige sabor: fresa, vainilla o chocolate"
-Bebidas,Refresco,Refresco de lata o botella.,35,Elige sabor (confirmar)
+Bebidas,Refresco 600 ml,Refresco de 600 ml.,35,"Elige sabor: Coca-Cola regular, Coca-Cola Zero, Fanta naranja, Fresca, Sidral Mundet o Sprite"
 Bebidas,Agua mineral,Agua mineral.,35,—
 Bebidas,Jugo Del Valle,Jugo Del Valle.,30,Elige sabor: durazno o mango
 Bebidas,Agua de sabor,Agua fresca.,30,"Elige sabor: taro, jamaica, limón con chía, horchata, coco o tamarindo"
