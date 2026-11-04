@@ -24,3 +24,14 @@ Misma versión tamaño carta, con el número de pedidos **492 365 1005**.
 | `Menu_La_Torteria_2.png` | Alta resolución (300 dpi) |
 | `Menu_La_Torteria_2_WhatsApp.jpg` | WhatsApp e Instagram |
 | `menu_la_torteria_2.html` | Archivo fuente |
+
+## Menú La Tortería 2 · Plataformas (DiDi, Uber Eats)
+
+Precios ajustados por comisión de plataformas (aprox. +22 % a +40 %), número de pedidos 492 365 1005.
+
+| Archivo | Uso |
+|---|---|
+| `Menu_La_Torteria_2_plataformas_carta.pdf` | Impresión tamaño carta |
+| `Menu_La_Torteria_2_plataformas.png` | Alta resolución (300 dpi), para subir como imagen |
+| `Menu_La_Torteria_2_plataformas_WhatsApp.jpg` | Versión ligera |
+| `menu_la_torteria_2_plataformas.html` | Archivo fuente |
