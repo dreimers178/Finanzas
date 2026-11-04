@@ -1,7 +1,7 @@
 ﻿Categoría,Producto,Descripción,Precio,Opciones / modificadores
 Tortas,La Roberta,"La más completa: adobado, chorizo, carnitas y jamón con queso. Va con todo: lechuga, jitomate, chile, cebolla asada, aguacate, mayonesa y mostaza.",110,Extras (opcional)
 Tortas,La Clásica,"Torta de carne asada. Va con todo: lechuga, jitomate, chile, cebolla asada, aguacate, mayonesa y mostaza.",95,Extras (opcional)
-Tortas,La Combinada,"Arma tu torta con 2 ingredientes a elegir. Va con todo: lechuga, jitomate, chile, cebolla asada, aguacate, mayonesa y mostaza.",95,Elige 2 ingredientes (obligatorio) · Extras (opcional)
+Tortas,La Combinada,"Arma tu torta con 2 ingredientes a elegir. Va con todo: lechuga, jitomate, chile, cebolla asada, aguacate, mayonesa y mostaza.",95,"Elige 2 ingredientes (obligatorio): Carne asada, Adobada, Carnitas, Chorizo, Jamón con queso, Huevo · Extras (opcional)"
 Tortas,La Roja,"Torta de adobada. Va con todo: lechuga, jitomate, chile, cebolla asada, aguacate, mayonesa y mostaza.",90,Extras (opcional)
 Tortas,La Chancha,"Torta de carnitas. Va con todo: lechuga, jitomate, chile, cebolla asada, aguacate, mayonesa y mostaza.",90,Extras (opcional)
 Tortas,La Jerezana,"Torta de chorizo. Va con todo: lechuga, jitomate, chile, cebolla asada, aguacate, mayonesa y mostaza.",90,Extras (opcional)
@@ -11,14 +11,14 @@ Tortas,El Lonche,"Torta de jamón con queso. Va con todo: lechuga, jitomate, chi
 Tortas,De Huevo,"Torta de huevo. Va con todo: lechuga, jitomate, chile, cebolla asada, aguacate, mayonesa y mostaza.",75,Extras (opcional)
 Desayunos,Desayuno Anahí,"Huevo revuelto con chorizo o jamón, 3 quesadillas y ensalada de jitomate y aguacate.",105,Elige chorizo o jamón (obligatorio)
 Desayunos,Desayuno La Tortería,"Omelette de jamón con queso, 2 quesadillas y ensalada de jitomate y aguacate.",110,—
-Quesadillas,Orden de quesadillas,3 quesadillas con 1 o 2 ingredientes a elegir.,90,Elige 1 o 2 ingredientes (obligatorio)
-Quesadillas,Quesadilla doble,Quesadilla de 2 tortillas.,60,Elige ingrediente (confirmar)
+Quesadillas,Orden de quesadillas,3 quesadillas de un solo sabor: eliges 1 o 2 ingredientes y las 3 piezas se preparan igual.,90,"Elige 1 o 2 ingredientes (obligatorio; mismo sabor para las 3 piezas): Carne asada, Adobada, Carnitas, Chorizo, Jamón con queso, Huevo"
+Quesadillas,Quesadilla doble,Quesadilla de 2 tortillas.,60,"Elige 1 o 2 ingredientes (obligatorio): Carne asada, Adobada, Carnitas, Chorizo, Jamón con queso, Huevo"
 Quesadillas,Quesadilla sencilla,Quesadilla de queso y verduras.,35,—
-Bebidas,Malteada,Malteada cremosa.,45,Elige sabor (confirmar sabores)
+Bebidas,Malteada,"Malteada cremosa de fresa, vainilla o chocolate.",45,"Elige sabor: fresa, vainilla o chocolate"
 Bebidas,Refresco,Refresco de lata o botella.,35,Elige sabor (confirmar)
 Bebidas,Agua mineral,Agua mineral.,35,—
-Bebidas,Jugo Del Valle,Jugo Del Valle.,30,Elige sabor (confirmar)
-Bebidas,Agua de sabor,Agua fresca del día.,30,Elige sabor (confirmar)
+Bebidas,Jugo Del Valle,Jugo Del Valle.,30,Elige sabor: durazno o mango
+Bebidas,Agua de sabor,Agua fresca.,30,"Elige sabor: taro, jamaica, limón con chía, horchata, coco o tamarindo"
 Bebidas,Juguito Boing,Boing individual.,25,Elige sabor (confirmar)
 Bebidas,Café,Café americano.,25,—
 Bebidas,Agua natural,Agua natural embotellada.,20,—
