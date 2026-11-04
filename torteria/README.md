@@ -35,3 +35,5 @@ Precios ajustados por comisión de plataformas (aprox. +22 % a +40 %), número d
 | `Menu_La_Torteria_2_plataformas.png` | Alta resolución (300 dpi), para subir como imagen |
 | `Menu_La_Torteria_2_plataformas_WhatsApp.jpg` | Versión ligera |
 | `menu_la_torteria_2_plataformas.html` | Archivo fuente |
+| `plataformas/Productos_La_Torteria_2_plataformas.pdf` | Lista de productos, descripciones, precios y modificadores para capturar en DiDi y Uber Eats |
+| `plataformas/Productos_La_Torteria_2_plataformas.csv` | La misma lista en hoja de cálculo |
