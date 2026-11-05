@@ -1,0 +1,83 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Libro de Mateo</title><style>
+@font-face{font-family:"Nunito";src:url(fonts/Nunito.woff2) format("woff2");font-weight:200 1000}
+@font-face{font-family:"Alfa";src:url(fonts/AlfaSlabOne.woff2) format("woff2")}
+@page{size:letter;margin:0}
+*{box-sizing:border-box}
+html,body{margin:0;font-family:"Nunito",sans-serif;color:#222}
+.sheet{width:21.59cm;height:27.94cm;padding:1cm 1.2cm;break-after:page;display:flex;flex-direction:column}
+.hdr{border-bottom:2px solid #2e7d32;padding-bottom:.15cm;margin-bottom:.4cm;font-size:10.5pt;color:#555}
+.hdr b{display:block;font-family:"Alfa";font-weight:400;font-size:17pt;color:#2e7d32}
+.sheet-body{flex:1;display:flex;flex-direction:column;gap:.45cm;align-items:center}
+.cutbox{border:2px dashed #999;border-radius:.3cm;padding:.35cm;background:#fff}
+.cut{font-size:9pt;color:#999;margin-top:auto}
+.trace{font-weight:900;color:transparent;-webkit-text-stroke:1.1px #9e9e9e;letter-spacing:.04em}
+.trace .r{-webkit-text-stroke-color:#e53935}
+.tl{font-size:34pt;line-height:1.45;border-bottom:2px solid #cfd8dc;white-space:nowrap}
+.lines{width:100%;padding:.2cm .6cm} .lines.one .tl{border-bottom:0}
+/* portada */
+.cover{width:17.5cm;height:20cm;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:1cm;
+  border-color:#2e7d32;background:linear-gradient(#fff,#fff) padding-box}
+.cv-title{font-family:"Alfa";font-size:36pt;color:#2e7d32;text-align:center;line-height:1.05}
+.cv-title span{color:#1565c0;font-size:30pt}
+.cv-logo{width:14cm}
+.cv-author{font-size:20pt;font-weight:900;color:#c62828}
+/* fotos y dibujos */
+.row2{display:flex;gap:.5cm;width:100%;justify-content:center}
+.photo{padding:.25cm} .photo img{display:block;height:11.5cm;width:auto;border-radius:.2cm}
+.photo.big img{height:14.5cm}
+.drawbox{width:8.6cm;height:12.05cm;position:relative}
+.drawbox.wide{width:100%;height:7.6cm}
+.dlabel{position:absolute;left:.35cm;top:.25cm;font-size:12pt;color:#aaa;font-weight:800}
+.tags{display:grid;grid-template-columns:repeat(4,1fr);gap:.35cm;width:100%}
+.tag{text-align:center;font-size:24pt;line-height:1.2;padding:.25cm .1cm}
+.tag small{font-size:17pt}
+.tag .arrow{display:block;color:#1565c0;font-size:18pt;transform:rotate(-90deg)}
+.sub{align-self:flex-start;font-size:15pt;font-weight:900;color:#c62828}
+.row3{display:grid;grid-template-columns:repeat(3,1fr);gap:.35cm;width:100%}
+.mini{padding:.2cm} .mini-draw{height:4.6cm} .mini-cap{font-size:15pt;text-align:center;line-height:1.2}
+/* corazón */
+.heart-wrap{position:relative;width:18.5cm;height:16cm}
+.heart{position:absolute;inset:0;width:100%;height:100%}
+.heart-text{position:absolute;left:0;right:0;top:3.4cm;text-align:center}
+.heart-text .tl{font-size:27pt;border:0;line-height:1.5}
+.badge{font-size:26pt;padding:.3cm .7cm}
+.stickers{flex:1;display:flex;justify-content:center} .stickers img{height:24cm}
+</style></head><body><section class="sheet"><div class="hdr"><b>Portada</b><span>Recorta el recuadro y pégalo en la cartulina. Agrega stickers alrededor.</span></div>
+<div class="sheet-body" style="--fondo:#e8f5e9">
+<div class="cutbox cover">
+  <div class="cv-title">Mi familia,<br><span>mi lugar especial</span></div>
+  <img class="cv-logo" src="img/mateo_logo.jpg" alt="Mateo">
+  <div class="cv-author">Autor: Mateo · 1.° Green</div>
+</div><div class="cut">✂ recortar por la línea punteada</div></div></section><section class="sheet"><div class="hdr"><b>Página 1 · Así soy yo</b><span>Fondo: hoja verde. Recorta la foto y la tira de texto; Mateo dibuja y repasa las letras.</span></div>
+<div class="sheet-body" style="--fondo:#e8f5e9">
+<div class="row2">
+  <div class="cutbox photo"><img src="img/estadio.jpg" alt="Mateo en el estadio"></div>
+  <div class="cutbox drawbox"><div class="dlabel">Así me dibujo yo</div></div>
+</div>
+<div class="cutbox lines">
+  <div class="tl"><span class="trace"><span class="r">M</span>i nombre es <span class="r">M</span>ateo.</span></div>
+  <div class="tl"><span class="trace"><span class="r">T</span>engo 6 años.</span></div>
+  <div class="tl"><span class="trace"><span class="r">M</span>e gusta el f<span class="r">ú</span>tbol.</span></div>
+</div><div class="cut">✂ recortar por la línea punteada</div></div></section><section class="sheet"><div class="hdr"><b>Página 2 · Mi familia</b><span>Fondo: hoja azul. Pega la foto y coloca cada etiqueta junto a la persona.</span></div>
+<div class="sheet-body" style="--fondo:#e3f2fd">
+<div class="cutbox photo big"><img src="img/playa.jpg" alt="Familia en la playa"></div>
+<div class="tags"><div class="cutbox tag"><span class="arrow">➜</span><span class="trace"><span class="r">M</span>am<span class="r">á</span></span><br><small><span class="trace"><span class="r">A</span>na</span></small></div><div class="cutbox tag"><span class="arrow">➜</span><span class="trace"><span class="r">P</span>ap<span class="r">á</span></span><br><small><span class="trace"><span class="r">J</span>os<span class="r">é</span> <span class="r">L</span>uis</span></small></div><div class="cutbox tag"><span class="arrow">➜</span><span class="trace"><span class="r">M</span>anito</span><br><small><span class="trace"><span class="r">J</span>os<span class="r">é</span> <span class="r">L</span>uis</span></small></div><div class="cutbox tag"><span class="arrow">➜</span><span class="trace"><span class="r">Y</span>o</span><br><small><span class="trace"><span class="r">M</span>ateo</span></small></div></div>
+<div class="cutbox lines one"><div class="tl"><span class="trace"><span class="r">E</span>sta es mi familia.</span></div></div><div class="cut">✂ recortar por la línea punteada</div></div></section><section class="sheet"><div class="hdr"><b>Página 3 · Mi familia hace</b><span>Fondo: hoja roja. Mateo dibuja en el recuadro grande y en los tres pequeños.</span></div>
+<div class="sheet-body" style="--fondo:#ffebee">
+<div class="cutbox lines"><div class="tl"><span class="trace"><span class="r">M</span>e gusta jugar f<span class="r">ú</span>tbol</span></div><div class="tl" style="border:0"><span class="trace">con mi familia.</span></div></div>
+<div class="cutbox drawbox wide"><div class="dlabel">Mi dibujo: jugando fútbol con mi familia</div></div>
+<div class="sub">También me gusta:</div>
+<div class="row3"><div class="cutbox mini"><div class="mini-draw"></div><div class="mini-cap"><span class="trace">jugar juegos de mesa</span></div></div><div class="cutbox mini"><div class="mini-draw"></div><div class="mini-cap"><span class="trace">hacer la tarea con mis pap<span class="r">á</span>s</span></div></div><div class="cutbox mini"><div class="mini-draw"></div><div class="mini-cap"><span class="trace">viajar</span></div></div></div><div class="cut">✂ recortar por la línea punteada</div></div></section><section class="sheet"><div class="hdr"><b>Página 4 · Lo que amo de mi familia</b><span>Fondo: hoja verde o azul. Recorta el corazón; Mateo repasa las letras y lo colorea.</span></div>
+<div class="sheet-body" style="--fondo:#e3f2fd">
+<div class="heart-wrap">
+  <svg class="heart" viewBox="0 0 100 92" preserveAspectRatio="none"><path d="M50 90 C 18 66 2 50 2 28 C 2 12 14 2 28 2 C 38 2 46 8 50 16 C 54 8 62 2 72 2 C 86 2 98 12 98 28 C 98 50 82 66 50 90 Z" fill="#fff" stroke="#e53935" stroke-width="1.2" stroke-dasharray="2.5 1.8"/></svg>
+  <div class="heart-text">
+    <div class="tl"><span class="trace"><span class="r">L</span>o que m<span class="r">á</span>s me gusta</span></div>
+    <div class="tl"><span class="trace">de mi familia es que</span></div>
+    <div class="tl"><span class="trace">es divertida, cariñosa</span></div>
+    <div class="tl"><span class="trace">y le gusta el f<span class="r">ú</span>tbol.</span></div>
+  </div>
+</div>
+<div class="cutbox badge">🏆 <span class="trace"><span class="r">L</span>a mejor familia</span></div><div class="cut">✂ recortar por la línea punteada</div></div></section><section class="sheet"><div class="hdr"><b>Stickers de fútbol</b><span>Recorta los que más te gusten para decorar la portada y las páginas.</span></div>
+<div class="sheet-body" style="--fondo:#fff">
+<div class="stickers"><img src="img/stickers.jpg" alt="Stickers"></div></div></section></body></html>
