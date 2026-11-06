@@ -4,7 +4,7 @@ import html, pathlib
 # (diapositiva, título, tiempo en segundos, texto para decir)
 GUION = [
  (1, "Portada", 30,
-  "Buenos días, Dr. Leonel, compañeras y compañeros. Soy Anakaren Reimers, licenciada en Nutrición y Ciencia de los Alimentos, "
+  "Buenas tardes, Dr. Leonel, compañeras y compañeros. Soy Anakaren Reimers, licenciada en Nutrición y Ciencia de los Alimentos, "
   "y les presento los avances de mi proyecto «Nutrición en el aula: taller de microaprendizaje en línea para quinto de primaria», "
   "que dirige el Dr. Eduardo Rivera Arteaga. Les comparto en qué consiste, en qué etapa me encuentro y cuáles son los siguientes pasos."),
  (2, "Planteamiento del problema", 75,
