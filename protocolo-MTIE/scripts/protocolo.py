@@ -51,7 +51,8 @@ para(doc, "La educación nutricional durante la infancia es una herramienta para
           "24 reactivos de opción múltiple, validado mediante juicio de expertos (V de Aiken) y prueba piloto (KR-20), antes y después "
           "del taller; las puntuaciones se compararán con la prueba *t* de Student para muestras relacionadas o con la prueba de "
           "rangos con signo de Wilcoxon, según la distribución de los datos. Actualmente el instrumento se encuentra en proceso de "
-          "validación de contenido.",
+          "validación de contenido. Posteriormente se implementará el taller y se realizará la evaluación preprueba-posprueba para "
+          "identificar si hubo un cambio significativo en el conocimiento nutricional de los participantes.",
      indent=False,
      c="APA 7: el resumen va en un solo párrafo, sin sangría y con un máximo de 250 palabras. Se unificó el término "
        "«taller educativo» y se agregó cómo se analizarán los datos, que es lo que permite responder a la hipótesis. "
@@ -78,7 +79,7 @@ heading(doc, "1.1 Antecedentes", 2,
           "institucional. Se organizan de lo internacional a lo nacional y a lo local. Detalle en el informe de verificación de "
           "referencias. Antes de entregar, LEE cada fuente nueva y confirma que la paráfrasis es fiel.")
 para(doc, "La revisión de antecedentes se organizó en tres planos (internacional, nacional y local) y en dos líneas temáticas: "
-          "la educación alimentaria y nutricional en el entorno escolar y el microaprendizaje como estrategia educativa mediada "
+          "la educación alimentaria y nutricional en el entorno escolar y el microaprendizaje como enfoque educativo mediado "
           "por tecnología.")
 heading(doc, "Antecedentes internacionales", 3)
 para(doc, "Pérez-Rodrigo y Aranceta (2001), en el artículo «School-based nutrition education: Lessons learned and new perspectives», "
@@ -413,7 +414,7 @@ heading(doc, "2.1 Variable independiente: taller educativo en línea basado en m
         c="Se usa el mismo nombre de la variable en la tabla de contenido, el título del apartado y la operacionalización. El "
           "original alternaba entre «estrategia educativa basada en microaprendizaje», «taller» y «microaprendizaje».")
 heading(doc, "2.1.1 Concepto y características del microaprendizaje", 3)
-para(doc, "El microaprendizaje es una estrategia educativa basada en la presentación de contenidos organizados en unidades breves, "
+para(doc, "El microaprendizaje es un enfoque educativo basado en la presentación de contenidos organizados en unidades breves, "
           "precisas y estructuradas, orientadas a objetivos específicos, con el fin de facilitar la comprensión y la retención "
           "progresiva del conocimiento (Betancur-Chicué y García-Valcárcel Muñoz-Repiso, 2023). Desde una perspectiva pedagógica, "
           "organiza la información en fragmentos que permiten abordar un objetivo a la vez sin sobrecargar al estudiante, lo que "

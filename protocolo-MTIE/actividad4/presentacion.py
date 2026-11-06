@@ -122,12 +122,13 @@ sl = prs.slides.add_slide(BL); n += 1; header(sl, "Tabla de congruencia (actuali
 table(sl, Cm(1.3), Cm(3.2), Cm(31.2), [
     ["Elemento", "Contenido"],
     ["Objetivo general", "Incrementar el conocimiento nutricional de los estudiantes de 5.º grado del Instituto Educativo Ammadeus mediante la implementación de un taller educativo en línea basado en microaprendizaje."],
+    ["Pregunta específica 2", "¿Qué elementos digitales se pueden incluir en un taller educativo en línea basado en microaprendizaje para abordar contenidos de educación nutricional en estudiantes de 5.º grado?"],
     ["Objetivos específicos", "1) Identificar el nivel inicial (preprueba). 2) Diseñar y desarrollar el taller con el modelo ADDIE. 3) Comparar el conocimiento, total y por dimensión, antes y después."],
     ["Hipótesis (H1)", "El puntaje de conocimiento nutricional será significativamente mayor en la posprueba que en la preprueba."],
     ["Variable independiente", "Taller educativo en línea basado en microaprendizaje (8 cápsulas, 4 semanas)."],
     ["Variable dependiente", "Nivel de conocimiento nutricional (puntaje 0–24)."],
     ["Instrumento", "Cuestionario de conocimiento nutricional: 24 reactivos de opción múltiple, 4 dimensiones."],
-], [Cm(6.6), Cm(24.6)], size=13, rowh=Cm(1.75), first_col_fill=NAVY)
+], [Cm(6.6), Cm(24.6)], size=12.5, rowh=Cm(1.55), first_col_fill=NAVY)
 
 # 4 Marco teórico -----------------------------------------------------------
 sl = prs.slides.add_slide(BL); n += 1; header(sl, "Fundamento teórico", n)
@@ -224,8 +225,9 @@ sl = prs.slides.add_slide(BL); n += 1; header(sl, "Avance del juicio de expertos
 table(sl, Cm(1.3), Cm(3.3), Cm(14.2), [["Juez", "Perfil", "Estado"],
                                         ["Juez 1", "Psicóloga clínica", "Retroalimentación recibida"],
                                         ["Pendientes", "Docentes de educación primaria", "En espera"],
-                                        ["Pendientes", "Nutriólogos", "En espera"]],
-      [Cm(3), Cm(5.4), Cm(5.8)], size=13.5, rowh=Cm(1.3))
+                                        ["Pendientes", "Nutriólogos", "En espera"],
+                                        ["Pendiente", "Experta propuesta por el director", "En espera"]],
+      [Cm(3), Cm(5.4), Cm(5.8)], size=12.5, rowh=Cm(1.1))
 box(sl, Cm(16.3), Cm(3.3), Cm(16.2), Cm(12.8), "Retroalimentación recibida (Juez 1)", [
     "• Lenguaje claro y adecuado para estudiantes de 5.º grado.",
     "• Instrucciones fáciles de comprender.",
@@ -236,11 +238,12 @@ box(sl, Cm(16.3), Cm(3.3), Cm(16.2), Cm(12.8), "Retroalimentación recibida (Jue
     [("Valoración global: adecuado; no sugiere modificaciones generales.", {"bold": True, "color": GREEN})],
     [("Siguiente paso: integrar la valoración de los demás jueces y calcular la V de Aiken.", {"bold": True, "color": NAVY})]],
     bar=TEAL, size=13.5)
-box(sl, Cm(1.3), Cm(9.2), Cm(14.2), Cm(6.9), "Ajustes identificados en la revisión", [
+box(sl, Cm(1.3), Cm(9.6), Cm(14.2), Cm(6.5), "Ajustes identificados en la revisión", [
     "• Unificar «agua simple» en todos los reactivos.",
     "• Evitar reactivos que miden lo mismo (6 y 1; 15 y 18; 20 y 22).",
     "• Redactar el 14 como pregunta y fortalecer distractores débiles.",
-    "• Simplificar términos como «respectivamente»."], size=13)
+    "• Simplificar términos como «respectivamente».",
+    [("El director revisó el instrumento y lo consideró pertinente; para evitar sesgo, no participa como juez.", {"italic": True, "color": MUTED, "size": 11.5})]], size=13)
 
 # 10 Cronograma ----------------------------------------------------------------
 sl = prs.slides.add_slide(BL); n += 1; header(sl, "Cronograma de actividades", n)
