@@ -192,7 +192,7 @@ steps = [("Protocolo revisado y corregido", "Planteamiento, marco teórico y met
          ("Instrumento diseñado", "24 reactivos alineados con las Guías Alimentarias 2025 y el Plato del Bien Comer.", GREEN, "Concluido"),
          ("Diseño instruccional del taller", "Modelo ADDIE y carta descriptiva de 8 cápsulas.", GREEN, "Concluido"),
          ("Cartel aceptado en congreso internacional", "I Congreso Internacional de Tecnología Educativa y Ambientes de Aprendizaje, UAZ, 19 y 20 de noviembre.", GREEN, "Concluido"),
-         ("Validación de contenido por juicio de expertos", "Psicóloga clínica: retroalimentación recibida; en espera de docentes y nutriólogos.", ORANGE, "En proceso"),
+         ("Validación de contenido por juicio de expertos", "2 valoraciones recibidas (psicología clínica e investigación); en espera de docentes y nutriólogos.", ORANGE, "En proceso"),
          ("Prueba piloto, implementación y análisis", "Diciembre de 2026 a abril de 2027 (ver cronograma).", MUTED, "Pendiente")]
 for i, (t, d, col, est) in enumerate(steps):
     y = Cm(3.25) + i * Cm(2.3)
@@ -223,29 +223,45 @@ box(sl, Cm(1.3), Cm(10.4), Cm(31.2), Cm(5.8), "Criterio de decisión", [
 # 9 Avance del juicio -----------------------------------------------------------
 sl = prs.slides.add_slide(BL); n += 1; header(sl, "Avance del juicio de expertos", n)
 table(sl, Cm(1.3), Cm(3.3), Cm(14.2), [["Juez", "Perfil", "Estado"],
-                                        ["Juez 1", "Psicóloga clínica", "Retroalimentación recibida"],
+                                        ["Juez 1", "Psicóloga clínica", "Recibida"],
+                                        ["Juez 2", "Experta en investigación (docente de posgrado)", "Recibida"],
                                         ["Pendientes", "Docentes de educación primaria", "En espera"],
-                                        ["Pendientes", "Nutriólogos", "En espera"],
-                                        ["Pendiente", "Experta propuesta por el director", "En espera"]],
-      [Cm(3), Cm(5.4), Cm(5.8)], size=12.5, rowh=Cm(1.1))
-box(sl, Cm(16.3), Cm(3.3), Cm(16.2), Cm(12.8), "Retroalimentación recibida (Juez 1)", [
-    "• Lenguaje claro y adecuado para estudiantes de 5.º grado.",
-    "• Instrucciones fáciles de comprender.",
-    "• Secuencia lógica en el contenido.",
-    "• Extensión breve, que permite contestar con atención.",
-    "• Permite detectar el nivel de conocimiento sobre los alimentos y su relación con la vida diaria.",
-    "• La información obtenida será un referente para diseñar estrategias de prevención e intervención.",
-    [("Valoración global: adecuado; no sugiere modificaciones generales.", {"bold": True, "color": GREEN})],
-    [("Siguiente paso: integrar la valoración de los demás jueces y calcular la V de Aiken.", {"bold": True, "color": NAVY})]],
+                                        ["Pendientes", "Nutriólogos", "En espera"]],
+      [Cm(2.9), Cm(7.3), Cm(4)], size=12.5, rowh=Cm(1.1))
+box(sl, Cm(1.3), Cm(9.6), Cm(14.2), Cm(6.5), "Juez 1 · Psicóloga clínica", [
+    "• Lenguaje claro y adecuado para 5.º grado; instrucciones fáciles.",
+    "• Secuencia lógica y extensión breve.",
+    "• Útil como referente para prevención e intervención.",
+    [("Valoración global: adecuado, sin modificaciones.", {"bold": True, "color": GREEN})]], size=13)
+box(sl, Cm(16.3), Cm(3.3), Cm(16.2), Cm(12.8), "Juez 2 · Experta en investigación", [
+    "• Coherencia y pertinencia: 4 de 4 en los 24 reactivos.",
+    "• Claridad: 4 en 20 reactivos; 3 en los reactivos 16 y 23; 1 en los reactivos 11 y 24.",
+    "• Recomienda redactar los enunciados en forma aseverativa o de frase incompleta (DeVellis, 2017).",
+    "• Un reactivo debe contener una sola idea (el 11 clasifica dos alimentos a la vez).",
+    "• Dimensiones bien representadas y lenguaje adecuado para 5.º grado.",
+    [("Valoración global: adecuado, con modificaciones menores.", {"bold": True, "color": ORANGE})],
+    [("Exactitud nutricional: se toma solo de los jueces nutriólogos.", {"italic": True, "color": MUTED, "size": 11.5})]],
     bar=TEAL, size=13.5)
-box(sl, Cm(1.3), Cm(9.6), Cm(14.2), Cm(6.5), "Ajustes identificados en la revisión", [
+
+# 10 Ajustes al instrumento ------------------------------------------------------
+sl = prs.slides.add_slide(BL); n += 1; header(sl, "Ajustes al instrumento a partir de la retroalimentación", n)
+box(sl, Cm(1.3), Cm(3.3), Cm(15.2), Cm(8.6), "Sugerencias del Juez 2", [
+    "• Enunciados en forma aseverativa, por ejemplo: «La opción que describe mejor una alimentación saludable es:».",
+    "• Reactivo 11: separar la clasificación del pescado y la del aguacate.",
+    "• Reactivo 24: precisar qué significa «aplicar diferentes recomendaciones al mismo tiempo».",
+    "• Reactivos 16 y 23: ajustes menores de redacción.",
+    "• Elegir el formato (aseverativo, interrogativo o solicitud directa) pensando en niños de 10 y 11 años."], size=13.5)
+box(sl, Cm(17.3), Cm(3.3), Cm(15.2), Cm(8.6), "Ajustes de la revisión propia", [
     "• Unificar «agua simple» en todos los reactivos.",
     "• Evitar reactivos que miden lo mismo (6 y 1; 15 y 18; 20 y 22).",
-    "• Redactar el 14 como pregunta y fortalecer distractores débiles.",
+    "• Fortalecer distractores débiles.",
     "• Simplificar términos como «respectivamente».",
-    [("El director revisó el instrumento y lo consideró pertinente; para evitar sesgo, no participa como juez.", {"italic": True, "color": MUTED, "size": 11.5})]], size=13)
+    [("El director revisó el instrumento y lo consideró pertinente; para evitar sesgo, no participa como juez.", {"italic": True, "color": MUTED, "size": 11.5})]],
+    bar=TEAL, size=13.5)
+text(sl, Cm(1.3), Cm(12.8), Cm(31.2), Cm(1.6), [[("Siguiente paso: ", {"bold": True, "color": NAVY}),
+     ("reunir la valoración de docentes y nutriólogos, calcular la V de Aiken y aplicar los ajustes en una versión final antes del piloto.", {})]], size=13.5)
 
-# 10 Cronograma ----------------------------------------------------------------
+# 11 Cronograma ----------------------------------------------------------------
 sl = prs.slides.add_slide(BL); n += 1; header(sl, "Cronograma de actividades", n)
 months = ["Nov 2026", "Dic 2026", "Ene 2027", "Feb 2027", "Mar 2027", "Abr 2027"]
 acts = [("Juicio de expertos y ajuste del instrumento", 0, 1, ORANGE),
@@ -270,7 +286,7 @@ for i, (a, s, e, col) in enumerate(acts):
 text(sl, Cm(1.3), Cm(16.6), Cm(31), Cm(.9), [[("Implementación en febrero de 2027: ", {"bold": True, "color": RED}),
      ("preprueba a finales de enero, taller durante febrero y posprueba al cierre. Fechas tentativas, sujetas al calendario escolar.", {})]], size=12.5)
 
-# 11 Implicaciones -------------------------------------------------------------
+# 12 Implicaciones -------------------------------------------------------------
 sl = prs.slides.add_slide(BL); n += 1; header(sl, "Implicaciones y siguientes pasos", n)
 box(sl, Cm(1.3), Cm(3.3), Cm(15.2), Cm(12.8), "Aportes esperados", [
     "• Un taller replicable y de bajo costo para 5.º grado, alineado con las Guías Alimentarias 2025 y la Fase 5 de la SEP.",
@@ -282,13 +298,14 @@ box(sl, Cm(17.3), Cm(3.3), Cm(15.2), Cm(12.8), "Implicaciones para futuras inves
     "• Evaluar cambios en conductas alimentarias, no solo en conocimiento.",
     "• Replicar el taller en otros grados y en escuelas públicas."], bar=TEAL, size=14.5)
 
-# 12 Referencias ----------------------------------------------------------------
+# 13 Referencias ----------------------------------------------------------------
 sl = prs.slides.add_slide(BL); n += 1; header(sl, "Referencias", n)
 refs = [
  "Aiken, L. R. (1985). Three coefficients for analyzing the reliability and validity of ratings. Educational and Psychological Measurement, 45(1), 131–142.",
  "Betancur-Chicué, V., y García-Valcárcel Muñoz-Repiso, A. (2023). Características del diseño de estrategias de microaprendizaje en escenarios educativos: Revisión sistemática. RIED, 26(1), 201–222. https://doi.org/10.5944/ried.26.1.34056",
  "Branch, R. M. (2009). Instructional design: The ADDIE approach. Springer.",
  "Cruz Lara, N. M., y Macossay Moreno, C. (2022). Intervención de educación nutricional en línea a población infantil en el estado de Veracruz. Horizonte Sanitario, 21(3), 403–409.",
+ "DeVellis, R. F. (2017). Scale development: Theory and applications (4.ª ed.). SAGE.",
  "López Hernández, P. Y., Franco Trejo, C. S., Galicia Rodríguez, A. G., Argüelles Estrada, B. C., y Ornelas Pargas, A. C. (2024). Sobrepeso, obesidad y educación nutricional en una escuela primaria de Zacatecas. Revista Iberoamericana de Ciencias, 11(1).",
  "Mayer, R. E. (2009). Multimedia learning (2.ª ed.). Cambridge University Press.",
  "Penfield, R. D., y Giacobbi, P. R., Jr. (2004). Applying a score confidence interval to Aiken's item content-relevance index. Measurement in Physical Education and Exercise Science, 8(4), 213–225.",
