@@ -303,7 +303,9 @@ text(sl, Cm(1.3), Cm(3.1), Cm(31.2), Cm(14.5), refs, size=10.5, spacing=1.05)
 sl = prs.slides.add_slide(BL); n += 1
 rect(sl, 0, 0, W, H, NAVY); rect(sl, 0, Cm(12.2), W, Cm(.2), ORANGE)
 text(sl, Cm(2), Cm(5.5), W - Cm(4), Cm(6), [[("¡Muchas gracias por su atención!", {"size": 36, "bold": True, "color": WHITE})],
-     [("Anakaren Ernestina Reimers Reyes · ana.reimers@gmail.com", {"size": 16, "color": RGBColor(0xDD, 0xE3, 0xF0)})]],
+     [("L.N.C.A. Anakaren Ernestina Reimers Reyes", {"size": 20, "bold": True, "color": WHITE})],
+     [("Licenciada en Nutrición y Ciencia de los Alimentos · Maestría en Tecnología Informática Educativa, UAZ", {"size": 14, "color": RGBColor(0xDD, 0xE3, 0xF0)})],
+     [("ana.reimers@gmail.com", {"size": 14, "color": RGBColor(0xDD, 0xE3, 0xF0)})]],
      align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE, spacing=1.4)
 
 prs.core_properties.title = "Actividad 4 · Presentación de avances · Reimers Reyes"
