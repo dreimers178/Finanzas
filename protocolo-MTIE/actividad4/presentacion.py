@@ -227,12 +227,15 @@ table(sl, Cm(1.3), Cm(3.3), Cm(14.2), [["Juez", "Perfil", "Estado"],
                                         ["Juez 3", "[Perfil]", "En espera"]],
       [Cm(3), Cm(5.4), Cm(5.8)], size=13.5, rowh=Cm(1.3))
 box(sl, Cm(16.3), Cm(3.3), Cm(16.2), Cm(12.8), "Retroalimentación recibida (Juez 1)", [
-    [("[Observación 1 de la psicóloga clínica]", {"color": RED})],
-    [("[Observación 2]", {"color": RED})],
-    [("[Observación 3]", {"color": RED})],
-    "",
-    [("Ajustes que se realizarán:", {"bold": True, "color": NAVY})],
-    [("[Ajuste derivado de la retroalimentación]", {"color": RED})]], bar=TEAL, size=14)
+    "• Lenguaje claro y adecuado para estudiantes de 5.º grado.",
+    "• Instrucciones fáciles de comprender.",
+    "• Secuencia lógica en el contenido.",
+    "• Extensión breve, que permite contestar con atención.",
+    "• Permite detectar el nivel de conocimiento sobre los alimentos y su relación con la vida diaria.",
+    "• La información obtenida será un referente para diseñar estrategias de prevención e intervención.",
+    [("Valoración global: adecuado; no sugiere modificaciones generales.", {"bold": True, "color": GREEN})],
+    [("Siguiente paso: integrar la valoración de los demás jueces y calcular la V de Aiken.", {"bold": True, "color": NAVY})]],
+    bar=TEAL, size=13.5)
 box(sl, Cm(1.3), Cm(9.2), Cm(14.2), Cm(6.9), "Ajustes identificados en la revisión", [
     "• Unificar «agua simple» en todos los reactivos.",
     "• Evitar reactivos que miden lo mismo (6 y 1; 15 y 18; 20 y 22).",
