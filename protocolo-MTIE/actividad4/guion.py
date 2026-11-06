@@ -46,7 +46,7 @@ GUION = [
   "instrumento, y todas las cápsulas siguen la misma estructura: recuperar lo anterior, un microcontenido de 3 a 5 minutos, una "
   "actividad interactiva con retroalimentación y un reto de cierre."),
  (7, "Estado del proyecto", 60,
-  "¿Dónde estoy? Ya concluí la revisión y corrección del protocolo, con referencias verificadas en APA 7, el diseño del instrumento "
+  "¿Dónde estoy? Ya concluí la revisión y corrección del protocolo, el diseño del instrumento "
   "y el diseño instruccional del taller. Además, el proyecto fue aceptado como cartel en el I Congreso Internacional de Tecnología "
   "Educativa y Ambientes de Aprendizaje, que se realizará el 19 y 20 de noviembre. Actualmente estoy en la validación de contenido "
   "por juicio de expertos: tengo dos valoraciones y sigo a la espera de las valoraciones de los demás expertos, docentes de primaria "

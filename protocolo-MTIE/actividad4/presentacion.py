@@ -188,7 +188,7 @@ text(sl, Cm(1.3), Cm(14.6), Cm(31), Cm(1.4), "Cada cápsula: recuperación de la
 
 # 7 Estado del proyecto -------------------------------------------------------
 sl = prs.slides.add_slide(BL); n += 1; header(sl, "Estado del proyecto: ¿dónde estoy?", n)
-steps = [("Protocolo revisado y corregido", "Planteamiento, marco teórico y metodología; referencias verificadas en APA 7.", GREEN, "Concluido"),
+steps = [("Protocolo revisado y corregido", "Planteamiento, marco teórico y metodología.", GREEN, "Concluido"),
          ("Instrumento diseñado", "24 reactivos alineados con las Guías Alimentarias 2025 y el Plato del Bien Comer.", GREEN, "Concluido"),
          ("Diseño instruccional del taller", "Modelo ADDIE y carta descriptiva de 8 cápsulas.", GREEN, "Concluido"),
          ("Cartel aceptado en congreso internacional", "I Congreso Internacional de Tecnología Educativa y Ambientes de Aprendizaje, UAZ, 19 y 20 de noviembre.", GREEN, "Concluido"),
