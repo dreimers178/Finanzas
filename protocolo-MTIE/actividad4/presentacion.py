@@ -191,7 +191,7 @@ steps = [("Protocolo revisado y corregido", "Planteamiento, marco teórico y met
          ("Instrumento diseñado", "24 reactivos alineados con las Guías Alimentarias 2025 y el Plato del Bien Comer.", GREEN, "Concluido"),
          ("Diseño instruccional del taller", "Modelo ADDIE y carta descriptiva de 8 cápsulas.", GREEN, "Concluido"),
          ("Cartel aceptado en congreso internacional", "I Congreso Internacional de Tecnología Educativa y Ambientes de Aprendizaje, UAZ, 19 y 20 de noviembre.", GREEN, "Concluido"),
-         ("Validación de contenido por juicio de expertos", "1 juez con retroalimentación (psicóloga clínica); en espera de los demás.", ORANGE, "En proceso"),
+         ("Validación de contenido por juicio de expertos", "Psicóloga clínica: retroalimentación recibida; en espera de docentes y nutriólogos.", ORANGE, "En proceso"),
          ("Prueba piloto, implementación y análisis", "Diciembre de 2026 a abril de 2027 (ver cronograma).", MUTED, "Pendiente")]
 for i, (t, d, col, est) in enumerate(steps):
     y = Cm(3.25) + i * Cm(2.3)
@@ -223,8 +223,8 @@ box(sl, Cm(1.3), Cm(10.4), Cm(31.2), Cm(5.8), "Criterio de decisión", [
 sl = prs.slides.add_slide(BL); n += 1; header(sl, "Avance del juicio de expertos", n)
 table(sl, Cm(1.3), Cm(3.3), Cm(14.2), [["Juez", "Perfil", "Estado"],
                                         ["Juez 1", "Psicóloga clínica", "Retroalimentación recibida"],
-                                        ["Juez 2", "[Perfil]", "En espera"],
-                                        ["Juez 3", "[Perfil]", "En espera"]],
+                                        ["Pendientes", "Docentes de educación primaria", "En espera"],
+                                        ["Pendientes", "Nutriólogos", "En espera"]],
       [Cm(3), Cm(5.4), Cm(5.8)], size=13.5, rowh=Cm(1.3))
 box(sl, Cm(16.3), Cm(3.3), Cm(16.2), Cm(12.8), "Retroalimentación recibida (Juez 1)", [
     "• Lenguaje claro y adecuado para estudiantes de 5.º grado.",
