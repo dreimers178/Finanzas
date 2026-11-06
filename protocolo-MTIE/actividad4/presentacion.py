@@ -259,7 +259,7 @@ box(sl, Cm(17.3), Cm(3.3), Cm(15.2), Cm(8.6), "Ajustes de la revisión propia", 
     [("El director revisó el instrumento y lo consideró pertinente; para evitar sesgo, no participa como juez.", {"italic": True, "color": MUTED, "size": 11.5})]],
     bar=TEAL, size=13.5)
 text(sl, Cm(1.3), Cm(12.8), Cm(31.2), Cm(1.6), [[("Siguiente paso: ", {"bold": True, "color": NAVY}),
-     ("reunir la valoración de docentes y nutriólogos, calcular la V de Aiken y aplicar los ajustes en una versión final antes del piloto.", {})]], size=13.5)
+     ("sigo a la espera de las valoraciones de docentes y nutriólogos; al recibirlas calcularé la V de Aiken y aplicaré los ajustes en una versión final antes del piloto.", {})]], size=13.5)
 
 # 11 Cronograma ----------------------------------------------------------------
 sl = prs.slides.add_slide(BL); n += 1; header(sl, "Cronograma de actividades", n)
@@ -324,6 +324,10 @@ text(sl, Cm(2), Cm(5.5), W - Cm(4), Cm(6), [[("¡Muchas gracias por su atención
      [("Licenciada en Nutrición y Ciencia de los Alimentos · Maestría en Tecnología Informática Educativa, UAZ", {"size": 14, "color": RGBColor(0xDD, 0xE3, 0xF0)})],
      [("ana.reimers@gmail.com", {"size": 14, "color": RGBColor(0xDD, 0xE3, 0xF0)})]],
      align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE, spacing=1.4)
+
+from guion import GUION
+for sl_, (_, _, _, txt) in zip(prs.slides, GUION):
+    sl_.notes_slide.notes_text_frame.text = txt
 
 prs.core_properties.title = "Actividad 4 · Presentación de avances · Reimers Reyes"
 prs.save("Actividad4_Presentacion_avances_Reimers.pptx")
