@@ -13,12 +13,11 @@ for t, b in [("UNIVERSIDAD AUTÓNOMA DE ZACATECAS", True), ("«FRANCISCO GARCÍA
              ("UNIDAD ACADÉMICA DE DOCENCIA SUPERIOR", True), ("MAESTRÍA EN TECNOLOGÍA INFORMÁTICA EDUCATIVA", True),
              ("", False)]:
     para(doc, f"**{t}**" if b and t else t, indent=False, align="center")
-para(doc, "**Nutrición en el aula: taller educativo basado en microaprendizaje en línea para niños de 5.º de primaria**",
+para(doc, "**Nutrición en el aula: taller de microaprendizaje en línea para quinto de primaria (diseño pretest-postest)**",
      indent=False, align="center",
-     c="Título homologado con el resumen aceptado en el CITEEA y con la observación del asesor: el título nombra la propuesta "
-       "como «taller educativo» (término único en todo el documento). Se corrigió «de 5º» (mayúsculas inconsistentes y "
-       "ordinal sin punto: en español se escribe 5.º). Opción alternativa, si el asesor prefiere enfatizar el resultado: "
-       "«Taller educativo en línea basado en microaprendizaje para incrementar el conocimiento nutricional de estudiantes de 5.º de primaria».")
+     c="Título homologado con el cartel y el extenso del congreso (15 palabras: tema, población y método), por decisión de "
+       "la autora. Nombra el taller, como pidió el asesor; en el resto del documento se usa el término completo «taller "
+       "educativo en línea basado en microaprendizaje».")
 para(doc, "", indent=False)
 para(doc, "Presenta:", indent=False, align="center")
 para(doc, "L.N.C.A. Anakaren Ernestina Reimers Reyes", indent=False, align="center")

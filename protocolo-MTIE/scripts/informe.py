@@ -15,7 +15,7 @@ for i in range(1, 5):
     doc.styles[f"Heading {i}"].paragraph_format.line_spacing_rule = WD_LINE_SPACING.ONE_POINT_FIVE
 
 heading(doc, "Informe de revisión metodológica y verificación de referencias", 1)
-para(doc, "**Protocolo:** Nutrición en el aula: taller educativo basado en microaprendizaje en línea para niños de 5.º de primaria  "
+para(doc, "**Protocolo:** Nutrición en el aula: taller de microaprendizaje en línea para quinto de primaria (diseño pretest-postest)  "
           "·  **Autora:** L.N.C.A. Anakaren Ernestina Reimers Reyes  ·  **Director:** Dr. Eduardo Rivera Arteaga  ·  "
           "**Fecha de revisión:** 31 de octubre de 2026", indent=False)
 para(doc, "Este informe acompaña al archivo *Protocolo_Reimers_corregido_APA7.docx*, que contiene todos los cambios aplicados y un "

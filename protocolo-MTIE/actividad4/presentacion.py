@@ -51,7 +51,7 @@ def header(sl, title, n):
     rect(sl, 0, 0, W, Cm(2.5), NAVY)
     rect(sl, 0, Cm(2.5), W, Cm(.15), ORANGE)
     text(sl, Cm(1.3), Cm(.45), Cm(28), Cm(1.6), title, size=26, color=WHITE, bold=True, anchor=MSO_ANCHOR.MIDDLE)
-    text(sl, Cm(1.3), H - Cm(.95), Cm(26), Cm(.6), "Nutrición en el aula · Taller educativo basado en microaprendizaje · A. E. Reimers Reyes",
+    text(sl, Cm(1.3), H - Cm(.95), Cm(26), Cm(.6), "Nutrición en el aula: taller de microaprendizaje en línea para quinto de primaria · A. E. Reimers Reyes",
          size=9.5, color=MUTED)
     text(sl, W - Cm(3), H - Cm(.95), Cm(1.8), Cm(.6), str(n), size=9.5, color=MUTED, align=PP_ALIGN.RIGHT)
 
@@ -89,7 +89,7 @@ rect(sl, 0, 0, W, Cm(10.4), GREY)
 for img, x, h in (("escudo_uaz_w", 18.4, 3.0), ("logo_mtie_w", 21.7, 2.2), ("laberinto_uads_w", 29.3, 2.9)):
     sl.shapes.add_picture(f"logos/{img}.png", Cm(x), Cm(.7), height=Cm(h))
 text(sl, Cm(1.5), Cm(4.6), W - Cm(3), Cm(4), [
-    [("NUTRICIÓN EN EL AULA: TALLER EDUCATIVO BASADO EN MICROAPRENDIZAJE EN LÍNEA PARA NIÑOS DE 5.º DE PRIMARIA", {"bold": True, "size": 25, "color": NAVY})],
+    [("NUTRICIÓN EN EL AULA: TALLER DE MICROAPRENDIZAJE EN LÍNEA PARA QUINTO DE PRIMARIA (DISEÑO PRETEST-POSTEST)", {"bold": True, "size": 25, "color": NAVY})],
     [("Actividad 4 · Presentación de avances", {"size": 18, "color": ORANGE, "bold": True})]],
     align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE, spacing=1.15)
 text(sl, Cm(3.2), Cm(11.4), Cm(24), Cm(6), [
