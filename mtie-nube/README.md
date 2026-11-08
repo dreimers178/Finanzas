@@ -13,5 +13,5 @@
 
 ## Pendientes
 
-1. Verificar que abran el enlace de la infografía de gob.mx y el del concurso (no se pueden abrir desde el entorno de trabajo).
+1. Verificar que abra el enlace del concurso de Flippity (el de la infografía de gob.mx ya se verificó y funciona).
 2. Crear la unidad en Classroom, tomar las capturas, pegarlas en `Plantilla_U12_Evidencia_Unidad_3.docx` y exportar a PDF para la tarea «U12 Subir evidencia unidad 3».
