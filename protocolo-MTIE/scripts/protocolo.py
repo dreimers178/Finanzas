@@ -379,7 +379,7 @@ heading(doc, "Alcance temporal", 3)
 para(doc, "La intervención durará cuatro semanas. Se realizarán dos mediciones: una preprueba antes del taller y una posprueba "
           "inmediatamente después. La preprueba se aplicará del 18 al 22 de enero de 2027; el taller iniciará el "
           "lunes 25 de enero de 2027, en la semana de la conmemoración del Día del Nutriólogo en México (27 de enero), y concluirá el "
-          "19 de febrero de 2027; la posprueba se aplicará del 22 al 26 de febrero de 2027 (fechas tentativas; Tabla 5). El estudio no "
+          "19 de febrero de 2027; la posprueba se aplicará del 22 al 26 de febrero de 2027 (fechas tentativas; Tabla 6). El estudio no "
           "contempla una medición de seguimiento.",
      c="Fecha actualizada por decisión de la autora: el taller inicia el 25 de enero de 2027, en la semana del Día del "
        "Nutriólogo (miércoles 27 de enero). Con dos cápsulas por semana, la C2 coincide con el 27 de enero y puede usarse como "
@@ -493,7 +493,7 @@ para(doc, "El diseño de cápsulas digitales requiere una planificación pedagó
           "estructurarlo para que cada cápsula cumpla un objetivo específico. Desde la teoría de la carga cognitiva, las cápsulas "
           "deben eliminar elementos irrelevantes, presentar un solo concepto central, cuidar la claridad visual y evitar la "
           "saturación de texto (Mayer, 2009; Sweller et al., 2019). En este proyecto, cada cápsula integra un video breve, un recurso "
-          "visual y una actividad interactiva alineados con una dimensión del conocimiento nutricional (ver Tabla 4). El uso del video "
+          "visual y una actividad interactiva alineados con una dimensión del conocimiento nutricional (ver Tabla 5). El uso del video "
           "breve con estructura narrativa se apoya, además, en la experiencia de la narrativa digital en la educación para la salud: "
           "una revisión de 35 estudios mostró que las historias digitales se han empleado en la promoción de la salud y en la "
           "educación de pacientes y comunidades, con fines como el cambio de actitudes y conductas (Mojtahedzadeh et al., 2021).",
@@ -638,7 +638,7 @@ para(doc, "La variable independiente es el " + TALLER + " y la variable dependie
           "Tablas 2 y 3 presentan su operacionalización.")
 table(doc, 2, "Operacionalización de la variable independiente",
       ["Variable", "Dimensión", "Indicador", "Técnica / instrumento"],
-      [["Taller educativo en línea basado en microaprendizaje", "Diseño del contenido", "8 cápsulas de 3 a 5 min con un objetivo cada una", "Carta descriptiva (Tabla 4); juicio de expertos"],
+      [["Taller educativo en línea basado en microaprendizaje", "Diseño del contenido", "8 cápsulas de 3 a 5 min con un objetivo cada una", "Carta descriptiva (Tabla 5); juicio de expertos"],
        ["", "Recursos digitales", "Video, infografía y actividad interactiva por cápsula", "Lista de cotejo de implementación (Anexo C)"],
        ["", "Implementación (fidelidad)", "Cápsulas completadas por estudiante (meta ≥ 6/8); asistencia", "Registro de la plataforma; lista de cotejo"],
        ["", "Participación", "Actividades interactivas resueltas", "Registro de la plataforma"]],
@@ -674,15 +674,59 @@ para(doc, "Se empleará la técnica de prueba de conocimientos, mediante el *Cue
        "actualizó con las características reales del instrumento (24 reactivos, 4 dimensiones). Se corrigió «ractios» por "
        "«reactivos». Atiende la observación del asesor: el cuestionario completo va en el Anexo A.")
 heading(doc, "3.4.1 Validez de contenido", 3)
-para(doc, "La validez de contenido se valorará mediante juicio de expertos (Escobar-Pérez y Cuervo-Martínez, 2008). ==Tres a cinco "
-          "jueces== con experiencia en nutrición, educación primaria y metodología de la investigación calificarán cada reactivo en "
-          "claridad, coherencia, pertinencia y, en el caso de los jueces nutriólogos, exactitud del contenido nutricional, con una "
-          "escala de 1 a 4. Para cada reactivo y criterio se calculará el coeficiente V de Aiken (Aiken, 1985) con su intervalo de "
-          "confianza al 95 % (Penfield y Giacobbi, 2004). Se conservarán los reactivos con V ≥ .70 cuyo límite inferior del "
-          "intervalo sea mayor que .50; los demás se revisarán o se eliminarán según las observaciones de los jueces.",
-     c="Atiende la observación del asesor: debe incluirse otro juez en su lugar (sugirió a la Dra. Verónica Torres), porque el "
-       "director de tesis no debe validar su propio instrumento. Registra en el documento final los nombres, grados y perfiles "
-       "de los jueces. Los umbrales (V ≥ .70, IC 95 %) son convencionales; ajústalos si tu programa usa otros.")
+para(doc, "La validez de contenido se valora mediante juicio de expertos (Escobar-Pérez y Cuervo-Martínez, 2008). Se convocó a "
+          "jueces de cuatro perfiles complementarios: psicología, investigación educativa, docencia en educación primaria y nutrición. "
+          "Con ello, el instrumento se examina desde la comprensión del lenguaje infantil, el rigor metodológico, la adecuación al "
+          "nivel escolar y la exactitud del contenido nutricional. El director de tesis revisó el instrumento y lo consideró "
+          "pertinente, pero no participa como juez para evitar sesgo.",
+     c="Atiende la observación del asesor: el director no valida su propio instrumento y se incluyó a otra experta en su lugar. "
+       "Por confidencialidad, los jueces se identifican solo por número y perfil.")
+para(doc, "Cada juez recibió un formato de valoración con el propósito del instrumento, la definición de las cuatro dimensiones, "
+          "los 24 reactivos con su clave de respuesta y una escala ordinal de 1 a 4 (1 = no cumple con el criterio; 2 = cumple de "
+          "manera insuficiente y requiere modificaciones importantes; 3 = cumple adecuadamente y puede requerir ajustes menores; "
+          "4 = cumple totalmente y no requiere modificaciones). Con esta escala se califican tres criterios: *claridad*, si el "
+          "reactivo es comprensible y adecuado al lenguaje de estudiantes de quinto grado; *coherencia*, si guarda relación lógica "
+          "con la dimensión que mide, y *pertinencia*, si es necesario para el propósito del instrumento. Un cuarto criterio, la "
+          "*exactitud del contenido nutricional*, lo valoran únicamente los jueces nutriólogos. El formato incluye además espacio "
+          "para observaciones por reactivo y una valoración global sobre la adecuación del instrumento, la representatividad de las "
+          "dimensiones y el lenguaje. Para facilitar la captura de las calificaciones se elaboró también una hoja de calificación "
+          "de una página con la misma escala. Los jueces se identifican solo por número y perfil para resguardar su confidencialidad.")
+para(doc, "Para cada reactivo y criterio se calculará el coeficiente V de Aiken (Aiken, 1985) con su intervalo de confianza al "
+          "95 % (Penfield y Giacobbi, 2004). Se conservarán los reactivos con V ≥ .70 cuyo límite inferior del intervalo sea mayor "
+          "que .50; los demás se reformularán o se eliminarán con base en las observaciones de los jueces, que se analizarán de forma "
+          "cualitativa. Para que todos los jueces valoren la misma versión, los reactivos no se modificarán hasta reunir todas las "
+          "valoraciones; los ajustes se integrarán en una versión final que se someterá a la prueba piloto (apartado 3.4.2).",
+     c="Los umbrales (V ≥ .70, IC 95 %) son convencionales; ajústalos si tu programa usa otros.")
+heading(doc, "Avance del juicio de expertos", 4)
+para(doc, "Al momento de redactar este protocolo se han recibido las valoraciones de cuatro jueces (Tabla 4) y se espera la de "
+          "==los jueces nutriólogos (número por confirmar)==. Las valoraciones globales recibidas consideran el instrumento adecuado: "
+          "tres jueces sin modificaciones y uno con modificaciones menores. Coinciden en que el lenguaje es adecuado para quinto "
+          "grado, que las dimensiones están bien representadas y que el tema forma parte del plan de estudios y de la vida cotidiana "
+          "de los estudiantes.",
+     c="Actualiza este apartado conforme lleguen las valoraciones; al cerrar el juicio, sustitúyelo por los resultados de la V de Aiken.")
+table(doc, 4, "Avance del juicio de expertos",
+      ["Juez", "Perfil", "Valoración global", "Estado"],
+      [["1", "Psicóloga clínica", "Adecuado, sin modificaciones", "Comentarios generales; calificaciones por reactivo pendientes"],
+       ["2", "Experta en investigación educativa (docente de posgrado)", "Adecuado, con modificaciones menores", "Formato completo"],
+       ["3", "Docente de quinto grado de primaria", "Adecuado, sin modificaciones", "Valoración global; calificaciones por reactivo pendientes"],
+       ["4", "Docente de primaria (Español), licenciada en Pedagogía con maestría", "Adecuado, sin modificaciones (observaciones por reactivo)", "Calificaciones por reactivo pendientes"],
+       ["5 y más", "Nutriólogos", "—", "En espera"]],
+      widths=[1.3, 5.0, 4.6, 5.1],
+      note="Los jueces se identifican por número y perfil para resguardar su confidencialidad. La V de Aiken se calculará cuando se "
+           "cuente con las calificaciones por reactivo de todos los jueces.")
+para(doc, "En las valoraciones por reactivo, la jueza 2 asignó calificación máxima en coherencia y pertinencia a los 24 reactivos y en "
+          "claridad a 20 de ellos; calificó con 3 los reactivos 16 y 23, y con 1 los reactivos 11 y 24. Recomendó redactar los "
+          "enunciados en forma aseverativa o de frase incompleta (DeVellis, 2017) y que cada reactivo contenga una sola idea, lo que "
+          "afecta al reactivo 11, que pide clasificar dos alimentos a la vez. La jueza 3 señaló que los reactivos 11, 12 y 18 podrían "
+          "confundir a los estudiantes y advirtió sobre las dificultades actuales de comprensión lectora. La jueza 4 consideró claros "
+          "y adecuados los 24 reactivos. La jueza 1 destacó que el lenguaje es claro, las instrucciones fáciles de comprender, la "
+          "secuencia lógica y la extensión breve.")
+para(doc, "A partir de estas observaciones y de la revisión propia se identificaron ajustes que se aplicarán al cerrar el juicio: "
+          "reformular los reactivos 11, 12, 18 y 24; valorar la redacción aseverativa de los enunciados; unificar el término «agua "
+          "simple»; evitar reactivos que miden lo mismo (1 y 6, 15 y 18, 20 y 22); fortalecer distractores débiles, y simplificar "
+          "términos como «respectivamente». Dado que las juezas 3 y 4 laboran en la institución donde se realizará el estudio, se les "
+          "pedirá no comentar el contenido del instrumento con los estudiantes antes de la preprueba.",
+     c="Verifica si alguna de las juezas 3 y 4 es docente del grupo participante (5.º B). Si lo es, conviene mencionarlo como medida de control.")
 heading(doc, "3.4.2 Confiabilidad y análisis de reactivos", 3)
 para(doc, "Antes de la intervención se aplicará una prueba piloto a ==un grupo de 5.º grado que no participe en el estudio== "
           "(aproximadamente 25 estudiantes). Por tratarse de reactivos dicotómicos, la consistencia interna se estimará con el "
@@ -700,7 +744,7 @@ bullets(doc, [
     "Prueba piloto con un grupo no participante; cálculo de KR-20 y análisis de reactivos.",
     "Entrega y recepción del consentimiento informado y obtención del asentimiento (Anexo B).",
     "Aplicación de la preprueba en un formulario digital, en el aula, de forma individual, con instrucciones estandarizadas y un tiempo estimado de 30 minutos.",
-    "Implementación del taller durante cuatro semanas (dos cápsulas por semana; Tabla 4) y registro de la fidelidad de implementación (Anexo C).",
+    "Implementación del taller durante cuatro semanas (dos cápsulas por semana; Tabla 5) y registro de la fidelidad de implementación (Anexo C).",
     "Aplicación de la posprueba con el mismo instrumento y en las mismas condiciones, en la semana siguiente al cierre del taller.",
     "Captura, depuración y análisis de los datos.",
 ], numbered=True, c="Se agregó un procedimiento paso a paso que hace replicable el estudio. Faltaba en el original.")
@@ -735,7 +779,7 @@ para(doc, "La investigación se realizará conforme a los principios de respeto 
 heading(doc, "3.8 Diseño instruccional: modelo ADDIE", 2,
         c="ATIENDE LA OBSERVACIÓN DEL ASESOR: «El modelo ADDIE no solo se describe, también hay que desarrollar las etapas de su "
           "programa educativo». El original agrupaba ADDIE en tres etapas genéricas. Ahora se desarrollan las cinco fases con las "
-          "decisiones concretas del taller, una carta descriptiva por cápsula (Tabla 4) y la alineación de cada cápsula con una "
+          "decisiones concretas del taller, una carta descriptiva por cápsula (Tabla 5) y la alineación de cada cápsula con una "
           "dimensión del instrumento. Revisa que las herramientas propuestas estén permitidas en la escuela.")
 para(doc, "El taller se diseñó con el modelo ADDIE (análisis, diseño, desarrollo, implementación y evaluación), que organiza de "
           "manera sistemática la elaboración de una propuesta formativa y asegura la coherencia entre necesidades, objetivos, "
@@ -755,9 +799,9 @@ para(doc, "**Estructura:** ocho cápsulas distribuidas en cuatro semanas (dos po
           "alineada con una dimensión del instrumento. Cada cápsula sigue una secuencia de cuatro momentos, derivada de la estructura "
           "introducción–microcontenido–preguntas (Betancur-Chicué y García-Valcárcel Muñoz-Repiso, 2023): (a) activación o "
           "recuperación de la cápsula anterior (2 min), (b) microcontenido en video o infografía (3 a 5 min), (c) actividad "
-          "interactiva con retroalimentación inmediata (5 a 8 min) y (d) reto o pregunta de cierre (2 min). La Tabla 4 presenta la "
+          "interactiva con retroalimentación inmediata (5 a 8 min) y (d) reto o pregunta de cierre (2 min). La Tabla 5 presenta la "
           "carta descriptiva.")
-table(doc, 4, "Carta descriptiva de las cápsulas del taller",
+table(doc, 5, "Carta descriptiva de las cápsulas del taller",
       ["Sem.", "Cápsula", "Objetivo específico", "Recursos y actividad", "Dim."],
       [["1", "C1. ¿Qué es comer saludable?", "Explicar por qué se recomienda una alimentación variada", "Video animado; actividad de unir parejas", "D1"],
        ["1", "C2. Agua simple y sellos de advertencia", "Elegir agua simple y reconocer productos con sellos", "Infografía; juego de clasificar «diario / de vez en cuando»", "D1"],
@@ -794,7 +838,7 @@ para(doc, "La evaluación se realizará en tres niveles: (a) **diagnóstica**, c
      c="El original decía que se mediría el conocimiento «antes, durante y después» con instrumentos de evaluación. La evaluación "
        "«durante» es formativa y NO forma parte del contraste de hipótesis. Se distinguieron los tres tipos de evaluación.")
 heading(doc, "3.9 Cronograma", 2)
-table(doc, 5, "Cronograma de actividades",
+table(doc, 6, "Cronograma de actividades",
       ["Actividad", "Periodo"],
       [["Juicio de expertos y ajuste del instrumento", "Noviembre de 2026"],
        ["Presentación del cartel en el I CITEEA (UAZ)", "19 y 20 de noviembre de 2026"],
@@ -846,6 +890,7 @@ REFS = [
      "Nueva (sustituye a Mendoza y Ruiz, 2021). Datos completados con tu Zotero: dos autoras, por lo que en el texto se cita «Cruz Lara y Macossay Moreno (2022)», no «et al.». En tu Zotero el registro tiene las autoras duplicadas; conviene limpiarlo."),
     ("Olivares, S., y Snel, J. (1998). Educación en nutrición en las escuelas primarias. *Alimentación, Nutrición y Agricultura*, (22), ==[páginas]==. Organización de las Naciones Unidas para la Alimentación y la Agricultura. https://www.fao.org/4/X0051T/X0051t08.htm",
      "Restaurada desde tu Zotero (antes citada por error como «Gómez, 2008»). Iniciales confirmadas; completa las páginas."),
+    ("DeVellis, R. F. (2017). *Scale development: Theory and applications* (4.ª ed.). SAGE.", "Nueva: sugerida por la jueza 2 para la redacción de reactivos."),
     ("Escobar-Pérez, J., y Cuervo-Martínez, Á. (2008). Validez de contenido y juicio de expertos: Una aproximación a su utilización. *Avances en Medición, 6*, 27–36.", "Nueva: fundamenta el juicio de expertos."),
     ("Food and Agriculture Organization of the United Nations. (2020). *School-based food and nutrition education: A white paper on the current state, principles, challenges and recommendations for low- and middle-income countries*. https://www.fao.org/platforms/school-food/technical-resources/publications/school-based-food-and-nutrition-education/en",
      "Sustituye a «FAO (2013). Guía de educación alimentaria y nutricional para escuelas», cuyo título no pudo verificarse. Si cuentas con la guía de 2013, verifica sus datos y restáurala."),
@@ -933,7 +978,7 @@ para(doc, "==El formato debe incluir:== título del proyecto; nombre y contacto 
           "participar» y «No quiero participar».",
      indent=False, c="Elabora los formatos completos con base en esta lista y anéxalos.")
 heading(doc, "Anexo C. Lista de cotejo de fidelidad de implementación", 2)
-table(doc, 6, "Lista de cotejo de implementación por sesión",
+table(doc, 7, "Lista de cotejo de implementación por sesión",
       ["Criterio", "Sí", "No", "Observaciones"],
       [["La cápsula se presentó completa (video/infografía)", "", "", ""],
        ["Se realizó la actividad interactiva", "", "", ""],

@@ -17,6 +17,8 @@
 4. **Juicio de expertos (validez de contenido).** Los jueces se identifican solo por número y perfil, nunca por nombre.
    - **Juez 1 (psicóloga clínica):** se le pidió llenar el formato con calificaciones de 1 a 4 por reactivo; lo que envió por WhatsApp fueron comentarios generales. El criterio de exactitud puede dejarlo en blanco.
    - **Juez 2 (experta en investigación):** formato recibido. Valoración global: adecuado con modificaciones menores. Claridad 1 en los reactivos 11 y 24, y 3 en los reactivos 16 y 23. Sugiere redactar los enunciados en forma aseverativa (DeVellis, 2017).
-   - **En espera:** docentes de educación primaria y nutriólogos. A los nutriólogos se les pide además confirmar la clave de respuestas (criterio de exactitud).
+   - **Jueces 3 y 4 (docentes de primaria de la institución):** valoraciones globales recibidas (adecuado, sin modificaciones); faltan sus calificaciones por reactivo (usar `juicio/Hoja_calificacion_juicio_expertos.docx`). La jueza 3 señala los reactivos 11, 12 y 18.
+   - **En espera:** nutriólogos. A los nutriólogos se les pide además confirmar la clave de respuestas (criterio de exactitud).
+   - **Protocolo:** el apartado 3.4.1 ya describe el procedimiento y el avance (Tabla 4); actualizarlo con la V de Aiken al cerrar el juicio.
    - **Al recibir todas las valoraciones:** calcular la V de Aiken con IC 95 %, proponer la versión final de los reactivos y actualizar el protocolo y las diapositivas 7, 9 y 10 de la Actividad 4.
    - **No cambiar reactivos** hasta tener todas las valoraciones: todos los jueces deben valorar la misma versión.
