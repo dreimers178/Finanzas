@@ -118,7 +118,7 @@ text(sl, Cm(1.3), Cm(9.3), Cm(31), Cm(7.5), [
     size=16, spacing=1.25)
 
 # 3 Congruencia -------------------------------------------------------------
-sl = prs.slides.add_slide(BL); n += 1; header(sl, "Tabla de congruencia (actualizada)", n)
+sl = prs.slides.add_slide(BL); n += 1; header(sl, "Tabla de congruencia", n)
 table(sl, Cm(1.3), Cm(3.2), Cm(31.2), [
     ["Elemento", "Contenido"],
     ["Objetivo general", "Incrementar el conocimiento nutricional de los estudiantes de 5.º grado del Instituto Educativo Ammadeus mediante la implementación de un taller educativo en línea basado en microaprendizaje."],
