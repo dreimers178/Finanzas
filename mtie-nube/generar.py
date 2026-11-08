@@ -127,7 +127,12 @@ for i, (h, cap, imgs) in enumerate(figs, start=1):
     if files:
         for f in files:
             p = P(align=C, after=4); p.paragraph_format.keep_with_next = True
-            p.add_run().add_picture(str(f), width=Cm(16.5))
+            from PIL import Image
+            iw, ih = Image.open(f).size
+            if 16.5 * ih / iw > 12.5:
+                p.add_run().add_picture(str(f), height=Cm(12.5))
+            else:
+                p.add_run().add_picture(str(f), width=Cm(16.5))
     else:
         faltan.append(h)
         box = doc.add_table(rows=1, cols=1); box.style = "Table Grid"
