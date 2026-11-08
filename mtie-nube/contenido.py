@@ -4,7 +4,7 @@ CURSO = "Nutrición básica: Mi Plato Saludable"
 TEMA = "Unidad 3: Construyo hábitos saludables."
 
 # Datos del concurso de preguntas (completar)
-CONCURSO_TITULO = "[Título de tu concurso de preguntas]"
+CONCURSO_TITULO = "Quiz Show: Mis hábitos saludables"
 CONCURSO_HERRAMIENTA = "Flippity (Quiz Show)"
 CONCURSO_ENLACE = "https://www.flippity.net/v2/qs.php?k=e/2PACX-1vTBuwPtngrRnDa0kS9P9fdCPWWqHTuq6jNZluSlAFLy65-lQk0d5S-9y6GwXS3JLuzbRKWuOh99B47z"
 

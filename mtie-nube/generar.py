@@ -52,7 +52,7 @@ h1{{font-family:"Oswald";color:#8b1538;font-size:22pt;margin:0}} .sub{{color:#14
 <li>En la tarea, escribe <b>100 puntos</b>, agrega como recursos el enlace de la infografía y del concurso, y pon la fecha de entrega.</li>
 <li>Revisa que todo quede publicado dentro del tema y que los enlaces abran; luego toma las capturas para la plantilla de evidencias.</li>
 </ol>
-<p style="margin:.1cm 0"><span class="warn">El título entre corchetes [ ] lo cambias por el título de tu concurso de Flippity.</span></p></div>
+<p style="margin:.1cm 0"><span class="warn">Revisa que el título de tu concurso en Flippity sea «{CONCURSO_TITULO}».</span></p></div>
 {''.join(cards)}
 </body></html>'''
 (HERE / "guia.html").write_text(guia, encoding="utf-8")
