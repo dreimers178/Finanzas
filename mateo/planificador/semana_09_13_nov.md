@@ -30,4 +30,7 @@ Entrada 7:45 am · Salida 2:10 pm. Lunes 16 sin clases.
 - 25: Escuela para padres. 26: Thanksgiving (evento interno). 27: 3.° CTE (sin clases). 30 nov a 4 dic: reuniones con padres de familia.
 
 ## Pendiente de recibir
-- Planeación de la semana 11 de Miss Alicia (Español). Clases especiales del viernes.
+- Planeación de la semana 11 de Miss Alicia (Español).
+
+## Clases especiales
+- Viernes: no tiene clases especiales.
