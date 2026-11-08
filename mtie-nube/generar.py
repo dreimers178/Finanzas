@@ -112,19 +112,28 @@ label_value("Apartados creados:", "Aprendizaje esperado, Instrucciones, Material
             "Material complementario (concurso de preguntas) y Tarea.")
 
 figs = [
- ("Estructura de la Unidad 3", "Tema “Unidad 3: Construyo hábitos saludables” con sus apartados en el curso Nutrición básica: Mi Plato Saludable (se debe ver el nombre del curso)."),
- ("Aprendizaje esperado", "Apartado Aprendizaje esperado de la Unidad 3."),
- ("Instrucciones", "Apartado Instrucciones de la Unidad 3."),
- ("Material principal", "Material didáctico: Hábitos saludables, las Guías Alimentarias, con el enlace a la infografía oficial de gob.mx."),
- ("Material de repaso", "Material complementario con el concurso de preguntas y su enlace."),
- ("Tarea", "Tarea: Mi reto de hábitos saludables, con instrucciones, puntos y rúbrica."),
+ ("Estructura de la Unidad 3", "Tema “Unidad 3: Construyo hábitos saludables” con sus apartados en el curso Nutrición básica: Mi Plato Saludable.", ["1a_temas", "1b_unidad3"]),
+ ("Aprendizaje esperado", "Apartado Aprendizaje esperado de la Unidad 3.", ["2_aprendizaje"]),
+ ("Instrucciones", "Apartado Instrucciones de la Unidad 3.", ["3_instrucciones"]),
+ ("Material principal", "Material didáctico: Hábitos saludables, las Guías Alimentarias, con el enlace a la infografía oficial de gob.mx.", ["4_material_didactico"]),
+ ("Material de repaso", "Material complementario con el concurso de preguntas «" + CONCURSO_TITULO + "» y su enlace.", ["5_material_complementario"]),
+ ("Tarea", "Tarea: Mi reto de hábitos saludables, con instrucciones, puntos y rúbrica.", ["6_tarea"]),
 ]
-for i, (h, cap) in enumerate(figs, start=1):
+CAP = HERE / "capturas"
+faltan = []
+for i, (h, cap, imgs) in enumerate(figs, start=1):
     P(h, bold=True, color=RED, before=14, after=6)
-    box = doc.add_table(rows=1, cols=1); box.style = "Table Grid"
-    c = box.rows[0].cells[0]; c.height = Cm(8)
-    cp = c.paragraphs[0]; cp.alignment = C
-    r = cp.add_run("\n\n[Pega aquí la captura]\n\n"); r.italic = True; r.font.color.rgb = RGBColor(0x88, 0x88, 0x88)
+    files = [CAP / f"{x}.png" for x in imgs if (CAP / f"{x}.png").exists()]
+    if files:
+        for f in files:
+            p = P(align=C, after=4)
+            p.add_run().add_picture(str(f), width=Cm(16.5))
+    else:
+        faltan.append(h)
+        box = doc.add_table(rows=1, cols=1); box.style = "Table Grid"
+        c = box.rows[0].cells[0]; c.height = Cm(8)
+        cp = c.paragraphs[0]; cp.alignment = C
+        r = cp.add_run("\n\n[Pega aquí la captura]\n\n"); r.italic = True; r.font.color.rgb = RGBColor(0x88, 0x88, 0x88)
     P(f"Figura {i}. {cap}", italic=True, size=10, after=6, before=4)
-doc.save(HERE / "Plantilla_U12_Evidencia_Unidad_3.docx")
-print("OK")
+doc.save(HERE / "U12_Evidencia_Unidad_3_Reimers.docx")
+print("OK; faltan:", faltan)
