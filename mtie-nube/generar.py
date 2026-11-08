@@ -122,11 +122,11 @@ figs = [
 CAP = HERE / "capturas"
 faltan = []
 for i, (h, cap, imgs) in enumerate(figs, start=1):
-    P(h, bold=True, color=RED, before=14, after=6)
+    P(h, bold=True, color=RED, before=14, after=6).paragraph_format.keep_with_next = True
     files = [CAP / f"{x}.png" for x in imgs if (CAP / f"{x}.png").exists()]
     if files:
         for f in files:
-            p = P(align=C, after=4)
+            p = P(align=C, after=4); p.paragraph_format.keep_with_next = True
             p.add_run().add_picture(str(f), width=Cm(16.5))
     else:
         faltan.append(h)
