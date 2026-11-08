@@ -1,0 +1,156 @@
+[
+ {
+  "juez": 1,
+  "perfil": "Psicóloga clínica",
+  "estado": "Comentarios generales por WhatsApp; se le pidió llenar el formato por reactivo",
+  "global": {
+   "adecuado": "Sí, sin modificaciones (comentario)"
+  },
+  "reactivos": null
+ },
+ {
+  "juez": 2,
+  "perfil": "Experta en investigación (docente de posgrado)",
+  "estado": "Formato completo",
+  "global": {
+   "adecuado": "Sí, con modificaciones menores",
+   "dimensiones": "Sí",
+   "lenguaje": "Sí"
+  },
+  "reactivos": {
+   "1": {
+    "claridad": 4,
+    "coherencia": 4,
+    "pertinencia": 4
+   },
+   "2": {
+    "claridad": 4,
+    "coherencia": 4,
+    "pertinencia": 4
+   },
+   "3": {
+    "claridad": 4,
+    "coherencia": 4,
+    "pertinencia": 4
+   },
+   "4": {
+    "claridad": 4,
+    "coherencia": 4,
+    "pertinencia": 4
+   },
+   "5": {
+    "claridad": 4,
+    "coherencia": 4,
+    "pertinencia": 4
+   },
+   "6": {
+    "claridad": 4,
+    "coherencia": 4,
+    "pertinencia": 4
+   },
+   "7": {
+    "claridad": 4,
+    "coherencia": 4,
+    "pertinencia": 4
+   },
+   "8": {
+    "claridad": 4,
+    "coherencia": 4,
+    "pertinencia": 4
+   },
+   "9": {
+    "claridad": 4,
+    "coherencia": 4,
+    "pertinencia": 4
+   },
+   "10": {
+    "claridad": 4,
+    "coherencia": 4,
+    "pertinencia": 4
+   },
+   "11": {
+    "claridad": 1,
+    "coherencia": 4,
+    "pertinencia": 4
+   },
+   "12": {
+    "claridad": 4,
+    "coherencia": 4,
+    "pertinencia": 4
+   },
+   "13": {
+    "claridad": 4,
+    "coherencia": 4,
+    "pertinencia": 4
+   },
+   "14": {
+    "claridad": 4,
+    "coherencia": 4,
+    "pertinencia": 4
+   },
+   "15": {
+    "claridad": 4,
+    "coherencia": 4,
+    "pertinencia": 4
+   },
+   "16": {
+    "claridad": 3,
+    "coherencia": 4,
+    "pertinencia": 4
+   },
+   "17": {
+    "claridad": 4,
+    "coherencia": 4,
+    "pertinencia": 4
+   },
+   "18": {
+    "claridad": 4,
+    "coherencia": 4,
+    "pertinencia": 4
+   },
+   "19": {
+    "claridad": 4,
+    "coherencia": 4,
+    "pertinencia": 4
+   },
+   "20": {
+    "claridad": 4,
+    "coherencia": 4,
+    "pertinencia": 4
+   },
+   "21": {
+    "claridad": 4,
+    "coherencia": 4,
+    "pertinencia": 4
+   },
+   "22": {
+    "claridad": 4,
+    "coherencia": 4,
+    "pertinencia": 4
+   },
+   "23": {
+    "claridad": 3,
+    "coherencia": 4,
+    "pertinencia": 4
+   },
+   "24": {
+    "claridad": 1,
+    "coherencia": 4,
+    "pertinencia": 4
+   }
+  },
+  "observaciones": "Redactar enunciados en forma aseverativa (DeVellis, 2017); un reactivo, una idea (11); considerar la población."
+ },
+ {
+  "juez": 3,
+  "perfil": "Docente de 5.º de primaria",
+  "estado": "Solo valoración global por mensaje; falta calificación por reactivo",
+  "global": {
+   "adecuado": "Sí, sin modificaciones",
+   "dimensiones": "Sí",
+   "lenguaje": "Sí"
+  },
+  "reactivos": null,
+  "observaciones": "Tema incluido en el plan de estudios de 5.º y cercano a la vida cotidiana; señala la comprensión lectora como dificultad; los reactivos 11, 12 y 18 podrían confundir. Ofrece grupos de 5.º para el piloto."
+ }
+]
