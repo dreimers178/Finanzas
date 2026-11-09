@@ -483,6 +483,13 @@ const chartText = { catAxisLabelFontFace: "+mn-lt", valAxisLabelFontFace: "+mn-l
   source(s, "Propuesta del equipo basada en KiwiSaver (Inland Revenue NZ) y el sistema de Afores (CONSAR). Cálculo ilustrativo.");
   s.addNotes("PABLO: De todas las ideas, nosotros proponemos 'Mi Ahorro Automático', un KiwiSaver a la mexicana. Funciona en cuatro pasos: uno, te inscriben solo al conseguir trabajo, o te inscribes con una app si trabajas por tu cuenta, y puedes salirte si quieres. Dos, ahorras poquito, desde 50 pesos a la semana. Tres, el gobierno te premia con 25 centavos por cada peso que ahorres, con un tope. Y cuatro, lo usas para tu retiro o para el enganche de tu primera casa. JOSÉ LUIS: Hicimos la cuenta: si alguien ahorra 50 pesos a la semana más el bono, y su dinero gana 4 % al año, en 40 años tendría unos 309 mil pesos. Creemos que esta propuesta tendría el mayor impacto porque ataca tres problemas a la vez: la vejez sin ingresos, la falta de vivienda y la poca educación financiera. Además cuesta menos, porque la persona también aporta, y se apoya en algo que ya existe en México: las Afores.");
 
+  // ================= INFOGRAFÍA (resumen) =================
+  s = pres.addSlide({ masterName: "OSCURA", sectionTitle: "C. ¿Funcionaría en México?" });
+  s.addImage({ data: "image/png;base64," + fs.readFileSync("infografia.png").toString("base64"), x: 0.2, y: 0.134, w: 9.6, h: 5.357,
+    altText: "Infografía: Modelos de bienestar, lecciones de Nueva Zelanda para México. Pilares del modelo neozelandés (KiwiSaver y retiro universal, seguro universal de accidentes, 88.5 % de energía renovable), comparativa de indicadores con México y la propuesta «Mi Ahorro Automático».",
+    objectName: "infografía resumen" });
+  s.addNotes("PABLO: Para resumir todo lo que vimos, hicimos esta infografía. A la izquierda están los pilares del modelo neozelandés: KiwiSaver y la pensión universal, el seguro de accidentes para todos y el 88.5 % de energía renovable. En el centro, la comparación con México: desarrollo humano, lugar 17 contra 81; corrupción, 81 puntos contra 27; e impuestos, 32.9 % contra 18.3 % del PIB. JOSÉ LUIS: Y a la derecha, nuestra propuesta, «Mi Ahorro Automático»: inscripción automática y flexible desde 50 pesos a la semana, un bono del gobierno de 25 centavos por cada peso ahorrado, y un fondo con interés compuesto para el retiro o la primera vivienda.");
+
   // ================= 18. CONCLUSIONES =================
   pres.addSection({ title: "D. Conclusiones" });
   s = pres.addSlide({ masterName: "CONTENIDO", sectionTitle: "D. Conclusiones" });

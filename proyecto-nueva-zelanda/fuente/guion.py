@@ -81,7 +81,7 @@ doc.add_page_break()
 
 # ---------------- INSTRUCCIONES ----------------
 doc.add_heading("Cómo usar este guion", level=1)
-bullet(" unos 14 minutos de exposición + 2 o 3 minutos de preguntas.", "Duración:")
+bullet(" unos 15 minutos de exposición + 2 o 3 minutos de preguntas.", "Duración:")
 bullet(" José Luis y Pablo se turnan diapositiva por diapositiva. Cada quien adelanta la diapositiva de la que va a hablar.", "Turnos:")
 bullet(" no lean palabra por palabra. Apréndanse las ideas y los números clave; lo demás díganlo con sus propias palabras. Ensayen juntos al menos dos veces con cronómetro.", "Consejo:")
 bullet(" los textos también vienen en las «Notas del orador» de cada diapositiva del PowerPoint.", "Notas:")
@@ -160,22 +160,26 @@ G = [
         (PB, "De todas las ideas, nosotros proponemos «Mi Ahorro Automático», un KiwiSaver a la mexicana. Funciona en cuatro pasos: uno, te inscriben solo al conseguir trabajo, o te inscribes con una app si trabajas por tu cuenta, y puedes salirte si quieres. Dos, ahorras poquito, desde 50 pesos a la semana. Tres, el gobierno te premia con 25 centavos por cada peso que ahorres, con un tope. Y cuatro, lo usas para tu retiro o para el enganche de tu primera casa."),
         (JL, "Hicimos la cuenta: si alguien ahorra 50 pesos a la semana más el bono, y su dinero gana 4 % al año, en 40 años tendría unos 309 mil pesos. Creemos que esta propuesta tendría el mayor impacto porque ataca tres problemas a la vez: la vejez sin ingresos, la falta de vivienda y la poca educación financiera. Además cuesta menos, porque la persona también aporta, y se apoya en algo que ya existe en México: las Afores."),
     ]),
-    (18, "Conclusiones", "0:50", [
+    (18, "Infografía: resumen del proyecto", "0:45", [
+        (PB, "Para resumir todo lo que vimos, hicimos esta infografía. A la izquierda están los pilares del modelo neozelandés: KiwiSaver y la pensión universal, el seguro de accidentes para todos y el 88.5 % de energía renovable. En el centro, la comparación con México: desarrollo humano, lugar 17 contra 81; corrupción, 81 puntos contra 27; e impuestos, 32.9 % contra 18.3 % del PIB."),
+        (JL, "Y a la derecha, nuestra propuesta, «Mi Ahorro Automático»: inscripción automática y flexible desde 50 pesos a la semana, un bono del gobierno de 25 centavos por cada peso ahorrado, y un fondo con interés compuesto para el retiro o la primera vivienda."),
+    ]),
+    (19, "Conclusiones", "0:50", [
         (JL, "Para terminar, lo que más nos sorprendió fue que existe un seguro de accidentes que cubre hasta a los turistas, que un río tenga derechos como una persona y que México y Nueva Zelanda sean casi igual de felices."),
         (PB, "Y lo que creemos que México puede aprender es: que ahorrar sea automático y fácil; medir el éxito de un país por cómo vive su gente y no solo por el PIB; y que los buenos programas continúen aunque cambie el gobierno."),
         (JL, "Nuestra conclusión es: el bienestar no se mide solo en dinero, pero el dinero bien planeado construye bienestar."),
     ]),
-    (19, "Bibliografía (2 diapositivas)", "0:15", [
+    (20, "Bibliografía (2 diapositivas)", "0:15", [
         (PB, "Aquí están nuestras fuentes. Usamos fuentes oficiales: oficinas de estadística y ministerios del gobierno de Nueva Zelanda, la ONU, la OCDE, el FMI, el INEGI y la Secretaría de Educación Pública, entre otras. (Solo se muestran; no hace falta leerlas.)"),
     ]),
-    (21, "¡Gracias! / Preguntas", "0:15", [
+    (22, "¡Gracias! / Preguntas", "0:15", [
         (JL, "¡Gracias por su atención! Como dicen en Nueva Zelanda: kia ora, que en maorí significa «hola» y también «gracias»."),
         (PB, "¿Tienen alguna pregunta?"),
     ]),
 ]
 
 doc.add_heading("Guion diapositiva por diapositiva", level=1)
-sections = {1: "Inicio", 3: "A. Conociendo el país", 8: "B. Modelos y propuestas de bienestar (apartado principal)", 15: "C. ¿Cómo podemos replicarlo en México?", 18: "D. Conclusiones"}
+sections = {1: "Inicio", 3: "A. Conociendo el país", 8: "B. Modelos y propuestas de bienestar (apartado principal)", 15: "C. ¿Cómo podemos replicarlo en México?", 19: "D. Conclusiones"}
 for num, title, t, lines in G:
     if num in sections:
         doc.add_heading(sections[num], level=2)
@@ -185,7 +189,7 @@ for num, title, t, lines in G:
     hdr = tbl.rows[0].cells
     m = hdr[0].merge(hdr[1])
     m.text = ""
-    r = m.paragraphs[0].add_run(f"Diapositiva {num if num != 19 else '19–20'}: {title}")
+    r = m.paragraphs[0].add_run(f"Diapositiva {num if num != 20 else '20–21'}: {title}")
     r.bold = True
     r.font.color.rgb = RGBColor(0xFF, 0xFF, 0xFF)
     r2 = m.paragraphs[0].add_run(f"   ⏱ {t}")
