@@ -62,11 +62,13 @@ def bullet(text, boldlead=None):
 
 
 # ---------------- PORTADA ----------------
-para("INSTITUTO EDUCATIVO AMMADEUS", bold=True, size=15, color=FERN, align=WD_ALIGN_PARAGRAPH.CENTER, after=40)
+lp = doc.add_paragraph(); lp.alignment = WD_ALIGN_PARAGRAPH.CENTER
+lp.add_run().add_picture("logo.png", width=Cm(3.5))
+para("INSTITUTO EDUCATIVO AMMADEUS", bold=True, size=15, color=FERN, align=WD_ALIGN_PARAGRAPH.CENTER, after=30)
 para("Países que construyen bienestar:", bold=True, size=26, color=GREEN, align=WD_ALIGN_PARAGRAPH.CENTER, after=0)
 para("modelos para una mejor sociedad", bold=True, size=22, color=FERN, align=WD_ALIGN_PARAGRAPH.CENTER, after=24)
 para("País investigado: Nueva Zelanda (Aotearoa)", bold=True, size=15, color=OCEAN, align=WD_ALIGN_PARAGRAPH.CENTER, after=6)
-para("GUION DE LA PRESENTACIÓN", bold=True, size=14, color=GRAY, align=WD_ALIGN_PARAGRAPH.CENTER, after=60)
+para("GUION DE LA PRESENTACIÓN", bold=True, size=14, color=GRAY, align=WD_ALIGN_PARAGRAPH.CENTER, after=40)
 for lab, val in (("Materia", "Educación Financiera"), ("Grado", "2.º de secundaria"), ("Maestra", "Samantha Rubí Lara Ceh"),
                  ("Alumnos", "José Luis De Anda Reimers\nPablo De Santiago Hurtado Martin Del Campo"), ("Fecha", "Noviembre de 2026")):
     p = doc.add_paragraph()

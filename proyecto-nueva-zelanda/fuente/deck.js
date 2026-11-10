@@ -68,6 +68,11 @@ function header(slide, tag, title) {
   slide.addText(tag, { placeholder: "tag" });
   slide.addText(title, { placeholder: "title" });
 }
+function addLogo(slide, x, y, d) {
+  slide.addShape(pres.shapes.OVAL, { x, y, w: d, h: d, fill: { color: C.background1 }, line: { type: "none" }, objectName: "fondo logo" });
+  const pad = d * 0.13;
+  slide.addImage({ data: "image/png;base64," + fs.readFileSync("logo.png").toString("base64"), x: x + pad, y: y + pad, w: d - 2 * pad, h: d - 2 * pad, altText: "Logo del Instituto Educativo Ammadeus", objectName: "logo Ammadeus" });
+}
 // five-question "ficha" used on every model slide
 function ficha(slide, x, y, w, h, items) {
   card(slide, x, y, w, h, C.background2, "ficha del modelo");
@@ -88,20 +93,21 @@ const chartText = { catAxisLabelFontFace: "+mn-lt", valAxisLabelFontFace: "+mn-l
   // ================= 1. PORTADA =================
   pres.addSection({ title: "Portada" });
   let s = pres.addSlide({ masterName: "OSCURA", sectionTitle: "Portada" });
-  txt(s, "INSTITUTO EDUCATIVO AMMADEUS", { x: 0.6, y: 0.5, w: 6, h: 0.35, fontSize: 13, bold: true, color: C.accent3, charSpacing: 3 });
+  addLogo(s, 0.6, 0.3, 0.95);
+  txt(s, "INSTITUTO EDUCATIVO AMMADEUS", { x: 1.75, y: 0.3, w: 5, h: 0.95, valign: "middle", fontSize: 13, bold: true, color: C.accent3, charSpacing: 3 });
   txt(s, [
     { text: "Países que construyen bienestar:", options: { breakLine: true } },
     { text: "modelos para una mejor sociedad", options: { color: C.accent5 } },
-  ], { x: 0.6, y: 0.95, w: 5.7, h: 1.6, fontSize: 27, bold: true, color: C.background1, fontFace: THEME.headFontFace, valign: "top" });
-  s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x: 0.6, y: 2.8, w: 4.2, h: 0.45, rectRadius: 0.22, fill: { color: C.accent1 }, line: { type: "none" }, objectName: "etiqueta país" });
-  txt(s, "País investigado: Nueva Zelanda (Aotearoa)", { x: 0.6, y: 2.8, w: 4.2, h: 0.45, fontSize: 14, bold: true, color: C.background1, align: "center", valign: "middle" });
+  ], { x: 0.6, y: 1.45, w: 5.7, h: 1.2, fontSize: 27, bold: true, color: C.background1, fontFace: THEME.headFontFace, valign: "top" });
+  s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x: 0.6, y: 2.85, w: 4.2, h: 0.45, rectRadius: 0.22, fill: { color: C.accent1 }, line: { type: "none" }, objectName: "etiqueta país" });
+  txt(s, "País investigado: Nueva Zelanda (Aotearoa)", { x: 0.6, y: 2.85, w: 4.2, h: 0.45, fontSize: 14, bold: true, color: C.background1, align: "center", valign: "middle" });
   txt(s, [
     { text: "Materia: ", options: { bold: true, color: C.accent5 } }, { text: "Educación Financiera · 2.º de secundaria", options: { breakLine: true } },
     { text: "Maestra: ", options: { bold: true, color: C.accent5 } }, { text: "Samantha Rubí Lara Ceh", options: { breakLine: true } },
     { text: "Alumnos: ", options: { bold: true, color: C.accent5 } }, { text: "José Luis De Anda Reimers", options: { breakLine: true } },
     { text: "Pablo De Santiago Hurtado Martin Del Campo", options: { breakLine: true, indentLevel: 0 } },
     { text: "Noviembre de 2026", options: { color: C.accent5 } },
-  ], { x: 0.6, y: 3.5, w: 5.6, h: 1.7, fontSize: 13, color: C.background1, paraSpaceAfter: 3 });
+  ], { x: 0.6, y: 3.5, w: 5.6, h: 1.65, fontSize: 13, color: C.background1, paraSpaceAfter: 3 });
   s.addImage({ data: flag, x: 6.7, y: 1.8, w: 2.8, h: 1.4, altText: "Bandera de Nueva Zelanda", objectName: "bandera", shadow: { type: "outer", blur: 8, offset: 3, angle: 90, color: "000000", opacity: 0.35 } });
   txt(s, "Bandera de Nueva Zelanda", { x: 6.7, y: 3.3, w: 2.8, h: 0.3, fontSize: 10, italic: true, color: C.accent5, align: "center" });
   s.addNotes("JOSÉ LUIS: Buenos días, maestra Samantha y compañeros. Nuestro proyecto se llama 'Países que construyen bienestar: modelos para una mejor sociedad'. PABLO: Somos José Luis De Anda y Pablo De Santiago, y el país que investigamos es Nueva Zelanda, que en idioma maorí se llama Aotearoa.");
@@ -552,6 +558,7 @@ const chartText = { catAxisLabelFontFace: "+mn-lt", valAxisLabelFontFace: "+mn-l
 
   // ================= 21. GRACIAS =================
   s = pres.addSlide({ masterName: "OSCURA", sectionTitle: "Bibliografía" });
+  addLogo(s, 0.6, 0.35, 0.85);
   txt(s, "¡Gracias!", { x: 0.6, y: 1.5, w: 6, h: 1.0, fontSize: 48, bold: true, color: C.background1, fontFace: THEME.headFontFace });
   txt(s, "¿Tienen alguna pregunta?", { x: 0.6, y: 2.5, w: 6, h: 0.6, fontSize: 22, color: C.accent5 });
   txt(s, "José Luis De Anda Reimers · Pablo De Santiago Hurtado Martin Del Campo\nInstituto Educativo Ammadeus · Educación Financiera · 2.º de secundaria",
