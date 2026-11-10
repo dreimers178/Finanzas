@@ -11,4 +11,4 @@ Maestra: Samantha Rubí Lara Ceh · Alumnos: José Luis De Anda Reimers y Pablo 
 | `Ensayo_Nueva_Zelanda.docx` / `.pdf` | Ensayo con todos los puntos de la presentación, portada y referencias en formato APA 7. |
 | `fuente/` | Scripts que generan los archivos (pptxgenjs y python-docx). |
 
-Duración aproximada: 15 minutos + preguntas.
+Duración aproximada: 10 minutos + preguntas.

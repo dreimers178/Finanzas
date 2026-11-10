@@ -110,7 +110,7 @@ const chartText = { catAxisLabelFontFace: "+mn-lt", valAxisLabelFontFace: "+mn-l
   ], { x: 0.6, y: 3.5, w: 5.6, h: 1.65, fontSize: 13, color: C.background1, paraSpaceAfter: 3 });
   s.addImage({ data: flag, x: 6.7, y: 1.8, w: 2.8, h: 1.4, altText: "Bandera de Nueva Zelanda", objectName: "bandera", shadow: { type: "outer", blur: 8, offset: 3, angle: 90, color: "000000", opacity: 0.35 } });
   txt(s, "Bandera de Nueva Zelanda", { x: 6.7, y: 3.3, w: 2.8, h: 0.3, fontSize: 10, italic: true, color: C.accent5, align: "center" });
-  s.addNotes("JOSÉ LUIS: Buenos días, maestra Samantha y compañeros. Nuestro proyecto se llama 'Países que construyen bienestar: modelos para una mejor sociedad'. PABLO: Somos José Luis De Anda y Pablo De Santiago, y el país que investigamos es Nueva Zelanda, que en idioma maorí se llama Aotearoa.");
+  s.addNotes("JOSÉ LUIS: Buenos días, maestra Samantha y compañeros. Nuestro proyecto se llama «Países que construyen bienestar: modelos para una mejor sociedad». PABLO: Somos José Luis De Anda y Pablo De Santiago, y nuestro país es Nueva Zelanda, que en maorí se llama Aotearoa.");
 
   // ================= 2. CONTENIDO =================
   pres.addSection({ title: "Introducción" });
@@ -133,7 +133,7 @@ const chartText = { catAxisLabelFontFace: "+mn-lt", valAxisLabelFontFace: "+mn-l
     txt(s, t, { x: x + 0.2, y: 3.0, w: 1.7, h: 0.6, fontSize: 15, bold: true, color: C.text2 });
     txt(s, d, { x: x + 0.2, y: 3.65, w: 1.7, h: 1.0, fontSize: 12, color: C.text1 });
   }
-  s.addNotes("JOSÉ LUIS: Nuestra presentación tiene cuatro partes. A: conocer el país. B, la parte principal: los modelos que Nueva Zelanda usa para mejorar la vida de su gente en educación, salud, empleo y pensiones, y vivienda y medio ambiente. C: analizar si eso podría funcionar en México. D: nuestras conclusiones. La pregunta que nos guió fue: ¿qué hace Nueva Zelanda para que su gente viva mejor y qué podría copiar México?");
+  s.addNotes("JOSÉ LUIS: Tenemos cuatro partes: conocer el país, sus modelos de bienestar, si funcionarían en México y nuestras conclusiones. Nuestra pregunta guía fue: ¿qué hace Nueva Zelanda para que su gente viva mejor y qué podría copiar México?");
 
   // ================= 3. UBICACIÓN Y BANDERA =================
   pres.addSection({ title: "A. Conociendo el país" });
@@ -151,7 +151,7 @@ const chartText = { catAxisLabelFontFace: "+mn-lt", valAxisLabelFontFace: "+mn-l
     { text: "Moneda: ", options: { bold: true } }, { text: "dólar neozelandés (NZ$)" },
   ], { x: 5.75, y: 2.25, w: 3.75, h: 2.6, fontSize: 12.5, paraSpaceAfter: 5 });
   source(s, "Stats NZ; Gobierno de Nueva Zelanda (govt.nz). Mapa elaborado con datos de Natural Earth.");
-  s.addNotes("JOSÉ LUIS: Nueva Zelanda está en Oceanía, en el océano Pacífico Sur, a unos 11 mil kilómetros de México. Su capital es Wellington y su ciudad más grande es Auckland. Tiene dos islas principales, la Isla Norte y la Isla Sur, y es unas siete veces más pequeña que México. En su bandera aparece la bandera británica, porque fue colonia del Reino Unido, y cuatro estrellas que forman la Cruz del Sur, una constelación que se ve en el hemisferio sur. Tiene tres idiomas oficiales: inglés, maorí —el idioma del pueblo originario— y lengua de señas. Su moneda es el dólar neozelandés.");
+  s.addNotes("JOSÉ LUIS: Está en Oceanía, en el Pacífico Sur, a unos 11 mil kilómetros de México. Tiene dos islas principales, su capital es Wellington y es siete veces más pequeña que México. Su bandera tiene la bandera británica, porque fue colonia del Reino Unido, y las estrellas de la Cruz del Sur. Sus idiomas oficiales son inglés, maorí y lengua de señas.");
 
   // ================= 4. POBLACIÓN =================
   s = pres.addSlide({ masterName: "CONTENIDO", sectionTitle: "A. Conociendo el país" });
@@ -171,7 +171,7 @@ const chartText = { catAxisLabelFontFace: "+mn-lt", valAxisLabelFontFace: "+mn-l
     { text: "Comparación: ", options: { bold: true, color: C.accent4 } }, { text: "México tiene más de 130 millones; ¡unas 25 veces más personas!" },
   ], { x: 4.9, y: 2.8, w: 4.6, h: 2.1, fontSize: 13, paraSpaceAfter: 6 });
   source(s, "Stats NZ, National population estimates: At 30 June 2025 (2025); CONAPO, proyecciones de población de México.");
-  s.addNotes("PABLO: En junio de 2025 Nueva Zelanda tenía 5 millones 324 mil 700 habitantes. Hay casi la misma cantidad de mujeres que de hombres: 50.3 % mujeres y 49.7 % hombres. La edad mediana, es decir, la edad que divide a la población en dos mitades, es de 39 años para mujeres y 37 para hombres. Para darnos una idea, México tiene más de 130 millones de habitantes, unas 25 veces más. Esto es importante: organizar programas para 5 millones de personas no es lo mismo que para 130 millones.");
+  s.addNotes("PABLO: Tiene 5.3 millones de habitantes, casi mitad mujeres y mitad hombres. México tiene más de 130 millones, unas 25 veces más; por eso organizar programas allá es más sencillo que aquí.");
 
   // ================= 5. ESPERANZA DE VIDA Y EDADES =================
   s = pres.addSlide({ masterName: "CONTENIDO", sectionTitle: "A. Conociendo el país" });
@@ -191,7 +191,7 @@ const chartText = { catAxisLabelFontFace: "+mn-lt", valAxisLabelFontFace: "+mn-l
     valGridLine: { style: "none" }, catGridLine: { style: "none" }, valAxisMaxVal: 75, ...chartText, objectName: "gráfica edades",
   });
   source(s, "Stats NZ, National and subnational period life tables: 2022–2024 (2025); Stats NZ, Censo 2023 (vía EHINZ).");
-  s.addNotes("PABLO: La esperanza de vida es cuántos años vive en promedio una persona. En Nueva Zelanda es de 81.8 años: 83.5 para las mujeres y 80.1 para los hombres. Pero hay una diferencia importante: el pueblo maorí vive en promedio 75.8 años, seis menos. Esto nos muestra que incluso en países con mucho bienestar hay desigualdad. En la gráfica vemos las edades: 18.7 % son niños, casi 65 % está en edad de trabajar y 16.6 % son adultos mayores. Como cada vez hay más adultos mayores, el país necesita un buen sistema de pensiones, del que hablaremos más adelante.");
+  s.addNotes("PABLO: Su gente vive en promedio 81.8 años, aunque el pueblo maorí vive seis años menos, lo que muestra que también hay desigualdad. Casi 17 % de la población son adultos mayores, por eso necesitan un buen sistema de pensiones.");
 
   // ================= 6. ECONOMÍA =================
   s = pres.addSlide({ masterName: "CONTENIDO", sectionTitle: "A. Conociendo el país" });
@@ -218,7 +218,7 @@ const chartText = { catAxisLabelFontFace: "+mn-lt", valAxisLabelFontFace: "+mn-l
   });
   txt(s, [{ text: "Nivel de desarrollo: ", options: { bold: true, color: C.accent1 } }, { text: "economía desarrollada, con desarrollo humano «muy alto»." }], { x: 5.0, y: 4.62, w: 4.5, h: 0.35, fontSize: 12 });
   source(s, "FMI, World Economic Outlook (2025, estimación); Stats NZ, Overseas merchandise trade: December 2025 (2026).");
-  s.addNotes("JOSÉ LUIS: La economía de Nueva Zelanda se basa mucho en el campo. Su exportación número uno son los lácteos: leche en polvo, mantequilla y queso. En 2025 vendió al mundo 80.7 mil millones de dólares neozelandeses, y casi 30 % fueron lácteos. También exporta carne, madera y frutas como el kiwi, y recibe muchos turistas. El PIB, que es el valor de todo lo que produce un país en un año, fue de unos 259 mil millones de dólares estadounidenses. Si lo dividimos entre todos sus habitantes, da unos 48,600 dólares por persona, uno de los más altos del mundo. Por eso se considera un país desarrollado.");
+  s.addNotes("JOSÉ LUIS: Su principal exportación son los lácteos, casi 30 % del total; también vende carne, madera y kiwi, y recibe muchos turistas. Su PIB, que es el valor de todo lo que produce en un año, equivale a unos 48,600 dólares por persona. Es un país desarrollado.");
 
   // ================= 7. OTROS INDICADORES =================
   s = pres.addSlide({ masterName: "CONTENIDO", sectionTitle: "A. Conociendo el país" });
@@ -238,7 +238,7 @@ const chartText = { catAxisLabelFontFace: "+mn-lt", valAxisLabelFontFace: "+mn-l
   txt(s, [{ text: "¡Sorpresa! ", options: { bold: true, color: C.accent4 } }, { text: "México es casi tan feliz como Nueva Zelanda, pero tiene menos dinero público y más corrupción. La felicidad no depende solo del dinero." }],
     { x: 1.35, y: 4.2, w: 8.0, h: 0.65, fontSize: 13, valign: "middle" });
   source(s, "PNUD, Informe sobre Desarrollo Humano 2025; Transparency International, CPI 2025; OCDE, Revenue Statistics 2025; World Happiness Report 2026.");
-  s.addNotes("PABLO: Además del PIB, revisamos otros indicadores. En el Índice de Desarrollo Humano de la ONU, que combina salud, educación e ingreso, Nueva Zelanda está en el lugar 17 y México en el 81. En percepción de corrupción, Nueva Zelanda tiene 81 de 100 puntos y es el cuarto país más limpio; México tiene 27. En impuestos, Nueva Zelanda junta casi 33 % de su PIB y México 18.3 %, el más bajo de la OCDE; con ese dinero los gobiernos pagan escuelas, hospitales y pensiones. Y lo que más nos sorprendió: en el Informe Mundial de la Felicidad 2026, Nueva Zelanda está en el lugar 11 y México en el 12. ¡Casi empatados! O sea, la felicidad no depende solo del dinero; también de la familia y las relaciones.");
+  s.addNotes("PABLO: En desarrollo humano, Nueva Zelanda está en el lugar 17 y México en el 81. Es el cuarto país menos corrupto del mundo y cobra en impuestos casi 33 % de su PIB, contra 18 % de México. Lo sorprendente: en felicidad están casi empatados, lugar 11 y 12. La felicidad no depende solo del dinero.");
 
   // ================= 8. PRESUPUESTO DE BIENESTAR =================
   pres.addSection({ title: "B. Modelos de bienestar" });
@@ -257,7 +257,7 @@ const chartText = { catAxisLabelFontFace: "+mn-lt", valAxisLabelFontFace: "+mn-l
     { text: "En 2023 llegó otro gobierno con otras prioridades: estos modelos dependen de decisiones políticas.", options: { bullet: true } },
   ], { x: 0.5, y: 3.15, w: 9, h: 1.8, fontSize: 14, paraSpaceAfter: 8 });
   source(s, "The Treasury NZ, The Wellbeing Budget 2019; Public Finance Amendment Act 2020.");
-  s.addNotes("JOSÉ LUIS: Ahora viene la parte principal. Antes de ver cada tema, hay una gran idea que hace diferente a Nueva Zelanda. Normalmente los países miden si les va bien con el PIB, o sea, cuánto creció la economía. En 2019, Nueva Zelanda fue el primer país en hacer un 'Presupuesto de Bienestar': antes de decidir en qué gastar, se preguntó si la gente vivía mejor. Por eso puso dinero en salud mental, pobreza infantil y apoyo al pueblo maorí. Desde 2020 una ley pide al gobierno informar sus metas de bienestar. Pero en 2023 llegó otro gobierno con otras prioridades, así que estos modelos también dependen de quién gobierna.");
+  s.addNotes("JOSÉ LUIS: En 2019 Nueva Zelanda fue el primer país en hacer un «Presupuesto de Bienestar»: antes de gastar, se preguntó si la gente vivía mejor, no solo si la economía crecía. Aunque en 2023 otro gobierno cambió las prioridades.");
 
   // ================= 9. EDUCACIÓN =================
   s = pres.addSlide({ masterName: "CONTENIDO", sectionTitle: "B. Modelos de bienestar" });
@@ -279,7 +279,7 @@ const chartText = { catAxisLabelFontFace: "+mn-lt", valAxisLabelFontFace: "+mn-l
     valAxisHidden: true, valAxisMinVal: 0, valAxisMaxVal: 600, valGridLine: { style: "none" }, catGridLine: { style: "none" }, ...chartText, dataLabelFontSize: 9, objectName: "gráfica PISA",
   });
   source(s, "Ministry of Education NZ, Healthy School Lunches (2026); OCDE, Resultados PISA 2022 (2023).");
-  s.addNotes("PABLO: Nuestro primer tema es educación. Nueva Zelanda tiene un programa de almuerzos escolares saludables desde 2020. Consiste en dar comida nutritiva gratis todos los días de clases. El problema que busca resolver es que un niño con hambre no puede concentrarse ni aprender. El gobierno lo paga en las escuelas con más necesidad, y en 2026 ya llegaba a más de 240 mil alumnos en más de mil escuelas. Los estudios reportan menos hambre y mejor bienestar. Además, la escuela pública es gratuita de los 5 a los 19 años y los niños de 3 a 5 años tienen 20 horas gratis de preescolar a la semana. En la gráfica de la prueba PISA de la OCDE, que evalúa a jóvenes de 15 años, Nueva Zelanda queda arriba del promedio en las tres materias; México queda abajo.");
+  s.addNotes("PABLO: Desde 2020 dan almuerzo nutritivo gratis en las escuelas con más necesidad, porque un niño con hambre no aprende. Ya llega a más de 240 mil alumnos y ha reducido el hambre. La escuela pública es gratuita de los 5 a los 19 años, y en la prueba PISA están arriba del promedio; México, abajo.");
 
   // ================= 10. SALUD =================
   s = pres.addSlide({ masterName: "CONTENIDO", sectionTitle: "B. Modelos de bienestar" });
@@ -304,7 +304,7 @@ const chartText = { catAxisLabelFontFace: "+mn-lt", valAxisLabelFontFace: "+mn-l
     txt(s, [{ text: t, options: { bold: true, color: C.text2, breakLine: true, fontSize: 13.5 } }, { text: d, options: { fontSize: 11.5 } }], { x: 6.2, y: y + 0.08, w: 3.15, h: 0.95, valign: "middle" });
   }
   source(s, "ACC, Annual Report 2025; Pharmac, How Pharmac works; Health New Zealand – Te Whatu Ora.");
-  s.addNotes("JOSÉ LUIS: Nuestro segundo tema es salud, y aquí encontramos algo único en el mundo: la ACC, que desde 1974 es un seguro de accidentes para todos. Si alguien se rompe una pierna jugando futbol o tiene un accidente en el trabajo o en la calle, la ACC paga su tratamiento y parte de su sueldo mientras se recupera, sin importar de quién fue la culpa. Se paga con cuotas que salen de los salarios, las empresas y los autos, más dinero del gobierno, y cubre incluso a los turistas. En un solo año aceptó más de 2.1 millones de casos. Lo diferente es que, a cambio, no se puede demandar a nadie por lesiones. Además, Pharmac compra las medicinas para todo el país y, como compra mucho, consigue precios bajos. Los hospitales públicos son gratuitos y los niños menores de 14 años van al médico sin costo en la mayoría de las clínicas.");
+  s.addNotes("JOSÉ LUIS: Lo más único es la ACC: desde 1974, un seguro que paga el tratamiento y parte del sueldo de cualquier persona que tenga un accidente, sin importar de quién fue la culpa, ¡incluso a turistas! Se paga con cuotas de salarios, empresas y autos. Además, Pharmac compra las medicinas para todo el país a precios bajos, y los hospitales públicos son gratuitos.");
 
   // ================= 11. EMPLEO Y PENSIONES =================
   s = pres.addSlide({ masterName: "CONTENIDO", sectionTitle: "B. Modelos de bienestar" });
@@ -328,7 +328,7 @@ const chartText = { catAxisLabelFontFace: "+mn-lt", valAxisLabelFontFace: "+mn-l
   });
   txt(s, [{ text: "Salario mínimo 2026: ", options: { bold: true, color: C.accent1 } }, { text: "NZ$ 23.95 por hora." }], { x: 5.3, y: 4.35, w: 4.2, h: 0.5, fontSize: 12.5, valign: "middle" });
   source(s, "Work and Income NZ, tarifas al 1 de abril de 2026; Inland Revenue, KiwiSaver changes (2025); Employment NZ (2026).");
-  s.addNotes("PABLO: Nuestro tercer tema es empleo y pensiones. Nueva Zelanda tiene dos pilares. El primero es NZ Super: una pensión para todas las personas de 65 años o más que viven ahí, hayan trabajado o no; una persona sola recibe unos 555 dólares neozelandeses a la semana. El segundo pilar es KiwiSaver, creado en 2007. Cuando alguien empieza un nuevo trabajo, lo inscriben automáticamente; si no quiere, puede salirse, pero si no hace nada, ¡ahorra! El trabajador pone 3.5 % de su sueldo, la empresa otro 3.5 % y el gobierno da un bono. Unos 3.4 millones de personas participan. Además, el salario mínimo es de 23.95 dólares neozelandeses por hora.");
+  s.addNotes("PABLO: Tienen dos pilares. Uno: una pensión para todos los mayores de 65, hayan trabajado o no. Dos: KiwiSaver, un ahorro automático; al empezar a trabajar te inscriben solo, tú ahorras 3.5 % de tu sueldo, tu empresa otro 3.5 % y el gobierno te da un bono.");
 
   // ================= 12. KIWISAVER EJEMPLO =================
   s = pres.addSlide({ masterName: "CONTENIDO", sectionTitle: "B. Modelos de bienestar" });
@@ -359,7 +359,7 @@ const chartText = { catAxisLabelFontFace: "+mn-lt", valAxisLabelFontFace: "+mn-l
     { text: "Aportó NZ$ " + noInt[9].toLocaleString("en-US") + "; el resto lo ganó el interés compuesto.", options: { fontSize: 11.5 } },
   ], { x: 6.95, y: 2.95, w: 2.4, h: 1.95 });
   source(s, "Cálculo propio con reglas de Inland Revenue (2025–2026). Ejemplo ilustrativo, antes de impuestos; el 5 % es un supuesto.");
-  s.addNotes("JOSÉ LUIS: Como nuestra materia es educación financiera, hicimos un ejemplo. Imaginemos a alguien que gana 50 mil dólares neozelandeses al año. Él ahorra 3.5 %, o sea 1,750; su empresa pone otros 1,750 y el gobierno le regala unos 261. En total junta 3,761 dólares al año, ¡y solo la mitad salió de su bolsillo! En la gráfica vemos qué pasa en 10 años. Las barras claras muestran solo lo aportado: unos 37,600. Las barras verdes muestran lo que pasa si el dinero gana 5 % de interés al año: casi 47,300. Esa diferencia es el interés compuesto: el dinero que ganan tus ahorros también genera más dinero. Aclaramos que el 5 % es un supuesto para el ejemplo.");
+  s.addNotes("JOSÉ LUIS: Un ejemplo: alguien que gana 50 mil dólares al año junta 3,761 al año, y solo la mitad sale de su bolsillo. En 10 años, con un interés supuesto de 5 %, tendría unos 47 mil, casi 10 mil más de lo que aportó. Eso es el interés compuesto: tu dinero genera más dinero.");
 
   // ================= 13. VIVIENDA Y MEDIO AMBIENTE =================
   s = pres.addSlide({ masterName: "CONTENIDO", sectionTitle: "B. Modelos de bienestar" });
@@ -383,7 +383,7 @@ const chartText = { catAxisLabelFontFace: "+mn-lt", valAxisLabelFontFace: "+mn-l
     { text: "Río Whanganui (2017): ", options: { bold: true, color: C.accent1 } }, { text: "primer río del mundo con derechos de «persona», como pidió el pueblo maorí." },
   ], { x: 5.3, y: 3.45, w: 4.0, h: 1.4, fontSize: 12.5, paraSpaceAfter: 5 });
   source(s, "Tenancy Services NZ, Healthy homes standards; Kāinga Ora; MBIE, Energy in New Zealand 2026; Ministry for the Environment.");
-  s.addNotes("PABLO: Nuestro cuarto tema es vivienda y medio ambiente. En Nueva Zelanda hace frío y muchas casas eran húmedas, lo que enfermaba a los niños. Por eso en 2019 crearon las normas 'Healthy Homes', o casas saludables: toda casa en renta debe tener calefacción, aislamiento, ventilación y control de humedad, y desde julio de 2025 es obligatorio para todas. Las familias de bajos ingresos que viven en vivienda pública pagan como máximo cerca del 25 % de su ingreso, y los ahorros de KiwiSaver se pueden usar para comprar la primera casa. En medio ambiente, 88.5 % de su electricidad en 2025 vino de fuentes renovables, como presas, el calor de la tierra, el viento y el sol. Tienen una ley para llegar a cero emisiones netas en 2050, y en 2017 reconocieron al río Whanganui como si fuera una persona con derechos, como pedía el pueblo maorí.");
+  s.addNotes("PABLO: Como las casas frías y húmedas enfermaban a los niños, ahora toda casa en renta debe tener calefacción, aislamiento y ventilación. Y el KiwiSaver se puede usar para comprar la primera casa. En medio ambiente, 88.5 % de su electricidad es renovable, quieren llegar a cero emisiones en 2050 y hasta le dieron derechos de persona a un río.");
 
   // ================= 14. POR QUÉ FUNCIONA =================
   s = pres.addSlide({ masterName: "CONTENIDO", sectionTitle: "B. Modelos de bienestar" });
@@ -410,7 +410,7 @@ const chartText = { catAxisLabelFontFace: "+mn-lt", valAxisLabelFontFace: "+mn-l
     { text: "El pueblo maorí vive unos 6 años menos.", options: { bullet: true } },
   ], { x: 5.8, y: 1.95, w: 3.5, h: 2.9, fontSize: 12.5, paraSpaceAfter: 7 });
   source(s, "Transparency International (2026); OCDE (2025); Stats NZ, Labour market statistics (2026); World Happiness Report 2026.");
-  s.addNotes("JOSÉ LUIS: ¿Por qué funciona el modelo de Nueva Zelanda? Encontramos cinco claves. Uno: confianza; hay muy poca corrupción, así que el dinero llega a donde debe. Dos: los programas son para todos, con menos trámites. Tres: son automáticos; por ejemplo, ahorrar es la opción por defecto. Cuatro: miden el bienestar y no solo el dinero. Y cinco: la gente paga impuestos, casi 33 % del PIB, para tener servicios públicos. Pero queremos ser honestos: no es perfecto. Las casas son muy caras, el desempleo subió a 5.7 % y a 12 % en jóvenes, la felicidad de los jóvenes está muy abajo en el ranking mundial y el pueblo maorí vive unos seis años menos.");
+  s.addNotes("JOSÉ LUIS: Sus claves son: poca corrupción, programas para todos, ahorro automático, medir el bienestar y pagar impuestos. Pero no es perfecto: las casas son muy caras, 12 % de los jóvenes no tiene trabajo y el pueblo maorí vive menos.");
 
   // ================= 15. QUÉ PODRÍA APLICAR MÉXICO =================
   pres.addSection({ title: "C. ¿Funcionaría en México?" });
@@ -426,7 +426,7 @@ const chartText = { catAxisLabelFontFace: "+mn-lt", valAxisLabelFontFace: "+mn-l
     [td2("Casas saludables (Healthy Homes)", { bold: true, color: H.accent1 }), td2("Hay créditos de vivienda (Infonavit), pero pocas reglas de calidad en rentas."), td2("Menos enfermedades por humedad, calor o frío.")],
   ], { x: 0.5, y: 1.3, w: 9, colW: [2.6, 3.5, 2.9], rowH: [0.4, 0.75, 0.65, 0.65, 0.75], border: { type: "solid", pt: 0.75, color: "C9D8CF" }, fill: { color: H.lt1 }, margin: [0.04, 0.08, 0.04, 0.08], objectName: "tabla propuestas" });
   source(s, "INEGI, Indicadores de Ocupación y Empleo, sept. 2026; SEP-Salud, lineamientos de alimentación escolar (2025); IMSS; Infonavit.");
-  s.addNotes("PABLO: Ahora la parte C: ¿qué podría copiar México? Elegimos cuatro ideas. Primera: el ahorro automático tipo KiwiSaver. En México existen las Afores, pero solo para quien tiene empleo formal, y más de la mitad de los trabajadores, 54.3 %, está en la informalidad. Segunda: un almuerzo escolar diario y nutritivo; México ya dio un paso al prohibir la comida chatarra en escuelas en 2025. Tercera: un seguro de accidentes para todos, porque hoy el IMSS solo cubre a trabajadores formales. Y cuarta: reglas para que las casas sean saludables. Cada una tendría beneficios claros: más ahorro, menos hambre, menos deudas por accidentes y menos enfermedades.");
+  s.addNotes("PABLO: Proponemos cuatro ideas: un ahorro automático, porque las Afores no cubren a la mitad de los trabajadores, que están en la informalidad; un almuerzo escolar nutritivo; un seguro de accidentes para todos, y reglas para que las casas sean saludables.");
 
   // ================= 16. OBSTÁCULOS Y ADAPTACIONES =================
   s = pres.addSlide({ masterName: "CONTENIDO", sectionTitle: "C. ¿Funcionaría en México?" });
@@ -455,7 +455,7 @@ const chartText = { catAxisLabelFontFace: "+mn-lt", valAxisLabelFontFace: "+mn-l
     { text: "Una ley para que no desaparezca al cambiar de gobierno.", options: { bullet: true } },
   ], { x: 5.5, y: 1.95, w: 3.8, h: 2.85, fontSize: 12, color: C.background1, paraSpaceAfter: 6 });
   source(s, "OCDE, Revenue Statistics 2025; INEGI (2026); análisis propio.");
-  s.addNotes("JOSÉ LUIS: Pero no basta con decir que un modelo es bueno; hay que ver si funcionaría aquí. Encontramos cuatro tipos de obstáculos. Económicos: México junta mucho menos en impuestos, 18.3 % de su PIB contra casi 33 % de Nueva Zelanda, así que hay menos dinero. Políticos: los programas suelen cambiar con cada gobierno. Culturales: mucha gente desconfía de las instituciones y no tiene costumbre de ahorrar. Y sociales: somos 25 veces más personas, con mucha informalidad y diferencias entre regiones. Por eso proponemos adaptaciones: inscribirse al ahorro desde el celular, aunque trabajes por tu cuenta; empezar con montos pequeños; comenzar en las zonas con más necesidad; comprar la comida escolar a productores locales; y hacer una ley para que el programa no desaparezca al cambiar de gobierno.");
+  s.addNotes("JOSÉ LUIS: Pero hay obstáculos: México cobra menos impuestos, los programas cambian con cada gobierno, hay desconfianza y poca costumbre de ahorrar, y somos muchos más. Por eso habría que adaptarlo: inscribirse desde el celular, empezar con poco dinero y en las zonas con más necesidad, y hacer una ley para que no desaparezca.");
 
   // ================= 17. NUESTRA PROPUESTA =================
   s = pres.addSlide({ masterName: "CONTENIDO", sectionTitle: "C. ¿Funcionaría en México?" });
@@ -487,14 +487,14 @@ const chartText = { catAxisLabelFontFace: "+mn-lt", valAxisLabelFontFace: "+mn-l
     { text: "Se apoya en algo que ya existe: las Afores.", options: { bullet: true } },
   ], { x: 4.1, y: 3.7, w: 5.4, h: 1.3, fontSize: 12, paraSpaceAfter: 4 });
   source(s, "Propuesta del equipo basada en KiwiSaver (Inland Revenue NZ) y el sistema de Afores (CONSAR). Cálculo ilustrativo.");
-  s.addNotes("PABLO: De todas las ideas, nosotros proponemos 'Mi Ahorro Automático', un KiwiSaver a la mexicana. Funciona en cuatro pasos: uno, te inscriben solo al conseguir trabajo, o te inscribes con una app si trabajas por tu cuenta, y puedes salirte si quieres. Dos, ahorras poquito, desde 50 pesos a la semana. Tres, el gobierno te premia con 25 centavos por cada peso que ahorres, con un tope. Y cuatro, lo usas para tu retiro o para el enganche de tu primera casa. JOSÉ LUIS: Hicimos la cuenta: si alguien ahorra 50 pesos a la semana más el bono, y su dinero gana 4 % al año, en 40 años tendría unos 309 mil pesos. Creemos que esta propuesta tendría el mayor impacto porque ataca tres problemas a la vez: la vejez sin ingresos, la falta de vivienda y la poca educación financiera. Además cuesta menos, porque la persona también aporta, y se apoya en algo que ya existe en México: las Afores.");
+  s.addNotes("PABLO: Nuestra propuesta es «Mi Ahorro Automático»: te inscribes al trabajar o con una app, ahorras desde 50 pesos a la semana, el gobierno te da 25 centavos por cada peso y lo usas para tu retiro o tu primera casa. JOSÉ LUIS: Con un interés supuesto de 4 %, en 40 años serían unos 309 mil pesos. Creemos que es la de mayor impacto porque ayuda a la vejez, a la vivienda y a aprender a ahorrar, y se apoya en las Afores que ya existen.");
 
   // ================= INFOGRAFÍA (resumen) =================
   s = pres.addSlide({ masterName: "OSCURA", sectionTitle: "C. ¿Funcionaría en México?" });
   s.addImage({ data: "image/png;base64," + fs.readFileSync("infografia.png").toString("base64"), x: 0.2, y: 0.134, w: 9.6, h: 5.357,
     altText: "Infografía: Modelos de bienestar, lecciones de Nueva Zelanda para México. Pilares del modelo neozelandés (KiwiSaver y retiro universal, seguro universal de accidentes, 88.5 % de energía renovable), comparativa de indicadores con México y la propuesta «Mi Ahorro Automático».",
     objectName: "infografía resumen" });
-  s.addNotes("PABLO: Para resumir todo lo que vimos, hicimos esta infografía. A la izquierda están los pilares del modelo neozelandés: KiwiSaver y la pensión universal, el seguro de accidentes para todos y el 88.5 % de energía renovable. En el centro, la comparación con México: desarrollo humano, lugar 17 contra 81; corrupción, 81 puntos contra 27; e impuestos, 32.9 % contra 18.3 % del PIB. JOSÉ LUIS: Y a la derecha, nuestra propuesta, «Mi Ahorro Automático»: inscripción automática y flexible desde 50 pesos a la semana, un bono del gobierno de 25 centavos por cada peso ahorrado, y un fondo con interés compuesto para el retiro o la primera vivienda.");
+  s.addNotes("PABLO: Esta infografía resume todo: a la izquierda, los pilares de Nueva Zelanda; en el centro, la comparación con México, y a la derecha, nuestra propuesta.");
 
   // ================= 18. CONCLUSIONES =================
   pres.addSection({ title: "D. Conclusiones" });
@@ -518,7 +518,7 @@ const chartText = { catAxisLabelFontFace: "+mn-lt", valAxisLabelFontFace: "+mn-l
   ], { x: 5.3, y: 2.15, w: 4.0, h: 1.8, fontSize: 14, paraSpaceAfter: 6 });
   card(s, 0.5, 4.2, 9, 0.75, C.text2, "frase final");
   txt(s, "«El bienestar no se mide solo en dinero, pero el dinero bien planeado construye bienestar.»", { x: 0.7, y: 4.2, w: 8.6, h: 0.75, fontSize: 15, italic: true, bold: true, color: C.background1, align: "center", valign: "middle", fontFace: THEME.headFontFace });
-  s.addNotes("JOSÉ LUIS: Para terminar, lo que más nos sorprendió fue que existe un seguro de accidentes que cubre hasta a los turistas, que un río tenga derechos como una persona y que México y Nueva Zelanda sean casi igual de felices. PABLO: Y lo que creemos que México puede aprender es: que ahorrar sea automático y fácil; medir el éxito de un país por cómo vive su gente y no solo por el PIB; y que los buenos programas continúen aunque cambie el gobierno. JOSÉ LUIS: Nuestra conclusión es: el bienestar no se mide solo en dinero, pero el dinero bien planeado construye bienestar.");
+  s.addNotes("JOSÉ LUIS: Lo que más nos sorprendió fue el seguro que cubre hasta a turistas, el río con derechos y que México sea casi igual de feliz. PABLO: México puede aprender a que ahorrar sea automático, a medir el éxito por cómo vive la gente y a mantener los buenos programas aunque cambie el gobierno. JOSÉ LUIS: En resumen: el bienestar no se mide solo en dinero, pero el dinero bien planeado construye bienestar.");
 
   // ================= 19-20. BIBLIOGRAFÍA =================
   pres.addSection({ title: "Bibliografía" });
@@ -553,7 +553,7 @@ const chartText = { catAxisLabelFontFace: "+mn-lt", valAxisLabelFontFace: "+mn-l
     header(sl, "FUENTES CONSULTADAS (FORMATO APA 7)", "Bibliografía (" + pg + ")");
     txt(sl, list.map((t, i) => ({ text: t, options: { breakLine: i < list.length - 1, paraSpaceAfter: 4, indentLevel: 0 } })),
       { x: 0.5, y: 1.3, w: 9, h: 3.85, fontSize: 11, color: C.text1 });
-    sl.addNotes("PABLO: Aquí están todas nuestras fuentes. Usamos fuentes oficiales: oficinas de estadística y ministerios del gobierno de Nueva Zelanda, la ONU, la OCDE, el FMI, el INEGI y la Secretaría de Educación Pública, entre otras. (No es necesario leer esta diapositiva completa.)");
+    sl.addNotes("PABLO: Estas son nuestras fuentes; todas son oficiales, como el gobierno de Nueva Zelanda, la ONU, la OCDE y el INEGI.");
   });
 
   // ================= 21. GRACIAS =================
@@ -565,7 +565,7 @@ const chartText = { catAxisLabelFontFace: "+mn-lt", valAxisLabelFontFace: "+mn-l
     { x: 0.6, y: 3.6, w: 7.5, h: 0.8, fontSize: 12, color: C.background1 });
   s.addImage({ data: flag, x: 7.3, y: 1.6, w: 2.0, h: 1.0, altText: "Bandera de Nueva Zelanda", objectName: "bandera" });
   txt(s, "Kia ora = «hola / gracias» en maorí", { x: 7.0, y: 2.7, w: 2.6, h: 0.35, fontSize: 11, italic: true, color: C.accent5, align: "center" });
-  s.addNotes("AMBOS: ¡Gracias por su atención! JOSÉ LUIS: Como dicen en Nueva Zelanda: kia ora, que en maorí significa 'hola' y también 'gracias'. PABLO: ¿Tienen alguna pregunta?");
+  s.addNotes("JOSÉ LUIS: ¡Gracias por su atención! Kia ora, que en maorí significa «hola» y «gracias». PABLO: ¿Tienen alguna pregunta?");
 
   await pres.writeFile({ fileName: OUT });
   await applyTheme(OUT, THEME);
