@@ -23,9 +23,13 @@
 > - I really want to put a spotlight on **Monto's PO report**, shared in our team Slack channel. This is a great tool, and it goes straight at **one of the biggest pain points we've had — getting the POs**. It pulls the POs right from the portals we use, so **if a client hasn't sent you the PO, you can find it there first** instead of chasing it. Please lean on it — it saves real time and keeps invoices moving.
 > - And with the higher volume, it's a good moment to **review the tasks the portals team had to reassign** because something was missing — a PO or some information. Clearing those quickly keeps the process smoother and the SLA tight."
 
+## What's next — Tesorio AI agent
+
+> "One exciting update to end on: **Tesorio's AI agent is now live**, and we've started testing it to upload invoices **directly to Ariba and Coupa — right from Tesorio**. It's going to make the whole portal-uploads flow a lot smoother, and it already has some really strong features — like **matching POs to invoices directly in the portal**. We're in the practice phase right now and it's looking very promising, so we hope to **share it and walk you through it soon**. Bottom line: it's live, we're getting hands-on with it, and it's shaping up to be a great tool for portal uploads in the near future."
+
 ## Closing
 
-> "So: a strong month on uploads, a heavier one on turnaround that points to one clear habit — keep the intake steady. Thanks, team. Happy to take questions."
+> "So: a strong month on uploads, a heavier one on turnaround that points to one clear habit — keep the intake steady — and an exciting tool on the way. Thanks, team. Happy to take questions."
 
 ---
 
