@@ -66,12 +66,12 @@ slideTitle(s,"Tesorio Tasks  ·  Oct - 26");
 kpiCard(s,0.5,1.45,2.15,"164","Completed",BLUE);
 kpiCard(s,2.78,1.45,2.15,"6.3 d","Avg. resolution",ORANGE);
 kpiCard(s,5.06,1.45,2.15,"31%","Same-day",GREENA);
-kpiCard(s,7.34,1.45,2.15,"5","Open (Nov 2)",MINT);
+kpiCard(s,7.34,1.45,2.15,"6","Open (Nov 2)",MINT);
 s.addText("Resolution time by month",{x:0.5,y:2.75,w:5,h:0.32,fontFace:FH,fontSize:13,bold:true,color:GREEN,isTextBox:true,margin:0});
 monthTable(s,[
  ["Month","Created","Completed","Avg. days","% same day"],
- ["Aug - 26","53","53","4.1","68%"],
- ["Sep - 26","240","204","1.1","67%"],
+ ["Aug - 26","53","47","0.9","77%"],
+ ["Sep - 26","238","201","1.1","67%"],
  ["Oct - 26","169","164","6.3","31%"]],0.5,3.12,5.0,[1.15,1.0,1.05,0.9,0.9]);
 s.addChart(p.ChartType.doughnut,[{name:"Distribution",labels:["Same day","1-2 d","2-4 d","4-7 d",">7 d"],values:[51,15,18,20,60]}],
  {x:5.9,y:2.7,w:3.8,h:2.55,chartColors:[GREENA,TEAL,BLUE,ORANGE,PURPLE],
@@ -80,7 +80,7 @@ s.addChart(p.ChartType.doughnut,[{name:"Distribution",labels:["Same day","1-2 d"
   showPercent:true,showValue:false,dataLabelColor:WHITE,dataLabelFontFace:FB,dataLabelFontSize:9,holeSize:58});
 s.addNotes(
 "Tesorio Tasks — how we track that same portal work end to end. Scope: created through October 31, with a 2-day SLA window to resolve (completed through November 2).\n"+
-"October was a heavier month here: we completed 164 tasks, but at 6.3 days on average and 31% same-day, with only 5 still open. A large batch created in mid-October took about two weeks to clear, which is what pulls the average up.\n"+
+"October was a heavier month here: we completed 164 tasks, but at 6.3 days on average and 31% same-day, with only 6 still open. After fast months in August and September (around a day each), a large batch created in mid-October took about two weeks to clear, which is what pulls the average up.\n"+
 "The donut shows the spread — a meaningful share landed in the 4-7 day and 7+ day buckets this month.\n"+
 "Opportunity: smooth the intake so the work comes in steadily rather than in a wave, and keep an eye on reassigned tasks so nothing stalls.");
 

@@ -11,7 +11,7 @@
 
 > "On **Portal Uploads** it was a strong month: **61 uploads, 56 resolved**, at **0.6 days** on average and **88% same-day** — and the trend keeps improving, from 1.7 days in August to 0.7 in September to 0.6 in October.
 >
-> On **Tesorio Tasks** we **completed 164 tasks**, with only 5 still open. It was a heavier month on turnaround — **6.3 days** on average and **31% same-day** — because a large batch of invoices came in together in mid-October and took about two weeks to clear, which pulls the average up."
+> On **Tesorio Tasks** we **completed 164 tasks**, with only 6 still open. After two fast months — around a day on average in both August and September — October was heavier on turnaround: **6.3 days** on average and **31% same-day**, because a large batch of invoices came in together in mid-October and took about two weeks to clear, which pulls the average up."
 
 ## What drove October
 
@@ -36,8 +36,8 @@
 | Volume (Oct) | 61 uploads / 56 resolved | 169 created / 164 completed |
 | Avg. resolution | 0.6 days | 6.3 days |
 | Same-day | 88% | 31% |
-| Open past SLA window | 5 | 5 |
-| Trend (avg days) | 1.7 → 0.7 → 0.6 | 4.1 → 1.1 → 6.3 |
+| Open past SLA window | 5 | 6 |
+| Trend (avg days) | 1.7 → 0.7 → 0.6 | 0.9 → 1.1 → 6.3 |
 
 **Reminder:** Monto PO report is in the team Slack channel — pulls POs from our portals; use it when the client hasn't shared the PO.
-*(Tesorio Aug–Sep figures carried from prior monthly reports; October export covered October only.)*
+*(Each month measured within its own month-end + 2-day SLA window.)*
