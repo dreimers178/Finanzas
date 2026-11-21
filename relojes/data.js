@@ -12,10 +12,10 @@
 const CONFIG = {
   marca: "Zulú",
   submarca: "Watch Co.",
-  tagline: "La hora de todos los pilotos",
+  tagline: "Relojería seleccionada",
   intro:
-    "Relojes seleccionados con criterio, desde la aviación. Cada pieza se revisa, " +
-    "se documenta y se entrega con la confianza de un trato directo.",
+    "Una selección curada de relojes, elegidos con criterio. Cada pieza se revisa, " +
+    "se documenta y se entrega con la confianza de un trato directo, de persona a persona.",
 
   // ⚠️ CAMBIAR — ponme tu número real (formato internacional, sin + ni espacios).
   // México: 52 + 1 + 10 dígitos  →  ej. 5215512345678
